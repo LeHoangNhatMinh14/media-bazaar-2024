@@ -19,40 +19,63 @@ namespace MediaBazaarSemester2Retake
 
         private void button4_Click(object sender, EventArgs e)
         {
-            btnEmployeeManagement.Text = "Stock Management";
-            btnProductManagement.Text = "Create";
-
-            btnSchedule.Text = "Update";
-            btnStockManagement.Text = "Delete";
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            btnupdateEmployeeManagement.Visible = true;
-            btnDeleteEMployeeManagement.Visible = true;
-            btnCreateEmployee.Visible = true;
-
-
-
-            btnProductManagement.Visible = false;
-
-        }
-        private void btnProductManagement_Click(object sender, EventArgs e)
-        {
-            ProductManagementClicked.Visible = true;
-            btnProductManagement.Visible = false;
+            SetCrudeOn();
+            btnBack.Visible = true;
+            btnStockmanagementCLicked.Visible=true;
+          
             btnCreateProductManagement.Visible = true;
             btnDeleteProductManagement.Visible = true;
             btnUpdateProductManagement.Visible = true;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            btnBack.Visible = true;
+            btnupdateEmployeeManagement.Visible = true;
+            btnDeleteEMployeeManagement.Visible = true;
+            btnCreateEmployee.Visible = true;
+            pnlEmployeeManagement.Visible = true;
+
+
+            btnSchedule.Visible = false;
+            btnProductManagement.Visible = false;
+            btnStockManagement.Visible = false;
+
+
+
+        }
+        private void btnProductManagement_Click(object sender, EventArgs e)
+        {
+            btnBack.Visible = true;
+            ProductManagementClicked.Visible = true;
+            btnProductManagement.Visible = false;
+            btnSchedule.Visible = false;
+            btnEmployeeManagement.Visible = false;
+            btnStockManagement.Visible = false;
+            btnCreateProductManagement.Visible = true;
+            btnDeleteProductManagement.Visible = true;
+            btnUpdateProductManagement.Visible = true;
+        }
+
+        public void SetCrudeOn()
+        {
+            btnBack.Visible = true;
+            btnSchedule.Visible = false;
+            btnProductManagement.Visible = false;
+            btnStockManagement.Visible = false;
+            btnEmployeeManagement.Visible = false;
+        }
         private void btnSchedule_Click(object sender, EventArgs e)
         {
-
+            #region
+            SetCrudeOn();
+            btnBack.Visible = true;
             btnScheduleManagementClicked.Visible = true;
             btnCreateScheduleManagement.Visible = true;
             btnUpdateScheduleManagement.Visible = true;
             btnDeleteScheduleManagement.Visible = true;
             btnProductManagement.Visible = false;
+            #endregion
         }
         public void CLear()
         {
@@ -78,11 +101,14 @@ namespace MediaBazaarSemester2Retake
             btnStockManagement.Visible = true;
         }
         private void button1_Click_1(object sender, EventArgs e)
-        {
+        {btnStockmanagementCLicked.Visible = false;
+            btnBack.Visible = false;
+            pnlEmployeeManagement.Visible = false;
             ProductManagementClicked.Visible = false;
             btnCreateProductManagement.Visible = false;
             btnDeleteProductManagement.Visible = false;
             btnUpdateProductManagement.Visible = false;
+            btnScheduleManagementClicked.Visible = false;
             
             btnupdateEmployeeManagement.Visible = false;
             btnDeleteEMployeeManagement.Visible = false;
