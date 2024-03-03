@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataFormats;
 
 namespace MediaBazaarSemester2Retake
 {
@@ -62,6 +63,14 @@ namespace MediaBazaarSemester2Retake
             pictureBox4.Image = images[currentIndex];
 
             currentIndex = (currentIndex+ 1)% images.Count;
+        }
+
+        private void BtnGo_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var myForm = new MainMenu();
+            myForm.Show();
+            
         }
     }
 }

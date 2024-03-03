@@ -67,6 +67,7 @@
             this.BtnGo.Size = new System.Drawing.Size(204, 148);
             this.BtnGo.TabIndex = 49;
             this.BtnGo.UseVisualStyleBackColor = true;
+            this.BtnGo.Click += new System.EventHandler(this.BtnGo_Click);
             // 
             // btnCantSignIn
             // 
