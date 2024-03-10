@@ -24,6 +24,7 @@ namespace BusinessLogicLayer.Class
         private bool _firstLogin;
         private bool _active;
 
+        // for new employee
         public Employee(int employeID, string firstName, string lastName, string bsn, DateOnly dateOfBirth, int phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, int emergencyPhoneNumber, string emergencyRelation)
         {
             _employeeID = employeID;
@@ -47,6 +48,7 @@ namespace BusinessLogicLayer.Class
             _active = true;
         }
 
+        // for existing employee
         public Employee(int employeID, string firstName, string lastName, string bsn, DateOnly dateOfBirth, int phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, int emergencyPhoneNumber, string emergencyRelation, string password, bool firstLogin, bool active)
         {
             _employeeID = employeID;
