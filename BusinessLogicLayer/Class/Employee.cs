@@ -24,6 +24,7 @@ namespace BusinessLogicLayer.Class
         private bool _firstLogin;
         private bool _active;
 
+        RandomizePassword randomizePassword;
         // for new employee
         public Employee(int employeID, string firstName, string lastName, string bsn, DateOnly dateOfBirth, int phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, int emergencyPhoneNumber, string emergencyRelation)
         {
@@ -43,7 +44,7 @@ namespace BusinessLogicLayer.Class
             _emergencyContactName = emergencyContactName;
             _emergencyPhoneNumber = emergencyPhoneNumber;
             _emergencyRelation = emergencyRelation;
-            _password = GeneratePassword(8);
+            _password = randomizePassword.GeneratePassword(8);
             _firstLogin = false;
             _active = true;
         }
@@ -96,21 +97,6 @@ namespace BusinessLogicLayer.Class
             }
         }
 
-        private string GeneratePassword(int length)
-        {
-            Random random = new Random();
-            string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-
-            char[] randomPassword = new char[length];
-
-            for (int i = 0; i < length; i++)
-            {
-                randomPassword[i] = characters[random.Next(characters.Length)];
-            }
-
-            string generatedPassword = new string(randomPassword);
-            return generatedPassword;
-        }
 
         public override string ToString()
         {
