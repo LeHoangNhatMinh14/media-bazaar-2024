@@ -1,0 +1,129 @@
+<Project>
+  <Name>Media Bazaar</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>UML</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Employee</Name>
+        <Access>Public</Access>
+        <Location left="436" top="18" />
+        <Size width="192" height="400" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int employeeID</Member>
+        <Member type="Field">string firstName</Member>
+        <Member type="Field">string lastName</Member>
+        <Member type="Field">string bsn</Member>
+        <Member type="Field">Date dateOfBirth</Member>
+        <Member type="Field">int phoneNumber</Member>
+        <Member type="Field">string gender</Member>
+        <Member type="Field">string email</Member>
+        <Member type="Field">string city</Member>
+        <Member type="Field">string country</Member>
+        <Member type="Field">string street</Member>
+        <Member type="Field">int houseNumber</Member>
+        <Member type="Field">string postalCode</Member>
+        <Member type="Field">string emergencyContactName</Member>
+        <Member type="Field">int emergencyPhoneNumber</Member>
+        <Member type="Field">string emergencyRelation</Member>
+        <Member type="Field">string password</Member>
+        <Member type="Field">bool firstLogin</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Contract</Name>
+        <Access>Public</Access>
+        <Location left="837" top="257" />
+        <Size width="162" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int contractID</Member>
+        <Member type="Field">string contractType</Member>
+        <Member type="Field">int EmployeeID</Member>
+        <Member type="Field">string workHours</Member>
+        <Member type="Field">string position</Member>
+        <Member type="Field">bool active</Member>
+        <Member type="Field">DateTime startDate</Member>
+        <Member type="Field">DateTime endTime</Member>
+        <Member type="Field">string reason</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Department</Name>
+        <Access>Public</Access>
+        <Location left="837" top="628" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int departmentID</Member>
+        <Member type="Field">string departmentName</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Shifts</Name>
+        <Access>Public</Access>
+        <Location left="278" top="494" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int shiftID</Member>
+        <Member type="Field">string ShiftType</Member>
+        <Member type="Field">int peopleNeeded</Member>
+        <Member type="Field">DateTime shiftDate</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ManageContract</Name>
+        <Access>Public</Access>
+        <Location left="1127" top="257" />
+        <Size width="462" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public ManageContract()</Member>
+        <Member type="Method">public void AddContract(Contract contract, Employee employee)</Member>
+        <Member type="Method">public void TerminateContract(Contract contract, Employee employee, string reason = null)</Member>
+        <Member type="Method">public Contract GetContract()</Member>
+        <Member type="Method">public Contract GetAllContract()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ManageEmployee</Name>
+        <Access>Public</Access>
+        <Location left="771" top="18" />
+        <Size width="250" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public ManageEmployee()</Member>
+        <Member type="Method">public void AddEmployee(Employee employee)</Member>
+        <Member type="Method">public void EditEmployee(Employee employee)</Member>
+        <Member type="Method">public Employee GetEmployee()</Member>
+        <Member type="Method">public List&lt;Employee&gt; GetAllEmployee()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="0" second="1">
+        <Label>has</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="5" second="0">
+        <Label>Manage</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="1">
+        <Label>Manage</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
