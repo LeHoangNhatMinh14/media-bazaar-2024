@@ -7,8 +7,8 @@
       <Entity type="Class">
         <Name>Employee</Name>
         <Access>Public</Access>
-        <Location left="436" top="18" />
-        <Size width="192" height="400" />
+        <Location left="864" top="1319" />
+        <Size width="233" height="451" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int employeeID</Member>
         <Member type="Field">string firstName</Member>
@@ -28,13 +28,17 @@
         <Member type="Field">string emergencyRelation</Member>
         <Member type="Field">string password</Member>
         <Member type="Field">bool firstLogin</Member>
+        <Member type="Constructor">public Employee(int employeID, string firstName, string lastName, string bsn, DateOnly dateOfBirth, int phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, string emeergencyPhoneNumber, string emergencyRelation)</Member>
+        <Member type="Property">public string Name { get; private set; }</Member>
+        <Member type="Property">public string Address { get; private set; }</Member>
+        <Member type="Method">public override string ToString()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Contract</Name>
         <Access>Public</Access>
-        <Location left="837" top="257" />
-        <Size width="162" height="230" />
+        <Location left="1249" top="1502" />
+        <Size width="274" height="281" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int contractID</Member>
         <Member type="Field">string contractType</Member>
@@ -45,60 +49,246 @@
         <Member type="Field">DateTime startDate</Member>
         <Member type="Field">DateTime endTime</Member>
         <Member type="Field">string reason</Member>
+        <Member type="Constructor">public Contract(int contractID, string contractType, int EmployeeID, string workHours, string position, DateTime startDate, DateTime endTime)</Member>
+        <Member type="Property">public string Reason { get; set; }</Member>
+        <Member type="Method">public override string ToString()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Department</Name>
         <Access>Public</Access>
-        <Location left="837" top="628" />
-        <Size width="162" height="216" />
+        <Location left="1722" top="1502" />
+        <Size width="308" height="145" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int departmentID</Member>
         <Member type="Field">string departmentName</Member>
+        <Member type="Constructor">public Department(int departmentID, string departmentName)</Member>
+        <Member type="Method">public override string ToString()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Shifts</Name>
+        <Name>Shift</Name>
         <Access>Public</Access>
-        <Location left="278" top="494" />
-        <Size width="162" height="216" />
+        <Location left="288" top="1508" />
+        <Size width="398" height="196" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int shiftID</Member>
         <Member type="Field">string ShiftType</Member>
         <Member type="Field">int peopleNeeded</Member>
         <Member type="Field">DateTime shiftDate</Member>
+        <Member type="Field">List&lt;Employee&gt; employees</Member>
+        <Member type="Constructor">public Shift(int ShiftID, string shiftType, int peopleNeeded, DateTime shiftDate)</Member>
+        <Member type="Method">public override string ToString()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>ManageContract</Name>
         <Access>Public</Access>
-        <Location left="1127" top="257" />
-        <Size width="462" height="216" />
+        <Location left="1116" top="1025" />
+        <Size width="427" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public ManageContract()</Member>
         <Member type="Method">public void AddContract(Contract contract, Employee employee)</Member>
         <Member type="Method">public void TerminateContract(Contract contract, Employee employee, string reason = null)</Member>
-        <Member type="Method">public Contract GetContract()</Member>
+        <Member type="Method">public Contract GetContract(Employee employee)</Member>
         <Member type="Method">public Contract GetAllContract()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>ManageEmployee</Name>
         <Access>Public</Access>
-        <Location left="771" top="18" />
-        <Size width="250" height="216" />
+        <Location left="815" top="1025" />
+        <Size width="247" height="179" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public ManageEmployee()</Member>
         <Member type="Method">public void AddEmployee(Employee employee)</Member>
         <Member type="Method">public void EditEmployee(Employee employee)</Member>
+        <Member type="Method">public void DeleteEmployee(Employee employee)</Member>
         <Member type="Method">public Employee GetEmployee()</Member>
         <Member type="Method">public List&lt;Employee&gt; GetAllEmployee()</Member>
         <Modifier>None</Modifier>
       </Entity>
+      <Entity type="Class">
+        <Name>ManageShift</Name>
+        <Access>Public</Access>
+        <Location left="333" top="1057" />
+        <Size width="291" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void AssignShift(Shift shift, Employee employee)</Member>
+        <Member type="Method">public void UnassignShift(Shift shift, Employee employee)</Member>
+        <Member type="Method">public void AutomaticShiftAssignment()</Member>
+        <Member type="Method">public Shift GetShift(Employee employee)</Member>
+        <Member type="Method">public List&lt;Shift&gt; GetAllShift()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ManageDepartment</Name>
+        <Access>Public</Access>
+        <Location left="1646" top="995" />
+        <Size width="265" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void AddDepartment(Department department)</Member>
+        <Member type="Method">public List&lt;Department&gt; GetAllDepartment()</Member>
+        <Member type="Method">public void DeleteDepartment()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Product</Name>
+        <Access>Public</Access>
+        <Location left="2150" top="1447" />
+        <Size width="315" height="349" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int productId</Member>
+        <Member type="Field">string model</Member>
+        <Member type="Field">double price</Member>
+        <Member type="Field">string description</Member>
+        <Member type="Field">string category</Member>
+        <Member type="Field">int isleNumber</Member>
+        <Member type="Field">int locationNumber</Member>
+        <Member type="Field">double weight</Member>
+        <Member type="Field">double width</Member>
+        <Member type="Field">double height</Member>
+        <Member type="Field">double length</Member>
+        <Member type="Field">string stock</Member>
+        <Member type="Field">int uPC</Member>
+        <Member type="Constructor">public Product(int productID, string model, double price, string description)</Member>
+        <Member type="Method">public override string ToString()</Member>
+        <Member type="Property">public string Dimension { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ManageProduct</Name>
+        <Access>Public</Access>
+        <Location left="2119" top="977" />
+        <Size width="205" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void AddProduct()</Member>
+        <Member type="Method">public void EditProduct()</Member>
+        <Member type="Method">public void DeleteProduct()</Member>
+        <Member type="Method">public void AddStock()</Member>
+        <Member type="Method">public Product GetProduct(int productId)</Member>
+        <Member type="Method">public List&lt;Product&gt; GetAllProducts()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ShiftDAL</Name>
+        <Access>Public</Access>
+        <Location left="365" top="774" />
+        <Size width="272" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public ShiftDAL(IShiftStorageAccess shiftStorageAccess)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DatabaseAccess</Name>
+        <Access>Public</Access>
+        <Location left="1291" top="106" />
+        <Size width="230" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">string connectionString</Member>
+        <Member type="Constructor">public DatabaseAccess(string connectionString)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>EmployeeDAL</Name>
+        <Access>Public</Access>
+        <Location left="781" top="717" />
+        <Size width="348" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public EmployeeDAL(IEmployeeStorageAccess employeeStorageAccess)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ContractDAL</Name>
+        <Access>Public</Access>
+        <Location left="1204" top="724" />
+        <Size width="328" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public ContractDAL(IContractStorageAccess contractStorageAccess)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DepartmentDAL</Name>
+        <Access>Public</Access>
+        <Location left="1633" top="724" />
+        <Size width="379" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public DepartmentDAL(IDepartmentStorageAccess departmentStorageAccess)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ProductDAL</Name>
+        <Access>Public</Access>
+        <Location left="2139" top="724" />
+        <Size width="318" height="94" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public ProductDAL(IProductStorageAccess productStorageAccess)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IShiftStorageAccess</Name>
+        <Access>Public</Access>
+        <Location left="413" top="416" />
+        <Size width="279" height="163" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void CreateShift(Shift shift)</Member>
+        <Member type="Method">Shift ReadShift(int shiftID)</Member>
+        <Member type="Method">List&lt;Shift&gt; ReadAllShift()</Member>
+        <Member type="Method">void UpdateShift(Shift shift)</Member>
+        <Member type="Method">void DeleteShift(Shift shift)</Member>
+        <Member type="Method">void AssginShift(Shift shift, Employee employee)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IEmployeeStorageAccess</Name>
+        <Access>Public</Access>
+        <Location left="815" top="416" />
+        <Size width="247" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void CreateEmployee(Employee employee)</Member>
+        <Member type="Method">Employee ReadEmployee()</Member>
+        <Member type="Method">List&lt;Employee&gt; ReadAllEmployee()</Member>
+        <Member type="Method">void UpdateEmployee()</Member>
+        <Member type="Method">void DeleteEmployee()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IContractStorageAccess</Name>
+        <Access>Public</Access>
+        <Location left="1177" top="441" />
+        <Size width="336" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void CreateContract(Contract contract, Employee employee)</Member>
+        <Member type="Method">Contract ReadContract(int ontractid)</Member>
+        <Member type="Method">List&lt;Contract&gt; ReadAllContract()</Member>
+        <Member type="Method">void UpdateContract(Contract contract)</Member>
+        <Member type="Method">void DeleteContract(Contract contract)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IDepartmentStorageAccess</Name>
+        <Access>Public</Access>
+        <Location left="1658" top="441" />
+        <Size width="278" height="129" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void CreateDepartment(Department department)</Member>
+        <Member type="Method">Department ReadDepartment(int departmentId)</Member>
+        <Member type="Method">List&lt;Department&gt; ReadAllDepartment()</Member>
+        <Member type="Method">void DeleteDepartment()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IProductStorageAccess</Name>
+        <Access>Public</Access>
+        <Location left="2139" top="428" />
+        <Size width="241" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">void CreateProduct()</Member>
+        <Member type="Method">publicProduct ReadProduct(int productId)</Member>
+        <Member type="Method">List&lt;Product&gt; ReadAllProduct()</Member>
+        <Member type="Method">void UpdateProduct()</Member>
+        <Member type="Method">void DeleteProduct()</Member>
+      </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="0" second="1">
-        <Label>has</Label>
+        <Label>Has</Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -108,8 +298,16 @@
       </Relationship>
       <Relationship type="Association" first="5" second="0">
         <Label>Manage</Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>950</X>
+          <Y>1232</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>950</X>
+          <Y>1278</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartMultiplicity>1</StartMultiplicity>
@@ -117,12 +315,225 @@
       </Relationship>
       <Relationship type="Association" first="4" second="1">
         <Label>Manage</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1344</X>
+          <Y>1212</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1344</X>
+          <Y>1441</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="6" second="3">
+        <Label>Manage</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>491</X>
+          <Y>1255</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>491</X>
+          <Y>1483</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="7" second="2">
+        <Label>Manage</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1808</X>
+          <Y>1152</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1806</X>
+          <Y>1445</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="8">
+        <Label>Manage</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2224</X>
+          <Y>1188</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2224</X>
+          <Y>1419</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="3" second="0">
+        <Label>Has</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>842</X>
+          <Y>1609</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>711</X>
+          <Y>1609</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1..*</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="1">
+        <Label>Has</Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
         <StartMultiplicity>1</StartMultiplicity>
-        <EndMultiplicity>*</EndMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="2" second="3">
+        <Label>Has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1864</X>
+          <Y>1863</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>371</X>
+          <Y>1774</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="6" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="5" second="12">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="4" second="13">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="7" second="14">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="15">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="10" second="16">
+        <Label>has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>storageAccess</EndRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="11" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1405</X>
+          <Y>244</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>528</X>
+          <Y>300</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="12" second="17">
+        <Label>has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>storageAccess</EndRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="11" second="17">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1405</X>
+          <Y>245</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>921</X>
+          <Y>299</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="13" second="18">
+        <Label>has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>storageAccess</EndRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="11" second="18">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="14" second="19">
+        <Label>has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>storageAccess</EndRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="15" second="20">
+        <Label>has</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <EndRole>storageAccess</EndRole>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Realization" first="11" second="19">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="11" second="20">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
       </Relationship>
     </Relationships>
   </ProjectItem>
