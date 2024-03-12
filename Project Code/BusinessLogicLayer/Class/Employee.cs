@@ -1,76 +1,73 @@
-﻿namespace BusinessLogicLayer.Class
+﻿using System.Diagnostics.Metrics;
+using System.IO;
+using System.Reflection;
+
+namespace BusinessLogicLayer.Class
 {
     public class Employee
     {
-        private int _employeeID;
-        private string _firstName;
-        private string _lastName;
-        private string _bsn;
-        private DateOnly _dateOfBirth;
-        private int _phoneNumber;
-        private string _gender;
-        private string _email;
-        private string _city;
-        private string _country;
-        private string _street;
-        private int _houseNumber;
-        private string _postalCode;
-        private string _emergencyContactName;
-        private int _emergencyPhoneNumber;
-        private string _emergencyRelation;
-        private string _password;
-        private bool _firstLogin;
+        public int employeeID { get; private set; }
+        public string firstName { get; set; } = string.Empty;
+        public string lastName { get; set; } = string.Empty;
+        public string bsn { get; private set; } = string.Empty;
+        public DateOnly dateOfBirth {  get; set; } 
+        public int phoneNumber { get; set; }
+        public string gender { get; set; } = string.Empty;
+        public string email { get; private set; } = string.Empty;
+        public string city { get; set; } = string.Empty;
+        public string country { get; set; } = string.Empty;
+        public string street { get; set; } = string.Empty;
+        public int houseNumber { get; set; }
+        public string postalCode { get; set; } = string.Empty;
+        public int emergencyPhoneNumber { get; set; }
+        public string emergencyContactName { get; set; } = string.Empty;
+        public string emergencyRelation { get; set; } = string.Empty;
+        public string password { get; set; } = string.Empty;    
+        public bool firstLogin { get; set; }
+        
 
-        public Employee(int employeID, string firstName, string lastName, string bsn, DateOnly dateOfBirth, int phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, int emergencyPhoneNumber, string emergencyRelation)
+        public Employee(int employeeID, string firstName, string lastName, string bsn, DateOnly dateOfBirth, int phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, int emergencyPhoneNumber, string emergencyRelation)
         {
-            _employeeID = employeID;
-            _firstName = firstName;
-            _lastName = lastName;
-            _bsn = bsn;
-            _dateOfBirth = dateOfBirth;
-            _phoneNumber = phoneNumber;
-            _gender = gender;
-            _email = email;
-            _city = city;
-            _country = country;
-            _street = street;
-            _houseNumber = houseNumber;
-            _postalCode = postalCode;
-            _emergencyContactName = emergencyContactName;
-            _emergencyPhoneNumber = emergencyPhoneNumber;
-            _emergencyRelation = emergencyRelation;
-            // password random?
-            _password = "test";
-            _firstLogin = false;
+            this.employeeID = employeeID;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.bsn = bsn;
+            this.dateOfBirth = dateOfBirth;
+            this.phoneNumber = phoneNumber;
+            this.gender = gender;
+            this.email = email;
+            this.city = city;
+            this.country = country;
+            this.street = street;
+            this.houseNumber = houseNumber;
+            this.postalCode = postalCode;
+            this.emergencyContactName = emergencyContactName;
+            this.emergencyPhoneNumber = emergencyPhoneNumber;
+            this.emergencyRelation = emergencyRelation;
+            this.password = password;
+            this.firstLogin = true;
         }
 
-        public string Name
+        public Employee(int employeeID, int bsn, string email)
         {
-            get
-            {
-                return $"{_firstName} {_lastName}";
-            }
-            private set
-            {
-               // nothing
-            }
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.dateOfBirth = dateOfBirth;
+            this.phoneNumber = phoneNumber;
+            this.gender = gender;
+            this.city = city;
+            this.country = country;
+            this.street = street;
+            this.houseNumber = houseNumber;
+            this.postalCode = postalCode;
+            this.emergencyContactName = emergencyContactName;
+            this.emergencyPhoneNumber = emergencyPhoneNumber;
+            this.emergencyRelation = emergencyRelation;
+            this.password = password;
+            this.firstLogin = firstLogin;
         }
 
-        public string Address
-        {
-            get
-            {
-                return $"{_street} {_houseNumber} {_postalCode} {_city} {_country}";
-            }
-            set
-            {
-                // nothing
-            }
-        }
 
-        public override string ToString()
-        {
-            return $"{_employeeID} - {_firstName} {_lastName}";
-        }
+
     }
 }
