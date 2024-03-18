@@ -10,33 +10,33 @@ namespace BusinessLogicLayer.ManageClass
 {
     public class ManageContract
     {
-        private List<Contracts> contracts;
+        private List<Class.Contract> contracts;
 
         public ManageContract() 
         {
-            contracts = new List<Contracts>();
+            contracts = new List<Class.Contract>();
         }
 
 
-        public void AddContract(Contracts contract)
+        public void AddContract(Class.Contract contract)
         {
             // add to the database
 
             contracts.Add(contract);
         }
 
-        public void TerminateContract(Contracts contract, string reason ) 
+        public void TerminateContract(Class.Contract contract, string reason ) 
         {
             // terminateContract in the database
         }
 
-        public Contracts GetContract(Employee employee)
+        public Class.Contract GetContract(Employee employee)
         {
             //get Contract from database
             
             return null;
         }
-        public List<Contracts> GetContractList()
+        public List<Class.Contract> GetContractList()
         {
             // get all contract in the database
             return contracts;

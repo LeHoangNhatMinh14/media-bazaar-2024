@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Class;
+using DAL.Mapper;
 using System.Data.SqlClient;
 
 namespace DAL
@@ -22,10 +23,13 @@ namespace DAL
                 {
                     using(SqlDataReader reader = command.ExecuteReader())
                     {
+                        List<Employee> employeeslist = new List<Employee>();
                         while(reader.Read())
                         {
-
+                            Employee employee = reader.MapToEmployee();
+                            employeeslist.Add(employee);
                         }
+                        return employeeslist;
                     }
                 }
             }
@@ -43,7 +47,7 @@ namespace DAL
                 }
             }
         }
-        //We Do not actually delete we just make contract active go to false
+        //We Do not actually delete we just make contract active go to false need to still update this on DB
         public void DeleteEmployee (Employee employee)
         {
             using(SqlConnection connection = new SqlConnection(connectionString))
@@ -51,7 +55,7 @@ namespace DAL
                 string query = @"UPDATE Contract SET active = false WHERE EmployeeID = @employeeid ";
                 using(SqlCommand command = new SqlCommand(query,connection))
                 {
-                    command.Parameters.AddWithValue("@employeeid", employee._employeeID);
+                    command.Parameters.AddWithValue("@employeeid", employee.employeeID);
                 }
             }
         }

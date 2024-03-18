@@ -48,6 +48,8 @@ namespace BusinessLogicLayer.Class
             this.firstLogin = true;
         }
 
+
+        //For Mapper
         public Employee(int employeeID, int bsn, string email)
         {
             this.firstName = firstName;
