@@ -10,6 +10,7 @@ namespace BusinessLogicLayer.ManageClass
     public class ManageEmployee
     {
         private List<Employee> employees;
+        private EmployeeRepo employeeRepo;
 
         public ManageEmployee()
         {
