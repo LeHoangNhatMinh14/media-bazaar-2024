@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaBazaarSemester2Retake", "MediaBazaarSemester2Retake\MediaBazaarSemester2Retake.csproj", "{79180CAC-1A42-4017-B4D9-220DC78A095B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{22447A8A-42A2-4987-A281-998198FFA93F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{22447A8A-42A2-4987-A281-998198FFA93F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{6CC81F39-20D3-43AA-9802-C50055B66E35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{22447A8A-42A2-4987-A281-998198FFA93F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22447A8A-42A2-4987-A281-998198FFA93F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22447A8A-42A2-4987-A281-998198FFA93F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CC81F39-20D3-43AA-9802-C50055B66E35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC81F39-20D3-43AA-9802-C50055B66E35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC81F39-20D3-43AA-9802-C50055B66E35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC81F39-20D3-43AA-9802-C50055B66E35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
