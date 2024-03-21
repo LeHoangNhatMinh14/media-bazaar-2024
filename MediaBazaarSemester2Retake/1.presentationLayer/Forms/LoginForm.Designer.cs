@@ -28,190 +28,178 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.button4 = new System.Windows.Forms.Button();
-            this.BtnGo = new System.Windows.Forms.Button();
-            this.btnCantSignIn = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtBoxPassword = new System.Windows.Forms.TextBox();
-            this.txtBoxUsername = new System.Windows.Forms.TextBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.SuspendLayout();
+            button4 = new Button();
+            BtnGo = new Button();
+            btnCantSignIn = new Button();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            pictureBox2 = new PictureBox();
+            label1 = new Label();
+            txtBoxPassword = new TextBox();
+            txtBoxUsername = new TextBox();
+            pictureBox4 = new PictureBox();
+            timer1 = new System.Windows.Forms.Timer(components);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            SuspendLayout();
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1862, 14);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(36, 44);
-            this.button4.TabIndex = 50;
-            this.button4.Text = "x";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            button4.Location = new Point(1552, 12);
+            button4.Name = "button4";
+            button4.Size = new Size(30, 37);
+            button4.TabIndex = 50;
+            button4.Text = "x";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // BtnGo
             // 
-            this.BtnGo.CausesValidation = false;
-            this.BtnGo.Location = new System.Drawing.Point(130, 667);
-            this.BtnGo.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnGo.Name = "BtnGo";
-            this.BtnGo.Size = new System.Drawing.Size(204, 148);
-            this.BtnGo.TabIndex = 49;
-            this.BtnGo.UseVisualStyleBackColor = true;
-            this.BtnGo.Click += new System.EventHandler(this.BtnGo_Click);
+            BtnGo.BackColor = Color.White;
+            BtnGo.CausesValidation = false;
+            BtnGo.Image = (Image)resources.GetObject("BtnGo.Image");
+            BtnGo.Location = new Point(44, 543);
+            BtnGo.Name = "BtnGo";
+            BtnGo.Size = new Size(298, 123);
+            BtnGo.TabIndex = 49;
+            BtnGo.UseVisualStyleBackColor = false;
+            BtnGo.Click += BtnGo_Click;
             // 
             // btnCantSignIn
             // 
-            this.btnCantSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCantSignIn.Location = new System.Drawing.Point(97, 935);
-            this.btnCantSignIn.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCantSignIn.Name = "btnCantSignIn";
-            this.btnCantSignIn.Size = new System.Drawing.Size(271, 66);
-            this.btnCantSignIn.TabIndex = 47;
-            this.btnCantSignIn.Text = "Cant sign in ?";
-            this.btnCantSignIn.UseVisualStyleBackColor = true;
+            btnCantSignIn.FlatStyle = FlatStyle.Flat;
+            btnCantSignIn.Location = new Point(81, 779);
+            btnCantSignIn.Name = "btnCantSignIn";
+            btnCantSignIn.Size = new Size(226, 55);
+            btnCantSignIn.TabIndex = 47;
+            btnCantSignIn.Text = "Cant sign in ?";
+            btnCantSignIn.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(103, 469);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 37);
-            this.label7.TabIndex = 46;
-            this.label7.Text = "Password";
+            label7.AutoSize = true;
+            label7.BackColor = Color.White;
+            label7.Font = new Font("Segoe UI", 11.14286F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(86, 391);
+            label7.Name = "label7";
+            label7.Size = new Size(110, 31);
+            label7.TabIndex = 46;
+            label7.Text = "Password";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 11.14286F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(97, 352);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(136, 37);
-            this.label6.TabIndex = 45;
-            this.label6.Text = "Username";
+            label6.AutoSize = true;
+            label6.BackColor = Color.White;
+            label6.Font = new Font("Segoe UI", 11.14286F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(81, 293);
+            label6.Name = "label6";
+            label6.Size = new Size(117, 31);
+            label6.TabIndex = 45;
+            label6.Text = "Username";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label5.Location = new System.Drawing.Point(79, 162);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(286, 57);
-            this.label5.TabIndex = 43;
-            this.label5.Text = "MediaBazaar";
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label5.ForeColor = Color.RoyalBlue;
+            label5.Location = new Point(66, 135);
+            label5.Name = "label5";
+            label5.Size = new Size(240, 48);
+            label5.TabIndex = 43;
+            label5.Text = "MediaBazaar";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(389, 1019);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 30);
-            this.label4.TabIndex = 42;
-            this.label4.Text = "V 0.1";
+            label4.AutoSize = true;
+            label4.Location = new Point(324, 849);
+            label4.Name = "label4";
+            label4.Size = new Size(52, 25);
+            label4.TabIndex = 42;
+            label4.Text = "V 0.1";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(101, 36);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(181, 122);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 40;
-            this.pictureBox2.TabStop = false;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(84, 30);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(151, 102);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 40;
+            pictureBox2.TabStop = false;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Black", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(145, 268);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 45);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "Sign In";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(121, 223);
+            label1.Name = "label1";
+            label1.Size = new Size(114, 38);
+            label1.TabIndex = 39;
+            label1.Text = "Sign In";
             // 
             // txtBoxPassword
             // 
-            this.txtBoxPassword.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtBoxPassword.Location = new System.Drawing.Point(97, 509);
-            this.txtBoxPassword.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBoxPassword.Multiline = true;
-            this.txtBoxPassword.Name = "txtBoxPassword";
-            this.txtBoxPassword.PasswordChar = '*';
-            this.txtBoxPassword.Size = new System.Drawing.Size(269, 60);
-            this.txtBoxPassword.TabIndex = 37;
+            txtBoxPassword.BackColor = Color.WhiteSmoke;
+            txtBoxPassword.Location = new Point(81, 424);
+            txtBoxPassword.Multiline = true;
+            txtBoxPassword.Name = "txtBoxPassword";
+            txtBoxPassword.PasswordChar = '*';
+            txtBoxPassword.Size = new Size(225, 51);
+            txtBoxPassword.TabIndex = 37;
             // 
             // txtBoxUsername
             // 
-            this.txtBoxUsername.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtBoxUsername.Location = new System.Drawing.Point(97, 391);
-            this.txtBoxUsername.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBoxUsername.Multiline = true;
-            this.txtBoxUsername.Name = "txtBoxUsername";
-            this.txtBoxUsername.Size = new System.Drawing.Size(269, 60);
-            this.txtBoxUsername.TabIndex = 36;
+            txtBoxUsername.BackColor = Color.WhiteSmoke;
+            txtBoxUsername.Location = new Point(81, 326);
+            txtBoxUsername.Multiline = true;
+            txtBoxUsername.Name = "txtBoxUsername";
+            txtBoxUsername.Size = new Size(225, 51);
+            txtBoxUsername.TabIndex = 36;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.pictureBox4.Location = new System.Drawing.Point(542, -1);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(1387, 1104);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 44;
-            this.pictureBox4.TabStop = false;
+            pictureBox4.BackColor = Color.LightSteelBlue;
+            pictureBox4.Location = new Point(452, -1);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(1156, 920);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 44;
+            pictureBox4.TabStop = false;
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            timer1.Tick += Timer1_Tick;
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1927, 1103);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.BtnGo);
-            this.Controls.Add(this.btnCantSignIn);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtBoxPassword);
-            this.Controls.Add(this.txtBoxUsername);
-            this.Controls.Add(this.pictureBox4);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "LoginForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LoginForm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(1606, 919);
+            Controls.Add(button4);
+            Controls.Add(BtnGo);
+            Controls.Add(btnCantSignIn);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(pictureBox2);
+            Controls.Add(label1);
+            Controls.Add(txtBoxPassword);
+            Controls.Add(txtBoxUsername);
+            Controls.Add(pictureBox4);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "LoginForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "LoginForm";
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

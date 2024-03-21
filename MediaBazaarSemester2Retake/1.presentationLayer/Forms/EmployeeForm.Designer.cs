@@ -34,45 +34,49 @@
             pnlEmployeeManagement = new Panel();
             panel6 = new Panel();
             panel1 = new Panel();
-            textBox9 = new TextBox();
+            txtBoxEmergencyContact = new TextBox();
             label1 = new Label();
             label2 = new Label();
-            textBox10 = new TextBox();
-            textBox11 = new TextBox();
-            textBox12 = new TextBox();
+            txtBoxEmergencyRelation = new TextBox();
+            txtBoxPostalCode = new TextBox();
+            txtBoxemergencyPhoneNumber = new TextBox();
             label3 = new Label();
             label12 = new Label();
             panel5 = new Panel();
             label17 = new Label();
-            textBox17 = new TextBox();
-            textBox5 = new TextBox();
+            txtBoxPassword = new TextBox();
+            txtBoxPhoneNumber = new TextBox();
             label8 = new Label();
             label9 = new Label();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
+            txtBoxEmail = new TextBox();
+            txtBoxDateOfBirth = new TextBox();
+            txtBoxGender = new TextBox();
             label10 = new Label();
             label11 = new Label();
             panel2 = new Panel();
-            textBox13 = new TextBox();
+            txtCountry = new TextBox();
             label13 = new Label();
             label14 = new Label();
-            textBox14 = new TextBox();
-            textBox15 = new TextBox();
-            textBox16 = new TextBox();
+            txtBoxHouseNumber = new TextBox();
+            txtBoxCity = new TextBox();
+            txtBoxStreet = new TextBox();
             label15 = new Label();
             label16 = new Label();
             panel4 = new Panel();
-            textBox3 = new TextBox();
+            txtBoxLastName = new TextBox();
             label7 = new Label();
             label5 = new Label();
             textBox2 = new TextBox();
             txtBoxFirstName = new TextBox();
-            textBox4 = new TextBox();
+            txtBoxbsn = new TextBox();
             label4 = new Label();
             label6 = new Label();
             tabPage2 = new TabPage();
             dataGridView1 = new DataGridView();
+            btnCreateEmployee = new Button();
+            btnUpdateEmployee = new Button();
+            btnReadEmployee = new Button();
+            btnDeleteEmployee = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             pnlEmployeeManagement.SuspendLayout();
@@ -122,6 +126,10 @@
             // 
             panel6.BackgroundImageLayout = ImageLayout.None;
             panel6.BorderStyle = BorderStyle.Fixed3D;
+            panel6.Controls.Add(btnDeleteEmployee);
+            panel6.Controls.Add(btnReadEmployee);
+            panel6.Controls.Add(btnUpdateEmployee);
+            panel6.Controls.Add(btnCreateEmployee);
             panel6.Controls.Add(panel1);
             panel6.Controls.Add(panel5);
             panel6.Controls.Add(panel2);
@@ -129,34 +137,34 @@
             panel6.Location = new Point(27, 54);
             panel6.Margin = new Padding(2);
             panel6.Name = "panel6";
-            panel6.Size = new Size(1182, 579);
+            panel6.Size = new Size(1231, 579);
             panel6.TabIndex = 16;
             // 
             // panel1
             // 
-            panel1.Controls.Add(textBox9);
+            panel1.Controls.Add(txtBoxEmergencyContact);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(textBox10);
-            panel1.Controls.Add(textBox11);
-            panel1.Controls.Add(textBox12);
+            panel1.Controls.Add(txtBoxEmergencyRelation);
+            panel1.Controls.Add(txtBoxPostalCode);
+            panel1.Controls.Add(txtBoxemergencyPhoneNumber);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label12);
             panel1.Location = new Point(659, 247);
             panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(331, 149);
+            panel1.Size = new Size(375, 149);
             panel1.TabIndex = 18;
             // 
-            // textBox9
+            // txtBoxEmergencyContact
             // 
-            textBox9.BackColor = Color.AliceBlue;
-            textBox9.ForeColor = Color.Black;
-            textBox9.Location = new Point(182, 33);
-            textBox9.Margin = new Padding(2);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(146, 31);
-            textBox9.TabIndex = 4;
+            txtBoxEmergencyContact.BackColor = Color.AliceBlue;
+            txtBoxEmergencyContact.ForeColor = Color.Black;
+            txtBoxEmergencyContact.Location = new Point(229, 35);
+            txtBoxEmergencyContact.Margin = new Padding(2);
+            txtBoxEmergencyContact.Name = "txtBoxEmergencyContact";
+            txtBoxEmergencyContact.Size = new Size(146, 31);
+            txtBoxEmergencyContact.TabIndex = 4;
             // 
             // label1
             // 
@@ -180,35 +188,35 @@
             label2.TabIndex = 1;
             label2.Text = "Emergency Contact name";
             // 
-            // textBox10
+            // txtBoxEmergencyRelation
             // 
-            textBox10.BackColor = Color.AliceBlue;
-            textBox10.ForeColor = Color.Black;
-            textBox10.Location = new Point(182, 115);
-            textBox10.Margin = new Padding(2);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(146, 31);
-            textBox10.TabIndex = 4;
+            txtBoxEmergencyRelation.BackColor = Color.AliceBlue;
+            txtBoxEmergencyRelation.ForeColor = Color.Black;
+            txtBoxEmergencyRelation.Location = new Point(229, 117);
+            txtBoxEmergencyRelation.Margin = new Padding(2);
+            txtBoxEmergencyRelation.Name = "txtBoxEmergencyRelation";
+            txtBoxEmergencyRelation.Size = new Size(146, 31);
+            txtBoxEmergencyRelation.TabIndex = 4;
             // 
-            // textBox11
+            // txtBoxPostalCode
             // 
-            textBox11.BackColor = Color.AliceBlue;
-            textBox11.ForeColor = Color.Black;
-            textBox11.Location = new Point(182, -1);
-            textBox11.Margin = new Padding(2);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(146, 31);
-            textBox11.TabIndex = 3;
+            txtBoxPostalCode.BackColor = Color.AliceBlue;
+            txtBoxPostalCode.ForeColor = Color.Black;
+            txtBoxPostalCode.Location = new Point(229, 1);
+            txtBoxPostalCode.Margin = new Padding(2);
+            txtBoxPostalCode.Name = "txtBoxPostalCode";
+            txtBoxPostalCode.Size = new Size(146, 31);
+            txtBoxPostalCode.TabIndex = 3;
             // 
-            // textBox12
+            // txtBoxemergencyPhoneNumber
             // 
-            textBox12.BackColor = Color.AliceBlue;
-            textBox12.ForeColor = Color.Black;
-            textBox12.Location = new Point(182, 76);
-            textBox12.Margin = new Padding(2);
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(146, 31);
-            textBox12.TabIndex = 5;
+            txtBoxemergencyPhoneNumber.BackColor = Color.AliceBlue;
+            txtBoxemergencyPhoneNumber.ForeColor = Color.Black;
+            txtBoxemergencyPhoneNumber.Location = new Point(229, 78);
+            txtBoxemergencyPhoneNumber.Margin = new Padding(2);
+            txtBoxemergencyPhoneNumber.Name = "txtBoxemergencyPhoneNumber";
+            txtBoxemergencyPhoneNumber.Size = new Size(146, 31);
+            txtBoxemergencyPhoneNumber.TabIndex = 5;
             // 
             // label3
             // 
@@ -235,13 +243,13 @@
             // panel5
             // 
             panel5.Controls.Add(label17);
-            panel5.Controls.Add(textBox17);
-            panel5.Controls.Add(textBox5);
+            panel5.Controls.Add(txtBoxPassword);
+            panel5.Controls.Add(txtBoxPhoneNumber);
             panel5.Controls.Add(label8);
             panel5.Controls.Add(label9);
-            panel5.Controls.Add(textBox6);
-            panel5.Controls.Add(textBox7);
-            panel5.Controls.Add(textBox8);
+            panel5.Controls.Add(txtBoxEmail);
+            panel5.Controls.Add(txtBoxDateOfBirth);
+            panel5.Controls.Add(txtBoxGender);
             panel5.Controls.Add(label10);
             panel5.Controls.Add(label11);
             panel5.Location = new Point(33, 244);
@@ -261,25 +269,25 @@
             label17.TabIndex = 8;
             label17.Text = "Password";
             // 
-            // textBox17
+            // txtBoxPassword
             // 
-            textBox17.BackColor = Color.AliceBlue;
-            textBox17.ForeColor = Color.Black;
-            textBox17.Location = new Point(182, 150);
-            textBox17.Margin = new Padding(2);
-            textBox17.Name = "textBox17";
-            textBox17.Size = new Size(146, 31);
-            textBox17.TabIndex = 7;
+            txtBoxPassword.BackColor = Color.AliceBlue;
+            txtBoxPassword.ForeColor = Color.Black;
+            txtBoxPassword.Location = new Point(182, 150);
+            txtBoxPassword.Margin = new Padding(2);
+            txtBoxPassword.Name = "txtBoxPassword";
+            txtBoxPassword.Size = new Size(146, 31);
+            txtBoxPassword.TabIndex = 7;
             // 
-            // textBox5
+            // txtBoxPhoneNumber
             // 
-            textBox5.BackColor = Color.AliceBlue;
-            textBox5.ForeColor = Color.Black;
-            textBox5.Location = new Point(182, 33);
-            textBox5.Margin = new Padding(2);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(146, 31);
-            textBox5.TabIndex = 4;
+            txtBoxPhoneNumber.BackColor = Color.AliceBlue;
+            txtBoxPhoneNumber.ForeColor = Color.Black;
+            txtBoxPhoneNumber.Location = new Point(182, 33);
+            txtBoxPhoneNumber.Margin = new Padding(2);
+            txtBoxPhoneNumber.Name = "txtBoxPhoneNumber";
+            txtBoxPhoneNumber.Size = new Size(146, 31);
+            txtBoxPhoneNumber.TabIndex = 4;
             // 
             // label8
             // 
@@ -303,35 +311,35 @@
             label9.TabIndex = 1;
             label9.Text = "Phone number";
             // 
-            // textBox6
+            // txtBoxEmail
             // 
-            textBox6.BackColor = Color.AliceBlue;
-            textBox6.ForeColor = Color.Black;
-            textBox6.Location = new Point(182, 115);
-            textBox6.Margin = new Padding(2);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(146, 31);
-            textBox6.TabIndex = 4;
+            txtBoxEmail.BackColor = Color.AliceBlue;
+            txtBoxEmail.ForeColor = Color.Black;
+            txtBoxEmail.Location = new Point(182, 115);
+            txtBoxEmail.Margin = new Padding(2);
+            txtBoxEmail.Name = "txtBoxEmail";
+            txtBoxEmail.Size = new Size(146, 31);
+            txtBoxEmail.TabIndex = 4;
             // 
-            // textBox7
+            // txtBoxDateOfBirth
             // 
-            textBox7.BackColor = Color.AliceBlue;
-            textBox7.ForeColor = Color.Black;
-            textBox7.Location = new Point(182, -1);
-            textBox7.Margin = new Padding(2);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(146, 31);
-            textBox7.TabIndex = 3;
+            txtBoxDateOfBirth.BackColor = Color.AliceBlue;
+            txtBoxDateOfBirth.ForeColor = Color.Black;
+            txtBoxDateOfBirth.Location = new Point(182, -1);
+            txtBoxDateOfBirth.Margin = new Padding(2);
+            txtBoxDateOfBirth.Name = "txtBoxDateOfBirth";
+            txtBoxDateOfBirth.Size = new Size(146, 31);
+            txtBoxDateOfBirth.TabIndex = 3;
             // 
-            // textBox8
+            // txtBoxGender
             // 
-            textBox8.BackColor = Color.AliceBlue;
-            textBox8.ForeColor = Color.Black;
-            textBox8.Location = new Point(182, 76);
-            textBox8.Margin = new Padding(2);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(146, 31);
-            textBox8.TabIndex = 5;
+            txtBoxGender.BackColor = Color.AliceBlue;
+            txtBoxGender.ForeColor = Color.Black;
+            txtBoxGender.Location = new Point(182, 76);
+            txtBoxGender.Margin = new Padding(2);
+            txtBoxGender.Name = "txtBoxGender";
+            txtBoxGender.Size = new Size(146, 31);
+            txtBoxGender.TabIndex = 5;
             // 
             // label10
             // 
@@ -357,29 +365,29 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(textBox13);
+            panel2.Controls.Add(txtCountry);
             panel2.Controls.Add(label13);
             panel2.Controls.Add(label14);
-            panel2.Controls.Add(textBox14);
-            panel2.Controls.Add(textBox15);
-            panel2.Controls.Add(textBox16);
+            panel2.Controls.Add(txtBoxHouseNumber);
+            panel2.Controls.Add(txtBoxCity);
+            panel2.Controls.Add(txtBoxStreet);
             panel2.Controls.Add(label15);
             panel2.Controls.Add(label16);
             panel2.Location = new Point(659, 94);
             panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(331, 149);
+            panel2.Size = new Size(375, 149);
             panel2.TabIndex = 17;
             // 
-            // textBox13
+            // txtCountry
             // 
-            textBox13.BackColor = Color.AliceBlue;
-            textBox13.ForeColor = Color.Black;
-            textBox13.Location = new Point(182, 33);
-            textBox13.Margin = new Padding(2);
-            textBox13.Name = "textBox13";
-            textBox13.Size = new Size(146, 31);
-            textBox13.TabIndex = 4;
+            txtCountry.BackColor = Color.AliceBlue;
+            txtCountry.ForeColor = Color.Black;
+            txtCountry.Location = new Point(229, 37);
+            txtCountry.Margin = new Padding(2);
+            txtCountry.Name = "txtCountry";
+            txtCountry.Size = new Size(146, 31);
+            txtCountry.TabIndex = 4;
             // 
             // label13
             // 
@@ -403,35 +411,35 @@
             label14.TabIndex = 1;
             label14.Text = "Country";
             // 
-            // textBox14
+            // txtBoxHouseNumber
             // 
-            textBox14.BackColor = Color.AliceBlue;
-            textBox14.ForeColor = Color.Black;
-            textBox14.Location = new Point(182, 115);
-            textBox14.Margin = new Padding(2);
-            textBox14.Name = "textBox14";
-            textBox14.Size = new Size(146, 31);
-            textBox14.TabIndex = 4;
+            txtBoxHouseNumber.BackColor = Color.AliceBlue;
+            txtBoxHouseNumber.ForeColor = Color.Black;
+            txtBoxHouseNumber.Location = new Point(229, 119);
+            txtBoxHouseNumber.Margin = new Padding(2);
+            txtBoxHouseNumber.Name = "txtBoxHouseNumber";
+            txtBoxHouseNumber.Size = new Size(146, 31);
+            txtBoxHouseNumber.TabIndex = 4;
             // 
-            // textBox15
+            // txtBoxCity
             // 
-            textBox15.BackColor = Color.AliceBlue;
-            textBox15.ForeColor = Color.Black;
-            textBox15.Location = new Point(182, -1);
-            textBox15.Margin = new Padding(2);
-            textBox15.Name = "textBox15";
-            textBox15.Size = new Size(146, 31);
-            textBox15.TabIndex = 3;
+            txtBoxCity.BackColor = Color.AliceBlue;
+            txtBoxCity.ForeColor = Color.Black;
+            txtBoxCity.Location = new Point(229, 3);
+            txtBoxCity.Margin = new Padding(2);
+            txtBoxCity.Name = "txtBoxCity";
+            txtBoxCity.Size = new Size(146, 31);
+            txtBoxCity.TabIndex = 3;
             // 
-            // textBox16
+            // txtBoxStreet
             // 
-            textBox16.BackColor = Color.AliceBlue;
-            textBox16.ForeColor = Color.Black;
-            textBox16.Location = new Point(182, 76);
-            textBox16.Margin = new Padding(2);
-            textBox16.Name = "textBox16";
-            textBox16.Size = new Size(146, 31);
-            textBox16.TabIndex = 5;
+            txtBoxStreet.BackColor = Color.AliceBlue;
+            txtBoxStreet.ForeColor = Color.Black;
+            txtBoxStreet.Location = new Point(229, 80);
+            txtBoxStreet.Margin = new Padding(2);
+            txtBoxStreet.Name = "txtBoxStreet";
+            txtBoxStreet.Size = new Size(146, 31);
+            txtBoxStreet.TabIndex = 5;
             // 
             // label15
             // 
@@ -457,12 +465,12 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(textBox3);
+            panel4.Controls.Add(txtBoxLastName);
             panel4.Controls.Add(label7);
             panel4.Controls.Add(label5);
             panel4.Controls.Add(textBox2);
             panel4.Controls.Add(txtBoxFirstName);
-            panel4.Controls.Add(textBox4);
+            panel4.Controls.Add(txtBoxbsn);
             panel4.Controls.Add(label4);
             panel4.Controls.Add(label6);
             panel4.Location = new Point(33, 91);
@@ -471,15 +479,15 @@
             panel4.Size = new Size(331, 149);
             panel4.TabIndex = 15;
             // 
-            // textBox3
+            // txtBoxLastName
             // 
-            textBox3.BackColor = Color.AliceBlue;
-            textBox3.ForeColor = Color.Black;
-            textBox3.Location = new Point(182, 33);
-            textBox3.Margin = new Padding(2);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(146, 31);
-            textBox3.TabIndex = 4;
+            txtBoxLastName.BackColor = Color.AliceBlue;
+            txtBoxLastName.ForeColor = Color.Black;
+            txtBoxLastName.Location = new Point(182, 33);
+            txtBoxLastName.Margin = new Padding(2);
+            txtBoxLastName.Name = "txtBoxLastName";
+            txtBoxLastName.Size = new Size(146, 31);
+            txtBoxLastName.TabIndex = 4;
             // 
             // label7
             // 
@@ -523,15 +531,15 @@
             txtBoxFirstName.Size = new Size(146, 31);
             txtBoxFirstName.TabIndex = 3;
             // 
-            // textBox4
+            // txtBoxbsn
             // 
-            textBox4.BackColor = Color.AliceBlue;
-            textBox4.ForeColor = Color.Black;
-            textBox4.Location = new Point(182, 76);
-            textBox4.Margin = new Padding(2);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(146, 31);
-            textBox4.TabIndex = 5;
+            txtBoxbsn.BackColor = Color.AliceBlue;
+            txtBoxbsn.ForeColor = Color.Black;
+            txtBoxbsn.Location = new Point(182, 76);
+            txtBoxbsn.Margin = new Padding(2);
+            txtBoxbsn.Name = "txtBoxbsn";
+            txtBoxbsn.Size = new Size(146, 31);
+            txtBoxbsn.TabIndex = 5;
             // 
             // label4
             // 
@@ -570,12 +578,48 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(48, 167);
+            dataGridView1.Location = new Point(43, 137);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 33;
             dataGridView1.Size = new Size(1167, 416);
             dataGridView1.TabIndex = 0;
+            // 
+            // btnCreateEmployee
+            // 
+            btnCreateEmployee.Location = new Point(279, 465);
+            btnCreateEmployee.Name = "btnCreateEmployee";
+            btnCreateEmployee.Size = new Size(112, 34);
+            btnCreateEmployee.TabIndex = 19;
+            btnCreateEmployee.Text = "Create";
+            btnCreateEmployee.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdateEmployee
+            // 
+            btnUpdateEmployee.Location = new Point(422, 465);
+            btnUpdateEmployee.Name = "btnUpdateEmployee";
+            btnUpdateEmployee.Size = new Size(112, 34);
+            btnUpdateEmployee.TabIndex = 20;
+            btnUpdateEmployee.Text = "Read";
+            btnUpdateEmployee.UseVisualStyleBackColor = true;
+            // 
+            // btnReadEmployee
+            // 
+            btnReadEmployee.Location = new Point(587, 465);
+            btnReadEmployee.Name = "btnReadEmployee";
+            btnReadEmployee.Size = new Size(112, 34);
+            btnReadEmployee.TabIndex = 21;
+            btnReadEmployee.Text = "Read";
+            btnReadEmployee.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteEmployee
+            // 
+            btnDeleteEmployee.Location = new Point(739, 465);
+            btnDeleteEmployee.Name = "btnDeleteEmployee";
+            btnDeleteEmployee.Size = new Size(112, 34);
+            btnDeleteEmployee.TabIndex = 22;
+            btnDeleteEmployee.Text = "Delete";
+            btnDeleteEmployee.UseVisualStyleBackColor = true;
             // 
             // EmployeeForm
             // 
@@ -611,43 +655,47 @@
         private Panel pnlEmployeeManagement;
         private Panel panel6;
         private Panel panel1;
-        private TextBox textBox9;
+        private TextBox txtBoxEmergencyContact;
         private Label label1;
         private Label label2;
-        private TextBox textBox10;
-        private TextBox textBox11;
-        private TextBox textBox12;
+        private TextBox txtBoxEmergencyRelation;
+        private TextBox txtBoxPostalCode;
+        private TextBox txtBoxemergencyPhoneNumber;
         private Label label3;
         private Label label12;
         private Panel panel5;
-        private TextBox textBox5;
+        private TextBox txtBoxPhoneNumber;
         private Label label8;
         private Label label9;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private TextBox textBox8;
+        private TextBox txtBoxEmail;
+        private TextBox txtBoxDateOfBirth;
+        private TextBox txtBoxGender;
         private Label label10;
         private Label label11;
         private Panel panel2;
-        private TextBox textBox13;
+        private TextBox txtCountry;
         private Label label13;
         private Label label14;
-        private TextBox textBox14;
-        private TextBox textBox15;
-        private TextBox textBox16;
+        private TextBox txtBoxHouseNumber;
+        private TextBox txtBoxCity;
+        private TextBox txtBoxStreet;
         private Label label15;
         private Label label16;
         private Panel panel4;
-        private TextBox textBox3;
+        private TextBox txtBoxLastName;
         private Label label7;
         private Label label5;
         private TextBox textBox2;
         private TextBox txtBoxFirstName;
-        private TextBox textBox4;
+        private TextBox txtBoxbsn;
         private Label label4;
         private Label label6;
         private Label label17;
-        private TextBox textBox17;
+        private TextBox txtBoxPassword;
         private DataGridView dataGridView1;
+        private Button btnDeleteEmployee;
+        private Button btnReadEmployee;
+        private Button btnUpdateEmployee;
+        private Button btnCreateEmployee;
     }
 }
