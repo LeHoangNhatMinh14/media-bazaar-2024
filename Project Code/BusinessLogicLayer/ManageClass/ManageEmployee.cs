@@ -18,6 +18,7 @@ namespace BusinessLogicLayer.ManageClass
 
         public void AddEmployee(Employee employee)
         {
+            
             //Add employee to database
             employees.Add(employee);
         }
