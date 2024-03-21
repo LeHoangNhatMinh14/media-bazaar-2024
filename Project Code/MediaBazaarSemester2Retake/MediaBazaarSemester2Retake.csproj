@@ -9,6 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="2.BusenisLogic\**" />
+    <Compile Remove="2.DataAccesLayer\**" />
+    <EmbeddedResource Remove="2.BusenisLogic\**" />
+    <EmbeddedResource Remove="2.DataAccesLayer\**" />
+    <None Remove="2.BusenisLogic\**" />
+    <None Remove="2.DataAccesLayer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="image1.png" />
     <None Remove="image2.png" />
     <None Remove="image3.png" />
@@ -39,11 +48,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="2.BusenisLogic\" />
-    <Folder Include="2.DataAccesLayer\" />
   </ItemGroup>
 
 </Project>
