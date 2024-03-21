@@ -70,12 +70,13 @@ namespace DAL
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        List<Shift> shifts = new List<Employee>();
+                        List<Shift> shifts = new List<Shift>();
                         while (reader.Read())
                         {
                             Shift shift = reader.MapToShift();
-                            Ad
+                            shifts.Add(shift);
                         }
+                        return shifts;
                     }
                 }
             }
