@@ -16,10 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="image1.png" />
-    <EmbeddedResource Include="image4.png" />
-    <EmbeddedResource Include="image3.png" />
-    <EmbeddedResource Include="image2.png" />
+    <EmbeddedResource Include="Images\image1.png" />
+    <EmbeddedResource Include="Images\image4.png" />
+    <EmbeddedResource Include="Images\image3.png" />
+    <EmbeddedResource Include="Images\image2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +39,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="2.BusenisLogic\" />
+    <Folder Include="2.DataAccesLayer\" />
   </ItemGroup>
 
 </Project>
