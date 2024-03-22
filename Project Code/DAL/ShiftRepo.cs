@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Class;
+using BusinessLogicLayer.Interfaces;
 using DAL.Mapper;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class ShiftRepo
+    public class ShiftRepo : IShifts
     {
         private readonly string connectionString;
         public ShiftRepo() : this(Util.connectionString) { }
@@ -55,6 +56,16 @@ namespace DAL
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        public void DeleteShifts(int ID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Shift GetShiftbyID(int ID)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Shift> GetShiftsofEmployee (int employeeID)
