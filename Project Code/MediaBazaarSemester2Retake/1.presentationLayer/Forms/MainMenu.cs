@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogicLayer.ManageClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace MediaBazaarSemester2Retake
 {
     public partial class MainMenu : Form
     {
+        private ManageShifts _manageShifts;
+        private ManageEmployee _manageEmployee;
         public MainMenu()
         {
             InitializeComponent();
+           
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -34,7 +38,7 @@ namespace MediaBazaarSemester2Retake
             btnupdateEmployeeManagement.Visible = true;
             btnDeleteEMployeeManagement.Visible = true;
             btnCreateEmployee.Visible = true;
-            pnlEmployeeManagement.Visible = true;
+            //pnlEmployeeManagement.Visible = true;
 
 
             btnSchedule.Visible = false;
@@ -67,6 +71,14 @@ namespace MediaBazaarSemester2Retake
         }
         private void btnSchedule_Click(object sender, EventArgs e)
         {
+            PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
+
+            ScheduleForm scheduleForm = new ScheduleForm(_manageShifts, _manageEmployee);
+            scheduleForm.TopLevel = false;
+            scheduleForm.FormBorderStyle = FormBorderStyle.None;
+            scheduleForm.Dock = DockStyle.Fill;
+            PnlMainMenu.Controls.Add(scheduleForm); // Add the form to the panel.
+            scheduleForm.Show(); // Displa
             #region
             SetCrudeOn();
             btnBack.Visible = true;
@@ -103,7 +115,7 @@ namespace MediaBazaarSemester2Retake
         private void button1_Click_1(object sender, EventArgs e)
         {btnStockmanagementCLicked.Visible = false;
             btnBack.Visible = false;
-            pnlEmployeeManagement.Visible = false;
+           // pnlEmployeeManagement.Visible = false;
             ProductManagementClicked.Visible = false;
             btnCreateProductManagement.Visible = false;
             btnDeleteProductManagement.Visible = false;
@@ -129,7 +141,6 @@ namespace MediaBazaarSemester2Retake
 
         private void button2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void MainMenu_Load(object sender, EventArgs e)

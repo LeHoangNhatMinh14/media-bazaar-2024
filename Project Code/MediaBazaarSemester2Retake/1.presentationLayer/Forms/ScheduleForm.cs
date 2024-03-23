@@ -24,7 +24,7 @@ namespace MediaBazaarSemester2Retake
 
         private void ScheduleForm_Load(object sender, EventArgs e)
         {
-            lbEmployees.DataSource = _manageEmployee.GetEmployees();
+            lbEmployees.DataSource = _manageEmployee.GetAllEmployees();
             lbEmployees.DisplayMember = "EmployeeInfo";
         }
 
@@ -34,6 +34,11 @@ namespace MediaBazaarSemester2Retake
         }
 
         private void lbEmployees_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void lbEmployees_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
