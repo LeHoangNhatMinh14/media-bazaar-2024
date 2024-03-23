@@ -60,12 +60,66 @@ namespace DAL
 
         public void DeleteShifts(int ID)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string querry = "Delete From Shifts where shiftID = @shiftID";
+                using (SqlCommand cmd = new SqlCommand(querry, connection))
+                {
+                    cmd.Parameters.AddWithValue(querry, ID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public Shift GetLatestShiftForEmployee(int employeeID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT TOP 1 * FROM Shifts " +
+                               "WHERE shiftID IN " +
+                               "(SELECT TOP 2 FK_shiftID FROM EmployeesOnShift WHERE FK_employeeID = @employeeID ORDER BY shiftID DESC) " +
+                               "ORDER BY shiftDate DESC";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@employeeID", employeeID);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            Shift shift = reader.MapToShift();
+                            return shift;
+                        }
+                    }
+                }
+            }
+
+            return null;
         }
 
         public Shift GetShiftbyID(int ID)
         {
-            throw new NotImplementedException();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string querry = "Select * From Shifts Where shiftID = @shiftID";
+                using (SqlCommand cmd = new SqlCommand(querry, conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            Shift shift = reader.MapToShift();
+                            return shift;
+                        }
+                    }
+                }
+            }
+            return null;
         }
 
         public List<Shift> GetShiftsofEmployee (int employeeID)

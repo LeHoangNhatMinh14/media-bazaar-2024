@@ -10,7 +10,7 @@ namespace BusinessLogicLayer.Class
         public string firstName { get; set; } = string.Empty;
         public string lastName { get; set; } = string.Empty;
         public string bsn { get; private set; } = string.Empty;
-        public DateOnly dateOfBirth {  get; set; } 
+        public DateOnly dateOfBirth { get; set; }
         public int phoneNumber { get; set; }
         public string gender { get; set; } = string.Empty;
         public string email { get; private set; } = string.Empty;
@@ -22,8 +22,10 @@ namespace BusinessLogicLayer.Class
         public int emergencyPhoneNumber { get; set; }
         public string emergencyContactName { get; set; } = string.Empty;
         public string emergencyRelation { get; set; } = string.Empty;
-        public string password { get; set; } = string.Empty;    
+        public string password { get; set; } = string.Empty;
         public bool firstLogin { get; set; }
+
+        public string EmployeeInfo => $"{firstName} {lastName}";
         
 
         public Employee(int employeeID, string firstName, string lastName, string bsn, DateOnly dateOfBirth, int phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, int emergencyPhoneNumber, string emergencyRelation)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogicLayer.ManageClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,29 @@ namespace MediaBazaarSemester2Retake
 {
     public partial class ScheduleForm : Form
     {
-        public ScheduleForm()
+        ManageShifts _manageShifts;
+        ManageEmployee _manageEmployee;
+        public ScheduleForm(ManageShifts manageShifts, ManageEmployee manageEmployee)
         {
+            _manageShifts = manageShifts;
             InitializeComponent();
+
+        }
+
+        private void ScheduleForm_Load(object sender, EventArgs e)
+        {
+            lbEmployees.DataSource = _manageEmployee.GetEmployees();
+            lbEmployees.DisplayMember = "EmployeeInfo";
+        }
+
+        private void btnAssignShift_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbEmployees_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
