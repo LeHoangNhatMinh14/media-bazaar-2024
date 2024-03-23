@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Class;
+using BusinessLogicLayer.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,11 @@ namespace BusinessLogicLayer.ManageClass
     public class ManageEmployee
     {
         private List<Employee> employees;
-        private EmployeeRepo employeeRepo;
+        private IEmployeeDAL dataAccessLayer;
 
-        public ManageEmployee()
+        public ManageEmployee(IEmployeeDAL dAL)
         {
+            dataAccessLayer = dAL;
             employees = new List<Employee>();
         }
 
@@ -21,6 +23,7 @@ namespace BusinessLogicLayer.ManageClass
         {
             
             //Add employee to database
+            dataAccessLayer.AddEmployee(employee);
             employees.Add(employee);
         }
 
@@ -32,6 +35,7 @@ namespace BusinessLogicLayer.ManageClass
         public void DeleteEmployee(Employee employee)
         {
             //Delete Employee in the database or maybe somehow to make the account inactive
+            dataAccessLayer.DeleteEmployee(employee);
         }
 
         public Employee GetEmployee(int employeeID)
@@ -40,9 +44,9 @@ namespace BusinessLogicLayer.ManageClass
             return null;
         }
 
-        public List<Employee> GetEmployees()
+        public List<Employee> GetAllEmployees()
         {
-            //Get all employee
+            employees = dataAccessLayer.GetAllEmployees();
             return employees;
         }
 
