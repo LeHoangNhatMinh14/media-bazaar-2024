@@ -19,6 +19,7 @@ namespace BusinessLogicLayer.ManageClass
 
         public void AddEmployee(Employee employee)
         {
+            
             //Add employee to database
             employees.Add(employee);
         }
@@ -44,5 +45,7 @@ namespace BusinessLogicLayer.ManageClass
             //Get all employee
             return employees;
         }
+
+        
     }
 }
