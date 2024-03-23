@@ -25,6 +25,8 @@ namespace BusinessLogicLayer.Class
         public string password { get; set; } = string.Empty;
         public bool firstLogin { get; set; }
 
+        RandomizePassword random = new RandomizePassword();
+
         public string EmployeeInfo => $"{firstName} {lastName}";
         
 
@@ -46,7 +48,7 @@ namespace BusinessLogicLayer.Class
             this.emergencyContactName = emergencyContactName;
             this.emergencyPhoneNumber = emergencyPhoneNumber;
             this.emergencyRelation = emergencyRelation;
-            this.password = password;
+            this.password = random.GeneratePassword(8);
             this.firstLogin = true;
         }
 
