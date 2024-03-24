@@ -33,44 +33,43 @@
             lbShiftsofEmployee = new ListBox();
             btnAssignShift = new Button();
             cbShiftType = new ComboBox();
+            btnAddShift = new Button();
+            numericPplNeeded = new NumericUpDown();
+            cbDepartments = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)numericPplNeeded).BeginInit();
             SuspendLayout();
             // 
             // lbEmployees
             // 
             lbEmployees.FormattingEnabled = true;
-            lbEmployees.ItemHeight = 25;
-            lbEmployees.Location = new Point(17, 20);
-            lbEmployees.Margin = new Padding(4, 5, 4, 5);
+            lbEmployees.ItemHeight = 15;
+            lbEmployees.Location = new Point(12, 12);
             lbEmployees.Name = "lbEmployees";
-            lbEmployees.Size = new Size(1224, 279);
+            lbEmployees.Size = new Size(858, 139);
             lbEmployees.TabIndex = 0;
             lbEmployees.MouseClick += lbEmployees_MouseClick;
-            lbEmployees.SelectedIndexChanged += lbEmployees_SelectedIndexChanged;
             // 
             // datePickerassignShift
             // 
-            datePickerassignShift.Location = new Point(17, 312);
-            datePickerassignShift.Margin = new Padding(4, 5, 4, 5);
+            datePickerassignShift.Location = new Point(12, 187);
             datePickerassignShift.Name = "datePickerassignShift";
-            datePickerassignShift.Size = new Size(595, 31);
+            datePickerassignShift.Size = new Size(272, 23);
             datePickerassignShift.TabIndex = 1;
             // 
             // lbShiftsofEmployee
             // 
             lbShiftsofEmployee.FormattingEnabled = true;
-            lbShiftsofEmployee.ItemHeight = 25;
-            lbShiftsofEmployee.Location = new Point(17, 360);
-            lbShiftsofEmployee.Margin = new Padding(4, 5, 4, 5);
+            lbShiftsofEmployee.ItemHeight = 15;
+            lbShiftsofEmployee.Location = new Point(12, 216);
             lbShiftsofEmployee.Name = "lbShiftsofEmployee";
-            lbShiftsofEmployee.Size = new Size(1224, 304);
+            lbShiftsofEmployee.Size = new Size(858, 184);
             lbShiftsofEmployee.TabIndex = 4;
             // 
             // btnAssignShift
             // 
-            btnAssignShift.Location = new Point(17, 670);
-            btnAssignShift.Margin = new Padding(4, 5, 4, 5);
+            btnAssignShift.Location = new Point(12, 402);
             btnAssignShift.Name = "btnAssignShift";
-            btnAssignShift.Size = new Size(1226, 38);
+            btnAssignShift.Size = new Size(418, 23);
             btnAssignShift.TabIndex = 5;
             btnAssignShift.Text = "Assign Shift";
             btnAssignShift.UseVisualStyleBackColor = true;
@@ -80,26 +79,55 @@
             // 
             cbShiftType.FormattingEnabled = true;
             cbShiftType.Items.AddRange(new object[] { "Morning", "Evening", "Night" });
-            cbShiftType.Location = new Point(643, 312);
-            cbShiftType.Margin = new Padding(4, 5, 4, 5);
+            cbShiftType.Location = new Point(290, 187);
             cbShiftType.Name = "cbShiftType";
-            cbShiftType.Size = new Size(598, 33);
+            cbShiftType.Size = new Size(270, 23);
             cbShiftType.TabIndex = 7;
+            // 
+            // btnAddShift
+            // 
+            btnAddShift.Location = new Point(450, 402);
+            btnAddShift.Name = "btnAddShift";
+            btnAddShift.Size = new Size(420, 23);
+            btnAddShift.TabIndex = 8;
+            btnAddShift.Text = "Add Shift";
+            btnAddShift.UseVisualStyleBackColor = true;
+            btnAddShift.Click += btnAddShift_Click;
+            // 
+            // numericPplNeeded
+            // 
+            numericPplNeeded.Location = new Point(566, 187);
+            numericPplNeeded.Name = "numericPplNeeded";
+            numericPplNeeded.Size = new Size(304, 23);
+            numericPplNeeded.TabIndex = 9;
+            // 
+            // cbDepartments
+            // 
+            cbDepartments.FormattingEnabled = true;
+            cbDepartments.Location = new Point(12, 158);
+            cbDepartments.Name = "cbDepartments";
+            cbDepartments.Size = new Size(858, 23);
+            cbDepartments.TabIndex = 10;
             // 
             // ScheduleForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1260, 728);
+            ClientSize = new Size(882, 437);
+            Controls.Add(cbDepartments);
+            Controls.Add(numericPplNeeded);
+            Controls.Add(btnAddShift);
             Controls.Add(cbShiftType);
             Controls.Add(btnAssignShift);
             Controls.Add(lbShiftsofEmployee);
             Controls.Add(datePickerassignShift);
             Controls.Add(lbEmployees);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2);
             Name = "ScheduleForm";
             Text = "ScheduleForm";
             Load += ScheduleForm_Load;
+            ((System.ComponentModel.ISupportInitialize)numericPplNeeded).EndInit();
             ResumeLayout(false);
         }
 
@@ -110,5 +138,8 @@
         private ListBox lbShiftsofEmployee;
         private Button btnAssignShift;
         private ComboBox cbShiftType;
+        private Button btnAddShift;
+        private NumericUpDown numericPplNeeded;
+        private ComboBox cbDepartments;
     }
 }
