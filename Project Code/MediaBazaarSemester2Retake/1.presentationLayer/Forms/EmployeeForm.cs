@@ -59,7 +59,7 @@ namespace MediaBazaarSemester2Retake
                 bsn = txtBoxbsn.Text;
                 DateTime dob = dtpDateOfBirth.Value;
                 // convert DateTime to DateOnly 
-                DateOfBirth = new DateOnly(dob.Day, dob.Month, dob.Year);
+                DateOfBirth = new DateOnly(dob.Year, dob.Month, dob.Day);
                 phoneNumber = Convert.ToInt32(txtBoxPhoneNumber.Text);
                 gender = txtBoxGender.Text;
                 email = txtBoxEmail.Text;

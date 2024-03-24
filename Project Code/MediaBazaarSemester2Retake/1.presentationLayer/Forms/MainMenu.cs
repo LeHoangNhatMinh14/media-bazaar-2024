@@ -134,10 +134,19 @@ namespace MediaBazaarSemester2Retake
             btnSchedule.Visible = true;
             btnEmployeeManagement.Visible = true;
             btnStockManagement.Visible = true;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
+
+            EmployeeForm employeeForm = new EmployeeForm();
+            employeeForm.TopLevel = false;
+            employeeForm.FormBorderStyle = FormBorderStyle.None;
+            employeeForm.Dock = DockStyle.Fill;
+            PnlMainMenu.Controls.Add(employeeForm); // Add the form to the panel.
+            employeeForm.Show(); // Displa
         }
 
         private void MainMenu_Load(object sender, EventArgs e)

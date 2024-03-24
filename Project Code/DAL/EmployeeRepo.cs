@@ -42,14 +42,15 @@ namespace DAL
         {
             using(SqlConnection connection = new SqlConnection(connectionString))
             {
+                connection.Open();
                 string query = @"INSERT into Employees (firstName, lastName, bsn, dateOfBirth, phoneNumber, gender, email, city, country ,street, houseNumber, postalCode, emergencyContactName, emergencyPhoneNumber, emergencyRelation, password, firstLogin) " +
                     "Values (@firstName, @lastName, @bsn, @dateOfBirth, @phoneNumber, @gender, @email, @city, @country, @street, @houseNumber, @postalCode, @emergencyContactName, @emergencyPhoneNumber, @emergencyRelation, @password, @firstLogin)";
-                using(SqlCommand command = new SqlCommand(query, connection))
-                {
+                SqlCommand command = new SqlCommand(query, connection);
+                
                     command.Parameters.AddWithValue("@firstName", employee.firstName);
                     command.Parameters.AddWithValue("@lastName", employee.lastName);
                     command.Parameters.AddWithValue("@bsn", employee.bsn);
-                    command.Parameters.AddWithValue("@dateOfBirth", employee.dateOfBirth);
+                    command.Parameters.AddWithValue("@dateOfBirth", employee.dateOfBirth.ToString());
                     command.Parameters.AddWithValue("@phoneNumber", employee.phoneNumber);
                     command.Parameters.AddWithValue("@gender", employee.gender);
                     command.Parameters.AddWithValue("@email", employee.email);
@@ -64,7 +65,7 @@ namespace DAL
                     command.Parameters.AddWithValue("@password", employee.password);
                     command.Parameters.AddWithValue("@firstLogin", employee.firstLogin);
                     command.ExecuteNonQuery();
-                }
+                
             }
         }
         //We Do not actually delete we just make contract active go to false need to still update this on DB
