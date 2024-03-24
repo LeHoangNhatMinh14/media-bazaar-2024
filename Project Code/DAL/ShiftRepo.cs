@@ -1,5 +1,5 @@
 ﻿using BusinessLogicLayer.Class;
-using BusinessLogicLayer.Interfaces;
+using BusinessLogicLayer.Interface;
 using DAL.Mapper;
 using System;
 using System.Collections.Generic;

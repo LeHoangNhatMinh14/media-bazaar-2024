@@ -20,6 +20,7 @@ namespace DAL
             using(SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = @"SELECT employeeID, firstName,lastName,bsn,dateOfBirth,phoneNumber,gender,email,city, street, houseNumber, postalCode, emergencyContactName,emergencyPhoneNumber,emergencyRelation FROM Employees";
+                connection.Open();
                 using(SqlCommand command = new SqlCommand(query, connection))
                 {
                     using(SqlDataReader reader = command.ExecuteReader())

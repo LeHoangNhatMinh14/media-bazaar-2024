@@ -13,12 +13,9 @@ namespace MediaBazaarSemester2Retake
 {
     public partial class MainMenu : Form
     {
-        private ManageShifts _manageShifts;
-        private ManageEmployee _manageEmployee;
         public MainMenu()
         {
             InitializeComponent();
-           
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -73,7 +70,7 @@ namespace MediaBazaarSemester2Retake
         {
             PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
 
-            ScheduleForm scheduleForm = new ScheduleForm(_manageShifts, _manageEmployee);
+            ScheduleForm scheduleForm = new ScheduleForm();
             scheduleForm.TopLevel = false;
             scheduleForm.FormBorderStyle = FormBorderStyle.None;
             scheduleForm.Dock = DockStyle.Fill;
@@ -150,7 +147,7 @@ namespace MediaBazaarSemester2Retake
 
         private void btnCreateEmployee_Click(object sender, EventArgs e)
         {
- 
+            
         }
 
         private void btnCreateScheduleManagement_Click(object sender, EventArgs e)

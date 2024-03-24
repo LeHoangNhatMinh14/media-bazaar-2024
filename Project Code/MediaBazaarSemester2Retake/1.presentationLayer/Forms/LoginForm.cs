@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogicLayer.ManageClass;
+using Factory;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;

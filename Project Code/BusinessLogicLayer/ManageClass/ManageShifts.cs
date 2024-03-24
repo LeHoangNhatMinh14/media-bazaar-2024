@@ -1,5 +1,5 @@
 ﻿using BusinessLogicLayer.Class;
-using BusinessLogicLayer.Interfaces;
+using BusinessLogicLayer.Interface;
 using System.Collections.Generic;
 
 namespace BusinessLogicLayer.ManageClass

@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.ManageClass;
+using Factory;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +16,11 @@ namespace MediaBazaarSemester2Retake
     {
         ManageShifts _manageShifts;
         ManageEmployee _manageEmployee;
-        public ScheduleForm(ManageShifts manageShifts, ManageEmployee manageEmployee)
+        public ScheduleForm()
         {
-            _manageShifts = manageShifts;
             InitializeComponent();
+            _manageShifts = ManageShiftFactory.Create();
+            _manageEmployee = ManageEmployeeFactory.Create();
 
         }
 
@@ -30,7 +32,7 @@ namespace MediaBazaarSemester2Retake
 
         private void btnAssignShift_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void lbEmployees_MouseClick(object sender, MouseEventArgs e)
