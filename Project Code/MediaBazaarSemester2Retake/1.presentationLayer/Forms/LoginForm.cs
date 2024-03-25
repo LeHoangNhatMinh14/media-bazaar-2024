@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.ManageClass;
+using DAL;
 using Factory;
 using System;
 using System.Collections.Generic;
@@ -60,10 +61,26 @@ namespace MediaBazaarSemester2Retake
 
         private void BtnGo_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var myForm = new MainMenu();
-            myForm.Show();
-            
+
+            string username = txtBoxUsername.Text;
+            string password = txtBoxPassword.Text;
+
+            // Assuming you have an instance of EmployeeRepo or similar
+            EmployeeRepo employeeRepo = new EmployeeRepo();
+
+            if (employeeRepo.VerifyLogin(username, password))
+            {
+                this.Hide();
+                MainMenu myForm = new MainMenu();
+                myForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBoxPassword.Text = "";
+            }
+
+
         }
     }
 }

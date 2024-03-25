@@ -38,8 +38,8 @@ namespace MediaBazaarSemester2Retake
             string firstName;
             string lastName;
             string bsn;
-            DateOnly DateOfBirth;
-            int phoneNumber;
+            DateTime DateOfBirth;
+            string phoneNumber;
             string gender;
             string email;
             string city;
@@ -48,7 +48,7 @@ namespace MediaBazaarSemester2Retake
             int houseNumber;
             string postalCode;
             string emergencyName;
-            int emergencyPhone;
+            string emergencyPhone;
             string emergencyRelation;
 
             if (AllFieldsFilled())
@@ -59,8 +59,8 @@ namespace MediaBazaarSemester2Retake
                 bsn = txtBoxbsn.Text;
                 DateTime dob = dtpDateOfBirth.Value;
                 // convert DateTime to DateOnly 
-                DateOfBirth = new DateOnly(dob.Year, dob.Month, dob.Day);
-                phoneNumber = Convert.ToInt32(txtBoxPhoneNumber.Text);
+                DateOfBirth = dtpDateOfBirth.Value;
+                phoneNumber =txtBoxPhoneNumber.Text;
                 gender = txtBoxGender.Text;
                 email = txtBoxEmail.Text;
                 city = txtBoxCity.Text;
@@ -69,7 +69,7 @@ namespace MediaBazaarSemester2Retake
                 houseNumber = Convert.ToInt32(txtBoxHouseNumber.Text);
                 postalCode = txtBoxPostalCode.Text;
                 emergencyName = txtBoxEmergencyContact.Text;
-                emergencyPhone = Convert.ToInt32(txtBoxemergencyPhoneNumber.Text);
+                emergencyPhone = txtBoxemergencyPhoneNumber.Text;
                 emergencyRelation = txtBoxEmergencyRelation.Text;
 
                 employee = new Employee(id, firstName, lastName, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
@@ -119,15 +119,6 @@ namespace MediaBazaarSemester2Retake
             }
                 // try to convert the text and if it unable tp convert the '!' will turn the result to true and run the if statement scope
                 // also check if the length is correct
-            if (!int.TryParse(txtBoxPhoneNumber.Text, out int result) || txtBoxPhoneNumber.TextLength != 9)
-            {
-                return false; // number only field 
-            }
-
-            if (!int.TryParse(txtBoxemergencyPhoneNumber.Text, out int result2) || txtBoxemergencyPhoneNumber.TextLength != 9)
-            {
-                return false; // number only field
-            }
 
             if (!int.TryParse(txtBoxHouseNumber.Text, out int result3))
             {

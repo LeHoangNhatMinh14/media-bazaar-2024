@@ -31,6 +31,16 @@ namespace MediaBazaarSemester2Retake
 
         private void button1_Click(object sender, EventArgs e)
         {
+            EmployeeForm employeeForm = new EmployeeForm();
+
+
+            employeeForm.TopLevel = false;
+            employeeForm.FormBorderStyle = FormBorderStyle.None;
+            employeeForm.Dock = DockStyle.Fill;
+
+
+            PnlMainMenu.Controls.Add(employeeForm);
+            employeeForm.Show();
             btnBack.Visible = true;
             btnupdateEmployeeManagement.Visible = true;
             btnDeleteEMployeeManagement.Visible = true;

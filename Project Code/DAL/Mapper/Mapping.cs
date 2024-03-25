@@ -30,13 +30,13 @@ namespace DAL.Mapper
         {
             return new Employee(
                 employeeID: GetValue<int>(dataReader, nameof(Employee.employeeID)),
-                bsn: GetValue<int>(dataReader, nameof(Employee.bsn)),
+                bsn: GetStringValue(dataReader, nameof(Employee.bsn)),
                 email: GetStringValue(dataReader, nameof(Employee.email)))
             {
                 firstName = GetStringValue(dataReader, nameof(Employee.firstName)),
                 lastName = GetStringValue(dataReader, nameof(Employee.lastName)),
-                dateOfBirth = GetValue<DateOnly>(dataReader, nameof(Employee.dateOfBirth)),
-                phoneNumber = GetValue<int>(dataReader, nameof(Employee.phoneNumber)),
+                dateOfBirth = GetValue<DateTime>(dataReader, nameof(Employee.dateOfBirth)),
+                phoneNumber = GetStringValue(dataReader, nameof(Employee.phoneNumber)),
                 gender = GetStringValue(dataReader, nameof(Employee.gender)),
                 city = GetStringValue(dataReader, nameof(Employee.city)),
                 country = GetStringValue(dataReader, nameof(Employee.country)),
@@ -44,7 +44,7 @@ namespace DAL.Mapper
                 houseNumber = GetValue<int>(dataReader, nameof( Employee.houseNumber)),
                 postalCode = GetStringValue(dataReader,nameof(Employee.postalCode)),
                 emergencyContactName = GetStringValue(dataReader, nameof(Employee.emergencyContactName)),
-                emergencyPhoneNumber = GetValue<int>(dataReader,nameof(Employee.emergencyPhoneNumber)),
+                emergencyPhoneNumber = GetStringValue(dataReader,nameof(Employee.emergencyPhoneNumber)),
                 emergencyRelation = GetStringValue(dataReader, $"{nameof(Employee.emergencyRelation)}"),
                 password = GetStringValue(dataReader, nameof(Employee.password)),
                 firstLogin = GetValue<bool>(dataReader, nameof(Employee.firstLogin))
@@ -61,8 +61,8 @@ namespace DAL.Mapper
                 workHours = GetStringValue(dataReader, nameof(Contract.workHours)),
                 position = GetStringValue(dataReader, nameof(Contract.position)),
                 active = GetValue<bool>(dataReader, nameof(Contract.active)),
-                startDate = GetValue<DateOnly>(dataReader, nameof(Contract.startDate)),
-                endDate = GetValue<DateOnly>(dataReader, nameof(Contract.endDate)),
+                startDate = GetValue<DateTime>(dataReader, nameof(Contract.startDate)),
+                endDate = GetValue<DateTime>(dataReader, nameof(Contract.endDate)),
                 reason = GetStringValue(dataReader, nameof(Contract.reason))
             };
         }
@@ -74,7 +74,7 @@ namespace DAL.Mapper
             {
                 shiftType = GetStringValue(dataReader, nameof(Shift.shiftType)),
                 peopleNeeded = GetValue<int>(dataReader, nameof(Shift.peopleNeeded)),
-                shiftDate = GetValue<DateOnly>(dataReader, nameof(Shift.shiftDate)),
+                shiftDate = GetValue<DateTime>(dataReader, nameof(Shift.shiftDate)),
                 FK_DepartmentID = GetValue<int>(dataReader, nameof(Shift.FK_DepartmentID))
             };
         }

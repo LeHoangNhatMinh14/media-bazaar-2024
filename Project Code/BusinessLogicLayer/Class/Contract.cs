@@ -14,12 +14,12 @@ namespace BusinessLogicLayer.Class
         public string workHours { get; set; }
         public string position { get; set; }
         public bool active { get; set; }
-        public DateOnly startDate { get; set; }
-        public DateOnly? endDate { get; set; }
+        public DateTime startDate { get; set; }
+        public DateTime? endDate { get; set; }
         public string? reason { get; set; }
 
         // temporary Contract
-        public Contract(int contractID, string contractType, int employeeID, string workHours, string position, DateOnly startDate, DateOnly endDate) 
+        public Contract(int contractID, string contractType, int employeeID, string workHours, string position, DateTime startDate, DateTime endDate) 
         {
             this.contractID = contractID;
             this.contractType = contractType;
@@ -31,7 +31,7 @@ namespace BusinessLogicLayer.Class
         }
 
         // Permanent Contract
-        public Contract(int contractID, string contractType, int employeeID, string workHours, string position, DateOnly startDate)
+        public Contract(int contractID, string contractType, int employeeID, string workHours, string position, DateTime startDate)
         {
             this.contractID = contractID;
             this.contractType = contractType;

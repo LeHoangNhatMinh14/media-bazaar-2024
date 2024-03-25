@@ -19,7 +19,7 @@ namespace DAL
         public List<Employee> GetAllEmployees() {
             using(SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = @"SELECT employeeID, firstName,lastName,bsn,dateOfBirth,phoneNumber,gender,email,city, street, houseNumber, postalCode, emergencyContactName,emergencyPhoneNumber,emergencyRelation FROM Employees";
+                string query = @"SELECT * FROM Employees";
                 connection.Open();
                 using(SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -81,6 +81,24 @@ namespace DAL
             }
         }
 
+        public bool VerifyLogin(string username, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Example query - adjust according to your database schema
+                string query = @"SELECT COUNT(1) FROM Employees WHERE email = @username AND password = @password";
 
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Add parameters to prevent SQL injection
+                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@password", password);
+
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+        }
     }
 }

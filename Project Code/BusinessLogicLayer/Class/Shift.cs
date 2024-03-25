@@ -11,10 +11,10 @@ namespace BusinessLogicLayer.Class
         public int shiftid {  get; set; }
         public string shiftType { get; set; }
         public int peopleNeeded { get; set; }
-        public DateOnly shiftDate { get; set; }
+        public DateTime shiftDate { get; set; }
         public int FK_DepartmentID { get; set; }
 
-        public Shift(int shiftid, string shiftType, int peopleNeeded, DateOnly shiftDate, int fK_DepartmentID)
+        public Shift(int shiftid, string shiftType, int peopleNeeded, DateTime shiftDate, int fK_DepartmentID)
         {
             this.shiftid = shiftid;
             this.shiftType = shiftType;

@@ -96,7 +96,7 @@ namespace MediaBazaarSemester2Retake
                 return;
             }
 
-            DateOnly dateOnlyShiftDate = new DateOnly(shiftDate.Year, shiftDate.Month, shiftDate.Day);
+            DateTime dateOnlyShiftDate = new DateTime(shiftDate.Year, shiftDate.Month, shiftDate.Day);
 
             Shift shift = new Shift(0, shiftType, peopleNeeded, dateOnlyShiftDate, departmentIndex);
             _manageShifts.AddShift(shift);
