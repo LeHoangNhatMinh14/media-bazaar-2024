@@ -43,7 +43,7 @@ namespace DAL
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = @"SELECT COUNT(1) FROM Employees WHERE email = @email AND password = @password";
+                    string query = @"SELECT * FROM Employees WHERE email = @email AND password = @password";
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
