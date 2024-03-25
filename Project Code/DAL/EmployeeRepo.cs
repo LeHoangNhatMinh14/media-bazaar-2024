@@ -8,13 +8,13 @@ namespace DAL
     public class EmployeeRepo : IEmployeeDAL
     {
         private readonly string connectionString;
+
         public EmployeeRepo() : this(Util.connectionString) { }
 
         public EmployeeRepo(string connectionString)
         {
             this.connectionString = connectionString;
         }
-
 
         public List<Employee> GetAllEmployees() {
             using(SqlConnection connection = new SqlConnection(connectionString))
@@ -37,8 +37,35 @@ namespace DAL
             }
         }
 
+		public Employee GetEmployee(string email , string password)
+		{
+            if (VerifyLogin(email, password))
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"SELECT COUNT(1) FROM Employees WHERE email = @email AND password = @password";
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@email", email);
+                        command.Parameters.AddWithValue("@password", password);
 
-        public void AddEmployee (Employee employee)
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                Employee employee = reader.MapToEmployee();
+                                return employee;
+                            }
+                            return null;
+                        }
+                    }
+                }
+            }
+            return null;
+		}
+
+		public void AddEmployee (Employee employee)
         {
             using(SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -73,7 +100,7 @@ namespace DAL
         {
             using(SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = @"UPDATE Contract SET active = false WHERE EmployeeID = @employeeid ";
+                string query = @"UPDATE Contract SET active = false WHERE employeeID = @employeeid ";
                 using(SqlCommand command = new SqlCommand(query,connection))
                 {
                     command.Parameters.AddWithValue("@employeeid", employee.employeeID);
@@ -81,18 +108,18 @@ namespace DAL
             }
         }
 
-        public bool VerifyLogin(string username, string password)
+        public bool VerifyLogin(string email, string password)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 // Example query - adjust according to your database schema
-                string query = @"SELECT COUNT(1) FROM Employees WHERE email = @username AND password = @password";
+                string query = @"SELECT COUNT(1) FROM Employees WHERE email = @email AND password = @password";
 
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     // Add parameters to prevent SQL injection
-                    command.Parameters.AddWithValue("@username", username);
+                    command.Parameters.AddWithValue("@email", email);
                     command.Parameters.AddWithValue("@password", password);
 
                     int count = Convert.ToInt32(command.ExecuteScalar());

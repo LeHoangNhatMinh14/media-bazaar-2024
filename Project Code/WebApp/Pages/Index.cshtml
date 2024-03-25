@@ -16,13 +16,13 @@
                         <input type="hidden" name="Name" value="hidenvalue">
                         <input type="hidden" name="ProfilePic" value="hidenvalue">
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="form3Example3cg">Email:</label>
-                            <input type="email" name="Email" id="form3Example3cg" class="form-control form-control-lg" />
+                            <label asp-for="employee.email" class="form-label" for="form3Example3cg">Email:</label>
+                            <input asp-for="employee.email"  type="email" name="Email" id="form3Example3cg" class="form-control form-control-lg" />
                         </div>
 
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="form3Example4cg">Password:</label>
-                            <input type="password" name="Password" id="form3Example4cg" class="form-control form-control-lg" />
+                            <label asp-for="employee.password"  class="form-label" for="form3Example4cg">Password:</label>
+                            <input asp-for="employee.password"  type="password" name="Password" id="form3Example4cg" class="form-control form-control-lg" />
                         </div>
                         <div id="loginMessageContainer"></div>
 
