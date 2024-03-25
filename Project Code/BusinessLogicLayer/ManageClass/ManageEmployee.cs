@@ -44,11 +44,17 @@ namespace BusinessLogicLayer.ManageClass
             return employee;
         }
 
+        public Employee GetEmployeeByID(int id)
+        { 
+            Employee employee = dataAccessLayer.GetEmployeeByID(id);
+            return employee;
+        }
+
         public List<Employee> GetAllEmployees()
         {
             employees = dataAccessLayer.GetAllEmployees();
             return employees;
         }
-        
+
     }
 }

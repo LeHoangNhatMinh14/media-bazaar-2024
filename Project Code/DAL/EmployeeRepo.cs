@@ -65,7 +65,30 @@ namespace DAL
             return null;
 		}
 
-		public void AddEmployee (Employee employee)
+        public Employee GetEmployeeByID(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"SELECT * FROM Employees WHERE employeeID = @employeeID";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@employeeID", id);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            Employee employee = reader.MapToEmployee();
+                            return employee;
+                        }
+                        return null;
+                    }
+                }
+            }
+        }
+
+        public void AddEmployee (Employee employee)
         {
             using(SqlConnection connection = new SqlConnection(connectionString))
             {

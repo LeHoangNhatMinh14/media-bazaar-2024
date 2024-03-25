@@ -14,6 +14,8 @@ namespace BusinessLogicLayer.Interface
 
         Employee GetEmployee(string email , string password);
 
+        Employee GetEmployeeByID(int id);
+
         void AddEmployee(Employee employee);
 
         void DeleteEmployee(Employee employee);

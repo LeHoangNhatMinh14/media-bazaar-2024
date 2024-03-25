@@ -30,23 +30,22 @@ namespace MediaBazaar_WebApp.Pages
 			else
 			{
 				handler = "Login";
-				var employee = mE.GetEmployee(Employee.email , Employee.password);
-					if (employee != null)
+				Employee = mE.GetEmployee(Employee.email , Employee.password);
+					if (Employee != null)
 					{
 						var claims = new List<Claim>
 						{
-						new Claim(ClaimTypes.Name, employee.EmployeeInfo),
-						new Claim(ClaimTypes.Email, employee.email),
+						new Claim(ClaimTypes.Name, Employee.EmployeeInfo),
+						new Claim(ClaimTypes.Email, Employee.email),
 						};
 
 						var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-
 						HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity)).Wait();
 
-						HttpContext.Session.SetString("Name", employee.firstName+" "+employee.lastName);
-						HttpContext.Session.SetString("Email", employee.email) ;
-						HttpContext.Session.SetInt32("EmployeeID", employee.employeeID);
+						HttpContext.Session.SetString("Name", Employee.firstName+" "+Employee.lastName);
+						HttpContext.Session.SetString("Email", Employee.email) ;
+						HttpContext.Session.SetInt32("EmployeeID", Employee.employeeID);
 						return RedirectToPage("/Schedule");
 					}
 					else

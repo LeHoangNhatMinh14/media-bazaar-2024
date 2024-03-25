@@ -6,7 +6,7 @@ namespace BusinessLogicLayer.Class
 {
     public class Employee
     {
-        public int employeeID { get; private set; }
+        public int employeeID { get; set; }
         public string firstName { get; set; } = string.Empty;
         public string lastName { get; set; } = string.Empty;
         public string bsn { get; private set; } = string.Empty;
@@ -28,6 +28,7 @@ namespace BusinessLogicLayer.Class
         RandomizePassword random = new RandomizePassword();
 
         public string EmployeeInfo => $"{firstName} {lastName}";
+        public string EmployeeAddress => $"{street} {houseNumber} {postalCode}";
 
         public Employee(){}
 
@@ -57,6 +58,9 @@ namespace BusinessLogicLayer.Class
         //For Mapper
         public Employee(int employeeID, string bsn, string email)
         {
+            this.employeeID = employeeID;
+            this.bsn = bsn;
+            this.email = email;
             this.firstName = firstName;
             this.lastName = lastName;
             this.dateOfBirth = dateOfBirth;
