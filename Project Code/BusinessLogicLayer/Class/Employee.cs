@@ -13,7 +13,7 @@ namespace BusinessLogicLayer.Class
         public DateTime dateOfBirth { get; set; }
         public string phoneNumber { get; set; }
         public string gender { get; set; } = string.Empty;
-        public string email { get; private set; } = string.Empty;
+        public string email { get; set; } = string.Empty;
         public string city { get; set; } = string.Empty;
         public string country { get; set; } = string.Empty;
         public string street { get; set; } = string.Empty;
@@ -28,7 +28,8 @@ namespace BusinessLogicLayer.Class
         RandomizePassword random = new RandomizePassword();
 
         public string EmployeeInfo => $"{firstName} {lastName}";
-        
+
+        public Employee(){}
 
         public Employee(int employeeID, string firstName, string lastName, string bsn, DateTime dateOfBirth, string phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, string emergencyPhoneNumber, string emergencyRelation)
         {

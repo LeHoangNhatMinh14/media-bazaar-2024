@@ -38,10 +38,10 @@ namespace BusinessLogicLayer.ManageClass
             dataAccessLayer.DeleteEmployee(employee);
         }
 
-        public Employee GetEmployee(int employeeID)
+        public Employee GetEmployee(string email ,string password)
         {
-            // get specific employee using the ID
-            return null;
+            Employee employee = dataAccessLayer.GetEmployee(email , password);
+            return employee;
         }
 
         public List<Employee> GetAllEmployees()
@@ -49,6 +49,7 @@ namespace BusinessLogicLayer.ManageClass
             employees = dataAccessLayer.GetAllEmployees();
             return employees;
         }
-
+        
+        
     }
 }

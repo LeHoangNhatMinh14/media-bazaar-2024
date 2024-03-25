@@ -12,9 +12,13 @@ namespace BusinessLogicLayer.Interface
 
         List<Employee> GetAllEmployees();
 
+        Employee GetEmployee(string email , string password);
+
         void AddEmployee(Employee employee);
 
         void DeleteEmployee(Employee employee);
+
+        bool VerifyLogin(string userName , string password);
 
     }
 }
