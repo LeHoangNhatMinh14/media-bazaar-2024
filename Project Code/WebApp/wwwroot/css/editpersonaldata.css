@@ -1,0 +1,139 @@
+﻿.custom-size {
+    position: absolute;
+    top: 4vw;
+    left: 30%;
+    width: 60% !important;
+    height: 90%;
+    font-size:30px;
+    border-radius:40px !important;
+}
+
+.row>* {
+    padding-top:1vw;
+}
+
+form {
+    margin-top:2vw !important;
+    width: 55vw !important;
+    padding-left: 4vw;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+p {
+    line-height:2.5;
+    margin-block-start:10px;
+    margin-left:30px;
+}
+
+.dividers {
+    margin-top:30px;
+}
+
+.personal-data {
+    height: 40vw;
+    background-color: #255C99 !important;
+    border-top-left-radius: 50px 50px !important;
+    border-top-right-radius: 50px 50px !important;
+    border-bottom-right-radius: 50px 50px !important;
+    border-bottom-left-radius: 50px 50px !important;
+    color: #CCAD8F;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.email-box {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.email-form {
+    width:25vw;
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.phonenmbr-box {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width:20vw;
+}
+    .phonenmbr-box input {
+        vertical-align: middle;
+        margin: 5px 10px 5px 0;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+
+.phoneNmbrP-form {
+    width:3vw !important;
+}
+.personalPhoneNmbr-form {
+    width: 12vw !important;
+}
+
+.emergencycontact-box {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+.emergencycontact-box input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.nameEC-form {
+    width: 29vw !important;
+}
+.phoneNmbrPEC-form {
+    width: 3vw !important;
+}
+.phoneNmbrEC-form {
+    width: 12vw !important;
+}
+
+
+.address-box {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+    .address-box input {
+        vertical-align: middle;
+        margin: 5px 10px 5px 0;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+
+.streetName-form {
+    width: 23vw !important;
+}
+
+.houseNmbr-form {
+    width: 4vw !important;
+}
+
+.nmbrAddOn-form {
+    width: 5vw !important;
+}
+
+.postalCode-form {
+    width: 11vw !important;
+}
+
+.btn-changeinfo {
+    background-color:white;
+    position:fixed;
+
+}

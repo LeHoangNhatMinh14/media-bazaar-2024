@@ -1,0 +1,34 @@
+﻿@page
+@model MediaBazaar_WebApp.Pages.PersonalDataModel
+@{
+	ViewData["Title"] = "PersonalData";
+}
+
+<link rel="stylesheet" href="~/css/personaldata.css" asp-append-version="true" />
+
+<div class="container custom-size" >
+	<div class="row">
+		<div class="col personal-data">
+				<p>Name:</p>
+			<p>Email:</p>
+			<p>Phone Number:</p>
+			<p>Date of Birth:</p>
+			<p>Address:</p>
+		</div>
+		<div class="w-100"></div>
+		<div class="col contract-data">
+			<p>Contract Dates:</p>
+			<p>Contract Hours:</p>
+			<p>Contract Contact:</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-2 button-container">
+			<a asp-page="/EditPersonaldata">
+				<button class="button-sendrequest">
+					Change Info
+				</button>
+			</a>
+		</div>
+	</div>
+</div>

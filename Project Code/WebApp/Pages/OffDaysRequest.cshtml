@@ -1,0 +1,27 @@
+﻿@page
+@model MediaBazaar_WebApp.Pages.OffDaysRequestModel
+@{
+	ViewData["Title"] = "OffDaysRequest";
+}
+
+<link rel="stylesheet" href="~/css/daysoff.css" asp-append-version="true" />
+
+<div class="container custom-size">
+	<div class="row">
+		<div class="col-4 date-picker">
+			<input id="calendar" class="form-control" asp-for="DateTime" asp-format="{0:yyyy-MM-ddTHH:mm}" />
+		</div>
+		<div class="col-8 reason-container">
+			<div class="form-outline mb-4">
+				<label class="form-label" for="form3Example3cg">Reason:</label>
+				<div class="w-100"></div>
+				<textarea id="w3review" class="custom-height" name="w3review" rows="4" cols="50"></textarea>
+				<a asp-page="/Schedule">
+					<button class="button-sendrequest">
+						Request Leave
+					</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

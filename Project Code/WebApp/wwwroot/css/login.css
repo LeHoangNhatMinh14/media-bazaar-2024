@@ -1,0 +1,43 @@
+﻿body {
+    background-color: #7EAACC;
+}
+.custom-height {
+    height:600px;
+    width: 550px;
+}
+
+html, body{
+    height: 100%;
+}
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:20px;
+}
+
+.custom-style {
+    background-color: #255C99;
+    border: 1px solid #262626;
+    color: #CCAD8F !important;
+    font-size: 40px;
+}
+
+h1 {
+    font-size:60px;
+}
+.image-holder {
+    position:relative;
+    left:10%;
+    top:-10px;
+    width:1000px;
+    height:150px;
+    background: url('../imgs/lOGO.png') center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+button {
+    background-color: #CCAD8F !important;
+}

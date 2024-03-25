@@ -1,0 +1,54 @@
+﻿@page
+@model MediaBazaar_WebApp.Pages.EditPersonalDataModel
+@{
+	ViewData["Title"] = "ViewPersonalData";
+}
+
+<link rel="stylesheet" href="~/css/editpersonaldata.css" asp-append-version="true" />
+
+<div class="container custom-size">
+	<div class="row">
+		<div class="col personal-data">
+			<form method="post" asp-page-handler="ChangeInfo">
+				<input type="hidden" name="Name" value="hidenvalue">
+				<input type="hidden" name="ProfilePic" value="hidenvalue">
+
+				<div class="form-outline mb-4 email-box">
+					<label class="form-label" for="form3Example3cg">Email:</label>
+					<div class="w-100"></div>
+					<input type="email" name="Email" id="form3Example3cg" class="form-control form-control email-form" />
+				</div>
+
+				<div class="form-outline mb-4 phonenmbr-box">
+					<label class="form-label" for="form3Example4cg">Phone Number:</label>
+					<div class="w-100"></div>
+					<input type="tel" name="PrefixPhoneNumber" id="form3Example4cg" class="form-control form-control phoneNmbrP-form" placeholder="+00" />
+					<input type="tel" name="PhoneNumber" id="form3Example4cg" class="form-control form-control personalPhoneNmbr-form" placeholder="123 456 789" />
+				</div>
+				<div class="w-100 dividers"></div>
+				<div class="form-outline mb-4 emergencycontact-box">
+					<label class="form-label" for="form3Example4cg">Emergency Contact:</label>
+					<div class="w-100"></div>
+					<input type="text" name="ECContact" id="form3Example4cg" class="form-control form-control nameEC-form" placeholder="Name" />
+					<input type="tel" name="PrefixPhoneNumber" id="form3Example4cg" class="form-control form-control phoneNmbrPEC-form" placeholder="+00" />
+					<input type="tel" name="PhoneNumber" id="form3Example4cg" class="form-control form-control phoneNmbrEC-form" placeholder="123 456 789" />
+				</div>
+				 <div class="w-100 dividers"></div>
+				<div class="form-outline mb-4 address-box">
+					<label class="form-label" for="form3Example4cg">Address:</label>
+					<div class="w-100"></div>
+					<input type="text" name="Street" id="form3Example4cg" class="form-control form-control streetName-form" placeholder="Street Name" />
+					<input type="number" name="HouseNumber" id="form3Example4cg" class="form-control form-control houseNmbr-form" placeholder="House Number" />
+					<input type="text" name="NUmberAdd" id="form3Example4cg" class="form-control form-control nmbrAddOn-form" placeholder="Number Add On" />
+					<input type="text" name="PostalCode" id="form3Example4cg" class="form-control form-control postalCode-form" placeholder="Postal Code" />
+				</div>
+				<div class="w-100"></div>
+				<div class="d-flex justify-content-end">
+					<button type="submit" value="Submit" class="btn btn-changeinfo">
+						Change Info
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
