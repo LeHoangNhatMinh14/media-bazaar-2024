@@ -18,7 +18,7 @@ namespace MediaBazaarSemester2Retake
     {
         ManageEmployee manageEmployee;
         Employee employee;
-        
+
         public EmployeeForm()
         {
             InitializeComponent();
@@ -60,7 +60,7 @@ namespace MediaBazaarSemester2Retake
                 DateTime dob = dtpDateOfBirth.Value;
                 // convert DateTime to DateOnly 
                 DateOfBirth = dtpDateOfBirth.Value;
-                phoneNumber =txtBoxPhoneNumber.Text;
+                phoneNumber = txtBoxPhoneNumber.Text;
                 gender = txtBoxGender.Text;
                 email = txtBoxEmail.Text;
                 city = txtBoxCity.Text;
@@ -74,6 +74,8 @@ namespace MediaBazaarSemester2Retake
 
                 employee = new Employee(id, firstName, lastName, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
                 manageEmployee.AddEmployee(employee);
+                MessageBox.Show("Successfully add employee");
+                ResetField();
             }
             else
             {
@@ -109,7 +111,7 @@ namespace MediaBazaarSemester2Retake
                 }
                 else if (control is DateTimePicker dateTimePicker)
                 {
-                    if (dateTimePicker.Value == DateTime.Now) //if the day is today
+                    if (dateTimePicker.Value == DateTime.Today) //if the day is today
                     {
                         return false; // Field is not changed
                     }
@@ -117,8 +119,7 @@ namespace MediaBazaarSemester2Retake
 
                 // If the control is a container (e.g., GroupBox, Panel), recursively check its controls.
             }
-                // try to convert the text and if it unable tp convert the '!' will turn the result to true and run the if statement scope
-                // also check if the length is correct
+            // try to convert the text and if it unable tp convert the '!' will turn the result to true and run the if statement scope
 
             if (!int.TryParse(txtBoxHouseNumber.Text, out int result3))
             {
@@ -127,5 +128,21 @@ namespace MediaBazaarSemester2Retake
 
             return true;
         }
-    }
+
+        private void ResetField()
+        {
+            foreach (Control control in Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.Clear();
+                }
+                else if (control is DateTimePicker dateTimePicker)
+                {
+                    dateTimePicker.Value = DateTime.Today;
+
+                }
+            }
+        }
+    } 
 }
