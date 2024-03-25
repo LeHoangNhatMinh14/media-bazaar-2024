@@ -13,6 +13,7 @@ namespace BusinessLogicLayer.Class
         public int peopleNeeded { get; set; }
         public DateTime shiftDate { get; set; }
         public int FK_DepartmentID { get; set; }
+        public string ShiftInfo => $"{shiftDate.Date}, {shiftType}, {peopleNeeded}";
 
         public Shift(int shiftid, string shiftType, int peopleNeeded, DateTime shiftDate, int fK_DepartmentID)
         {
@@ -27,6 +28,7 @@ namespace BusinessLogicLayer.Class
         //Constructer For Mapper
         public Shift(int shiftid)
         {
+            this.shiftid = shiftid;
             this.shiftType = shiftType;
             this.peopleNeeded = peopleNeeded;
             this.shiftDate = shiftDate;

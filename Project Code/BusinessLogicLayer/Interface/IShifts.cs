@@ -14,6 +14,6 @@ namespace BusinessLogicLayer.Interface
         void AddShifts(Shift shift);
         void AssignShift(int shiftID, int employeeID);
         List<Shift> GetShiftsofEmployee(int employeeID);
-        Shift GetLatestShiftForEmployee(int employeeID);
+        List<Shift> GetUnassignedShifts();
     }
 }

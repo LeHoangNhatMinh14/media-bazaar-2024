@@ -56,6 +56,7 @@ namespace BusinessLogicLayer.Class
         //For Mapper
         public Employee(int employeeID, string bsn, string email)
         {
+            this.employeeID = employeeID;
             this.firstName = firstName;
             this.lastName = lastName;
             this.dateOfBirth = dateOfBirth;

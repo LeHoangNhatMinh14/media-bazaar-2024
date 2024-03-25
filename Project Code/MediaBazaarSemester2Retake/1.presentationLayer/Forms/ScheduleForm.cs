@@ -17,11 +17,13 @@ namespace MediaBazaarSemester2Retake
     {
         ManageShifts _manageShifts;
         ManageEmployee _manageEmployee;
+        ManageDepartment _manageDepartment;
         public ScheduleForm()
         {
             InitializeComponent();
             _manageShifts = ManageShiftFactory.Create();
             _manageEmployee = ManageEmployeeFactory.Create();
+            _manageDepartment = ManageDepartmentFactory.Create();
 
         }
 
@@ -30,14 +32,21 @@ namespace MediaBazaarSemester2Retake
             cbShiftType.SelectedIndex = 0;
             lbEmployees.DataSource = _manageEmployee.GetAllEmployees();
             lbEmployees.DisplayMember = "EmployeeInfo";
+            lbEmployees.ValueMember = "employeeID";
+            cbDepartments.DataSource = _manageDepartment.GetDepartmentList();
+            cbDepartments.DisplayMember = "_departmentName";
+            cbDepartments.ValueMember = "_departmentID";
+            lbUnassignedShifts.DataSource = _manageShifts.GetUnassignedShifts();
+            lbUnassignedShifts.DisplayMember = "ShiftInfo";
+            lbUnassignedShifts.ValueMember = "shiftid";
         }
 
         private void btnAssignShift_Click(object sender, EventArgs e)
         {
-            if (lbEmployees.SelectedItem != null && lbShiftsofEmployee.SelectedItem != null)
+            if (lbEmployees.SelectedItem != null && lbUnassignedShifts.SelectedItem != null)
             {
                 Employee selectedEmployee = lbEmployees.SelectedItem as Employee;
-                Shift selectedShift = lbShiftsofEmployee.SelectedItem as Shift;
+                Shift selectedShift = lbUnassignedShifts.SelectedItem as Shift;
 
                 if (_manageShifts.CanAssignShift(selectedEmployee.employeeID, selectedShift.shiftid))
                 {
@@ -67,12 +76,13 @@ namespace MediaBazaarSemester2Retake
 
         private void btnAddShift_Click(object sender, EventArgs e)
         {
-            int departmentIndex = cbDepartments.SelectedIndex;
+            Department department = (Department)cbDepartments.SelectedItem;
+            int departmentID = department._departmentID;
             string shiftType = cbShiftType.Text;
             DateTime shiftDate = datePickerassignShift.Value;
             int peopleNeeded = (int)numericPplNeeded.Value;
 
-            if (departmentIndex < 0)
+            if (departmentID < 0)
             {
                 MessageBox.Show("Please select a department.");
                 return;
@@ -98,7 +108,7 @@ namespace MediaBazaarSemester2Retake
 
             DateTime dateOnlyShiftDate = new DateTime(shiftDate.Year, shiftDate.Month, shiftDate.Day);
 
-            Shift shift = new Shift(0, shiftType, peopleNeeded, dateOnlyShiftDate, departmentIndex);
+            Shift shift = new Shift(0, shiftType, peopleNeeded, dateOnlyShiftDate, departmentID);
             _manageShifts.AddShift(shift);
         }
 
@@ -107,6 +117,9 @@ namespace MediaBazaarSemester2Retake
         {
             lbShiftsofEmployee.DataSource = _manageShifts.GetShiftsOfEmployee(employeeID);
             lbShiftsofEmployee.DisplayMember = "ShiftInfo";
+            lbUnassignedShifts.DataSource = _manageShifts.GetUnassignedShifts();
+            lbUnassignedShifts.DisplayMember = "ShiftInfo";
+            lbUnassignedShifts.ValueMember = "shiftid";
         }
     }
 }

@@ -72,33 +72,29 @@ namespace DAL
             }
         }
 
-        public Shift GetLatestShiftForEmployee(int employeeID)
+        public List<Shift> GetUnassignedShifts()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
+                string querry = @"SELECT * FROM Shifts
+                        WHERE shiftID NOT IN 
+                            (SELECT FK_shiftID FROM EmployeesOnShift)";
 
-                string query = "SELECT TOP 1 * FROM Shifts " +
-                               "WHERE shiftID IN " +
-                               "(SELECT TOP 2 FK_shiftID FROM EmployeesOnShift WHERE FK_employeeID = @employeeID ORDER BY shiftID DESC) " +
-                               "ORDER BY shiftDate DESC";
-
-                using (SqlCommand cmd = new SqlCommand(query, connection))
+                using (SqlCommand cmd = new SqlCommand(querry, connection))
                 {
-                    cmd.Parameters.AddWithValue("@employeeID", employeeID);
-
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        if (reader.Read())
+                        List<Shift> shifts = new List<Shift>();
+                        while (reader.Read())
                         {
                             Shift shift = reader.MapToShift();
-                            return shift;
+                            shifts.Add(shift);
                         }
+                        return shifts;
                     }
                 }
             }
-
-            return null;
         }
 
         public Shift GetShiftbyID(int ID)
@@ -129,10 +125,11 @@ namespace DAL
                 connection.Open();
                 string querry = "SELECT * FROM Shifts " +
                     "WHERE shiftID IN " +
-                    "(SELECT FK_shiftID FROM EmployeesOnShift WHERE FK_employeeID = 1);";
+                    "(SELECT FK_shiftID FROM EmployeesOnShift WHERE FK_employeeID = @employeeID);";
 
                 using (SqlCommand cmd = new SqlCommand(querry, connection))
                 {
+                    cmd.Parameters.AddWithValue("@employeeID", employeeID);
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         List<Shift> shifts = new List<Shift>();

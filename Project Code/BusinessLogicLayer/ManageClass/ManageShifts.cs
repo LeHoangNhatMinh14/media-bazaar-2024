@@ -38,9 +38,9 @@ namespace BusinessLogicLayer.ManageClass
             return _IShifts.GetShiftsofEmployee(employeeID);
         }
 
-        private Shift GetLastestshiftofEmployee(int employeeID)
+        public List<Shift> GetUnassignedShifts()
         {
-            return _IShifts.GetLatestShiftForEmployee(employeeID);
+            return _IShifts.GetUnassignedShifts();
         }
 
         public bool CanAssignShift(int employeeID, int shiftID)

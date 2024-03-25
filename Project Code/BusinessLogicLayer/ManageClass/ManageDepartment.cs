@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Class;
+using BusinessLogicLayer.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace BusinessLogicLayer.ManageClass
     public class ManageDepartment
     {
         private List<Department> departmentList;
+        private IDepartments _departments;
 
-        public ManageDepartment() 
+        public ManageDepartment(IDepartments departments) 
         {
             departmentList = new List<Department>();
+            _departments = departments;
         }
 
         public void AddDepartment(Department department)
@@ -24,6 +27,7 @@ namespace BusinessLogicLayer.ManageClass
 
         public List<Department> GetDepartmentList()
         {
+            departmentList = _departments.GetDepartments();
             return departmentList;
         }
 

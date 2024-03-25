@@ -50,6 +50,5 @@ namespace BusinessLogicLayer.ManageClass
             return employees;
         }
 
-        
     }
 }
