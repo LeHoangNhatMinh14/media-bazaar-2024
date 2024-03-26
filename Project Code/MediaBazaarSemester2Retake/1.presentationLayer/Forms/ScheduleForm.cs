@@ -110,6 +110,9 @@ namespace MediaBazaarSemester2Retake
 
             Shift shift = new Shift(0, shiftType, peopleNeeded, dateOnlyShiftDate, departmentID);
             _manageShifts.AddShift(shift);
+            lbUnassignedShifts.DataSource = _manageShifts.GetUnassignedShifts();
+            lbUnassignedShifts.DisplayMember = "ShiftInfo";
+            lbUnassignedShifts.ValueMember = "shiftid";
         }
 
 
