@@ -28,7 +28,12 @@ namespace MediaBazaarSemester2Retake
             dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
             dtpDateOfBirth.CustomFormat = "dd'/'MM'/'yyyy";
             manageEmployee = ManageEmployeeFactory.Create();
-            lbEmployee.DataSource = manageEmployee.GetAllEmployees();
+            lbEmployee.Items.Clear();
+            foreach(Employee employee in manageEmployee.GetAllEmployees())
+            {
+                lbEmployee.Items.Add(employee);
+            }
+            ResetField();
         }
 
 
@@ -80,9 +85,11 @@ namespace MediaBazaarSemester2Retake
                 manageEmployee.AddEmployee(employee);
                 MessageBox.Show("Successfully add employee");
                 ResetField();
-                lbEmployee.DataSource = manageEmployee.GetAllEmployees();
-                lbEmployee.DisplayMember = "EmployeeInfo";
-                lbEmployee.ValueMember = "employeeID";
+                lbEmployee.Items.Clear();
+                foreach (Employee employee in manageEmployee.GetAllEmployees())
+                {
+                    lbEmployee.Items.Add(employee);
+                }
             }
         }
 
@@ -128,7 +135,7 @@ namespace MediaBazaarSemester2Retake
 
             if (!int.TryParse(txtBoxHouseNumber.Text, out int result3))
             {
-                MessageBox.Show("House number can only contain numeric value!");
+                MessageBox.Show("Please fill in all the textbox!");
                 return false; // number only field
             }
 
