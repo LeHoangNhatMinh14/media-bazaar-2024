@@ -6,11 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Metrics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace MediaBazaarSemester2Retake
 {
@@ -26,8 +29,6 @@ namespace MediaBazaarSemester2Retake
             dtpDateOfBirth.CustomFormat = "dd'/'MM'/'yyyy";
             manageEmployee = ManageEmployeeFactory.Create();
             lbEmployee.DataSource = manageEmployee.GetAllEmployees();
-            lbEmployee.DisplayMember = "EmployeeInfo";
-            lbEmployee.ValueMember = "employeeID";
         }
 
 
@@ -162,7 +163,31 @@ namespace MediaBazaarSemester2Retake
 
         private void lbEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Employee employee = (Employee)lbEmployee.SelectedItem;
+            if (lbEmployee.SelectedIndex != -1)
+            {
+                Employee employee = (Employee)lbEmployee.SelectedItem;
+                txtBoxFirstName.Text = employee.firstName;
+                txtBoxLastName.Text = employee.lastName;
+                txtBoxbsn.Text = employee.bsn;
+                dtpDateOfBirth.Value = employee.dateOfBirth;
+                txtBoxPhoneNumber.Text = employee.phoneNumber;
+                txtBoxGender.Text = employee.gender;
+                txtBoxEmail.Text = employee.email;
+                txtBoxCity.Text = employee.city;
+                txtCountry.Text = employee.country;
+                txtBoxStreet.Text = employee.street;
+                txtBoxHouseNumber.Text = employee.houseNumber.ToString();
+                txtBoxPostalCode.Text = employee.postalCode;
+                txtBoxEmergencyContact.Text = employee.emergencyContactName;
+                txtBoxemergencyPhoneNumber.Text = employee.phoneNumber;
+                txtBoxEmergencyRelation.Text = employee.emergencyRelation;
+            }
+            else
+            {
+                ResetField();
+            }
+
+
         }
     }
 }
