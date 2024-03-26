@@ -135,7 +135,7 @@ namespace MediaBazaarSemester2Retake
 
             if (!int.TryParse(txtBoxHouseNumber.Text, out int result3))
             {
-                MessageBox.Show("House number can only contain numeric value!");
+                MessageBox.Show("Please fill in all the textbox!");
                 return false; // number only field
             }
 
