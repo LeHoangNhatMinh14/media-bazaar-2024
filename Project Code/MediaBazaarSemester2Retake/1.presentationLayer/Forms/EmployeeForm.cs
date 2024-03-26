@@ -77,10 +77,6 @@ namespace MediaBazaarSemester2Retake
                 MessageBox.Show("Successfully add employee");
                 ResetField();
             }
-            else
-            {
-                MessageBox.Show("Please fill in all the textbox!");
-            }
         }
 
         private void btnUpdateEmployee_Click(object sender, EventArgs e)
@@ -106,6 +102,7 @@ namespace MediaBazaarSemester2Retake
                 {
                     if (string.IsNullOrWhiteSpace(textBox.Text))
                     {
+                        MessageBox.Show("Please fill in all the textbox!");
                         return false; // Field is not filled
                     }
                 }
@@ -113,17 +110,29 @@ namespace MediaBazaarSemester2Retake
                 {
                     if (dateTimePicker.Value == DateTime.Today) //if the day is today
                     {
+                        MessageBox.Show("Date of birth can't be today!");
                         return false; // Field is not changed
                     }
                 }
 
                 // If the control is a container (e.g., GroupBox, Panel), recursively check its controls.
             }
-            // try to convert the text and if it unable tp convert the '!' will turn the result to true and run the if statement scope
+            // try to convert the text and if it unable to convert the '!' will turn the result to true and run the if statement scope
 
             if (!int.TryParse(txtBoxHouseNumber.Text, out int result3))
             {
+                MessageBox.Show("House number can only contain numeric value!");
                 return false; // number only field
+            }
+
+            try
+            {
+                new System.Net.Mail.MailAddress(txtBoxEmail.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invaild Email!");
+                return false;
             }
 
             return true;
