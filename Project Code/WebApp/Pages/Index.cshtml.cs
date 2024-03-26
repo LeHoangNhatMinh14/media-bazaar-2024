@@ -46,7 +46,7 @@ namespace MediaBazaar_WebApp.Pages
 						HttpContext.Session.SetString("Name", Employee.firstName+" "+Employee.lastName);
 						HttpContext.Session.SetString("Email", Employee.email) ;
 						HttpContext.Session.SetInt32("EmployeeID", Employee.employeeID);
-						return RedirectToPage("/Schedule");
+						return RedirectToPage("/PersonalData");
 					}
 					else
 					{
