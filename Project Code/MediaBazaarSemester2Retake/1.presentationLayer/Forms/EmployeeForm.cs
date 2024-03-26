@@ -25,6 +25,9 @@ namespace MediaBazaarSemester2Retake
             dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
             dtpDateOfBirth.CustomFormat = "dd'/'MM'/'yyyy";
             manageEmployee = ManageEmployeeFactory.Create();
+            lbEmployee.DataSource = manageEmployee.GetAllEmployees();
+            lbEmployee.DisplayMember = "EmployeeInfo";
+            lbEmployee.ValueMember = "employeeID";
         }
 
 
@@ -76,6 +79,9 @@ namespace MediaBazaarSemester2Retake
                 manageEmployee.AddEmployee(employee);
                 MessageBox.Show("Successfully add employee");
                 ResetField();
+                lbEmployee.DataSource = manageEmployee.GetAllEmployees();
+                lbEmployee.DisplayMember = "EmployeeInfo";
+                lbEmployee.ValueMember = "employeeID";
             }
         }
 
@@ -153,5 +159,10 @@ namespace MediaBazaarSemester2Retake
                 }
             }
         }
-    } 
+
+        private void lbEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Employee employee = (Employee)lbEmployee.SelectedItem;
+        }
+    }
 }

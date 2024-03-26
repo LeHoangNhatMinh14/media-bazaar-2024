@@ -75,6 +75,10 @@ namespace BusinessLogicLayer.Class
             this.firstLogin = firstLogin;
         }
 
+        public override string ToString()
+        {
+            return $"{employeeID} - {firstName} {lastName}";
+        }
 
 
     }
