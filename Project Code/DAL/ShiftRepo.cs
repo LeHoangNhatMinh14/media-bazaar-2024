@@ -143,5 +143,32 @@ namespace DAL
                 }
             }
         }
+
+        public List<Shift> GetShiftsofDateofEmployee(int employeeID, DateTime shiftDate)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string querry = "  SELECT * FROM Shifts " +
+                    "WHERE shiftID IN (SELECT FK_shiftID FROM EmployeesOnShift WHERE FK_employeeID = @employeeID) " +
+                    "AND CONVERT(date, shiftDate) = @Date;;";
+
+                using (SqlCommand cmd = new SqlCommand(querry, connection))
+                {
+                    cmd.Parameters.AddWithValue("@employeeID", employeeID);
+                    cmd.Parameters.AddWithValue("@Date", shiftDate);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        List<Shift> shifts = new List<Shift>();
+                        while (reader.Read())
+                        {
+                            Shift shift = reader.MapToShift();
+                            shifts.Add(shift);
+                        }
+                        return shifts;
+                    }
+                }
+            }
+        }
     }
 }

@@ -43,39 +43,35 @@ namespace BusinessLogicLayer.ManageClass
             return _IShifts.GetUnassignedShifts();
         }
 
-        public bool CanAssignShift(int employeeID, int shiftID)
+        public bool CanAssignShift(int employeeID, Shift assignedShift)
         {
-            List<Shift> employeeShifts = GetShiftsOfEmployee(employeeID);
-
-            if (employeeShifts.Count < 2)
+            if (assignedShift.shiftType == "Morning")
             {
-                return true;
+                assignedShift.shiftDate = assignedShift.shiftDate.AddDays(-1);
             }
-
-            Shift latestShift = employeeShifts[employeeShifts.Count - 1];
-            Shift secondLatestShift = employeeShifts[employeeShifts.Count - 2];
-
-            if (AreConsecutiveShifts(latestShift, secondLatestShift))
+            List<Shift> shiftsOfDate = _IShifts.GetShiftsofDateofEmployee(employeeID, assignedShift.shiftDate);
+            if (shiftsOfDate.Count > 0)
             {
-                Shift newShift = _IShifts.GetShiftbyID(shiftID);
-
-                if (!IsValidNextShift(latestShift, newShift))
+                string shiftType = assignedShift.shiftType;
+                DateTime nextDayShift = assignedShift.shiftDate.AddDays(1);
+                foreach (Shift shift in shiftsOfDate)
                 {
-                    return false;
+                    if ((shift.shiftType == "Morning" && shiftType == "Evening") ||
+                        (shift.shiftType == "Evening" && shiftType == "Night") ||
+                        (shift.shiftType == "Night" && shiftType == "Morning" && shift.shiftDate == nextDayShift))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
-
             return true;
         }
-        private bool AreConsecutiveShifts(Shift shift1, Shift shift2)
-        {
-            return (shift1.shiftType == "Morning" && shift2.shiftType == "Evening")
-                || (shift1.shiftType == "Evening" && shift2.shiftType == "Night");
-        }
 
-        private bool IsValidNextShift(Shift currentShift, Shift newShift)
-        {
-            return currentShift.shiftDate.AddDays(1) == newShift.shiftDate && newShift.shiftType == "Morning";
-        }
+
+
     }
 }

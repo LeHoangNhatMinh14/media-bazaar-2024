@@ -48,7 +48,7 @@ namespace MediaBazaarSemester2Retake
                 Employee selectedEmployee = lbEmployees.SelectedItem as Employee;
                 Shift selectedShift = lbUnassignedShifts.SelectedItem as Shift;
 
-                if (_manageShifts.CanAssignShift(selectedEmployee.employeeID, selectedShift.shiftid))
+                if (_manageShifts.CanAssignShift(selectedEmployee.employeeID, selectedShift))
                 {
                     _manageShifts.AssignShift(selectedShift.shiftid, selectedEmployee.employeeID);
                     UpdateShiftsList(selectedEmployee.employeeID);
