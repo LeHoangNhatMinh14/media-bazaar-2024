@@ -36,6 +36,10 @@
             btnAddShift = new Button();
             numericPplNeeded = new NumericUpDown();
             cbDepartments = new ComboBox();
+            lbUnassignedShifts = new ListBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)numericPplNeeded).BeginInit();
             SuspendLayout();
             // 
@@ -43,9 +47,9 @@
             // 
             lbEmployees.FormattingEnabled = true;
             lbEmployees.ItemHeight = 15;
-            lbEmployees.Location = new Point(12, 12);
+            lbEmployees.Location = new Point(12, 27);
             lbEmployees.Name = "lbEmployees";
-            lbEmployees.Size = new Size(858, 139);
+            lbEmployees.Size = new Size(858, 124);
             lbEmployees.TabIndex = 0;
             lbEmployees.MouseClick += lbEmployees_MouseClick;
             // 
@@ -60,9 +64,9 @@
             // 
             lbShiftsofEmployee.FormattingEnabled = true;
             lbShiftsofEmployee.ItemHeight = 15;
-            lbShiftsofEmployee.Location = new Point(12, 216);
+            lbShiftsofEmployee.Location = new Point(12, 231);
             lbShiftsofEmployee.Name = "lbShiftsofEmployee";
-            lbShiftsofEmployee.Size = new Size(858, 184);
+            lbShiftsofEmployee.Size = new Size(418, 169);
             lbShiftsofEmployee.TabIndex = 4;
             // 
             // btnAssignShift
@@ -109,11 +113,51 @@
             cbDepartments.Size = new Size(858, 23);
             cbDepartments.TabIndex = 10;
             // 
+            // lbUnassignedShifts
+            // 
+            lbUnassignedShifts.FormattingEnabled = true;
+            lbUnassignedShifts.ItemHeight = 15;
+            lbUnassignedShifts.Location = new Point(450, 231);
+            lbUnassignedShifts.Name = "lbUnassignedShifts";
+            lbUnassignedShifts.Size = new Size(420, 169);
+            lbUnassignedShifts.TabIndex = 11;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(155, 213);
+            label1.Name = "label1";
+            label1.Size = new Size(105, 15);
+            label1.TabIndex = 12;
+            label1.Text = "Shifts of Employee";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(600, 213);
+            label2.Name = "label2";
+            label2.Size = new Size(100, 15);
+            label2.TabIndex = 13;
+            label2.Text = "Unassigned Shifts";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(396, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(64, 15);
+            label3.TabIndex = 14;
+            label3.Text = "Employees";
+            // 
             // ScheduleForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(882, 437);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(lbUnassignedShifts);
             Controls.Add(cbDepartments);
             Controls.Add(numericPplNeeded);
             Controls.Add(btnAddShift);
@@ -129,6 +173,7 @@
             Load += ScheduleForm_Load;
             ((System.ComponentModel.ISupportInitialize)numericPplNeeded).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -141,5 +186,9 @@
         private Button btnAddShift;
         private NumericUpDown numericPplNeeded;
         private ComboBox cbDepartments;
+        private ListBox lbUnassignedShifts;
+        private Label label1;
+        private Label label2;
+        private Label label3;
     }
 }

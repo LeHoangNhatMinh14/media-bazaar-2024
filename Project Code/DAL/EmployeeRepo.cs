@@ -150,5 +150,20 @@ namespace DAL
                 }
             }
         }
+        public void EditEmployee(Employee employee)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"UPDATE Employee SET firstName = @firstName,
+                                                    lastName = @lastName, 
+                                                    bsn = @bsn, 
+                                                    dateOfBirth = @dateOfBirth,
+                                                    phoneNumber = @phoneNumber, gender, email, city, country ,street, houseNumber, postalCode, emergencyContactName, emergencyPhoneNumber, emergencyRelation, password, firstLogin WHERE employeeID = @employeeid ";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@employeeid", employee.employeeID);
+                }
+            }
+        }
     }
 }

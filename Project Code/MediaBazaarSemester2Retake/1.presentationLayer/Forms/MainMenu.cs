@@ -13,6 +13,8 @@ namespace MediaBazaarSemester2Retake
 {
     public partial class MainMenu : Form
     {
+        EmployeeForm employeeForm = new EmployeeForm();
+        ScheduleForm scheduleForm = new ScheduleForm();
         public MainMenu()
         {
             InitializeComponent();
@@ -31,7 +33,7 @@ namespace MediaBazaarSemester2Retake
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EmployeeForm employeeForm = new EmployeeForm();
+            scheduleForm.Hide();
 
 
             employeeForm.TopLevel = false;
@@ -80,7 +82,7 @@ namespace MediaBazaarSemester2Retake
         {
             PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
 
-            ScheduleForm scheduleForm = new ScheduleForm();
+            
             scheduleForm.TopLevel = false;
             scheduleForm.FormBorderStyle = FormBorderStyle.None;
             scheduleForm.Dock = DockStyle.Fill;

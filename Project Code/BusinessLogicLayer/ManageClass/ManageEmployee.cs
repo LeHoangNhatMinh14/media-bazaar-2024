@@ -16,7 +16,8 @@ namespace BusinessLogicLayer.ManageClass
         public ManageEmployee(IEmployeeDAL dAL)
         {
             dataAccessLayer = dAL;
-            employees = new List<Employee>();
+            employees = GetAllEmployees();
+
         }
 
         public void AddEmployee(Employee employee)
