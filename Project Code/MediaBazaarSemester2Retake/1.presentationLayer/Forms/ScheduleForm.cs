@@ -52,6 +52,7 @@ namespace MediaBazaarSemester2Retake
                 {
                     _manageShifts.AssignShift(selectedShift.shiftid, selectedEmployee.employeeID);
                     UpdateShiftsList(selectedEmployee.employeeID);
+                    MessageBox.Show($"This shift has been assgined to {selectedEmployee.firstName} {selectedEmployee.lastName}");
                 }
                 else
                 {
