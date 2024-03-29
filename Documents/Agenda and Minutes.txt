@@ -1,0 +1,82 @@
+22-02-24
+Meeting Duration: 20 Minutes
+
+In this meeting, we outlined our strategy for the Media Bazaar Project. We began by reviewing our progress in the first week and shared our plans for the subsequent five weeks. The professor advised us on the features that should be implemented by the sixth week, emphasizing that we are responsible for determining the priorities. Shift Management and CRUD (Create, Read, Update, Delete) for Employees are the highest priorities, while the rest are categorized as SHOULD/COULD priorities. Lastly, we discussed our individual roles in the project and how each of us plans to tackle the features we are assigned.
+
+Requirements we discussed include:
+
+-CRUD for employees, departments, and contracts;
+-Manual shift assignment;
+-Employees being able to view their profile, schedule, and request leave (maximum of 3 days) on the website;
+-Login functionality for each role;
+
+
+27-02-2024
+Meeting Duration: 17 Minutes
+
+Project Plan
+In this meeting, we talked about how the project plan has a good structure, but it has some grammar issues. in the context of the project, there wasn't an explanation of the problem that the company was facing. The scope and pre-conditions of the project were confusing because it didn’t have any pre-conditions. We discussed about pre-conditions/constraints of the project. one of the purposes of scope and pre-conditions is to paint a picture that can make the planning of the phases easier. The end product graph should have a caption to give more information about the graph. The end product not only contains the software product but also contains the document of the project. The communication part of the project plan should be more specific on who are we communicating with and what method we going to use to communicate with the specific person. Test strategies can contain unit tests and integration tests of the project.
+
+URS
+The agreement with the client should not only contain bullet points but also a paragraph of the agreement so that the reader can understand the context of the agreement. Non-functional requirements are about quality, scalability, maintainability, etc.. of the project plan. The functional requirements in our URS are similar with each other, which can be confusing to the reader.
+
+
+
+05-03-2024
+Meeting Duration: 30 Minutes
+
+URS
+In the meeting, we talked about the URS and what can be improved in the URS. For example, in the agreement, we should specify the different accounts and roles and the functionality of each role. We talk about the non-functional requirements and what can be added to them. Scalability is about the scale at which the software solution can grow within the company. Another non-functional requirement is the usability of the software solution. In the functional requirements, the CRUD functionality should be split into different functional requirements. It is important to ensure that all the client solutions are included in the functional requirements; after that, the use cases should be worked on. After the use cases are finished, we can start with the UI design, and when everything is in order, we can start the implementation of the software solution. It is important to start the project in this order because the client can read through the URS and agree with the function, and when it is time to present the solution, there won't be any bad surprises for the client.
+UI design
+The current website color palette should be changed from pink to light blue. A forgotten password is a would-have functionality for the website. Overall, the design of the website is nice.
+Desktop UI
+The login user interface shouldn’t contain the create account button. The current logo has some unnecessary animations that are unrelated to the company. The logo should be able to capture the essence of the company. We have multiple designs of the logo, and the client can decide which logo is best suited for the company. The stay sign option on the login page should not be an option since it could be a security breach. When the manager forgets the password, there is a can’t sign it button, and there will be a pop-up in which you can input the email. Which admin will receive the email and send the new password to the manager's email.
+
+
+
+
+07-03-2024
+Meeting Duration: 20 min
+
+In today's meeting with the tutor, which was halted because of a lecture on 5/3/2024, we:
+
++ Showed the updates (added more Use cases) we did on URS since tuesday, professor commented on some stuff we still should fiX: Fill up the Moscow Table, make all the Use cases until week 6/18 and fix some context issues we have in our current Use Cases such as defining which role (admin, manager etc) will do exactly what in terms of CRUD and management.
+
++ We showed our design of the desktop app to professor also, explained how it would work and our ideas for it. Professor commented on the images we selected and we might need to change it since it shows bazaars on japan and our project is in Eindhoven, Netherlands. Afterwards we showed our website design, how it will work and our ideas.
+
+
+
+
+
+
+
+08-03-2024
+Meeting Duration: 20 min
+
+During this meeting, we started by reviewing our User Requirement Specifications (URS). We took a step back to clarify the roles (administrators, managers), which initially caused some confusion between us and the client. However, after thorough discussion, we reached a final conclusion on how everything should be structured:
+
+Department managers can view their employees, see detailed information about those employees, and approve or deny leave requests.
+Administrators are responsible for creating schedules and can view all departments and their employees, which is particularly useful when creating schedules.
+HR personnel have the authority to create, read, update, and delete (CRUD) employee records. They also create new departments and contracts and are responsible for transferring employees between departments.
+We also decided on the priority of our features using the MoSCoW method, with the highest priority being the CRUD operations for HR concerning employees, departments, and contracts, as well as scheduling and viewing employee information.
+
+Finally, we presented our desktop app and website designs, and the client provided feedback:
+
+The company logo should be added to the login section of the desktop application.
+
+
+
+
+
+
+12-03-2024
+Meeting duration: 32 minutes
+
+UML(Unified Modeling Language)
+In the meeting, we discussed the UML (Unified Modeling Language) diagram. Some of the relationships in the UML need some changes and adjustments. Sick leave could be a way to connect the employee and the shift. In the shift class, the variable people needed should be renamed “capacity”. The employee class should have a boolean to indicate if the employee is active or not. The contract class should not only contain the employeeID but the employee object instead.
+
+URS(User requirement specific)
+The URS should contain a table to indicate which functional requirements correspond to the use cases.
+
+Test plan
+The test plan could start after the use cases for the first 6 weeks are done.
