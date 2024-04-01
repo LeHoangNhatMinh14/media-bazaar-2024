@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.ManageClass;
+using MediaBazaarSemester2Retake._1.presentationLayer.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace MediaBazaarSemester2Retake
     {
         EmployeeForm employeeForm = new EmployeeForm();
         ScheduleForm scheduleForm = new ScheduleForm();
+        WeeklyShiftsForm WeeklyShiftsForm = new WeeklyShiftsForm();
         public MainMenu()
         {
             InitializeComponent();
@@ -82,12 +84,17 @@ namespace MediaBazaarSemester2Retake
         {
             PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
 
-            
-            scheduleForm.TopLevel = false;
-            scheduleForm.FormBorderStyle = FormBorderStyle.None;
-            scheduleForm.Dock = DockStyle.Fill;
-            PnlMainMenu.Controls.Add(scheduleForm); // Add the form to the panel.
-            scheduleForm.Show(); // Displa
+            // Instantiate the WeeklyShiftsForm
+            WeeklyShiftsForm = new WeeklyShiftsForm();
+            WeeklyShiftsForm.TopLevel = false;
+            WeeklyShiftsForm.FormBorderStyle = FormBorderStyle.None;
+            WeeklyShiftsForm.Dock = DockStyle.Fill;
+
+            // Add the form to the panel
+            PnlMainMenu.Controls.Add(WeeklyShiftsForm);
+
+            // Show the form
+            WeeklyShiftsForm.Show();
             #region
             SetCrudeOn();
             btnBack.Visible = true;
