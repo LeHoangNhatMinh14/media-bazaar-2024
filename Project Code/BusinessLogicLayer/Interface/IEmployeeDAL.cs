@@ -22,5 +22,7 @@ namespace BusinessLogicLayer.Interface
 
         bool VerifyLogin(string userName , string password);
 
+        void EditEmployee(Employee employee);
+
     }
 }
