@@ -19,21 +19,15 @@ namespace BusinessLogicLayer.ManageClass
             _departments = departments;
         }
 
-        public void AddDepartment(Department department)
+        public void AddDepartment(string departmentName)
         {
-            // add department to the database
-            departmentList.Add(department);
+           _departments.AddDepartment(departmentName);
         }
 
         public List<Department> GetDepartmentList()
         {
-            departmentList = _departments.GetDepartments();
-            return departmentList;
+            return _departments.GetDepartments();
         }
 
-        public void DeleteDepartment()
-        {
-            // delete department
-        }
     }
 }

@@ -61,6 +61,7 @@ namespace DAL.Mapper
                 workHours = GetStringValue(dataReader, nameof(Contract.workHours)),
                 position = GetStringValue(dataReader, nameof(Contract.position)),
                 active = GetValue<bool>(dataReader, nameof(Contract.active)),
+                departmentID = GetValue<int>(dataReader, nameof(Contract.departmentID)),
                 startDate = GetValue<DateTime>(dataReader, nameof(Contract.startDate)),
                 endDate = GetValue<DateTime>(dataReader, nameof(Contract.endDate)),
                 reason = GetStringValue(dataReader, nameof(Contract.reason))
@@ -76,6 +77,15 @@ namespace DAL.Mapper
                 peopleNeeded = GetValue<int>(dataReader, nameof(Shift.peopleNeeded)),
                 shiftDate = GetValue<DateTime>(dataReader, nameof(Shift.shiftDate)),
                 FK_DepartmentID = GetValue<int>(dataReader, nameof(Shift.FK_DepartmentID))
+            };
+        }
+
+        internal static Department MapToDepartment (this SqlDataReader dataReader)
+        {
+            return new Department(
+                              departmentID : GetValue<int>(dataReader, nameof(Department._departmentID)))
+            {
+                _departmentName = GetStringValue(dataReader, nameof(Department._departmentName))
             };
         }
     }

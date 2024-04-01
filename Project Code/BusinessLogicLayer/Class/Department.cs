@@ -17,6 +17,12 @@ namespace BusinessLogicLayer.Class
             _departmentName = departmentName;
         }
 
+
+        //Mapper
+        public Department(int departmentID)
+        {
+            _departmentID = departmentID;
+        }
         public override string ToString()
         {
             return $"{_departmentName}";

@@ -10,5 +10,8 @@ namespace BusinessLogicLayer.Interface
     public interface IDepartments
     {
         List<Department> GetDepartments();
+        void AddDepartment(string departmentName);
+        void DeleteDepartment(int departmentID);
+
     }
 }

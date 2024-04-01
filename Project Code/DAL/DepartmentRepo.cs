@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Class;
 using BusinessLogicLayer.Interface;
+using DAL.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -19,6 +20,36 @@ namespace DAL
             this.connectionString = connectionString;
         }
 
+
+        public void AddDepartment(string departmentName)
+        {
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string querry = "INSERT INTO Departments (departmentName) VALUES (@departmentName)";
+                conn.Open();
+                using(SqlCommand cmd = new SqlCommand(querry, conn))
+                {
+                    cmd.Parameters.AddWithValue("@departmentName", departmentName);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteDepartment(int departmentID)
+        {
+            using(SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string querry = "DELETE FROM Departments WHERE departmentID = @departmentID";
+                conn.Open();
+                using(SqlCommand cmd = new SqlCommand(querry, conn))
+                {
+                    cmd.Parameters.AddWithValue("@departmentID", departmentID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
         public List<Department> GetDepartments()
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -32,10 +63,7 @@ namespace DAL
                     {
                         while (reader.Read())
                         {
-                            int id = Convert.ToInt32(reader["departmentID"]);
-                            string Name = Convert.ToString(reader["departmentName"]);
-
-                            Department department = new Department(id, Name);
+                           Department department = reader.MapToDepartment();
                             departments.Add(department);
                         }
                         return departments;
