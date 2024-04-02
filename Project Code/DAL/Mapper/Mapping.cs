@@ -83,9 +83,9 @@ namespace DAL.Mapper
         internal static Department MapToDepartment (this SqlDataReader dataReader)
         {
             return new Department(
-                              departmentID : GetValue<int>(dataReader, nameof(Department._departmentID)))
+                              departmentID : GetValue<int>(dataReader, "departmentID"))
             {
-                _departmentName = GetStringValue(dataReader, nameof(Department._departmentName))
+                _departmentName = GetStringValue(dataReader, "departmentName")
             };
         }
     }

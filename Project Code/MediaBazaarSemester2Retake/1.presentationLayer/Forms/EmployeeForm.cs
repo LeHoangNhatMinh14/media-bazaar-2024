@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace MediaBazaarSemester2Retake
@@ -21,29 +22,67 @@ namespace MediaBazaarSemester2Retake
     {
         ManageEmployee manageEmployee;
         Employee employee;
-
+        public ManageDepartment manageDepartment;
         public EmployeeForm()
         {
             InitializeComponent();
-            dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
-            dtpDateOfBirth.CustomFormat = "dd'/'MM'/'yyyy";
             manageEmployee = ManageEmployeeFactory.Create();
-            lbEmployee.Items.Clear();
-            foreach(Employee employee in manageEmployee.GetAllEmployees())
-            {
-                lbEmployee.Items.Add(employee);
-            }
-            ResetField();
-        }
-
-
-        private void EmployeeForm_Load(object sender, EventArgs e)
-        {
+            manageDepartment = ManageDepartmentFactory.Create();
+            FillDatagrid();
+            FillComboBoxes();
 
         }
 
-        private void btnCreateEmployee_Click(object sender, EventArgs e)
+        private void FillComboBoxes()
         {
+         //TODO
+        }
+
+        private void FillEditEmployee(Employee employee)
+        {
+            label41.Text = employee.employeeID.ToString();
+            TxtBxEditFirstName.Text = employee.firstName;
+            TxtBxEditLastName.Text = employee.lastName;
+            TxtBxEditEmail.Text = employee.email;
+            TxtBxEditPhoneNumber.Text = employee.phoneNumber;
+            TxtBxEditStreet.Text = employee.street;
+            TxtBxEditPostalCode.Text = employee.postalCode;
+
+            TxtBxEditBsn.Text = employee.bsn.ToString();
+            DtpEditDateOfBirth.Value = Convert.ToDateTime(employee.dateOfBirth);
+
+            TxtBxEditPosition.Text = employee.Contract.position;
+            CbXEditDepartment.SelectedItem = manageDepartment.GetDepartmentName(employee.Contract.departmentID);
+            CbXEditContract.SelectedItem = employee.Contract.contractType;
+
+            DtPStartDate.Value = Convert.ToDateTime(employee.Contract.startDate);
+            DtPEndDate.Value = Convert.ToDateTime(employee.Contract.endDate);
+            CbXContract.SelectedItem = employee.Contract.contractType;
+
+            TxtBxEditEmergencyName.Text = employee.emergencyContactName;
+            TxtBxEditEmergencyContact.Text = employee.emergencyPhoneNumber;
+            CbXEditEmergencyRelationship.Text = employee.emergencyRelation;
+        }
+
+        private void FillDatagrid()
+        {
+            FillDatagrid(manageEmployee.GetAllEmployees());
+        }
+
+        private void FillDatagrid(IEnumerable<Employee> list)
+        {
+            dgv_Employee.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dgv_Employee.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_Employee.MultiSelect = false;
+            var source = new BindingSource();
+            source.DataSource = list;
+            dgv_Employee.DataSource = source;
+            dgv_Employee.ScrollBars = ScrollBars.Both;
+        }
+
+        private void BtnAddEmployee_Click(object sender, EventArgs e)
+        {
+
             string firstName;
             string lastName;
             string bsn;
@@ -59,141 +98,96 @@ namespace MediaBazaarSemester2Retake
             string emergencyName;
             string emergencyPhone;
             string emergencyRelation;
+            string positon;
+            string departmentName;
+            DateTime startTime;
+            DateTime endTime;
+            string contractType;
+            //Check ALl Boxes if name is same;
+            int id = manageEmployee.GetAllEmployees().Count + 1;
+            firstName = TxtBxFirstName.Text;
+            lastName = txtBoxLastName.Text;
+            bsn = txtBoxbsn.Text;
+            DateTime dob = dtpDateOfBirth.Value;
+            // convert DateTime to DateOnly 
+            DateOfBirth = dtpDateOfBirth.Value;
+            phoneNumber = txtBoxPhoneNumber.Text;
+            gender = txtBoxGender.Text;
+            email = txtBoxEmail.Text;
+            city = txtBoxCity.Text;
+            country = txtCountry.Text;
+            street = txtBoxStreet.Text;
+            houseNumber = Convert.ToInt32(txtBoxHouseNumber.Text);
+            postalCode = txtBoxPostalCode.Text;
+            emergencyName = txtBoxEmergencyContact.Text;
+            emergencyPhone = txtBoxemergencyPhoneNumber.Text;
+            emergencyRelation = txtBoxEmergencyRelation.Text;
+            positon = TxtBxPosition.Text;
+            departmentName = CbXDepartment.Text;
+            //startTime =
+           // endTime =
 
-            if (AllFieldsFilled())
-            {
-                int id = manageEmployee.GetAllEmployees().Count + 1;
-                firstName = txtBoxFirstName.Text;
-                lastName = txtBoxLastName.Text;
-                bsn = txtBoxbsn.Text;
-                DateTime dob = dtpDateOfBirth.Value;
-                // convert DateTime to DateOnly 
-                DateOfBirth = dtpDateOfBirth.Value;
-                phoneNumber = txtBoxPhoneNumber.Text;
-                gender = txtBoxGender.Text;
-                email = txtBoxEmail.Text;
-                city = txtBoxCity.Text;
-                country = txtCountry.Text;
-                street = txtBoxStreet.Text;
-                houseNumber = Convert.ToInt32(txtBoxHouseNumber.Text);
-                postalCode = txtBoxPostalCode.Text;
-                emergencyName = txtBoxEmergencyContact.Text;
-                emergencyPhone = txtBoxemergencyPhoneNumber.Text;
-                emergencyRelation = txtBoxEmergencyRelation.Text;
 
-                employee = new Employee(id, firstName, lastName, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
-                manageEmployee.AddEmployee(employee);
-                MessageBox.Show("Successfully add employee");
-                ResetField();
-                lbEmployee.Items.Clear();
-                foreach (Employee employee in manageEmployee.GetAllEmployees())
-                {
-                    lbEmployee.Items.Add(employee);
-                }
-            }
+
+            //IF Contract type different thingy
+            Contract contract = new Contract();
+                employee = new Employee(id, firstName, lastName, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation, contract);
+            manageEmployee.AddEmployee(employee);
+            MessageBox.Show("Successfully add employee");
         }
 
-        private void btnUpdateEmployee_Click(object sender, EventArgs e)
+        private void BtnFireEmployee_Click(object sender, EventArgs e)
         {
-
+            //
         }
 
-        private void btnReadEmployee_Click(object sender, EventArgs e)
+        private void BtnSendToEditEmployee_Click(object sender, EventArgs e)
         {
-
+            Employee employee;
+            DataGridViewRow selectedRow = dgv_Employee.SelectedRows[0];
+            int id = (int)selectedRow.Cells["employeeId"].Value;
+            employee = manageEmployee.GetEmployeeByID(id);
+            FillEditEmployee(employee);
+            tabControl1.SelectedTab = tabPage3;
         }
 
-        private void btnDeleteEmployee_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            TxtBxFirstName.Text = "Jaan";
+            TxtBxLastName.Text = "Jansen";
+            TxtBxEmail.Text = "j.jansen@mediabazaar.nl";
+            TxtBxPhoneNumber.Text = "0123456789";
+            TxtBxPassword.Text = "password123";
+            TxtBxStreet.Text = "Magellanstraat 11";
+            TxtBxPostalCode.Text = "2371BB";
 
+            TxtBxBsn.Text = "21234475";
+            DtPDateOfBirth.Value = Convert.ToDateTime("05/08/1998");
+
+            TxtBxPosition.Text = "Cashier";
+            CbXDepartment.SelectedIndex = 1;
+            CbXContract.SelectedIndex = 1;
+
+
+            TxtBxEmergencyName.Text = "Mieteke Joris";
+            TxtBxEmergencyContact.Text = "0612219179";
+            CbXEmergencyRelationship.Text = "Spouse";
         }
 
-        private bool AllFieldsFilled()
+        
+
+        private void unfilter_Click(object sender, EventArgs e)
         {
-            foreach (Control control in Controls)
-            {
-                if (control is TextBox textBox)
-                {
-                    if (string.IsNullOrWhiteSpace(textBox.Text))
-                    {
-                        MessageBox.Show("Please fill in all the textbox!");
-                        return false; // Field is not filled
-                    }
-                }
-                else if (control is DateTimePicker dateTimePicker)
-                {
-                    if (dateTimePicker.Value == DateTime.Today) //if the day is today
-                    {
-                        MessageBox.Show("Date of birth can't be today!");
-                        return false; // Field is not changed
-                    }
-                }
-
-                // If the control is a container (e.g., GroupBox, Panel), recursively check its controls.
-            }
-            // try to convert the text and if it unable to convert the '!' will turn the result to true and run the if statement scope
-
-            if (!int.TryParse(txtBoxHouseNumber.Text, out int result3))
-            {
-                MessageBox.Show("Please fill in all the textbox!");
-                return false; // number only field
-            }
-
-            try
-            {
-                new System.Net.Mail.MailAddress(txtBoxEmail.Text);
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Invaild Email!");
-                return false;
-            }
-
-            return true;
+            rbnHR.Checked = false;
+            rbnCustomerService.Checked = false;
+            rbnLogistic.Checked = false;
+            rbnSecurity.Checked = false;
+            FillDatagrid();
         }
 
-        private void ResetField()
+
+        private void BtnEditEmployee_Click(object sender, EventArgs e)
         {
-            foreach (Control control in Controls)
-            {
-                if (control is TextBox textBox)
-                {
-                    textBox.Clear();
-                }
-                else if (control is DateTimePicker dateTimePicker)
-                {
-                    dateTimePicker.Value = DateTime.Today;
-
-                }
-            }
-        }
-
-        private void lbEmployee_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lbEmployee.SelectedIndex != -1)
-            {
-                Employee employee = (Employee)lbEmployee.SelectedItem;
-                txtBoxFirstName.Text = employee.firstName;
-                txtBoxLastName.Text = employee.lastName;
-                txtBoxbsn.Text = employee.bsn;
-                dtpDateOfBirth.Value = employee.dateOfBirth;
-                txtBoxPhoneNumber.Text = employee.phoneNumber;
-                txtBoxGender.Text = employee.gender;
-                txtBoxEmail.Text = employee.email;
-                txtBoxCity.Text = employee.city;
-                txtCountry.Text = employee.country;
-                txtBoxStreet.Text = employee.street;
-                txtBoxHouseNumber.Text = employee.houseNumber.ToString();
-                txtBoxPostalCode.Text = employee.postalCode;
-                txtBoxEmergencyContact.Text = employee.emergencyContactName;
-                txtBoxemergencyPhoneNumber.Text = employee.phoneNumber;
-                txtBoxEmergencyRelation.Text = employee.emergencyRelation;
-            }
-            else
-            {
-                ResetField();
-            }
-
 
         }
     }

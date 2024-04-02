@@ -22,6 +22,9 @@ namespace BusinessLogicLayer.Class
         public string emergencyPhoneNumber { get; set; }
         public string emergencyContactName { get; set; } = string.Empty;
         public string emergencyRelation { get; set; } = string.Empty;
+
+        public Contract Contract { get; set; }
+
         public string password { get; set; } = string.Empty;
         public bool firstLogin { get; set; }
 
@@ -32,7 +35,7 @@ namespace BusinessLogicLayer.Class
 
         public Employee(){}
 
-        public Employee(int employeeID, string firstName, string lastName, string bsn, DateTime dateOfBirth, string phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, string emergencyPhoneNumber, string emergencyRelation)
+        public Employee(int employeeID, string firstName, string lastName, string bsn, DateTime dateOfBirth, string phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, string emergencyPhoneNumber, string emergencyRelation, Contract contract)
         {
             this.employeeID = employeeID;
             this.firstName = firstName;
@@ -50,6 +53,7 @@ namespace BusinessLogicLayer.Class
             this.emergencyContactName = emergencyContactName;
             this.emergencyPhoneNumber = emergencyPhoneNumber;
             this.emergencyRelation = emergencyRelation;
+            this.Contract = contract;
             this.password = random.GeneratePassword(8);
             this.firstLogin = true;
         }
@@ -74,6 +78,7 @@ namespace BusinessLogicLayer.Class
             this.emergencyContactName = emergencyContactName;
             this.emergencyPhoneNumber = emergencyPhoneNumber;
             this.emergencyRelation = emergencyRelation;
+            this.Contract = Contract;
             this.password = password;
             this.firstLogin = firstLogin;
         }
