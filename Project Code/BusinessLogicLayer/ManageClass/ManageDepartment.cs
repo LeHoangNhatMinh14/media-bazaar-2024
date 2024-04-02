@@ -28,6 +28,8 @@ namespace BusinessLogicLayer.ManageClass
         {
             return _departments.GetDepartments();
         }
-
+        public string GetDepartmentName(int departmentID) { 
+        return _departments.GetDepartmentName(departmentID);
+        }
     }
 }
