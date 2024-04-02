@@ -43,6 +43,11 @@ namespace BusinessLogicLayer.ManageClass
             return _IShifts.GetUnassignedShifts();
         }
 
+        public List<Shift> GetWeeklyShifts(int employeeID ,List<DateTime> week)
+        { 
+            return _IShifts.GetShiftByWeek(employeeID,week);
+        }
+
         public bool CanAssignShift(int employeeID, Shift assignedShift)
         {
             if (assignedShift.shiftType == "Morning")

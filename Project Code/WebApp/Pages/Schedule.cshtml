@@ -7,9 +7,17 @@
 
 <div class="container text-center custom-size">
 	<div class="row">
-		<div class="col-1 arrow-back"></div>
-		<div class="col-10 date-square"><h2>Day X-Y, Month , Year</h2></div>
-		<div class="col-1 arrow-forward"></div>
+		<div class="col-1 arrow-back">
+			<a asp-page-handler="Previous">
+				<button class="button-back" type="submit" value="Submit">PREVIOUS</button>
+			</a>
+			</div>
+		<div class="col-10 date-square"><h2>@Model.Date</h2> </div>
+		<div class="col-1 arrow-forward">
+			<a asp-page-handler="Next">
+				<button class="button-forward" type="submit" value="Submit">NEXT</button>
+			</a>
+		</div>
 		<div class="col shifts">	
 			@if (Model.employeeShifts != null) {
 				@foreach (var shift in Model.employeeShifts) {
@@ -25,7 +33,7 @@
 		<div class="w-100"></div>
 		<div class="col-10"></div>
 		<div class="col-2 button-container">
-			<a asp-page="/OffDaysRequest">
+			<a asp-page-handler="DaysOff" >
 				<button class="button-offrequest">
 					Request Leave
 				</button>

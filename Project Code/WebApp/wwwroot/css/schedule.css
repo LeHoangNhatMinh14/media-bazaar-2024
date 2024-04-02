@@ -15,7 +15,6 @@ container {
 
 .arrow-back {
     background-color: #B3001B;
-    height: 40px;
     border-top-left-radius: 30px;
     height: inherit;
 }
@@ -24,6 +23,22 @@ container {
     background-color: #B3001B;
     height: inherit;
     border-top-right-radius:30px;
+}
+
+.button-back {
+    height: 100%;
+    width: 5vw;
+    border-top-left-radius: 30px;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.button-forward {
+    height: 100%;
+    width:5vw;
+    border-top-right-radius: 30px;
+    background-color:transparent;
+    border-color:transparent;
 }
 
 .date-square {
@@ -63,4 +78,16 @@ container {
     border-radius: 40px;
     background-color: #262626;
     color: #CCAD8F;
+}
+
+.button-back:hover {
+    transition:ease-in-out;
+    color: #CCAD8F;
+    transform:scale(1.3)
+}
+
+.button-forward:hover {
+    transition: ease-in-out;
+    color: #CCAD8F;
+    transform: scale(1.3)
 }
