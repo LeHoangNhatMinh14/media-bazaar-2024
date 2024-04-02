@@ -10,6 +10,7 @@ using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,11 +24,13 @@ namespace MediaBazaarSemester2Retake
         ManageEmployee manageEmployee;
         Employee employee;
         public ManageDepartment manageDepartment;
+        ManageContract manageContract;
         public EmployeeForm()
         {
             InitializeComponent();
             manageEmployee = ManageEmployeeFactory.Create();
             manageDepartment = ManageDepartmentFactory.Create();
+            manageContract = ManageContractFactory.Create();
             FillDatagrid();
             FillComboBoxes();
 
@@ -35,18 +38,24 @@ namespace MediaBazaarSemester2Retake
 
         private void FillComboBoxes()
         {
-         //TODO
+            //TODO
         }
 
         private void FillEditEmployee(Employee employee)
         {
-            label41.Text = employee.employeeID.ToString();
+            label42.Text = employee.employeeID.ToString();
             TxtBxEditFirstName.Text = employee.firstName;
             TxtBxEditLastName.Text = employee.lastName;
+            TxtBxEditPassword.Text = employee.password;
             TxtBxEditEmail.Text = employee.email;
             TxtBxEditPhoneNumber.Text = employee.phoneNumber;
+            CbXEditGender.SelectedItem = employee.gender;
+            TxtBxEditCity.Text = employee.city;
             TxtBxEditStreet.Text = employee.street;
             TxtBxEditPostalCode.Text = employee.postalCode;
+            TxtBxEditHouseNumber.Text = employee.houseNumber.ToString();
+            TxtBxEditCountry.Text = employee.country;
+
 
             TxtBxEditBsn.Text = employee.bsn.ToString();
             DtpEditDateOfBirth.Value = Convert.ToDateTime(employee.dateOfBirth);
@@ -85,6 +94,7 @@ namespace MediaBazaarSemester2Retake
 
             string firstName;
             string lastName;
+            string password;
             string bsn;
             DateTime DateOfBirth;
             string phoneNumber;
@@ -99,41 +109,47 @@ namespace MediaBazaarSemester2Retake
             string emergencyPhone;
             string emergencyRelation;
             string positon;
+            // change to department object maybe
             string departmentName;
             DateTime startTime;
             DateTime endTime;
             string contractType;
             //Check ALl Boxes if name is same;
-            int id = manageEmployee.GetAllEmployees().Count + 1;
-            firstName = TxtBxFirstName.Text;
-            lastName = txtBoxLastName.Text;
-            bsn = txtBoxbsn.Text;
-            DateTime dob = dtpDateOfBirth.Value;
-            // convert DateTime to DateOnly 
-            DateOfBirth = dtpDateOfBirth.Value;
-            phoneNumber = txtBoxPhoneNumber.Text;
-            gender = txtBoxGender.Text;
-            email = txtBoxEmail.Text;
-            city = txtBoxCity.Text;
-            country = txtCountry.Text;
-            street = txtBoxStreet.Text;
-            houseNumber = Convert.ToInt32(txtBoxHouseNumber.Text);
-            postalCode = txtBoxPostalCode.Text;
-            emergencyName = txtBoxEmergencyContact.Text;
-            emergencyPhone = txtBoxemergencyPhoneNumber.Text;
-            emergencyRelation = txtBoxEmergencyRelation.Text;
-            positon = TxtBxPosition.Text;
-            departmentName = CbXDepartment.Text;
-            //startTime =
-           // endTime =
+            if (AllFieldsFilled(tabPage2) && CheckBsn(TxtBxBsn.Text))
+            {
+                firstName = TxtBxFirstName.Text;
+                lastName = TxtBxLastName.Text;
+                password = TxtBxPassword.Text;
+                bsn = TxtBxBsn.Text;
+                DateOfBirth = DtPDateOfBirth.Value;
+                phoneNumber = TxtBxPhoneNumber.Text;
+                gender = CbXGender.Text;
+                email = TxtBxEmail.Text;
+                city = TxtBxCity.Text;
+                country = TxtBxCountry.Text;
+                street = TxtBxStreet.Text;
+                houseNumber = Convert.ToInt32(TxtBxHouseNumber.Text);
+                postalCode = TxtBxPostalCode.Text;
+                emergencyName = TxtBxEmergencyName.Text;
+                emergencyPhone = TxtBxEmergencyContact.Text;
+                emergencyRelation = CbXEmergencyRelationship.Text;
+                //Contract
+                positon = TxtBxPosition.Text;
+                departmentName = CbXDepartment.Text;
+                startTime = DtPStartDate.Value;
+                endTime = DtPEndDate.Value;
+                contractType = CbXContract.Text;
 
+                //IF Contract type different thingy
+                Contract contract = new Contract();
+                employee = new Employee( firstName, lastName, password, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation, contract);
+                manageEmployee.AddEmployee(employee);
+                MessageBox.Show("Successfully add employee");
+                ResetField(tabPage2);
+                FillDatagrid();
+                
+            }
 
-
-            //IF Contract type different thingy
-            Contract contract = new Contract();
-                employee = new Employee(id, firstName, lastName, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation, contract);
-            manageEmployee.AddEmployee(employee);
-            MessageBox.Show("Successfully add employee");
         }
 
         private void BtnFireEmployee_Click(object sender, EventArgs e)
@@ -174,7 +190,7 @@ namespace MediaBazaarSemester2Retake
             CbXEmergencyRelationship.Text = "Spouse";
         }
 
-        
+
 
         private void unfilter_Click(object sender, EventArgs e)
         {
@@ -188,6 +204,102 @@ namespace MediaBazaarSemester2Retake
 
         private void BtnEditEmployee_Click(object sender, EventArgs e)
         {
+            //check if all field in tab 3 is filled
+            if (AllFieldsFilled(tabPage3))
+            {
+
+            }
+        }
+
+        private bool CheckBsn(string bsn)
+        {
+            // get all employee 
+            foreach (Employee employee in manageEmployee.GetAllEmployees())
+            {
+                // check if employee bsn is the same
+                if (employee.bsn == bsn)
+                {
+                    // return false if bsn is the same
+                    return false;
+                }
+            }
+            // return true if the bsn is not in the employee database
+            return true;
+        }
+
+        private bool AllFieldsFilled(TabPage tabPageName)
+        {
+            foreach (GroupBox groupBox in tabPageName.Controls.OfType<GroupBox>())
+            {
+                foreach (Control control in groupBox.Controls)
+                {
+                    if (control is TextBox textBox)
+                    {
+                        if (string.IsNullOrEmpty(textBox.Text))
+                        {
+                            MessageBox.Show("Please fill in all the textbox!");
+                            return false; // Field is not filled
+                        }
+                    }
+                    else if (control is ComboBox comboBox)
+                    {
+                        if (string.IsNullOrWhiteSpace(comboBox.Text)) //if the day is today
+                        {
+                            MessageBox.Show("Please make sure all comboBox is selected");
+                            return false; // Field is not changed
+                        }
+                    }
+
+                    // If the control is a container (e.g., GroupBox, Panel), recursively check its controls.
+                }
+                // email validation
+
+                try
+                {
+                    if (tabPage2 == tabPageName)
+                    {
+                        new System.Net.Mail.MailAddress(TxtBxEmail.Text);
+                    }
+                    else if (tabPage3 == tabPageName)
+                    {
+                        new System.Net.Mail.MailAddress(TxtBxEditEmail.Text);
+                    }
+
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Invaild Email!");
+                    return false;
+                }
+
+            }
+            return true;
+        }
+
+        private void ResetField(TabPage tabPageName)
+        {
+            // reset all field to empty or today date
+            foreach (GroupBox groupBox in tabPageName.Controls.OfType<GroupBox>())
+            {
+                foreach (Control control in groupBox.Controls)
+                {
+                    if (control is TextBox textBox)
+                    {
+                        textBox.Text = "";
+                    }
+                    else if (control is ComboBox comboBox)
+                    {
+                        comboBox.SelectedIndex = -1;
+                    }
+                    else if (control is DateTimePicker dateTimePicker)
+                    {
+                        dateTimePicker.Value = DateTime.Now;
+                    }
+
+                    // If the control is a container (e.g., GroupBox, Panel), recursively check its controls.
+                }
+
+            }
 
         }
     }
