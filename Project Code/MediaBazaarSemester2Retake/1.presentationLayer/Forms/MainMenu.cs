@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.ManageClass;
+using MediaBazaarSemester2Retake._1.presentationLayer.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace MediaBazaarSemester2Retake
     {
         EmployeeForm employeeForm = new EmployeeForm();
         ScheduleForm scheduleForm = new ScheduleForm();
+        WeeklyShiftsForm WeeklyShiftsForm = new WeeklyShiftsForm();
         public MainMenu()
         {
             InitializeComponent();
@@ -24,8 +26,8 @@ namespace MediaBazaarSemester2Retake
         {
             SetCrudeOn();
             btnBack.Visible = true;
-            btnStockmanagementCLicked.Visible=true;
-          
+            btnStockmanagementCLicked.Visible = true;
+
             btnCreateProductManagement.Visible = true;
             btnDeleteProductManagement.Visible = true;
             btnUpdateProductManagement.Visible = true;
@@ -82,19 +84,24 @@ namespace MediaBazaarSemester2Retake
         {
             PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
 
-            
+            // Instantiate the WeeklyShiftsForm
+            scheduleForm = new ScheduleForm();
             scheduleForm.TopLevel = false;
             scheduleForm.FormBorderStyle = FormBorderStyle.None;
             scheduleForm.Dock = DockStyle.Fill;
-            PnlMainMenu.Controls.Add(scheduleForm); // Add the form to the panel.
-            scheduleForm.Show(); // Displa
+
+            // Add the form to the panel
+            PnlMainMenu.Controls.Add(scheduleForm);
+
+            // Show the form
+            scheduleForm.Show();
             #region
             SetCrudeOn();
             btnBack.Visible = true;
             btnScheduleManagementClicked.Visible = true;
             btnCreateScheduleManagement.Visible = true;
             btnUpdateScheduleManagement.Visible = true;
-            btnDeleteScheduleManagement.Visible = true;
+            btnWeeklyScheduleManagement.Visible = true;
             btnProductManagement.Visible = false;
             #endregion
         }
@@ -111,7 +118,7 @@ namespace MediaBazaarSemester2Retake
 
             btnUpdateScheduleManagement.Visible = false;
             btnCreateScheduleManagement.Visible = false;
-            btnDeleteScheduleManagement.Visible = false;
+            btnWeeklyScheduleManagement.Visible = false;
 
 
             btnUpdateScheduleManagement.Visible = false;
@@ -122,24 +129,25 @@ namespace MediaBazaarSemester2Retake
             btnStockManagement.Visible = true;
         }
         private void button1_Click_1(object sender, EventArgs e)
-        {btnStockmanagementCLicked.Visible = false;
+        {
+            btnStockmanagementCLicked.Visible = false;
             btnBack.Visible = false;
-           // pnlEmployeeManagement.Visible = false;
+            // pnlEmployeeManagement.Visible = false;
             ProductManagementClicked.Visible = false;
             btnCreateProductManagement.Visible = false;
             btnDeleteProductManagement.Visible = false;
             btnUpdateProductManagement.Visible = false;
             btnScheduleManagementClicked.Visible = false;
-            
+
             btnupdateEmployeeManagement.Visible = false;
             btnDeleteEMployeeManagement.Visible = false;
-            btnCreateEmployee.Visible = false;  
+            btnCreateEmployee.Visible = false;
 
             btnUpdateScheduleManagement.Visible = false;
             btnCreateScheduleManagement.Visible = false;
-            btnDeleteScheduleManagement.Visible = false;
+            btnWeeklyScheduleManagement.Visible = false;
 
-           
+
             btnUpdateScheduleManagement.Visible = false;
 
             btnProductManagement.Visible = true;
@@ -168,7 +176,7 @@ namespace MediaBazaarSemester2Retake
 
         private void btnCreateEmployee_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnCreateScheduleManagement_Click(object sender, EventArgs e)
@@ -179,6 +187,49 @@ namespace MediaBazaarSemester2Retake
         private void btnCreateProductManagement_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnWeeklyScheduleManagement_Click(object sender, EventArgs e)
+        {
+            PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
+
+            // Instantiate the WeeklyShiftsForm
+            WeeklyShiftsForm = new WeeklyShiftsForm();
+            WeeklyShiftsForm.TopLevel = false;
+            WeeklyShiftsForm.FormBorderStyle = FormBorderStyle.None;
+            WeeklyShiftsForm.Dock = DockStyle.Fill;
+
+            // Add the form to the panel
+            PnlMainMenu.Controls.Add(WeeklyShiftsForm);
+
+            // Show the form
+            WeeklyShiftsForm.Show();
+            #region
+            SetCrudeOn();
+            btnBack.Visible = true;
+            btnScheduleManagementClicked.Visible = true;
+            btnCreateScheduleManagement.Visible = true;
+            btnUpdateScheduleManagement.Visible = true;
+            btnWeeklyScheduleManagement.Visible = true;
+            btnProductManagement.Visible = false;
+            #endregion
+        }
+
+        private void btnScheduleManagementClicked_Click(object sender, EventArgs e)
+        {
+            PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
+
+            // Instantiate the WeeklyShiftsForm
+            scheduleForm = new ScheduleForm();
+            scheduleForm.TopLevel = false;
+            scheduleForm.FormBorderStyle = FormBorderStyle.None;
+            scheduleForm.Dock = DockStyle.Fill;
+
+            // Add the form to the panel
+            PnlMainMenu.Controls.Add(scheduleForm);
+
+            // Show the form
+            scheduleForm.Show();
         }
     }
 }

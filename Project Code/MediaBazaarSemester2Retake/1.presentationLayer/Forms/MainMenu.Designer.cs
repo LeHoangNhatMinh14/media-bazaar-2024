@@ -36,23 +36,23 @@
             label1 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
-            btnStockManagement = new Button();
-            btnSchedule = new Button();
-            EmployeeManagementClicked = new Button();
-            btnupdateEmployeeManagement = new Button();
-            btnUpdateProductManagement = new Button();
             btnUpdateScheduleManagement = new Button();
-            btnDeleteScheduleManagement = new Button();
-            btnDeleteProductManagement = new Button();
-            btnDeleteEMployeeManagement = new Button();
-            btnProductManagement = new Button();
-            btnCreateEmployee = new Button();
-            btnCreateScheduleManagement = new Button();
-            btnCreateProductManagement = new Button();
             btnEmployeeManagement = new Button();
             btnStockmanagementCLicked = new Button();
             btnScheduleManagementClicked = new Button();
             ProductManagementClicked = new Button();
+            EmployeeManagementClicked = new Button();
+            btnCreateScheduleManagement = new Button();
+            btnCreateProductManagement = new Button();
+            btnSchedule = new Button();
+            btnupdateEmployeeManagement = new Button();
+            btnUpdateProductManagement = new Button();
+            btnProductManagement = new Button();
+            btnCreateEmployee = new Button();
+            btnWeeklyScheduleManagement = new Button();
+            btnDeleteProductManagement = new Button();
+            btnDeleteEMployeeManagement = new Button();
+            btnStockManagement = new Button();
             PnlMainMenu = new Panel();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
@@ -133,87 +133,28 @@
             // panel3
             // 
             panel3.BackColor = Color.DarkGray;
-            panel3.Controls.Add(btnStockManagement);
-            panel3.Controls.Add(btnSchedule);
-            panel3.Controls.Add(btnupdateEmployeeManagement);
-            panel3.Controls.Add(btnUpdateProductManagement);
             panel3.Controls.Add(btnUpdateScheduleManagement);
-            panel3.Controls.Add(btnDeleteScheduleManagement);
-            panel3.Controls.Add(btnDeleteProductManagement);
-            panel3.Controls.Add(btnDeleteEMployeeManagement);
-            panel3.Controls.Add(btnProductManagement);
-            panel3.Controls.Add(btnCreateEmployee);
-            panel3.Controls.Add(btnCreateScheduleManagement);
-            panel3.Controls.Add(btnCreateProductManagement);
-            panel3.Controls.Add(btnEmployeeManagement);
-            panel3.Controls.Add(btnStockmanagementCLicked);
             panel3.Controls.Add(btnScheduleManagementClicked);
             panel3.Controls.Add(ProductManagementClicked);
             panel3.Controls.Add(EmployeeManagementClicked);
+            panel3.Controls.Add(btnCreateScheduleManagement);
+            panel3.Controls.Add(btnCreateProductManagement);
+            panel3.Controls.Add(btnSchedule);
+            panel3.Controls.Add(btnupdateEmployeeManagement);
+            panel3.Controls.Add(btnUpdateProductManagement);
+            panel3.Controls.Add(btnProductManagement);
+            panel3.Controls.Add(btnCreateEmployee);
+            panel3.Controls.Add(btnWeeklyScheduleManagement);
+            panel3.Controls.Add(btnDeleteProductManagement);
+            panel3.Controls.Add(btnDeleteEMployeeManagement);
+            panel3.Controls.Add(btnStockManagement);
+            panel3.Controls.Add(btnEmployeeManagement);
+            panel3.Controls.Add(btnStockmanagementCLicked);
             panel3.Location = new Point(5, 55);
             panel3.Margin = new Padding(1);
             panel3.Name = "panel3";
             panel3.Size = new Size(233, 635);
             panel3.TabIndex = 1;
-            // 
-            // btnStockManagement
-            // 
-            btnStockManagement.Location = new Point(-1, 471);
-            btnStockManagement.Margin = new Padding(1);
-            btnStockManagement.Name = "btnStockManagement";
-            btnStockManagement.Size = new Size(235, 164);
-            btnStockManagement.TabIndex = 3;
-            btnStockManagement.Text = "Stock Management";
-            btnStockManagement.UseVisualStyleBackColor = true;
-            btnStockManagement.Click += button4_Click;
-            // 
-            // btnSchedule
-            // 
-            btnSchedule.Location = new Point(-1, 313);
-            btnSchedule.Margin = new Padding(1);
-            btnSchedule.Name = "btnSchedule";
-            btnSchedule.Size = new Size(235, 159);
-            btnSchedule.TabIndex = 2;
-            btnSchedule.Text = "Schedule";
-            btnSchedule.UseVisualStyleBackColor = true;
-            btnSchedule.Click += btnSchedule_Click;
-            // 
-            // EmployeeManagementClicked
-            // 
-            EmployeeManagementClicked.BackColor = Color.DarkTurquoise;
-            EmployeeManagementClicked.FlatStyle = FlatStyle.System;
-            EmployeeManagementClicked.ForeColor = Color.CornflowerBlue;
-            EmployeeManagementClicked.Location = new Point(0, 0);
-            EmployeeManagementClicked.Margin = new Padding(1);
-            EmployeeManagementClicked.Name = "EmployeeManagementClicked";
-            EmployeeManagementClicked.Size = new Size(233, 159);
-            EmployeeManagementClicked.TabIndex = 4;
-            EmployeeManagementClicked.Text = "Employee Management*";
-            EmployeeManagementClicked.UseVisualStyleBackColor = false;
-            EmployeeManagementClicked.Visible = false;
-            EmployeeManagementClicked.Click += button2_Click;
-            // 
-            // btnupdateEmployeeManagement
-            // 
-            btnupdateEmployeeManagement.Location = new Point(-1, 313);
-            btnupdateEmployeeManagement.Margin = new Padding(1);
-            btnupdateEmployeeManagement.Name = "btnupdateEmployeeManagement";
-            btnupdateEmployeeManagement.Size = new Size(235, 159);
-            btnupdateEmployeeManagement.TabIndex = 11;
-            btnupdateEmployeeManagement.Text = "Update";
-            btnupdateEmployeeManagement.UseVisualStyleBackColor = true;
-            btnupdateEmployeeManagement.Visible = false;
-            // 
-            // btnUpdateProductManagement
-            // 
-            btnUpdateProductManagement.Location = new Point(0, 313);
-            btnUpdateProductManagement.Margin = new Padding(1);
-            btnUpdateProductManagement.Name = "btnUpdateProductManagement";
-            btnUpdateProductManagement.Size = new Size(235, 159);
-            btnUpdateProductManagement.TabIndex = 10;
-            btnUpdateProductManagement.Text = "Update";
-            btnUpdateProductManagement.UseVisualStyleBackColor = true;
-            btnUpdateProductManagement.Visible = false;
             // 
             // btnUpdateScheduleManagement
             // 
@@ -225,94 +166,6 @@
             btnUpdateScheduleManagement.Text = "Update";
             btnUpdateScheduleManagement.UseVisualStyleBackColor = true;
             btnUpdateScheduleManagement.Visible = false;
-            // 
-            // btnDeleteScheduleManagement
-            // 
-            btnDeleteScheduleManagement.Location = new Point(-1, 469);
-            btnDeleteScheduleManagement.Margin = new Padding(1);
-            btnDeleteScheduleManagement.Name = "btnDeleteScheduleManagement";
-            btnDeleteScheduleManagement.Size = new Size(235, 164);
-            btnDeleteScheduleManagement.TabIndex = 14;
-            btnDeleteScheduleManagement.Text = "Delete";
-            btnDeleteScheduleManagement.UseVisualStyleBackColor = true;
-            btnDeleteScheduleManagement.Visible = false;
-            // 
-            // btnDeleteProductManagement
-            // 
-            btnDeleteProductManagement.Location = new Point(-5, 469);
-            btnDeleteProductManagement.Margin = new Padding(1);
-            btnDeleteProductManagement.Name = "btnDeleteProductManagement";
-            btnDeleteProductManagement.Size = new Size(235, 164);
-            btnDeleteProductManagement.TabIndex = 13;
-            btnDeleteProductManagement.Text = "Delete";
-            btnDeleteProductManagement.UseVisualStyleBackColor = true;
-            btnDeleteProductManagement.Visible = false;
-            // 
-            // btnDeleteEMployeeManagement
-            // 
-            btnDeleteEMployeeManagement.Location = new Point(-1, 469);
-            btnDeleteEMployeeManagement.Margin = new Padding(1);
-            btnDeleteEMployeeManagement.Name = "btnDeleteEMployeeManagement";
-            btnDeleteEMployeeManagement.Size = new Size(235, 164);
-            btnDeleteEMployeeManagement.TabIndex = 12;
-            btnDeleteEMployeeManagement.Text = "Delete";
-            btnDeleteEMployeeManagement.UseVisualStyleBackColor = true;
-            btnDeleteEMployeeManagement.Visible = false;
-            // 
-            // btnProductManagement
-            // 
-            btnProductManagement.FlatAppearance.BorderColor = Color.FromArgb(192, 255, 255);
-            btnProductManagement.FlatAppearance.BorderSize = 500;
-            btnProductManagement.Location = new Point(0, 159);
-            btnProductManagement.Margin = new Padding(1);
-            btnProductManagement.Name = "btnProductManagement";
-            btnProductManagement.Size = new Size(233, 159);
-            btnProductManagement.TabIndex = 1;
-            btnProductManagement.Text = "Product Management";
-            btnProductManagement.UseVisualStyleBackColor = true;
-            btnProductManagement.Click += btnProductManagement_Click;
-            // 
-            // btnCreateEmployee
-            // 
-            btnCreateEmployee.FlatAppearance.BorderColor = Color.FromArgb(192, 255, 255);
-            btnCreateEmployee.FlatAppearance.BorderSize = 500;
-            btnCreateEmployee.Location = new Point(0, 159);
-            btnCreateEmployee.Margin = new Padding(1);
-            btnCreateEmployee.Name = "btnCreateEmployee";
-            btnCreateEmployee.Size = new Size(233, 159);
-            btnCreateEmployee.TabIndex = 15;
-            btnCreateEmployee.Text = "Create";
-            btnCreateEmployee.UseVisualStyleBackColor = true;
-            btnCreateEmployee.Visible = false;
-            btnCreateEmployee.Click += btnCreateEmployee_Click;
-            // 
-            // btnCreateScheduleManagement
-            // 
-            btnCreateScheduleManagement.FlatAppearance.BorderColor = Color.FromArgb(192, 255, 255);
-            btnCreateScheduleManagement.FlatAppearance.BorderSize = 500;
-            btnCreateScheduleManagement.Location = new Point(0, 159);
-            btnCreateScheduleManagement.Margin = new Padding(1);
-            btnCreateScheduleManagement.Name = "btnCreateScheduleManagement";
-            btnCreateScheduleManagement.Size = new Size(233, 159);
-            btnCreateScheduleManagement.TabIndex = 8;
-            btnCreateScheduleManagement.Text = "Create";
-            btnCreateScheduleManagement.UseVisualStyleBackColor = true;
-            btnCreateScheduleManagement.Visible = false;
-            btnCreateScheduleManagement.Click += btnCreateScheduleManagement_Click;
-            // 
-            // btnCreateProductManagement
-            // 
-            btnCreateProductManagement.FlatAppearance.BorderColor = Color.FromArgb(192, 255, 255);
-            btnCreateProductManagement.FlatAppearance.BorderSize = 500;
-            btnCreateProductManagement.Location = new Point(0, 159);
-            btnCreateProductManagement.Margin = new Padding(1);
-            btnCreateProductManagement.Name = "btnCreateProductManagement";
-            btnCreateProductManagement.Size = new Size(233, 159);
-            btnCreateProductManagement.TabIndex = 7;
-            btnCreateProductManagement.Text = "Create";
-            btnCreateProductManagement.UseVisualStyleBackColor = true;
-            btnCreateProductManagement.Visible = false;
-            btnCreateProductManagement.Click += btnCreateProductManagement_Click;
             // 
             // btnEmployeeManagement
             // 
@@ -355,6 +208,7 @@
             btnScheduleManagementClicked.Text = "Schedule Management*";
             btnScheduleManagementClicked.UseVisualStyleBackColor = false;
             btnScheduleManagementClicked.Visible = false;
+            btnScheduleManagementClicked.Click += btnScheduleManagementClicked_Click;
             // 
             // ProductManagementClicked
             // 
@@ -369,6 +223,154 @@
             ProductManagementClicked.Text = "Product Management*";
             ProductManagementClicked.UseVisualStyleBackColor = false;
             ProductManagementClicked.Visible = false;
+            // 
+            // EmployeeManagementClicked
+            // 
+            EmployeeManagementClicked.BackColor = Color.DarkTurquoise;
+            EmployeeManagementClicked.FlatStyle = FlatStyle.System;
+            EmployeeManagementClicked.ForeColor = Color.CornflowerBlue;
+            EmployeeManagementClicked.Location = new Point(0, 0);
+            EmployeeManagementClicked.Margin = new Padding(1);
+            EmployeeManagementClicked.Name = "EmployeeManagementClicked";
+            EmployeeManagementClicked.Size = new Size(233, 159);
+            EmployeeManagementClicked.TabIndex = 4;
+            EmployeeManagementClicked.Text = "Employee Management*";
+            EmployeeManagementClicked.UseVisualStyleBackColor = false;
+            EmployeeManagementClicked.Visible = false;
+            EmployeeManagementClicked.Click += button2_Click;
+            // 
+            // btnCreateScheduleManagement
+            // 
+            btnCreateScheduleManagement.FlatAppearance.BorderColor = Color.FromArgb(192, 255, 255);
+            btnCreateScheduleManagement.FlatAppearance.BorderSize = 500;
+            btnCreateScheduleManagement.Location = new Point(0, 159);
+            btnCreateScheduleManagement.Margin = new Padding(1);
+            btnCreateScheduleManagement.Name = "btnCreateScheduleManagement";
+            btnCreateScheduleManagement.Size = new Size(233, 159);
+            btnCreateScheduleManagement.TabIndex = 8;
+            btnCreateScheduleManagement.Text = "Create";
+            btnCreateScheduleManagement.UseVisualStyleBackColor = true;
+            btnCreateScheduleManagement.Visible = false;
+            btnCreateScheduleManagement.Click += btnCreateScheduleManagement_Click;
+            // 
+            // btnCreateProductManagement
+            // 
+            btnCreateProductManagement.FlatAppearance.BorderColor = Color.FromArgb(192, 255, 255);
+            btnCreateProductManagement.FlatAppearance.BorderSize = 500;
+            btnCreateProductManagement.Location = new Point(0, 159);
+            btnCreateProductManagement.Margin = new Padding(1);
+            btnCreateProductManagement.Name = "btnCreateProductManagement";
+            btnCreateProductManagement.Size = new Size(233, 159);
+            btnCreateProductManagement.TabIndex = 7;
+            btnCreateProductManagement.Text = "Create";
+            btnCreateProductManagement.UseVisualStyleBackColor = true;
+            btnCreateProductManagement.Visible = false;
+            btnCreateProductManagement.Click += btnCreateProductManagement_Click;
+            // 
+            // btnSchedule
+            // 
+            btnSchedule.Location = new Point(-1, 313);
+            btnSchedule.Margin = new Padding(1);
+            btnSchedule.Name = "btnSchedule";
+            btnSchedule.Size = new Size(235, 159);
+            btnSchedule.TabIndex = 2;
+            btnSchedule.Text = "Schedule";
+            btnSchedule.UseVisualStyleBackColor = true;
+            btnSchedule.Click += btnSchedule_Click;
+            // 
+            // btnupdateEmployeeManagement
+            // 
+            btnupdateEmployeeManagement.Location = new Point(-1, 313);
+            btnupdateEmployeeManagement.Margin = new Padding(1);
+            btnupdateEmployeeManagement.Name = "btnupdateEmployeeManagement";
+            btnupdateEmployeeManagement.Size = new Size(235, 159);
+            btnupdateEmployeeManagement.TabIndex = 11;
+            btnupdateEmployeeManagement.Text = "Update";
+            btnupdateEmployeeManagement.UseVisualStyleBackColor = true;
+            btnupdateEmployeeManagement.Visible = false;
+            // 
+            // btnUpdateProductManagement
+            // 
+            btnUpdateProductManagement.Location = new Point(0, 313);
+            btnUpdateProductManagement.Margin = new Padding(1);
+            btnUpdateProductManagement.Name = "btnUpdateProductManagement";
+            btnUpdateProductManagement.Size = new Size(235, 159);
+            btnUpdateProductManagement.TabIndex = 10;
+            btnUpdateProductManagement.Text = "Update";
+            btnUpdateProductManagement.UseVisualStyleBackColor = true;
+            btnUpdateProductManagement.Visible = false;
+            // 
+            // btnProductManagement
+            // 
+            btnProductManagement.FlatAppearance.BorderColor = Color.FromArgb(192, 255, 255);
+            btnProductManagement.FlatAppearance.BorderSize = 500;
+            btnProductManagement.Location = new Point(0, 159);
+            btnProductManagement.Margin = new Padding(1);
+            btnProductManagement.Name = "btnProductManagement";
+            btnProductManagement.Size = new Size(233, 159);
+            btnProductManagement.TabIndex = 1;
+            btnProductManagement.Text = "Product Management";
+            btnProductManagement.UseVisualStyleBackColor = true;
+            btnProductManagement.Click += btnProductManagement_Click;
+            // 
+            // btnCreateEmployee
+            // 
+            btnCreateEmployee.FlatAppearance.BorderColor = Color.FromArgb(192, 255, 255);
+            btnCreateEmployee.FlatAppearance.BorderSize = 500;
+            btnCreateEmployee.Location = new Point(0, 159);
+            btnCreateEmployee.Margin = new Padding(1);
+            btnCreateEmployee.Name = "btnCreateEmployee";
+            btnCreateEmployee.Size = new Size(233, 159);
+            btnCreateEmployee.TabIndex = 15;
+            btnCreateEmployee.Text = "Create";
+            btnCreateEmployee.UseVisualStyleBackColor = true;
+            btnCreateEmployee.Visible = false;
+            btnCreateEmployee.Click += btnCreateEmployee_Click;
+            // 
+            // btnWeeklyScheduleManagement
+            // 
+            btnWeeklyScheduleManagement.Location = new Point(-1, 469);
+            btnWeeklyScheduleManagement.Margin = new Padding(1);
+            btnWeeklyScheduleManagement.Name = "btnWeeklyScheduleManagement";
+            btnWeeklyScheduleManagement.Size = new Size(235, 164);
+            btnWeeklyScheduleManagement.TabIndex = 14;
+            btnWeeklyScheduleManagement.Text = "Weekly Schedule";
+            btnWeeklyScheduleManagement.UseVisualStyleBackColor = true;
+            btnWeeklyScheduleManagement.Visible = false;
+            btnWeeklyScheduleManagement.Click += btnWeeklyScheduleManagement_Click;
+            // 
+            // btnDeleteProductManagement
+            // 
+            btnDeleteProductManagement.Location = new Point(-5, 469);
+            btnDeleteProductManagement.Margin = new Padding(1);
+            btnDeleteProductManagement.Name = "btnDeleteProductManagement";
+            btnDeleteProductManagement.Size = new Size(235, 164);
+            btnDeleteProductManagement.TabIndex = 13;
+            btnDeleteProductManagement.Text = "Delete";
+            btnDeleteProductManagement.UseVisualStyleBackColor = true;
+            btnDeleteProductManagement.Visible = false;
+            // 
+            // btnDeleteEMployeeManagement
+            // 
+            btnDeleteEMployeeManagement.Location = new Point(-1, 469);
+            btnDeleteEMployeeManagement.Margin = new Padding(1);
+            btnDeleteEMployeeManagement.Name = "btnDeleteEMployeeManagement";
+            btnDeleteEMployeeManagement.Size = new Size(235, 164);
+            btnDeleteEMployeeManagement.TabIndex = 12;
+            btnDeleteEMployeeManagement.Text = "Delete";
+            btnDeleteEMployeeManagement.UseVisualStyleBackColor = true;
+            btnDeleteEMployeeManagement.Visible = false;
+            // 
+            // btnStockManagement
+            // 
+            btnStockManagement.Location = new Point(-1, 471);
+            btnStockManagement.Margin = new Padding(1);
+            btnStockManagement.Name = "btnStockManagement";
+            btnStockManagement.Size = new Size(235, 164);
+            btnStockManagement.TabIndex = 3;
+            btnStockManagement.Text = "Stock Management";
+            btnStockManagement.UseVisualStyleBackColor = true;
+            btnStockManagement.Click += button4_Click;
             // 
             // PnlMainMenu
             // 
@@ -419,7 +421,7 @@
         private Button ProductManagementClicked;
         private Button btnCreateScheduleManagement;
         private Button btnCreateProductManagement;
-        private Button btnDeleteScheduleManagement;
+        private Button btnWeeklyScheduleManagement;
         private Button btnDeleteProductManagement;
         private Button btnDeleteEMployeeManagement;
         private Button btnupdateEmployeeManagement;
