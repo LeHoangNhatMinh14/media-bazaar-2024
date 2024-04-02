@@ -7,7 +7,7 @@ container {
 
 .custom-size {
     position:absolute;
-    top:7%;
+    top:2vw;
     left:23%;
     width:100% !important;
     height:80% ;
@@ -16,7 +16,8 @@ container {
 .arrow-back {
     background-color: #B3001B;
     height: 40px;
-    border-top-left-radius:30px;
+    border-top-left-radius: 30px;
+    height: inherit;
 }
 
 .arrow-forward {
@@ -30,13 +31,24 @@ container {
     height: inherit;
     text-align: center;
     color: #CCAD8F;
+    padding-top:0.45vw;
 }
 
 .shifts {
-    height:700px;
+    height:auto;
     background-color: #262626;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+}
+
+.shift-container {
+    background-color: #7EAACC !important;
+    margin-top: 0.8vw;
+    background-color: white;
+    border-radius: 30px;
+    text-align: start !important;
+    font-size:1vw;
+    padding-inline-start:30px;
 }
 
 .button-container {

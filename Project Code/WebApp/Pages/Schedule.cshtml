@@ -8,10 +8,19 @@
 <div class="container text-center custom-size">
 	<div class="row">
 		<div class="col-1 arrow-back"></div>
-		<div class="col-10 date-square">Day X-Y, Month , Year</div>
+		<div class="col-10 date-square"><h2>Day X-Y, Month , Year</h2></div>
 		<div class="col-1 arrow-forward"></div>
-		<div class="col shifts">
-			@* @foreach(Shifts in shift) *@
+		<div class="col shifts">	
+			@if (Model.employeeShifts != null) {
+				@foreach (var shift in Model.employeeShifts) {
+					<div class="col shift-container">
+						<h2>Date: @shift.shiftDate</h2>
+						<h4>Type: @shift.shiftType</h4>
+						<h4>Department: @Model.DepName(shift.FK_DepartmentID)</h4>
+					</div>
+					<div class="w-100"></div>
+				}
+			}
 		</div>
 		<div class="w-100"></div>
 		<div class="col-10"></div>
@@ -24,3 +33,4 @@
 		</div>
 	</div>
 </div>
+

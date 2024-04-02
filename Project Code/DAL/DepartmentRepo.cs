@@ -77,15 +77,17 @@ namespace DAL
             using(SqlConnection connection = new SqlConnection(connectionString))
             {
 
-                string query = "SELECT departmentName FROM Department WHERE departmentID = @departmentid";
+                string query = "SELECT * FROM Departments WHERE departmentID = @departmentid";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
+					command.Parameters.AddWithValue("@departmentid", departmentID);
+
+					using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while(reader.Read())
                         {
-                            return reader.GetString(0);
+                            return reader["departmentName"].ToString();
                         }
                     }
                     return null;

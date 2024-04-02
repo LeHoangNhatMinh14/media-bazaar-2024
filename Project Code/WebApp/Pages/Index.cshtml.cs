@@ -23,7 +23,7 @@ namespace MediaBazaar_WebApp.Pages
 
         public ActionResult OnPost(string handler)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
 			{
 				return RedirectToPage();
 			}
