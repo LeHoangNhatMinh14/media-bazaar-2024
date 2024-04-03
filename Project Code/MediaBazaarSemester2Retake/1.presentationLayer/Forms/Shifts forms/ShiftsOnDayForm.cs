@@ -34,11 +34,11 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
                     }
                     if (shift.shiftType == "Evening")
                     {
-                        lbMorningShifts.Items.Add(shift.ShiftInfo);
+                        lbEveningShifts.Items.Add(shift.ShiftInfo);
                     }
                     if (shift.shiftType == "Night")
                     {
-                        lbMorningShifts.Items.Add(shift.ShiftInfo);
+                        lbNightShifts.Items.Add(shift.ShiftInfo);
                     }
                 }
             }
