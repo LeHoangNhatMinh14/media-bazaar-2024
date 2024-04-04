@@ -24,5 +24,6 @@ namespace BusinessLogicLayer.Interface
 
         void EditEmployee(Employee employee);
 
+        Employee GetRecentEmployee();
     }
 }

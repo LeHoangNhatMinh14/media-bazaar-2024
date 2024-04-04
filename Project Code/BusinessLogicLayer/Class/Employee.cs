@@ -35,7 +35,7 @@ namespace BusinessLogicLayer.Class
 
         public Employee(){}
         // new employee add to database
-        public Employee(string firstName, string lastName, string password, string bsn, DateTime dateOfBirth, string phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, string emergencyPhoneNumber, string emergencyRelation, Contract contract)
+        public Employee(string firstName, string lastName, string password, string bsn, DateTime dateOfBirth, string phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, string emergencyPhoneNumber, string emergencyRelation)
         {
             this.firstName = firstName;
             this.lastName = lastName;

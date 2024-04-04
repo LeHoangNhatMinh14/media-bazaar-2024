@@ -198,5 +198,30 @@ namespace DAL
                 
             }
         }
+
+        public Employee GetRecentEmployee()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = @"Select Top 1 *
+                                From Employees
+                                Order by employeeID DESC";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            Employee employee = reader.MapToEmployee();
+                            return employee;
+                        }
+                        return null;
+                    }
+                }
+            }
+        }
     }
 }

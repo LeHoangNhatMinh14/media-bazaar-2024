@@ -39,6 +39,7 @@ namespace MediaBazaarSemester2Retake
         private void FillComboBoxes()
         {
             //TODO
+            CbXDepartment.DataSource = manageDepartment.GetDepartmentList();
         }
 
         private void FillEditEmployee(Employee employee)
@@ -91,7 +92,7 @@ namespace MediaBazaarSemester2Retake
 
         private void BtnAddEmployee_Click(object sender, EventArgs e)
         {
-
+            int employeeId;
             string firstName;
             string lastName;
             string password;
@@ -110,7 +111,7 @@ namespace MediaBazaarSemester2Retake
             string emergencyRelation;
             string positon;
             // change to department object maybe
-            string departmentName;
+            Department department;
             DateTime startTime;
             DateTime endTime;
             string contractType;
@@ -135,15 +136,26 @@ namespace MediaBazaarSemester2Retake
                 emergencyRelation = CbXEmergencyRelationship.Text;
                 //Contract
                 positon = TxtBxPosition.Text;
-                departmentName = CbXDepartment.Text;
+                department = (Department)CbXDepartment.SelectedItem;
                 startTime = DtPStartDate.Value;
                 endTime = DtPEndDate.Value;
                 contractType = CbXContract.Text;
 
+                Contract contract;
                 //IF Contract type different thingy
-                Contract contract = new Contract();
-                employee = new Employee( firstName, lastName, password, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation, contract);
+
+                employee = new Employee( firstName, lastName, password, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
                 manageEmployee.AddEmployee(employee);
+                employeeId = manageEmployee.GetRecentEmployee().employeeID;
+                if (contractType == "Temporary")
+                {
+                    contract = new Contract(contractType, employeeId, "40", positon, department._departmentID, startTime, endTime);
+                }
+                else // Permanent
+                {
+                    contract = new Contract(contractType, employeeId, "40", positon, department._departmentID, startTime);
+                }
+                employee.Contract = contract;
                 MessageBox.Show("Successfully add employee");
                 ResetField(tabPage2);
                 FillDatagrid();

@@ -112,6 +112,7 @@
             label39 = new Label();
             label40 = new Label();
             groupBox5 = new GroupBox();
+            label42 = new Label();
             label41 = new Label();
             TxtBxEditCity = new TextBox();
             TxtBxEditCountry = new TextBox();
@@ -138,7 +139,6 @@
             TxtBxEditEmail = new TextBox();
             TxtBxEditLastName = new TextBox();
             TxtBxEditFirstName = new TextBox();
-            label42 = new Label();
             tabControl1.SuspendLayout();
             tabPageEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_Employee).BeginInit();
@@ -179,7 +179,7 @@
             tabPageEmployees.Margin = new Padding(3, 2, 3, 2);
             tabPageEmployees.Name = "tabPageEmployees";
             tabPageEmployees.Padding = new Padding(3, 2, 3, 2);
-            tabPageEmployees.Size = new Size(857, 429);
+            tabPageEmployees.Size = new Size(857, 446);
             tabPageEmployees.TabIndex = 3;
             tabPageEmployees.Text = "Employees";
             tabPageEmployees.UseVisualStyleBackColor = true;
@@ -368,6 +368,7 @@
             // CbXContract
             // 
             CbXContract.FormattingEnabled = true;
+            CbXContract.Items.AddRange(new object[] { "Temporary", "Permanent" });
             CbXContract.Location = new Point(85, 167);
             CbXContract.Margin = new Padding(3, 2, 3, 2);
             CbXContract.Name = "CbXContract";
@@ -839,6 +840,7 @@
             // CbXEditContract
             // 
             CbXEditContract.FormattingEnabled = true;
+            CbXEditContract.Items.AddRange(new object[] { "Temporary", "Permanent" });
             CbXEditContract.Location = new Point(83, 176);
             CbXEditContract.Margin = new Padding(3, 2, 3, 2);
             CbXEditContract.Name = "CbXEditContract";
@@ -1039,6 +1041,15 @@
             groupBox5.TabIndex = 1;
             groupBox5.TabStop = false;
             groupBox5.Text = "Basic Details";
+            // 
+            // label42
+            // 
+            label42.AutoSize = true;
+            label42.Location = new Point(17, 21);
+            label42.Name = "label42";
+            label42.Size = new Size(44, 15);
+            label42.TabIndex = 32;
+            label42.Text = "label42";
             // 
             // label41
             // 
@@ -1260,15 +1271,6 @@
             TxtBxEditFirstName.Name = "TxtBxEditFirstName";
             TxtBxEditFirstName.Size = new Size(260, 23);
             TxtBxEditFirstName.TabIndex = 0;
-            // 
-            // label42
-            // 
-            label42.AutoSize = true;
-            label42.Location = new Point(17, 21);
-            label42.Name = "label42";
-            label42.Size = new Size(44, 15);
-            label42.TabIndex = 32;
-            label42.Text = "label42";
             // 
             // EmployeeForm
             // 
