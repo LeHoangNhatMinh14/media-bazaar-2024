@@ -59,7 +59,11 @@ namespace BusinessLogicLayer.Class
             this.reason = reason;
         }
 
-        public string Reason
+		public Contract()
+		{
+		}
+
+		public string Reason
         {
             get { return reason; }
             set 

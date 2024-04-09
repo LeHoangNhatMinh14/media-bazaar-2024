@@ -6,7 +6,13 @@
     height: 80%;
 }
 
+p {
+    color: #255C99;
+    font-size:50px;
+}
+
 .date-picker {
+    padding:30px;
     align-content: center;
     height: 700px;
     background-color: #262626;
@@ -21,13 +27,9 @@
     border-top-right-radius: 40px;
 }
 
-#calendar {
-    margin-top:50%;
-}
-
 .custom-height {
     position:relative;
-    height:25VW;
+    height:100%;
     margin-left:5%;
 }
 

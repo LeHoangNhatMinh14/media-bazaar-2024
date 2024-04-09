@@ -8,20 +8,24 @@
 
 <div class="container custom-size">
 	<div class="row">
-		<div class="col-4 date-picker">
-			<input id="calendar" class="form-control" asp-for="DateTime" asp-format="{0:yyyy-MM-ddTHH:mm}" />
-		</div>
-		<div class="col-8 reason-container">
-			<div class="form-outline mb-4">
-				<label class="form-label" for="form3Example3cg">Reason:</label>
-				<div class="w-100"></div>
-				<textarea id="w3review" class="custom-height" name="w3review" rows="4" cols="50"></textarea>
-				<a asp-page="/Schedule">
-					<button class="button-sendrequest">
+		<form method="post" asp-page-handler="Request">
+			<div class="col-4 date-picker">
+				<p>Starts:</p>
+				<input id="calendar" class="form-control" asp-for="DateToday" asp-format="{0:yyyy-MM-ddTHH:mm}" />
+				<p>Ends:</p>
+				<input id="calendar" class="form-control" asp-for="DateTime" asp-format="{0:yyyy-MM-ddTHH:mm}" />
+			</div>
+			<div class="col-8 reason-container">
+				<div class="form-outline mb-4">
+					<div class="form-outline mb-4">
+						<label asp-for="Reason" class="form-label" for="form3Example4cg">Reason:</label>
+						<input asp-for="Reason" type="text" name="Reason" id="form3Example4cg" class="form-control form-control-lg" />
+					</div>
+					<button class="button-sendrequest" type="submit" value="Submit">
 						Request Leave
 					</button>
-				</a>
+				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 </div>
