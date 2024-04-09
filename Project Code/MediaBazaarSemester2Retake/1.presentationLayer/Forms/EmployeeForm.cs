@@ -166,7 +166,11 @@ namespace MediaBazaarSemester2Retake
 
         private void BtnFireEmployee_Click(object sender, EventArgs e)
         {
-            //
+            Employee employee;
+            DataGridViewRow selectedRow = dgv_Employee.SelectedRows[0];
+            int id = (int)selectedRow.Cells["employeeId"].Value;
+            employee = manageEmployee.GetEmployeeByID(id);
+            manageEmployee.DeleteEmployee(employee);
         }
 
         private void BtnSendToEditEmployee_Click(object sender, EventArgs e)
@@ -175,6 +179,7 @@ namespace MediaBazaarSemester2Retake
             DataGridViewRow selectedRow = dgv_Employee.SelectedRows[0];
             int id = (int)selectedRow.Cells["employeeId"].Value;
             employee = manageEmployee.GetEmployeeByID(id);
+            employee.Contract = manageContract.GetContract(id);
             FillEditEmployee(employee);
             tabControl1.SelectedTab = tabPage3;
         }
