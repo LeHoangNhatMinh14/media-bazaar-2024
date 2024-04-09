@@ -155,6 +155,7 @@ namespace MediaBazaarSemester2Retake
                 {
                     contract = new Contract(contractType, employeeId, "40", positon, department._departmentID, startTime);
                 }
+                manageContract.AddContract(contract);
                 employee.Contract = contract;
                 MessageBox.Show("Successfully add employee");
                 ResetField(tabPage2);
@@ -193,6 +194,7 @@ namespace MediaBazaarSemester2Retake
             TxtBxPassword.Text = "password123";
             TxtBxStreet.Text = "Magellanstraat 11";
             TxtBxPostalCode.Text = "2371BB";
+            
 
             TxtBxBsn.Text = "21234475";
             DtPDateOfBirth.Value = Convert.ToDateTime("05/08/1998");

@@ -20,7 +20,13 @@ namespace DAL
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = @"INSERT INTO Contracts (contractType, workHours, position, FK_DepartmentID, active, FK_EmployeeID, startTime, endTime, reason) VALUES (@contractType, @workHours, @position, @FK_DepartmentID, @active, @FK_employeeID, @startTime, @endTime, @reason)";
+                string query;
+                if (contract.endDate == null) 
+                     query = @"INSERT INTO Contracts (contractType, workHours, position, FK_DepartmentID, active, FK_EmployeeID, startTime) VALUES (@contractType, @workHours, @position, @FK_DepartmentID, @active, @FK_employeeID, @startTime)";
+                else if (contract.endDate != null && contract.reason != null)
+                    query = @"INSERT INTO Contracts (contractType, workHours, position, FK_DepartmentID, active, FK_EmployeeID, startTime, endTime, reason) VALUES (@contractType, @workHours, @position, @FK_DepartmentID, @active, @FK_employeeID, @startTime, @endTime, @reason)";
+                else
+                    query = @"INSERT INTO Contracts (contractType, workHours, position, FK_DepartmentID, active, FK_EmployeeID, startTime, endTime) VALUES (@contractType, @workHours, @position, @FK_DepartmentID, @active, @FK_employeeID, @startTime, @endTime)";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -35,6 +41,7 @@ namespace DAL
                         command.Parameters.AddWithValue("@endTime", contract.endDate);
                     if(contract.reason != null)
                         command.Parameters.AddWithValue("@reason", contract.reason);
+
                     command.ExecuteNonQuery();
                 }
             }
@@ -44,7 +51,7 @@ namespace DAL
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = @"SELECT * FROM Contracts WHERE employeeID = @employeeID";
+                string query = @"SELECT * FROM Contracts WHERE FK_employeeID = @employeeID";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

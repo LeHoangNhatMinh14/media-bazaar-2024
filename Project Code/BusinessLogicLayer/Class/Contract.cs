@@ -29,6 +29,7 @@ namespace BusinessLogicLayer.Class
             this.position = position;
             this.startDate = startDate;
             this.endDate = endDate;
+            this.reason = null;
         }
 
         // Permanent Contract
@@ -40,6 +41,8 @@ namespace BusinessLogicLayer.Class
             this.departmentID = departmentID;
             this.position = position;
             this.startDate = startDate;
+            this.endDate = null;
+            this.reason = null;
         }
 
 
@@ -47,6 +50,8 @@ namespace BusinessLogicLayer.Class
         //MapperForContract
         public Contract(int contractID, int employeeID)
         {
+            this.contractID = contractID;
+            this.employeeID = employeeID;
             this.contractType = contractType;
             this.workHours = workHours;
             this.position = position;
