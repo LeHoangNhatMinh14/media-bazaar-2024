@@ -131,13 +131,20 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
                     {
                         if (int.TryParse(uc.label1.Text, out int day))
                         {
-                            int shiftsCount = _shifts.Count(shift => shift.shiftDate.Day == day);
+                            var shiftsForDay = _shifts.Where(shift => shift.shiftDate.Day == day);
 
-                            uc.NumberOfShifts = shiftsCount;
+                            int morningShiftsCount = shiftsForDay.Count(shift => shift.shiftType == "Morning");
+                            int eveningShiftsCount = shiftsForDay.Count(shift => shift.shiftType == "Evening");
+                            int nightShiftsCount = shiftsForDay.Count(shift => shift.shiftType == "Night");
+
+                            uc.MorningShiftsCount = morningShiftsCount;
+                            uc.EveningShiftsCount = eveningShiftsCount;
+                            uc.NightShiftsCount = nightShiftsCount;
                         }
                     }
                 }
             }
         }
+
     }
 }
