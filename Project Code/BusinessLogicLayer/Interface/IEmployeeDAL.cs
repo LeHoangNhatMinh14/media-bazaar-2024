@@ -20,7 +20,6 @@ namespace BusinessLogicLayer.Interface
 
         void DeleteEmployee(Employee employee);
 
-        bool VerifyLogin(string userName , string password);
 
     }
 }

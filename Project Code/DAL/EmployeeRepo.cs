@@ -39,8 +39,7 @@ namespace DAL
 
 		public Employee GetEmployee(string email , string password)
 		{
-            if (VerifyLogin(email, password))
-            {
+            
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     string query = @"SELECT * FROM Employees WHERE email = @email AND password = @password";
@@ -62,8 +61,8 @@ namespace DAL
                     }
                 }
             }
-            return null;
-		}
+         
+		
 
         public Employee GetEmployeeByID(int id)
         {
@@ -131,25 +130,30 @@ namespace DAL
             }
         }
 
-        public bool VerifyLogin(string email, string password)
+        public string VerifyLogin(string email, string password)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                // Example query - adjust according to your database schema
-                string query = @"SELECT COUNT(1) FROM Employees WHERE email = @email AND password = @password";
+                string query = @"SELECT role FROM Employees WHERE email = @email AND password = @password";
 
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Add parameters to prevent SQL injection
                     command.Parameters.AddWithValue("@email", email);
                     command.Parameters.AddWithValue("@password", password);
 
-                    int count = Convert.ToInt32(command.ExecuteScalar());
-                    return count > 0;
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return reader["role"] as string; 
+                        }
+                    }
                 }
             }
+            return null; 
         }
+
         public void EditEmployee(Employee employee)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
