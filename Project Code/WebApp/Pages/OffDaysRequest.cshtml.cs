@@ -11,18 +11,21 @@ namespace MediaBazaar_WebApp.Pages
     {
 		public ManageDaysOff mdo = ManageDaysOffFactory.Create();
 		public bool IsPageOpen { get; set; }
-		[BindProperty, DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
-		public DateTime DateTime { get; set; }
-		[BindProperty, DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
-		public DateTime DateToday { get; set; }
+		[BindProperty, DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+		public DateTime StartDate { get; set; }
+		[BindProperty]
+		public int DaysOff { get; set; }
 		[BindProperty]
 		public string? Reason { get; set; }
+		[BindProperty]
+		public string start {  get; set; }
 
 		public void OnGet()
 		{
 			IsPageOpen = false;
-			DateToday = DateTime.Now;
-			DateTime = DateToday.AddDays(3);
+			StartDate = DateTime.Now.AddDays(7);
+			start = StartDate.ToString("yyyy-MM-dd");
+			
 		}
 		public ActionResult OnPost(string handler)
 		{
@@ -35,7 +38,8 @@ namespace MediaBazaar_WebApp.Pages
 			if (handler == "Request")
 			{
 				Reason = Reason.ToString();
-				RequestDaysOff requestDaysOff = new RequestDaysOff(id,Reason, DateToday , DateTime, false);
+				DateTime endDate = StartDate.AddDays(DaysOff - 1);
+				RequestDaysOff requestDaysOff = new RequestDaysOff(id,Reason, StartDate, endDate, false);
 				mdo.AddDaysOffRequest(requestDaysOff);
 				return RedirectToPage("/Schedule");
 			}

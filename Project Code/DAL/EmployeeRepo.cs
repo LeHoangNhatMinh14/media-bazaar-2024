@@ -39,8 +39,10 @@ namespace DAL
 
 		public Employee GetEmployee(string email , string password)
 		{
-            
-                using (SqlConnection connection = new SqlConnection(connectionString))
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
                 {
                     string query = @"SELECT * FROM Employees WHERE email = @email AND password = @password";
                     connection.Open();
@@ -56,11 +58,17 @@ namespace DAL
                                 Employee employee = reader.MapToEmployee();
                                 return employee;
                             }
-                            return null;
                         }
                     }
                 }
-            }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                return default;
+            }   
+                
+        }
          
 		
 

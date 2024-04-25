@@ -9,17 +9,17 @@
 <div class="container custom-size">
 	<div class="row">
 		<form method="post" asp-page-handler="Request">
-			<div class="col-4 date-picker">
+			<div class="col days-needed">
 				<p>Starts:</p>
-				<input id="calendar" class="form-control" asp-for="DateToday" asp-format="{0:yyyy-MM-ddTHH:mm}" />
-				<p>Ends:</p>
-				<input id="calendar" class="form-control" asp-for="DateTime" asp-format="{0:yyyy-MM-ddTHH:mm}" />
+				<input type="date" class="form-control" asp-for="StartDate" asp-format="{0:yyyy-MM-dd}" min="@Model.start" value="@Model.start" />
+				<p>Days needed:</p>
+				<input type="number" class="form-control" asp-for="DaysOff" min="1" max="3" asp-format="" />
 			</div>
-			<div class="col-8 reason-container">
+			<div class="col reason-given">
 				<div class="form-outline mb-4">
 					<div class="form-outline mb-4">
 						<label asp-for="Reason" class="form-label" for="form3Example4cg">Reason:</label>
-						<input asp-for="Reason" type="text" name="Reason" id="form3Example4cg" class="form-control form-control-lg" />
+						<textarea asp-for="Reason" type="text" name="Reason" id="form3Example4cg" class="form-control form-control-lg"></textarea>
 					</div>
 					<button class="button-sendrequest" type="submit" value="Submit">
 						Request Leave
