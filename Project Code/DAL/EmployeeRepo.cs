@@ -167,7 +167,7 @@ namespace DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = @"UPDATE Employee SET firstName = @firstName,
+                string query = @"UPDATE Employees SET firstName = @firstName,
                                                     lastName = @lastName, 
                                                     bsn = @bsn, 
                                                     dateOfBirth = @dateOfBirth,

@@ -39,7 +39,9 @@ namespace MediaBazaarSemester2Retake
         private void FillComboBoxes()
         {
             //TODO
-            CbXDepartment.DataSource = manageDepartment.GetDepartmentList();
+            List<Department> departments = manageDepartment.GetDepartmentList();
+            CbXDepartment.DataSource = departments;
+            CbXEditDepartment.DataSource = departments;
         }
 
         private void FillEditEmployee(Employee employee)
@@ -61,13 +63,21 @@ namespace MediaBazaarSemester2Retake
             TxtBxEditBsn.Text = employee.bsn.ToString();
             DtpEditDateOfBirth.Value = Convert.ToDateTime(employee.dateOfBirth);
 
-            TxtBxEditPosition.Text = employee.Contract.position;
-            CbXEditDepartment.SelectedItem = manageDepartment.GetDepartmentName(employee.Contract.departmentID);
-            CbXEditContract.SelectedItem = employee.Contract.contractType;
+            if (employee.Contract != null)
+            {
+                TxtBxEditPosition.Text = employee.Contract.position;
+                CbXEditDepartment.SelectedItem = manageDepartment.GetDepartmentName(employee.Contract.departmentID);
+                TxtBxEditWorkHour.Text = employee.Contract.workHours;
+                CbXEditContract.SelectedItem = employee.Contract.contractType;
 
-            DtPStartDate.Value = Convert.ToDateTime(employee.Contract.startDate);
-            DtPEndDate.Value = Convert.ToDateTime(employee.Contract.endDate);
-            CbXContract.SelectedItem = employee.Contract.contractType;
+                DtPEditStartDate.Value = Convert.ToDateTime(employee.Contract.startDate);
+                if (employee.Contract.endDate != default(DateTime))
+                {
+                    DtPEditEndDate.Value = Convert.ToDateTime(employee.Contract.endDate);
+                }
+                CbXEditContract.SelectedItem = CbXEditContract.Items.IndexOf(employee.Contract.contractType);
+            }
+
 
             TxtBxEditEmergencyName.Text = employee.emergencyContactName;
             TxtBxEditEmergencyContact.Text = employee.emergencyPhoneNumber;
@@ -198,6 +208,11 @@ namespace MediaBazaarSemester2Retake
             TxtBxPassword.Text = "password123";
             TxtBxStreet.Text = "Magellanstraat 11";
             TxtBxPostalCode.Text = "2371BB";
+            CbXGender.SelectedIndex = 0;
+            TxtBxCity.Text = "Eindhoven";
+            TxtBxStreet.Text = "Staat";
+            TxtBxHouseNumber.Text = "1";
+            TxtBxCountry.Text = "Netherland";
             
 
             TxtBxBsn.Text = "21234475";
@@ -206,6 +221,7 @@ namespace MediaBazaarSemester2Retake
             TxtBxPosition.Text = "Cashier";
             CbXDepartment.SelectedIndex = 1;
             CbXContract.SelectedIndex = 1;
+            TxtBxWorkHour.Text = "40";
 
 
             TxtBxEmergencyName.Text = "Mieteke Joris";
@@ -269,8 +285,9 @@ namespace MediaBazaarSemester2Retake
                 employee.employeeID = employeeId;
 
                 manageEmployee.EditEmployee(employee);
-
-
+                ResetField(tabPage3);
+                MessageBox.Show("Successfully edit employee");
+                FillDatagrid();
             }
         }
 

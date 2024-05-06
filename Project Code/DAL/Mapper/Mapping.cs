@@ -55,15 +55,15 @@ namespace DAL.Mapper
         {
             return new Contract(
                 contractID: GetValue<int>(dataReader, nameof(Contract.contractID)),
-                employeeID: GetValue<int>(dataReader, nameof(Contract.employeeID)))
+                employeeID: GetValue<int>(dataReader, "FK_employeeID"))
             {
                 contractType = GetStringValue(dataReader, nameof(Contract.contractType)),
                 workHours = GetStringValue(dataReader, nameof(Contract.workHours)),
                 position = GetStringValue(dataReader, nameof(Contract.position)),
                 active = GetValue<bool>(dataReader, nameof(Contract.active)),
-                departmentID = GetValue<int>(dataReader, nameof(Contract.departmentID)),
-                startDate = GetValue<DateTime>(dataReader, nameof(Contract.startDate)),
-                endDate = GetValue<DateTime>(dataReader, nameof(Contract.endDate)),
+                departmentID = GetValue<int>(dataReader, "FK_departmentID"),
+                startDate = GetValue<DateTime>(dataReader, "startTime"),
+                endDate = GetValue<DateTime>(dataReader, "endTime"),
                 reason = GetStringValue(dataReader, nameof(Contract.reason))
             };
         }
