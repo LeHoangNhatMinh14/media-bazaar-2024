@@ -22,7 +22,7 @@ namespace BusinessLogicLayer.Class
         public string emergencyPhoneNumber { get; set; }
         public string emergencyContactName { get; set; } = string.Empty;
         public string emergencyRelation { get; set; } = string.Empty;
-
+        public string Role { get; set; }  
         public Contract Contract { get; set; }
 
         public string password { get; set; } = string.Empty;

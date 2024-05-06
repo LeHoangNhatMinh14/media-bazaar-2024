@@ -82,10 +82,19 @@ namespace DAL.Mapper
 
         internal static Department MapToDepartment (this SqlDataReader dataReader)
         {
-            return new Department(
-                              departmentID : GetValue<int>(dataReader, "departmentID"))
+            return new Department(departmentID : GetValue<int>(dataReader, "departmentID"))
             {
                 _departmentName = GetStringValue(dataReader, "departmentName")
+            };
+        }
+
+        internal static RequestDaysOff MapToDaysOff(this SqlDataReader dataReader)
+        {
+            return new RequestDaysOff(emloyeeID: GetValue<int>(dataReader, "employeeID"))
+            {
+                startDate = GetValue<DateTime>(dataReader,"startDate"),
+                endDate = GetValue<DateTime>(dataReader,"endDate"),
+                approved = GetValue<bool>(dataReader,"approved")
             };
         }
     }

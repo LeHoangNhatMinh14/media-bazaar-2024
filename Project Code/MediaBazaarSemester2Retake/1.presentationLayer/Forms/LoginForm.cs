@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.ManageClass;
 using DAL;
 using Factory;
+using MediaBazaarSemester2Retake._1.presentationLayer.Forms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -61,26 +62,39 @@ namespace MediaBazaarSemester2Retake
 
         private void BtnGo_Click(object sender, EventArgs e)
         {
-
             string username = txtBoxUsername.Text;
             string password = txtBoxPassword.Text;
 
-            // Assuming you have an instance of EmployeeRepo or similar
             EmployeeRepo employeeRepo = new EmployeeRepo();
+            string role = employeeRepo.VerifyLogin(username, password);
 
-            if (employeeRepo.VerifyLogin(username, password))
+            if (!string.IsNullOrEmpty(role))
             {
                 this.Hide();
-                MainMenu myForm = new MainMenu();
-                myForm.Show();
+                switch (role)
+                {
+                    case "Admin":
+                        MainMenu adminForm = new MainMenu();
+                        adminForm.Show();
+                        break;
+                    case "HR":
+                        EmployeeForm staffForm = new EmployeeForm();
+                        staffForm.Show();
+                        break;case "HR2":
+                        WeeklyShiftsForm staffForm2 = new WeeklyShiftsForm();
+                        staffForm2.Show();
+                        break;
+
+                    default:
+                        MessageBox.Show("Access Denied: No valid roles assigned.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
             }
             else
             {
                 MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtBoxPassword.Text = "";
             }
-
-
         }
     }
 }

@@ -197,6 +197,7 @@
             unfilter.TabIndex = 13;
             unfilter.Text = "Remove Filter";
             unfilter.UseVisualStyleBackColor = true;
+            unfilter.Click += unfilter_Click_1;
             // 
             // rbnLogistic
             // 
@@ -255,6 +256,7 @@
             button2.TabIndex = 8;
             button2.Text = "Filter";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // NameBox
             // 
@@ -263,6 +265,7 @@
             NameBox.Name = "NameBox";
             NameBox.Size = new Size(183, 23);
             NameBox.TabIndex = 7;
+            NameBox.TextChanged += NameBox_TextChanged;
             // 
             // BtnFireEmployee
             // 
