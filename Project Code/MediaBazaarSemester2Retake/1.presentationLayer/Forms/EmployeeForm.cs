@@ -145,8 +145,7 @@ namespace MediaBazaarSemester2Retake
 
                 Contract contract;
                 //IF Contract type different thingy
-                try
-                {
+
                     EmailService.SendEmail(password, email);
                     employee = new Employee(firstName, lastName, password, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
                     manageEmployee.AddEmployee(employee);
@@ -162,11 +161,6 @@ namespace MediaBazaarSemester2Retake
                     manageContract.AddContract(contract);
                     employee.Contract = contract;
                     MessageBox.Show("Successfully add employee");
-                }
-                catch 
-                {
-                    MessageBox.Show("Email not found");
-                }
 
                 ResetField(tabPage2);
                 FillDatagrid();
