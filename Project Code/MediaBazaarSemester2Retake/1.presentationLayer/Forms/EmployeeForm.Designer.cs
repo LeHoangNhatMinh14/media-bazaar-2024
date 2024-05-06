@@ -45,6 +45,8 @@
             button1 = new Button();
             BtnAddEmployee = new Button();
             groupBox4 = new GroupBox();
+            TxtBxWorkHour = new TextBox();
+            label43 = new Label();
             CbXContract = new ComboBox();
             DtPEndDate = new DateTimePicker();
             DtPStartDate = new DateTimePicker();
@@ -93,6 +95,8 @@
             tabPage3 = new TabPage();
             BtnEditEmployee = new Button();
             groupBox6 = new GroupBox();
+            TxtBxEditWorkHour = new TextBox();
+            label44 = new Label();
             CbXEditContract = new ComboBox();
             DtPEditEndDate = new DateTimePicker();
             DtPEditStartDate = new DateTimePicker();
@@ -112,7 +116,7 @@
             label39 = new Label();
             label40 = new Label();
             groupBox5 = new GroupBox();
-            label42 = new Label();
+            lblEmpId = new Label();
             label41 = new Label();
             TxtBxEditCity = new TextBox();
             TxtBxEditCountry = new TextBox();
@@ -346,6 +350,8 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(TxtBxWorkHour);
+            groupBox4.Controls.Add(label43);
             groupBox4.Controls.Add(CbXContract);
             groupBox4.Controls.Add(DtPEndDate);
             groupBox4.Controls.Add(DtPStartDate);
@@ -365,11 +371,28 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Department";
             // 
+            // TxtBxWorkHour
+            // 
+            TxtBxWorkHour.Location = new Point(85, 81);
+            TxtBxWorkHour.Margin = new Padding(3, 2, 3, 2);
+            TxtBxWorkHour.Name = "TxtBxWorkHour";
+            TxtBxWorkHour.Size = new Size(243, 23);
+            TxtBxWorkHour.TabIndex = 12;
+            // 
+            // label43
+            // 
+            label43.AutoSize = true;
+            label43.Location = new Point(6, 86);
+            label43.Name = "label43";
+            label43.Size = new Size(65, 15);
+            label43.TabIndex = 11;
+            label43.Text = "Work Hour";
+            // 
             // CbXContract
             // 
             CbXContract.FormattingEnabled = true;
             CbXContract.Items.AddRange(new object[] { "Temporary", "Permanent" });
-            CbXContract.Location = new Point(85, 167);
+            CbXContract.Location = new Point(85, 184);
             CbXContract.Margin = new Padding(3, 2, 3, 2);
             CbXContract.Name = "CbXContract";
             CbXContract.Size = new Size(243, 23);
@@ -377,7 +400,7 @@
             // 
             // DtPEndDate
             // 
-            DtPEndDate.Location = new Point(85, 124);
+            DtPEndDate.Location = new Point(85, 150);
             DtPEndDate.Margin = new Padding(3, 2, 3, 2);
             DtPEndDate.Name = "DtPEndDate";
             DtPEndDate.Size = new Size(243, 23);
@@ -385,7 +408,7 @@
             // 
             // DtPStartDate
             // 
-            DtPStartDate.Location = new Point(85, 90);
+            DtPStartDate.Location = new Point(85, 116);
             DtPStartDate.Margin = new Padding(3, 2, 3, 2);
             DtPStartDate.Name = "DtPStartDate";
             DtPStartDate.Size = new Size(243, 23);
@@ -394,7 +417,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(6, 165);
+            label19.Location = new Point(6, 182);
             label19.Name = "label19";
             label19.Size = new Size(53, 15);
             label19.TabIndex = 6;
@@ -420,7 +443,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(6, 123);
+            label18.Location = new Point(6, 149);
             label18.Name = "label18";
             label18.Size = new Size(54, 15);
             label18.TabIndex = 3;
@@ -429,7 +452,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(6, 89);
+            label17.Location = new Point(6, 115);
             label17.Name = "label17";
             label17.Size = new Size(58, 15);
             label17.TabIndex = 2;
@@ -818,6 +841,8 @@
             // 
             // groupBox6
             // 
+            groupBox6.Controls.Add(TxtBxEditWorkHour);
+            groupBox6.Controls.Add(label44);
             groupBox6.Controls.Add(CbXEditContract);
             groupBox6.Controls.Add(DtPEditEndDate);
             groupBox6.Controls.Add(DtPEditStartDate);
@@ -832,16 +857,33 @@
             groupBox6.Margin = new Padding(3, 2, 3, 2);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(3, 2, 3, 2);
-            groupBox6.Size = new Size(414, 216);
+            groupBox6.Size = new Size(414, 225);
             groupBox6.TabIndex = 4;
             groupBox6.TabStop = false;
             groupBox6.Text = "Department";
+            // 
+            // TxtBxEditWorkHour
+            // 
+            TxtBxEditWorkHour.Location = new Point(83, 82);
+            TxtBxEditWorkHour.Margin = new Padding(3, 2, 3, 2);
+            TxtBxEditWorkHour.Name = "TxtBxEditWorkHour";
+            TxtBxEditWorkHour.Size = new Size(243, 23);
+            TxtBxEditWorkHour.TabIndex = 14;
+            // 
+            // label44
+            // 
+            label44.AutoSize = true;
+            label44.Location = new Point(4, 87);
+            label44.Name = "label44";
+            label44.Size = new Size(65, 15);
+            label44.TabIndex = 13;
+            label44.Text = "Work Hour";
             // 
             // CbXEditContract
             // 
             CbXEditContract.FormattingEnabled = true;
             CbXEditContract.Items.AddRange(new object[] { "Temporary", "Permanent" });
-            CbXEditContract.Location = new Point(83, 176);
+            CbXEditContract.Location = new Point(85, 197);
             CbXEditContract.Margin = new Padding(3, 2, 3, 2);
             CbXEditContract.Name = "CbXEditContract";
             CbXEditContract.Size = new Size(243, 23);
@@ -849,7 +891,7 @@
             // 
             // DtPEditEndDate
             // 
-            DtPEditEndDate.Location = new Point(83, 141);
+            DtPEditEndDate.Location = new Point(85, 162);
             DtPEditEndDate.Margin = new Padding(3, 2, 3, 2);
             DtPEditEndDate.Name = "DtPEditEndDate";
             DtPEditEndDate.Size = new Size(243, 23);
@@ -857,7 +899,7 @@
             // 
             // DtPEditStartDate
             // 
-            DtPEditStartDate.Location = new Point(83, 100);
+            DtPEditStartDate.Location = new Point(85, 122);
             DtPEditStartDate.Margin = new Padding(3, 2, 3, 2);
             DtPEditStartDate.Name = "DtPEditStartDate";
             DtPEditStartDate.Size = new Size(243, 23);
@@ -866,7 +908,7 @@
             // label32
             // 
             label32.AutoSize = true;
-            label32.Location = new Point(4, 174);
+            label32.Location = new Point(6, 195);
             label32.Name = "label32";
             label32.Size = new Size(53, 15);
             label32.TabIndex = 6;
@@ -875,7 +917,7 @@
             // CbXEditDepartment
             // 
             CbXEditDepartment.FormattingEnabled = true;
-            CbXEditDepartment.Location = new Point(83, 61);
+            CbXEditDepartment.Location = new Point(83, 55);
             CbXEditDepartment.Margin = new Padding(3, 2, 3, 2);
             CbXEditDepartment.Name = "CbXEditDepartment";
             CbXEditDepartment.Size = new Size(243, 23);
@@ -892,7 +934,7 @@
             // label33
             // 
             label33.AutoSize = true;
-            label33.Location = new Point(4, 140);
+            label33.Location = new Point(6, 161);
             label33.Name = "label33";
             label33.Size = new Size(54, 15);
             label33.TabIndex = 3;
@@ -901,7 +943,7 @@
             // label34
             // 
             label34.AutoSize = true;
-            label34.Location = new Point(4, 99);
+            label34.Location = new Point(6, 121);
             label34.Name = "label34";
             label34.Size = new Size(58, 15);
             label34.TabIndex = 2;
@@ -910,7 +952,7 @@
             // label35
             // 
             label35.AutoSize = true;
-            label35.Location = new Point(4, 62);
+            label35.Location = new Point(4, 56);
             label35.Name = "label35";
             label35.Size = new Size(70, 15);
             label35.TabIndex = 1;
@@ -1006,7 +1048,7 @@
             // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(label42);
+            groupBox5.Controls.Add(lblEmpId);
             groupBox5.Controls.Add(label41);
             groupBox5.Controls.Add(TxtBxEditCity);
             groupBox5.Controls.Add(TxtBxEditCountry);
@@ -1042,14 +1084,14 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Basic Details";
             // 
-            // label42
+            // lblEmpId
             // 
-            label42.AutoSize = true;
-            label42.Location = new Point(17, 21);
-            label42.Name = "label42";
-            label42.Size = new Size(44, 15);
-            label42.TabIndex = 32;
-            label42.Text = "label42";
+            lblEmpId.AutoSize = true;
+            lblEmpId.Location = new Point(17, 21);
+            lblEmpId.Name = "lblEmpId";
+            lblEmpId.Size = new Size(41, 15);
+            lblEmpId.TabIndex = 32;
+            lblEmpId.Text = "EmpId";
             // 
             // label41
             // 
@@ -1434,6 +1476,10 @@
         private Label label20;
         private Label label41;
         private TextBox TxtBxEditCity;
-        private Label label42;
+        private Label lblEmpId;
+        private TextBox TxtBxWorkHour;
+        private Label label43;
+        private TextBox TxtBxEditWorkHour;
+        private Label label44;
     }
 }

@@ -44,7 +44,7 @@ namespace MediaBazaarSemester2Retake
 
         private void FillEditEmployee(Employee employee)
         {
-            label42.Text = employee.employeeID.ToString();
+            lblEmpId.Text = employee.employeeID.ToString();
             TxtBxEditFirstName.Text = employee.firstName;
             TxtBxEditLastName.Text = employee.lastName;
             TxtBxEditPassword.Text = employee.password;
@@ -112,6 +112,7 @@ namespace MediaBazaarSemester2Retake
             string positon;
             // change to department object maybe
             Department department;
+            string workHour;
             DateTime startTime;
             DateTime endTime;
             string contractType;
@@ -137,27 +138,36 @@ namespace MediaBazaarSemester2Retake
                 //Contract
                 positon = TxtBxPosition.Text;
                 department = (Department)CbXDepartment.SelectedItem;
+                workHour = TxtBxWorkHour.Text;
                 startTime = DtPStartDate.Value;
                 endTime = DtPEndDate.Value;
                 contractType = CbXContract.Text;
 
                 Contract contract;
                 //IF Contract type different thingy
+                try
+                {
+                    EmailService.SendEmail(password, email);
+                    employee = new Employee(firstName, lastName, password, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
+                    manageEmployee.AddEmployee(employee);
+                    employeeId = manageEmployee.GetRecentEmployee().employeeID;
+                    if (contractType == "Temporary")
+                    {
+                        contract = new Contract(contractType, employeeId, workHour, positon, department._departmentID, startTime, endTime);
+                    }
+                    else // Permanent
+                    {
+                        contract = new Contract(contractType, employeeId, workHour, positon, department._departmentID, startTime);
+                    }
+                    manageContract.AddContract(contract);
+                    employee.Contract = contract;
+                    MessageBox.Show("Successfully add employee");
+                }
+                catch 
+                {
+                    MessageBox.Show("Email not found");
+                }
 
-                employee = new Employee( firstName, lastName, password, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
-                manageEmployee.AddEmployee(employee);
-                employeeId = manageEmployee.GetRecentEmployee().employeeID;
-                if (contractType == "Temporary")
-                {
-                    contract = new Contract(contractType, employeeId, "40", positon, department._departmentID, startTime, endTime);
-                }
-                else // Permanent
-                {
-                    contract = new Contract(contractType, employeeId, "40", positon, department._departmentID, startTime);
-                }
-                manageContract.AddContract(contract);
-                employee.Contract = contract;
-                MessageBox.Show("Successfully add employee");
                 ResetField(tabPage2);
                 FillDatagrid();
                 
@@ -223,9 +233,49 @@ namespace MediaBazaarSemester2Retake
 
         private void BtnEditEmployee_Click(object sender, EventArgs e)
         {
+            int employeeId;
+            string firstName;
+            string lastName;
+            string password;
+            string bsn;
+            DateTime DateOfBirth;
+            string phoneNumber;
+            string gender;
+            string email;
+            string city;
+            string country;
+            string street;
+            int houseNumber;
+            string postalCode;
+            string emergencyName;
+            string emergencyPhone;
+            string emergencyRelation;
             //check if all field in tab 3 is filled
             if (AllFieldsFilled(tabPage3))
             {
+                employeeId = Convert.ToInt32(lblEmpId.Text);
+                firstName = TxtBxEditFirstName.Text;
+                lastName = TxtBxEditLastName.Text;
+                password = TxtBxEditPassword.Text;
+                bsn = TxtBxEditBsn.Text;
+                DateOfBirth = DtpEditDateOfBirth.Value;
+                phoneNumber = TxtBxEditPhoneNumber.Text;
+                gender = CbXEditGender.Text;
+                email = TxtBxEditEmail.Text;
+                city = TxtBxEditCity.Text;
+                country = TxtBxEditCountry.Text;
+                street = TxtBxEditStreet.Text;
+                houseNumber = Convert.ToInt32(TxtBxEditHouseNumber.Text);
+                postalCode = TxtBxEditPostalCode.Text;
+                emergencyName = TxtBxEditEmergencyName.Text;
+                emergencyPhone = TxtBxEditEmergencyContact.Text;
+                emergencyRelation = CbXEditEmergencyRelationship.Text;
+
+                employee = new Employee(firstName, lastName, password, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
+                employee.employeeID = employeeId;
+
+                manageEmployee.EditEmployee(employee);
+
 
             }
         }

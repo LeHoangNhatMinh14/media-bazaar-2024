@@ -38,9 +38,14 @@ namespace DAL
                     command.Parameters.AddWithValue("@FK_employeeID", contract.employeeID);
                     command.Parameters.AddWithValue("@startTime", contract.startDate);
                     if(contract.endDate != null)
+                    {
                         command.Parameters.AddWithValue("@endTime", contract.endDate);
+                    }
+
                     if(contract.reason != null)
+                    {
                         command.Parameters.AddWithValue("@reason", contract.reason);
+                    }
 
                     command.ExecuteNonQuery();
                 }

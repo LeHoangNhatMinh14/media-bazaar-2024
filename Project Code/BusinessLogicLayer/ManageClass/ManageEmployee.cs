@@ -31,6 +31,7 @@ namespace BusinessLogicLayer.ManageClass
         public void EditEmployee(Employee employee)
         {
             //Edit Employee in the database
+            dataAccessLayer.EditEmployee(employee);
         }
 
         public void DeleteEmployee(Employee employee)
