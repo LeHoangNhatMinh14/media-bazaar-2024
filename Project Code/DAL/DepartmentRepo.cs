@@ -94,5 +94,26 @@ namespace DAL
                 }
             }
         }
+        public int GetDepartmentID(string departmentName)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT departmentID FROM Departments WHERE departmentName = @departmentName";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@departmentName", departmentName);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            return (int)reader["departmentID"];
+                        }
+                    }
+                    return 0;
+                }
+            }
+        }
     }
 }

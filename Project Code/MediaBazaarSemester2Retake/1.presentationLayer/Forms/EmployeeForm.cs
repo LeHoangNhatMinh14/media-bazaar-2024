@@ -35,7 +35,7 @@ namespace MediaBazaarSemester2Retake
 
         private void FillComboBoxes()
         {
-         //TODO
+            //TODO
         }
 
         private void FillEditEmployee(Employee employee)
@@ -125,13 +125,13 @@ namespace MediaBazaarSemester2Retake
             positon = TxtBxPosition.Text;
             departmentName = CbXDepartment.Text;
             //startTime =
-           // endTime =
+            // endTime =
 
 
 
             //IF Contract type different thingy
             Contract contract = new Contract();
-                employee = new Employee(id, firstName, lastName, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation, contract);
+            employee = new Employee(id, firstName, lastName, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation, contract);
             manageEmployee.AddEmployee(employee);
             MessageBox.Show("Successfully add employee");
         }
@@ -174,7 +174,7 @@ namespace MediaBazaarSemester2Retake
             CbXEmergencyRelationship.Text = "Spouse";
         }
 
-        
+
 
         private void unfilter_Click(object sender, EventArgs e)
         {
@@ -189,6 +189,78 @@ namespace MediaBazaarSemester2Retake
         private void BtnEditEmployee_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void NameBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchKeyword = NameBox.Text.ToLower();
+
+            if (string.IsNullOrEmpty(searchKeyword))
+            {
+                // If the NameBox is empty, display all employees
+                FillDatagrid();
+            }
+            else
+            {
+                // Filter the list of employees based on the search keyword
+                IEnumerable<Employee> filteredEmployees = manageEmployee.GetAllEmployees()
+                    .Where(emp => emp.firstName.ToLower().Contains(searchKeyword) ||
+                                   emp.lastName.ToLower().Contains(searchKeyword) ||
+                                   emp.email.ToLower().Contains(searchKeyword) ||
+                                   emp.phoneNumber.ToLower().Contains(searchKeyword));
+
+                // Update the DataGridView with the filtered list
+                FillDatagrid(filteredEmployees);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string selectedDepartment = string.Empty;
+
+            if (rbnSecurity.Checked)
+            {
+                selectedDepartment = "Security";
+            }
+            else if (rbnLogistic.Checked)
+            {
+                selectedDepartment = "Logistic";
+            }
+            else if (rbnCustomerService.Checked)
+            {
+                selectedDepartment = "CustomerService";
+            }
+            else if (rbnHR.Checked)
+            {
+                selectedDepartment = "HR";
+            }
+
+            if (!string.IsNullOrEmpty(selectedDepartment))
+            {
+                // Filter the list of employees based on the selected department
+                IEnumerable<Employee> filteredEmployees = manageEmployee.GetAllEmployees()
+                    .Where(emp => emp.Contract.departmentID == manageDepartment.GetDepartmentID(selectedDepartment));
+
+                // Update the DataGridView with the filtered list
+                FillDatagrid(filteredEmployees);
+            }
+            else
+            {
+                // If no department is selected, display all employees
+                FillDatagrid();
+            }
+        }
+
+        private void unfilter_Click_1(object sender, EventArgs e)
+        {
+            // Uncheck all radio buttons
+            rbnHR.Checked = false;
+            rbnCustomerService.Checked = false;
+            rbnLogistic.Checked = false;
+            rbnSecurity.Checked = false;
+
+            // Reset the DataGridView to display all employees
+            FillDatagrid();
         }
     }
 }
