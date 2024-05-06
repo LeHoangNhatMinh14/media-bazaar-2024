@@ -34,10 +34,9 @@ namespace BusinessLogicLayer.Class
         public string EmployeeAddress => $"{street} {houseNumber} {postalCode}";
 
         public Employee(){}
-
-        public Employee(int employeeID, string firstName, string lastName, string bsn, DateTime dateOfBirth, string phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, string emergencyPhoneNumber, string emergencyRelation, Contract contract)
+        // new employee add to database
+        public Employee(string firstName, string lastName, string password, string bsn, DateTime dateOfBirth, string phoneNumber, string gender, string email, string city, string country, string street, int houseNumber, string postalCode, string emergencyContactName, string emergencyPhoneNumber, string emergencyRelation)
         {
-            this.employeeID = employeeID;
             this.firstName = firstName;
             this.lastName = lastName;
             this.bsn = bsn;
@@ -53,8 +52,8 @@ namespace BusinessLogicLayer.Class
             this.emergencyContactName = emergencyContactName;
             this.emergencyPhoneNumber = emergencyPhoneNumber;
             this.emergencyRelation = emergencyRelation;
-            this.Contract = contract;
-            this.password = random.GeneratePassword(8);
+            //this.Contract = contract;
+            this.password = password; //random.GeneratePassword(8); temporary
             this.firstLogin = true;
         }
 

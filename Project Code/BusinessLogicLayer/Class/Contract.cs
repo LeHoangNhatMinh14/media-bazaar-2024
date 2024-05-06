@@ -20,9 +20,8 @@ namespace BusinessLogicLayer.Class
         public string? reason { get; set; }
 
         // temporary Contract
-        public Contract(int contractID, string contractType, int employeeID, string workHours, string position, int departmentID, DateTime startDate, DateTime endDate) 
+        public Contract(string contractType, int employeeID, string workHours, string position, int departmentID, DateTime startDate, DateTime endDate) 
         {
-            this.contractID = contractID;
             this.contractType = contractType;
             this.employeeID = employeeID;
             this.workHours = workHours;
@@ -30,18 +29,20 @@ namespace BusinessLogicLayer.Class
             this.position = position;
             this.startDate = startDate;
             this.endDate = endDate;
+            this.reason = null;
         }
 
         // Permanent Contract
-        public Contract(int contractID, string contractType, int employeeID, string workHours, string position, int departmentID, DateTime startDate)
+        public Contract(string contractType, int employeeID, string workHours, string position, int departmentID, DateTime startDate)
         {
-            this.contractID = contractID;
             this.contractType = contractType;
             this.employeeID = employeeID;
             this.workHours = workHours;
             this.departmentID = departmentID;
             this.position = position;
             this.startDate = startDate;
+            this.endDate = null;
+            this.reason = null;
         }
 
 
@@ -49,6 +50,8 @@ namespace BusinessLogicLayer.Class
         //MapperForContract
         public Contract(int contractID, int employeeID)
         {
+            this.contractID = contractID;
+            this.employeeID = employeeID;
             this.contractType = contractType;
             this.workHours = workHours;
             this.position = position;
