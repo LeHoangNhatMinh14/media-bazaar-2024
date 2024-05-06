@@ -44,7 +44,7 @@ namespace DAL
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = @"SELECT * FROM Contracts WHERE employeeID = @employeeID";
+                string query = @"SELECT * FROM Contracts WHERE FK_employeeID = @employeeID";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
