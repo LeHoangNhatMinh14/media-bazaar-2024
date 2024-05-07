@@ -245,7 +245,7 @@ namespace DAL
                     "inner join Contracts c ON e.employeeID = c.FK_employeeID " +
                     "inner join Departments d on d.departmentID = c.FK_departmentID " +
                     "where d.departmentName = @department";
-
+                connection.Open();
                 using (SqlCommand cmd = new SqlCommand(querry, connection))
                 {
                     cmd.Parameters.AddWithValue("@department", department);
@@ -253,9 +253,9 @@ namespace DAL
                     using (SqlDataReader rdr = cmd.ExecuteReader())
                     {
                         List<Employee> employeeslist = new List<Employee>();
-                        while (reader.Read())
+                        while (rdr.Read())
                         {
-                            Employee employee = reader.MapToEmployee();
+                            Employee employee = rdr.MapToEmployee();
                             employeeslist.Add(employee);
                         }
                         return employeeslist;
