@@ -59,6 +59,7 @@
             datePickerassignShift.Name = "datePickerassignShift";
             datePickerassignShift.Size = new Size(272, 23);
             datePickerassignShift.TabIndex = 1;
+            datePickerassignShift.ValueChanged += datePickerassignShift_ValueChanged_1;
             // 
             // lbShiftsofEmployee
             // 
@@ -112,6 +113,7 @@
             cbDepartments.Name = "cbDepartments";
             cbDepartments.Size = new Size(858, 23);
             cbDepartments.TabIndex = 10;
+            cbDepartments.SelectedIndexChanged += cbDepartments_SelectedIndexChanged;
             // 
             // lbUnassignedShifts
             // 
