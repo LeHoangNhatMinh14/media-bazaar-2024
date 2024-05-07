@@ -10,9 +10,24 @@ namespace MediaBazaar_WebApp.Pages
     {
         ManageEmployee mE = ManageEmployeeFactory.Create();
         ManageContract mC = ManageContractFactory.Create();
+        ManageAvailability mA = ManageAvailabilityFactory.Create();
         public bool IsPageOpen { get; set; }
         public Employee employee { get; set; }
-        public Contract contract { get; set; } 
+        public Contract contract { get; set; }
+        [BindProperty]
+        public bool Monday {  get; set; }
+		[BindProperty]
+		public bool Tuesday {  get; set; }
+		[BindProperty]
+		public bool Wednesday {  get; set; }
+		[BindProperty]
+		public bool Thursday {  get; set; }
+		[BindProperty]
+		public bool Friday {  get; set; }
+		[BindProperty]
+		public bool Saturday {  get; set; }
+		[BindProperty]
+		public bool Sunday {  get; set; }
 
 		public ActionResult OnGet()
         {
@@ -25,5 +40,12 @@ namespace MediaBazaar_WebApp.Pages
             contract = mC.GetContract(id);
 			return Page();
 		}
+
+        public ActionResult OnPost() 
+        {
+            Availability availability = new Availability((int)HttpContext.Session.GetInt32("EmployeeID"),Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday);
+            mA.AddAvailability(availability);
+            return RedirectToPage();
+        }
     }
 }

@@ -97,5 +97,22 @@ namespace DAL.Mapper
                 approved = GetValue<bool>(dataReader,"approved")
             };
         }
+
+        internal static Availability MapToAvailability(this SqlDataReader dataReader)
+        {
+            return new Availability()
+            {
+                employeeID = GetValue<int>(dataReader, "FK_EmployeeID"),
+                weekNrm = GetValue<int>(dataReader, "WeekNrm"),
+                monday = GetValue<bool>(dataReader, "Monday"),
+                tuesday = GetValue<bool>(dataReader, "Tuesday"),
+                wednesday = GetValue<bool>(dataReader, "Wednesday"),
+                thursday = GetValue<bool>(dataReader, "Thursday"),
+                friday = GetValue<bool>(dataReader, "Friday"),
+                saturday = GetValue<bool>(dataReader, "Saturday"),
+                sunday = GetValue<bool>(dataReader, "Sunday"),
+                accepted = GetValue<bool>(dataReader, "Accepted")
+            };
+        }
     }
 }

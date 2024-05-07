@@ -42,49 +42,56 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="customCheckBoxHolder">
-			<input type="checkbox" id="cCB1" class="customCheckBoxInput">
-			<label for="cCB1" class="customCheckBoxWrapper">
-				<div class="customCheckBox">
-					<div class="inner">Monday</div>
-				</div>
-			</label>
-			<input type="checkbox" id="cCB2" class="customCheckBoxInput">
-			<label for="cCB2" class="customCheckBoxWrapper">
-				<div class="customCheckBox">
-					<div class="inner">Tuesday</div>
-				</div>
-			</label>
-			<input type="checkbox" id="cCB3" class="customCheckBoxInput">
-			<label for="cCB3" class="customCheckBoxWrapper">
-				<div class="customCheckBox">
-					<div class="inner">Wednesday</div>
-				</div>
-			</label>
-			<input type="checkbox" id="cCB4" class="customCheckBoxInput">
-			<label for="cCB4" class="customCheckBoxWrapper">
-				<div class="customCheckBox">
-					<div class="inner">Thursday</div>
-				</div>
-			</label>
-			<input type="checkbox" id="cCB5" class="customCheckBoxInput">
-			<label for="cCB5" class="customCheckBoxWrapper">
-				<div class="customCheckBox">
-					<div class="inner">Friday</div>
-				</div>
-			</label>
-			<input type="checkbox" id="cCB6" class="customCheckBoxInput">
-			<label for="cCB6" class="customCheckBoxWrapper">
-				<div class="customCheckBox">
-					<div class="inner">Saturday</div>
-				</div>
-			</label>
-			<input type="checkbox" id="cCB7" class="customCheckBoxInput">
-			<label for="cCB7" class="customCheckBoxWrapper">
-				<div class="customCheckBox">
-					<div class="inner">Sunday</div>
-				</div>
-			</label>
-		</div>
+		<form method="post">
+			<div class="customCheckBoxHolder">
+				<input type="checkbox" asp-for="Monday" value="true" id="cCB1" class="customCheckBoxInput">
+				<label for="cCB1" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Monday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Tuesday" value="true" id="cCB2" class="customCheckBoxInput">
+				<label for="cCB2" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Tuesday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Wednesday" value="true" id="cCB3" class="customCheckBoxInput">
+				<label for="cCB3" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Wednesday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Thursday" value="true" id="cCB4" class="customCheckBoxInput">
+				<label for="cCB4" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Thursday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Friday" value="true" id="cCB5" class="customCheckBoxInput">
+				<label for="cCB5" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Friday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Saturday" value="true" id="cCB6" class="customCheckBoxInput">
+				<label for="cCB6" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Saturday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Sunday" value="true" id="cCB7" class="customCheckBoxInput">
+				<label for="cCB7" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Sunday</div>
+					</div>
+				</label>
+			</div>
+			<div>
+				<button class="request-availability" type="submit" value="Submit">
+					Change Availability
+				</button>
+			</div>
+		</form>
 	</div>	 
 </div>
