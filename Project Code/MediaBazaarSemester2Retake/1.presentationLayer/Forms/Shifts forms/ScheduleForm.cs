@@ -125,5 +125,22 @@ namespace MediaBazaarSemester2Retake
             lbUnassignedShifts.DisplayMember = "ShiftInfo";
             lbUnassignedShifts.ValueMember = "shiftid";
         }
+
+        private void datePickerassignShift_ValueChanged_1(object sender, EventArgs e)
+        {
+            if (datePickerassignShift.Value < DateTime.Today)
+            {
+                MessageBox.Show("Please select a date that has NOT already passed.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                datePickerassignShift.Value = DateTime.Today;
+            }
+        }
+
+        private void cbDepartments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedDepartment = cbDepartments.SelectedItem.ToString();
+
+            lbEmployees.DataSource = _manageEmployee.GetEmployeeofDepartment(selectedDepartment);
+            lbEmployees.DisplayMember = 
+        }
     }
 }

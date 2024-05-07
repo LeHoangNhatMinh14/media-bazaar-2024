@@ -2,6 +2,7 @@
 using BusinessLogicLayer.Interface;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,5 +58,9 @@ namespace BusinessLogicLayer.ManageClass
             return employees;
         }
 
+        public List<Employee> GetEmployeeofDepartment(string department)
+        {
+            employees = dataAccessLayer.GetEmployeessbyDepartment(department);
+        }
     }
 }

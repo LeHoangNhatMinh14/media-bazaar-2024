@@ -20,6 +20,6 @@ namespace BusinessLogicLayer.Interface
 
         void DeleteEmployee(Employee employee);
 
-
+        List<Employee> GetEmployeessbyDepartment(string department);
     }
 }
