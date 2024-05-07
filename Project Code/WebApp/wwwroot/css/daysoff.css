@@ -1,8 +1,8 @@
 ﻿.custom-size {
     position: absolute;
-    top: 9%;
+    top: 7vw;
     left: 23%;
-    width: 90% !important;
+    width: 100% !important;
     height: 80%;
 }
 
@@ -11,26 +11,23 @@ p {
     font-size:50px;
 }
 
-.date-picker {
-    padding:30px;
-    align-content: center;
-    height: 700px;
+.days-needed {
     background-color: #262626;
-    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
     border-top-left-radius: 40px;
+    height:16vw;
+    padding:30px;
 }
 
-.reason-container {
-    font-size:30px;
+textarea {
+    max-height:190px;
+}
+
+.reason-given {
     background-color: #255C99;
     border-bottom-right-radius: 40px;
-    border-top-right-radius: 40px;
-}
-
-.custom-height {
-    position:relative;
-    height:100%;
-    margin-left:5%;
+    border-bottom-left-radius: 40px;
+    padding: 30px;
 }
 
 .button-sendrequest {
@@ -39,10 +36,10 @@ p {
     font-size:20px;
     line-height:1;
     border-radius:30px; 
-    margin-top:5%;
     margin-left:80%;
 }
 
 .form-label {
     margin-top:30px;
+    font-size:40px;
 }
