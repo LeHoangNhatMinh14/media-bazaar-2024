@@ -17,9 +17,11 @@ namespace MediaBazaarSemester2Retake
         EmployeeForm employeeForm = new EmployeeForm();
         ScheduleForm scheduleForm = new ScheduleForm();
         WeeklyShiftsForm WeeklyShiftsForm = new WeeklyShiftsForm();
-        public MainMenu()
+        private string userRole;
+        public MainMenu(string role)
         {
             InitializeComponent();
+            ConfigureAccessBasedOnRole();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -156,17 +158,18 @@ namespace MediaBazaarSemester2Retake
             btnStockManagement.Visible = true;
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void ShowFormInPanel(Form form)
         {
             PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
-
-            EmployeeForm employeeForm = new EmployeeForm();
-            employeeForm.TopLevel = false;
-            employeeForm.FormBorderStyle = FormBorderStyle.None;
-            employeeForm.Dock = DockStyle.Fill;
-            PnlMainMenu.Controls.Add(employeeForm); // Add the form to the panel.
-            employeeForm.Show(); // Displa
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            PnlMainMenu.Controls.Add(form); // Add the form to the panel.
+            form.Show();
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ShowFormInPanel(new EmployeeForm());
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
@@ -230,6 +233,33 @@ namespace MediaBazaarSemester2Retake
 
             // Show the form
             scheduleForm.Show();
+        }
+        private void ConfigureAccessBasedOnRole()
+        {
+            // Default to all disabled
+            SetAllTabsVisibility(false);
+
+            if (userRole == "Admin")
+            {
+                // Enable all functionality for Admin
+                SetAllTabsVisibility(true);
+            }
+            else if (userRole == "HR")
+            {
+                // Enable only employee management for HR
+                btnEmployeeManagement.Visible = true;
+                btnCreateEmployee.Visible = true;
+                btnDeleteEMployeeManagement.Visible = true;
+                btnupdateEmployeeManagement.Visible = true;
+            }
+        }
+
+        private void SetAllTabsVisibility(bool visible)
+        {
+            btnSchedule.Visible = visible;
+            btnProductManagement.Visible = visible;
+            btnStockManagement.Visible = visible;
+            btnEmployeeManagement.Visible = visible;
         }
     }
 }
