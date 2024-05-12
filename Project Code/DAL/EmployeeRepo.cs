@@ -235,5 +235,32 @@ namespace DAL
                 }
             }
         }
+
+        public List<Employee> GetEmployeessbyDepartment(string department)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string querry = "  Select E.* From Employees E " +
+                    "inner join Contracts c ON e.employeeID = c.FK_employeeID " +
+                    "inner join Departments d on d.departmentID = c.FK_departmentID " +
+                    "where d.departmentName = @department";
+
+                using (SqlCommand cmd = new SqlCommand(querry, connection))
+                {
+                    cmd.Parameters.AddWithValue("@department", department);
+
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        List<Employee> employeeslist = new List<Employee>();
+                        while (reader.Read())
+                        {
+                            Employee employee = reader.MapToEmployee();
+                            employeeslist.Add(employee);
+                        }
+                        return employeeslist;
+                    }
+                }
+            }
+        }
     }
 }

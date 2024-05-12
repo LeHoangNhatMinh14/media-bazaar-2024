@@ -140,7 +140,7 @@ namespace MediaBazaarSemester2Retake
             string selectedDepartment = cbDepartments.SelectedItem.ToString();
 
             lbEmployees.DataSource = _manageEmployee.GetEmployeeofDepartment(selectedDepartment);
-            lbEmployees.DisplayMember = "EmployeeInfo";
+            lbEmployees.DisplayMember = 
         }
     }
 }
