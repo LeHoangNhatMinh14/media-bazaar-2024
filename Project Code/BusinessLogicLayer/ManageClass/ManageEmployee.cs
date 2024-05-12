@@ -25,12 +25,13 @@ namespace BusinessLogicLayer.ManageClass
             
             //Add employee to database
             dataAccessLayer.AddEmployee(employee);
-            employees.Add(employee);
+            employees = GetAllEmployees();
         }
 
         public void EditEmployee(Employee employee)
         {
             //Edit Employee in the database
+            dataAccessLayer.EditEmployee(employee);
         }
 
         public void DeleteEmployee(Employee employee)
@@ -55,6 +56,11 @@ namespace BusinessLogicLayer.ManageClass
         {
             employees = dataAccessLayer.GetAllEmployees();
             return employees;
+        }
+
+        public Employee GetRecentEmployee()
+        {
+            return dataAccessLayer.GetRecentEmployee();
         }
 
     }

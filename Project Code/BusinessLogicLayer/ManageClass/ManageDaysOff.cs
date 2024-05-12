@@ -21,5 +21,10 @@ namespace BusinessLogicLayer.ManageClass
 		{
 			_daysOff.RequestDaysOff(daysOff);
 		}
+
+		public void AcceptOrDecline()
+		{ 
+			_daysOff.AcceptOrDecline();
+		}
 	}
 }

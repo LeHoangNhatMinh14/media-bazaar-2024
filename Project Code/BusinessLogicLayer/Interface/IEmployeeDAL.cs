@@ -20,7 +20,9 @@ namespace BusinessLogicLayer.Interface
 
         void DeleteEmployee(Employee employee);
 
-        bool VerifyLogin(string userName , string password);
 
+        void EditEmployee(Employee employee);
+
+        Employee GetRecentEmployee();
     }
 }

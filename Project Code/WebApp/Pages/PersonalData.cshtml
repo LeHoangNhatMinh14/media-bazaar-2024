@@ -9,20 +9,30 @@
 <div class="container custom-size" >
 	<div class="row">
 		<div class="col personal-data">
-			<p>Name:@Model.employee.EmployeeInfo</p>
-			<p>Email:@Model.employee.email</p>
-			<p>Phone Number:@Model.employee.phoneNumber</p>
-			<p>Date of Birth:@Model.employee.dateOfBirth</p>
-			<p>Address:@Model.employee.EmployeeAddress</p>
+			<p>Name: @Model.employee.EmployeeInfo</p>
+			<p>Email: @Model.employee.email</p>
+			<p>Phone Number: @Model.employee.phoneNumber</p>
+			<p>Date of Birth: @Model.employee.dateOfBirth</p>
+			<p>Address: @Model.employee.EmployeeAddress</p>
+			<p>Emergency Contact: @Model.employee.emergencyPhoneNumber</p>
 		</div>
 		<div class="w-100"></div>
 		<div class="col contract-data">
-			<p>Contract Dates:</p>
-			<p>Contract Hours:</p>
-			<p>Contract Contact:</p>
+			@if(Model.contract.contractType != "Temporary")
+			{
+				<p>Contract Dates: @Model.contract.startDate.ToString("dd MMMM yyyy")</p>
+			}
+			else
+			{
+				<p>Contract Dates: @Model.contract.startDate - @Model.contract.endDate</p>
+			}
+			
+			<p>Contract Hours: @Model.contract.workHours</p>
+			<p>Position: @Model.contract.position</p>
 		</div>
 	</div>
 	<div class="row">
+		<div class="col-10"></div>
 		<div class="col-2 button-container">
 			<a asp-page="/EditPersonaldata">
 				<button class="button-sendrequest">
@@ -31,4 +41,57 @@
 			</a>
 		</div>
 	</div>
+	<div class="row">
+		<form method="post">
+			<div class="customCheckBoxHolder">
+				<input type="checkbox" asp-for="Monday" value="true" id="cCB1" class="customCheckBoxInput">
+				<label for="cCB1" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Monday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Tuesday" value="true" id="cCB2" class="customCheckBoxInput">
+				<label for="cCB2" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Tuesday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Wednesday" value="true" id="cCB3" class="customCheckBoxInput">
+				<label for="cCB3" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Wednesday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Thursday" value="true" id="cCB4" class="customCheckBoxInput">
+				<label for="cCB4" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Thursday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Friday" value="true" id="cCB5" class="customCheckBoxInput">
+				<label for="cCB5" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Friday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Saturday" value="true" id="cCB6" class="customCheckBoxInput">
+				<label for="cCB6" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Saturday</div>
+					</div>
+				</label>
+				<input type="checkbox" asp-for="Sunday" value="true" id="cCB7" class="customCheckBoxInput">
+				<label for="cCB7" class="customCheckBoxWrapper">
+					<div class="customCheckBox">
+						<div class="inner">Sunday</div>
+					</div>
+				</label>
+			</div>
+			<div>
+				<button class="request-availability" type="submit" value="Submit">
+					Change Availability
+				</button>
+			</div>
+		</form>
+	</div>	 
 </div>

@@ -55,15 +55,15 @@ namespace DAL.Mapper
         {
             return new Contract(
                 contractID: GetValue<int>(dataReader, nameof(Contract.contractID)),
-                employeeID: GetValue<int>(dataReader, nameof(Contract.employeeID)))
+                employeeID: GetValue<int>(dataReader, "FK_employeeID"))
             {
                 contractType = GetStringValue(dataReader, nameof(Contract.contractType)),
                 workHours = GetStringValue(dataReader, nameof(Contract.workHours)),
                 position = GetStringValue(dataReader, nameof(Contract.position)),
                 active = GetValue<bool>(dataReader, nameof(Contract.active)),
-                departmentID = GetValue<int>(dataReader, nameof(Contract.departmentID)),
-                startDate = GetValue<DateTime>(dataReader, nameof(Contract.startDate)),
-                endDate = GetValue<DateTime>(dataReader, nameof(Contract.endDate)),
+                departmentID = GetValue<int>(dataReader, "FK_departmentID"),
+                startDate = GetValue<DateTime>(dataReader, "startTime"),
+                endDate = GetValue<DateTime>(dataReader, "endTime"),
                 reason = GetStringValue(dataReader, nameof(Contract.reason))
             };
         }
@@ -95,6 +95,23 @@ namespace DAL.Mapper
                 startDate = GetValue<DateTime>(dataReader,"startDate"),
                 endDate = GetValue<DateTime>(dataReader,"endDate"),
                 approved = GetValue<bool>(dataReader,"approved")
+            };
+        }
+
+        internal static Availability MapToAvailability(this SqlDataReader dataReader)
+        {
+            return new Availability()
+            {
+                employeeID = GetValue<int>(dataReader, "FK_EmployeeID"),
+                weekNrm = GetValue<int>(dataReader, "WeekNrm"),
+                monday = GetValue<bool>(dataReader, "Monday"),
+                tuesday = GetValue<bool>(dataReader, "Tuesday"),
+                wednesday = GetValue<bool>(dataReader, "Wednesday"),
+                thursday = GetValue<bool>(dataReader, "Thursday"),
+                friday = GetValue<bool>(dataReader, "Friday"),
+                saturday = GetValue<bool>(dataReader, "Saturday"),
+                sunday = GetValue<bool>(dataReader, "Sunday"),
+                accepted = GetValue<bool>(dataReader, "Accepted")
             };
         }
     }
