@@ -13,11 +13,10 @@ namespace BusinessLogicLayer.ManageClass
         private List<Contract> contracts;
         private IContractsDAL contractsDAL;
 
-        public ManageContract(IContractsDAL contractsDAL)
+        public ManageContract(IContractsDAL contract) 
         {
-            contracts = new List<Contract>();
-            this.contractsDAL = contractsDAL;
-
+            contractsDAL = contract;
+            contracts = new List<Class.Contract>();
         }
 
         public void AddContract(Contract contract)

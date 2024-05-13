@@ -63,5 +63,10 @@ namespace BusinessLogicLayer.ManageClass
             return dataAccessLayer.GetRecentEmployee();
         }
 
+        public List<Employee> GetEmployeeofDepartment(string department)
+        {
+            employees = dataAccessLayer.GetEmployeesbyDepartment(department);
+            return employees;
+        }
     }
 }
