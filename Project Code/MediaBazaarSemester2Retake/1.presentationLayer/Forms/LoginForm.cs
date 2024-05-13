@@ -67,7 +67,7 @@ namespace MediaBazaarSemester2Retake
 
             EmployeeRepo employeeRepo = new EmployeeRepo();
             string role = employeeRepo.VerifyLogin(username, password);
-        
+
 
             if (!string.IsNullOrEmpty(role))
             {
@@ -81,5 +81,13 @@ namespace MediaBazaarSemester2Retake
                 txtBoxPassword.Text = "";
             }
         }
+
+        private void txtBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BtnGo_Click(sender, e);
+            }
+        }
     }
-    }
+}

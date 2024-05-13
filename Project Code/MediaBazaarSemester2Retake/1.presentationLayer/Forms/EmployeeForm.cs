@@ -42,6 +42,12 @@ namespace MediaBazaarSemester2Retake
             List<Department> departments = manageDepartment.GetDepartmentList();
             CbXDepartment.DataSource = departments;
             CbXEditDepartment.DataSource = departments;
+            foreach (Department department in departments)
+            {
+                comboBox1.Items.Add(department._departmentName);
+            }
+            comboBox1.Items.Add("No Department Selected");
+            comboBox1.DisplayMember = "No Department Selected";
         }
 
         private void FillEditEmployee(Employee employee)
@@ -94,8 +100,18 @@ namespace MediaBazaarSemester2Retake
             dgv_Employee.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             dgv_Employee.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_Employee.MultiSelect = false;
+
+            var displayList = list.Select(emp => new
+            {
+                employeeId = emp.employeeID,
+                Name = $"{emp.firstName} {emp.lastName}",
+                Department = emp.Contract != null ? manageDepartment.GetDepartmentName(emp.Contract.departmentID) : "Not assigned",
+                Email = emp.email,
+                ContractType = emp.Contract != null ? emp.Contract.contractType : "Not assigned"
+            });
+
             var source = new BindingSource();
-            source.DataSource = list;
+            source.DataSource = displayList;
             dgv_Employee.DataSource = source;
             dgv_Employee.ScrollBars = ScrollBars.Both;
         }
@@ -156,25 +172,25 @@ namespace MediaBazaarSemester2Retake
                 Contract contract;
                 //IF Contract type different thingy
 
-                    EmailService.SendEmail(password, email);
-                    employee = new Employee(firstName, lastName, password, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
-                    manageEmployee.AddEmployee(employee);
-                    employeeId = manageEmployee.GetRecentEmployee().employeeID;
-                    if (contractType == "Temporary")
-                    {
-                        contract = new Contract(contractType, employeeId, workHour, positon, department._departmentID, startTime, endTime);
-                    }
-                    else // Permanent
-                    {
-                        contract = new Contract(contractType, employeeId, workHour, positon, department._departmentID, startTime);
-                    }
-                    manageContract.AddContract(contract);
-                    employee.Contract = contract;
-                    MessageBox.Show("Successfully add employee");
+                EmailService.SendEmail(password, email);
+                employee = new Employee(firstName, lastName, password, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
+                manageEmployee.AddEmployee(employee);
+                employeeId = manageEmployee.GetRecentEmployee().employeeID;
+                if (contractType == "Temporary")
+                {
+                    contract = new Contract(contractType, employeeId, workHour, positon, department._departmentID, startTime, endTime);
+                }
+                else // Permanent
+                {
+                    contract = new Contract(contractType, employeeId, workHour, positon, department._departmentID, startTime);
+                }
+                manageContract.AddContract(contract);
+                employee.Contract = contract;
+                MessageBox.Show("Successfully add employee");
 
                 ResetField(tabPage2);
                 FillDatagrid();
-                
+
             }
 
         }
@@ -201,31 +217,36 @@ namespace MediaBazaarSemester2Retake
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TxtBxFirstName.Text = "Jaan";
-            TxtBxLastName.Text = "Jansen";
-            TxtBxEmail.Text = "j.jansen@mediabazaar.nl";
-            TxtBxPhoneNumber.Text = "0123456789";
-            TxtBxPassword.Text = "password123";
-            TxtBxStreet.Text = "Magellanstraat 11";
-            TxtBxPostalCode.Text = "2371BB";
-            CbXGender.SelectedIndex = 0;
-            TxtBxCity.Text = "Eindhoven";
-            TxtBxStreet.Text = "Staat";
-            TxtBxHouseNumber.Text = "1";
-            TxtBxCountry.Text = "Netherland";
-            
+            Random random = new Random();
+            string[] firstNames = { "John", "Jane", "Bob", "Alice", "Charlie", "Megan" };
+            string[] lastNames = { "Smith", "Johnson", "Williams", "Brown", "Jones", "Miller" };
+            string[] departments = { "Security", "Logistic", "CustomerService", "HR" };
+            string[] contractTypes = { "Permanent ", "Temporary" };
 
-            TxtBxBsn.Text = "21234475";
-            DtPDateOfBirth.Value = Convert.ToDateTime("05/08/1998");
+            TxtBxFirstName.Text = firstNames[random.Next(firstNames.Length-1)];
+            TxtBxLastName.Text = lastNames[random.Next(lastNames.Length-1)];
+            TxtBxEmail.Text = $"{TxtBxFirstName.Text}.{TxtBxLastName.Text}@mediabazaar.nl";
+            TxtBxPhoneNumber.Text = $"06{random.Next(10000000, 99999999)}";
+            TxtBxPassword.Text = "password123";
+            TxtBxStreet.Text = $"{random.Next(1, 100)} Magellanstraat";
+            TxtBxPostalCode.Text = $"{random.Next(1000, 9999)} AB";
+            TxtBxHouseNumber.Text = $"{random.Next(1, 100)}";
+            CbXGender.SelectedIndex = random.Next(1);
+            TxtBxCity.Text = "Amsterdam";
+            TxtBxCountry.Text = "Netherlands";
+            TxtBxWorkHour.Text = $"{random.Next(1, 40)}";
+
+            TxtBxBsn.Text = $"{random.Next(10000000, 99999999)}";
+            DtPDateOfBirth.Value = DateTime.Today.AddYears(-random.Next(20, 60));
+
 
             TxtBxPosition.Text = "Cashier";
-            CbXDepartment.SelectedIndex = 1;
-            CbXContract.SelectedIndex = 1;
-            TxtBxWorkHour.Text = "40";
+            CbXDepartment.SelectedIndex = random.Next(departments.Length-1);
+            CbXContract.SelectedIndex = random.Next(contractTypes.Length-1);
 
 
-            TxtBxEmergencyName.Text = "Mieteke Joris";
-            TxtBxEmergencyContact.Text = "0612219179";
+            TxtBxEmergencyName.Text = $"{firstNames[random.Next(firstNames.Length)]} {lastNames[random.Next(lastNames.Length)]}";
+            TxtBxEmergencyContact.Text = $"06{random.Next(10000000, 99999999)}";
             CbXEmergencyRelationship.Text = "Spouse";
         }
 
@@ -233,10 +254,7 @@ namespace MediaBazaarSemester2Retake
 
         private void unfilter_Click(object sender, EventArgs e)
         {
-            rbnHR.Checked = false;
-            rbnCustomerService.Checked = false;
-            rbnLogistic.Checked = false;
-            rbnSecurity.Checked = false;
+            comboBox1.Text = "No Department Selected";
             FillDatagrid();
         }
 
@@ -406,53 +424,31 @@ namespace MediaBazaarSemester2Retake
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedDepartment = string.Empty;
 
-            if (rbnSecurity.Checked)
+            if (comboBox1.Text == "No Department Selected")
             {
-                selectedDepartment = "Security";
+                // If no department is selected, display all employees
+                FillDatagrid();
             }
-            else if (rbnLogistic.Checked)
-            {
-                selectedDepartment = "Logistic";
-            }
-            else if (rbnCustomerService.Checked)
-            {
-                selectedDepartment = "CustomerService";
-            }
-            else if (rbnHR.Checked)
-            {
-                selectedDepartment = "HR";
-            }
-
-            if (!string.IsNullOrEmpty(selectedDepartment))
+            else if  (!string.IsNullOrEmpty(comboBox1.Text))
             {
                 // Filter the list of employees based on the selected department
                 IEnumerable<Employee> filteredEmployees = manageEmployee.GetAllEmployees()
-                    .Where(emp => emp.Contract.departmentID == manageDepartment.GetDepartmentID(selectedDepartment));
+                    .Where(emp => emp.Contract != null && emp.Contract.departmentID == manageDepartment.GetDepartmentID(comboBox1.Text));
 
                 // Update the DataGridView with the filtered list
                 FillDatagrid(filteredEmployees);
+               
             }
             else
             {
                 // If no department is selected, display all employees
                 FillDatagrid();
             }
-        }
-
-        private void unfilter_Click_1(object sender, EventArgs e)
-        {
-            // Uncheck all radio buttons
-            rbnHR.Checked = false;
-            rbnCustomerService.Checked = false;
-            rbnLogistic.Checked = false;
-            rbnSecurity.Checked = false;
-
-            // Reset the DataGridView to display all employees
-            FillDatagrid();
         }
     }
 }
