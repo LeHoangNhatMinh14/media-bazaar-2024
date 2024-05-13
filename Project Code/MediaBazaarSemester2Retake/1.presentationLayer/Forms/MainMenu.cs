@@ -14,13 +14,61 @@ namespace MediaBazaarSemester2Retake
 {
     public partial class MainMenu : Form
     {
+        private string userRole;
         EmployeeForm employeeForm = new EmployeeForm();
         ScheduleForm scheduleForm = new ScheduleForm();
         WeeklyShiftsForm WeeklyShiftsForm = new WeeklyShiftsForm();
-        public MainMenu()
+        Departments Departments = new Departments();         
+        public MainMenu(string role)
         {
             InitializeComponent();
+            userRole = role;
+            ConfigureAccessBasedOnRole();
+            UpdateUIWithUserRole();
         }
+        private void UpdateUIWithUserRole()
+        {
+            lbRoleInput.Text = userRole; // Update the label with the user's role
+        }
+        private void ConfigureAccessBasedOnRole()
+        {
+            // Default to all disabled
+            SetAllTabsVisibility(false);
+
+            switch (userRole)
+            {
+                case "Admin":
+                    // Enable all functionality for Admin
+                    SetAllTabsVisibility(true);
+                    break;
+                case "HR":
+                case "HR2":
+                    // Enable only employee management for HR
+                    btnEmployeeManagement.Visible = true;
+                    btnCreateEmployee.Visible = true;
+                    //    btnDeleteEmployeeManagement.Visible = true;
+                    //  btnUpdateEmployeeManagement.Visible = true;
+                    break;
+                case "Schedule":
+                    // Enable access to schedule management for Schedule Managers
+                    btnSchedule.Visible = true;
+                    break;
+                case "Department":
+                    // Enable access to department-specific functionalities
+                    btnDepartmentManagement.Visible = true; // Assuming you have a button for department management
+                    break;
+            }
+        }
+
+
+        private void SetAllTabsVisibility(bool visible)
+        {
+            btnSchedule.Visible = visible;
+            btnProductManagement.Visible = visible;
+            btnStockManagement.Visible = visible;
+            btnEmployeeManagement.Visible = visible;
+        }
+
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -61,8 +109,9 @@ namespace MediaBazaarSemester2Retake
         }
         private void btnProductManagement_Click(object sender, EventArgs e)
         {
+            Departments departments = new Departments();
             btnBack.Visible = true;
-            ProductManagementClicked.Visible = true;
+            btnDepartmentManagement.Visible = true;
             btnProductManagement.Visible = false;
             btnSchedule.Visible = false;
             btnEmployeeManagement.Visible = false;
@@ -70,6 +119,8 @@ namespace MediaBazaarSemester2Retake
             btnCreateProductManagement.Visible = true;
             btnDeleteProductManagement.Visible = true;
             btnUpdateProductManagement.Visible = true;
+            // Add the form to the panel
+            PnlMainMenu.Controls.Add(departments);
         }
 
         public void SetCrudeOn()
@@ -82,7 +133,7 @@ namespace MediaBazaarSemester2Retake
         }
         private void btnSchedule_Click(object sender, EventArgs e)
         {
-            PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
+            PnlMainMenu.Controls.Clear(); 
 
             // Instantiate the WeeklyShiftsForm
             scheduleForm = new ScheduleForm();
@@ -107,7 +158,7 @@ namespace MediaBazaarSemester2Retake
         }
         public void CLear()
         {
-            ProductManagementClicked.Visible = false;
+            btnDepartmentManagement.Visible = false;
             btnCreateProductManagement.Visible = false;
             btnDeleteProductManagement.Visible = false;
             btnUpdateProductManagement.Visible = false;
@@ -130,43 +181,22 @@ namespace MediaBazaarSemester2Retake
         }
         private void button1_Click_1(object sender, EventArgs e)
         {
-            btnStockmanagementCLicked.Visible = false;
-            btnBack.Visible = false;
-            // pnlEmployeeManagement.Visible = false;
-            ProductManagementClicked.Visible = false;
-            btnCreateProductManagement.Visible = false;
-            btnDeleteProductManagement.Visible = false;
-            btnUpdateProductManagement.Visible = false;
-            btnScheduleManagementClicked.Visible = false;
+            CLear();
+            ConfigureAccessBasedOnRole();
+            UpdateUIWithUserRole();
 
-            btnupdateEmployeeManagement.Visible = false;
-            btnDeleteEMployeeManagement.Visible = false;
-            btnCreateEmployee.Visible = false;
-
-            btnUpdateScheduleManagement.Visible = false;
-            btnCreateScheduleManagement.Visible = false;
-            btnWeeklyScheduleManagement.Visible = false;
-
-
-            btnUpdateScheduleManagement.Visible = false;
-
-            btnProductManagement.Visible = true;
-            btnSchedule.Visible = true;
-            btnEmployeeManagement.Visible = true;
-            btnStockManagement.Visible = true;
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
+            PnlMainMenu.Controls.Clear(); 
 
             EmployeeForm employeeForm = new EmployeeForm();
             employeeForm.TopLevel = false;
             employeeForm.FormBorderStyle = FormBorderStyle.None;
             employeeForm.Dock = DockStyle.Fill;
-            PnlMainMenu.Controls.Add(employeeForm); // Add the form to the panel.
-            employeeForm.Show(); // Displa
+            PnlMainMenu.Controls.Add(employeeForm); 
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
@@ -191,18 +221,18 @@ namespace MediaBazaarSemester2Retake
 
         private void btnWeeklyScheduleManagement_Click(object sender, EventArgs e)
         {
-            PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
+            PnlMainMenu.Controls.Clear(); 
 
-            // Instantiate the WeeklyShiftsForm
+          
             WeeklyShiftsForm = new WeeklyShiftsForm();
             WeeklyShiftsForm.TopLevel = false;
             WeeklyShiftsForm.FormBorderStyle = FormBorderStyle.None;
             WeeklyShiftsForm.Dock = DockStyle.Fill;
 
-            // Add the form to the panel
+            
             PnlMainMenu.Controls.Add(WeeklyShiftsForm);
 
-            // Show the form
+        
             WeeklyShiftsForm.Show();
             #region
             SetCrudeOn();
@@ -219,17 +249,43 @@ namespace MediaBazaarSemester2Retake
         {
             PnlMainMenu.Controls.Clear(); // Clear the panel before adding new content.
 
-            // Instantiate the WeeklyShiftsForm
             scheduleForm = new ScheduleForm();
             scheduleForm.TopLevel = false;
             scheduleForm.FormBorderStyle = FormBorderStyle.None;
             scheduleForm.Dock = DockStyle.Fill;
 
-            // Add the form to the panel
+          
             PnlMainMenu.Controls.Add(scheduleForm);
 
-            // Show the form
+         
             scheduleForm.Show();
+        }
+
+        private void lbRoleInput_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMainmenuName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDepartmentManagement_Click(object sender, EventArgs e)
+        {
+            ConfigureAccessBasedOnRole();
+            UpdateUIWithUserRole();
+            Departments departments = new Departments();
+            departments.TopLevel = false;
+            departments.FormBorderStyle = FormBorderStyle.None;
+            departments.Dock = DockStyle.Fill;
+
+            PnlMainMenu.Controls.Clear();
+            PnlMainMenu.Controls.Add(departments); 
+            departments.Show();
+
+        
+          
         }
     }
 }
