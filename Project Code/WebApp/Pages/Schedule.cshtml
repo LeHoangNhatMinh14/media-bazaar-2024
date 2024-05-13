@@ -41,6 +41,14 @@
 				</button>
 				</a>
 			}
+			@if (Model.weeks.ElementAt(0) >= DateTime.Now.AddDays(7))
+			{
+				<a asp-page-handler="DaysOff">
+					<button class="button-offrequest">
+						Availability Change
+					</button>
+				</a>
+			}
 		</div>
 	</div>
 </div>
