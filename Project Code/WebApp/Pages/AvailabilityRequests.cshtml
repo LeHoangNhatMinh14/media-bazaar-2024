@@ -4,5 +4,62 @@
 	ViewData["Title"] = "OffDaysRequest";
 }
 
-<link rel="stylesheet" href="~/css/availabilityChange" asp-append-version="true" />
-
+<link rel="stylesheet" href="~/css/availabilityChange.css" asp-append-version="true" />
+<div class="custom-container">
+<div class="row">
+	<form method="post">
+		<div class="customCheckBoxHolder">
+			<input type="checkbox" asp-for="Monday" value="true" id="cCB1" class="customCheckBoxInput" checked="@Model.Monday">
+			<label for="cCB1" class="customCheckBoxWrapper">
+				<div class="customCheckBox">
+					<div class="inner">Monday</div>
+				</div>
+			</label>
+			<input type="checkbox" asp-for="Tuesday" value="true" id="cCB2" class="customCheckBoxInput" checked="@Model.Tuesday">
+			<label for="cCB2" class="customCheckBoxWrapper">
+				<div class="customCheckBox">
+					<div class="inner">Tuesday</div>
+				</div>
+			</label>
+			<input type="checkbox" asp-for="Wednesday" value="true" id="cCB3" class="customCheckBoxInput" checked="@Model.Wednesday">
+			<label for="cCB3" class="customCheckBoxWrapper">
+				<div class="customCheckBox">
+					<div class="inner">Wednesday</div>
+				</div>
+			</label>
+			<input type="checkbox" asp-for="Thursday" value="true" id="cCB4" class="customCheckBoxInput" checked="@Model.Thursday">
+			<label for="cCB4" class="customCheckBoxWrapper">
+				<div class="customCheckBox">
+					<div class="inner">Thursday</div>
+				</div>
+			</label>
+			<input type="checkbox" asp-for="Friday" value="true" id="cCB5" class="customCheckBoxInput" checked="@Model.Friday">
+			<label for="cCB5" class="customCheckBoxWrapper">
+				<div class="customCheckBox">
+					<div class="inner">Friday</div>
+				</div>
+			</label>
+			<input type="checkbox" asp-for="Saturday" value="true" id="cCB6" class="customCheckBoxInput" checked="@Model.Saturday">
+			<label for="cCB6" class="customCheckBoxWrapper">
+				<div class="customCheckBox">
+					<div class="inner">Saturday</div>
+				</div>
+			</label>
+			<input type="checkbox" asp-for="Sunday" value="true" id="cCB7" class="customCheckBoxInput" checked="@Model.Sunday">
+			<label for="cCB7" class="customCheckBoxWrapper">
+				<div class="customCheckBox">
+					<div class="inner">Sunday</div>
+				</div>
+			</label>
+		</div>
+		<div class="row">
+			<div class="col-9"></div>
+			<div class="col-3">
+				<button class="request-availability" type="submit" value="Submit">
+					Change Availability
+				</button>
+			</div>
+		</div>
+	</form>
+</div>	
+</div>

@@ -77,10 +77,28 @@ namespace DAL
             }
         }
 
-        public Availability GetAvailability()
+        public Availability GetAvailability(int id)
         {
-            throw new NotImplementedException();
-        }
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				string query = @"SELECT * FROM AgreedAvailability WHERE FK_employeeID = @employeeID";
+				connection.Open();
+				using (SqlCommand command = new SqlCommand(query, connection))
+				{
+					command.Parameters.AddWithValue("@employeeID", id);
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						if (reader.Read())
+						{
+							Availability availability = reader.MapToAvailability();
+							return availability;
+						}
+						return null;
+					}
+				}
+			}
+		}
 
         public List<Availability> GetChangeRequests()
         {

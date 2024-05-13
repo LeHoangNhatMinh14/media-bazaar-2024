@@ -1,6 +1,6 @@
 ﻿.custom-size {
     position: absolute;
-    top: 5%;
+    top: 0.4%;
     left: 30%;
     width: 60% !important;
     height: 80%;
@@ -50,7 +50,7 @@ p {
 }
 
 .customCheckBox {
-    margin-top:3vh;
+    margin-top:1vh;
     width: 8.5vw;
     position: relative;
     overflow: hidden;
@@ -126,4 +126,11 @@ p {
 
 .customCheckBoxWrapper .customCheckBox:hover .inner {
     transform: translateY(-2px);
+}
+
+.request-availability {
+    margin-top:1%;
+    border-radius: 40px;
+    background-color: #255C99 !important;
+    color: #CCAD8F;
 }
