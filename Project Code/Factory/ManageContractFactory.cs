@@ -1,4 +1,5 @@
-﻿using BusinessLogicLayer.ManageClass;
+﻿using BusinessLogicLayer.Class;
+using BusinessLogicLayer.ManageClass;
 using DAL;
 using System;
 using System.Collections.Generic;

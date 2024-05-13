@@ -17,5 +17,8 @@ namespace BusinessLogicLayer.Interface
         List<Shift> GetUnassignedShifts();
         List<Shift> GetShiftsofDateofEmployee(int employeeID, DateTime shiftDate);
         List<Shift> GetShiftByWeek(int employeeID, List<DateTime> weeks);
+        List<Shift> GetShiftsinPeriod(DateTime start, DateTime end, string department);
+        void CreateShiftinPeriod(DateTime start, DateTime end, int departmentID, int peopleNeeded);
+        bool isEmployeeOnShift(int shiftID, int employeeID);
     }
 }

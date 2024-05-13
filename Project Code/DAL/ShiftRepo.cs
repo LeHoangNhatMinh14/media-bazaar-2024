@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DAL
 {
@@ -41,22 +42,104 @@ namespace DAL
             }
         }
 
-        public void AssignShift(int shiftID, int employeeID)
+        public bool isEmployeeOnShift(int shiftID, int employeeID)
+        {
+            bool isOnShift = false;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM EmployeesOnShift WHERE FK_shiftID = @ShiftID AND FK_employeeID = @EmployeeID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ShiftID", shiftID);
+                    command.Parameters.AddWithValue("@EmployeeID", employeeID);
+
+                    int count = (int)command.ExecuteScalar();
+
+                    isOnShift = count > 0;
+                }
+            }
+
+            return isOnShift;
+        }
+
+        public void CreateShiftinPeriod(DateTime start, DateTime end, int departmentID, int peopleNeeded)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                string querry = "Insert INTO EmployeesOnShift (FK_shiftID, FK_employeeID) Values (@shiftID, @employeeID)";
-                using (SqlCommand cmd = new SqlCommand(querry, connection))
-                {
-                    cmd.Parameters.AddWithValue("@shiftID", shiftID);
-                    cmd.Parameters.AddWithValue("@employeeID", employeeID);
+                string query = "INSERT INTO Shifts ([shiftType], [peopleNeeded], [shiftDate], [FK_departmentID]) " +
+                               "VALUES (@ShiftType, @PeopleNeeded, @ShiftDate, @DepartmentID)";
 
-                    cmd.ExecuteNonQuery();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    for (DateTime date = start; date <= end; date = date.AddDays(1))
+                    {
+                        // Iterate through different shift types for each day
+                        foreach (string shiftType in new string[] { "Morning", "Evening", "Night" })
+                        {
+                            command.Parameters.Clear(); // Clear parameters from previous iteration
+                            command.Parameters.AddWithValue("@ShiftType", shiftType);
+                            command.Parameters.AddWithValue("@PeopleNeeded", peopleNeeded);
+                            command.Parameters.AddWithValue("@ShiftDate", date);
+                            command.Parameters.AddWithValue("@DepartmentID", departmentID);
+
+                            command.ExecuteNonQuery();
+                        }
+                    }
                 }
             }
         }
+
+
+
+        public void AssignShift(int shiftID, int employeeID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    string selectQuery = "SELECT peopleNeeded FROM Shifts WHERE shiftID = @shiftID";
+                    SqlCommand selectCmd = new SqlCommand(selectQuery, connection, transaction);
+                    selectCmd.Parameters.AddWithValue("@shiftID", shiftID);
+                    int peopleNeeded = (int)selectCmd.ExecuteScalar();
+
+                    if (peopleNeeded > 0)
+                    {
+                        string updateQuery = "UPDATE Shifts SET peopleNeeded = @peopleNeeded WHERE shiftID = @shiftID";
+                        SqlCommand updateCmd = new SqlCommand(updateQuery, connection, transaction);
+                        updateCmd.Parameters.AddWithValue("@peopleNeeded", peopleNeeded - 1);
+                        updateCmd.Parameters.AddWithValue("@shiftID", shiftID);
+                        updateCmd.ExecuteNonQuery();
+
+                        string insertQuery = "INSERT INTO EmployeesOnShift (FK_shiftID, FK_employeeID) VALUES (@shiftID, @employeeID)";
+                        SqlCommand insertCmd = new SqlCommand(insertQuery, connection, transaction);
+                        insertCmd.Parameters.AddWithValue("@shiftID", shiftID);
+                        insertCmd.Parameters.AddWithValue("@employeeID", employeeID);
+                        insertCmd.ExecuteNonQuery();
+
+                        transaction.Commit();
+                    }
+                    else
+                    {
+                        transaction.Rollback();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    Console.WriteLine("Error: " + ex.Message);
+                }
+            }
+        }
+
 
         public void DeleteShifts(int ID)
         {
@@ -79,7 +162,7 @@ namespace DAL
                 connection.Open();
                 string querry = @"SELECT * FROM Shifts
                         WHERE shiftID NOT IN 
-                            (SELECT FK_shiftID FROM EmployeesOnShift)";
+                            (SELECT FK_shiftID FROM EmployeesOnShift) AND peopleNeeded >= 1";
 
                 using (SqlCommand cmd = new SqlCommand(querry, connection))
                 {
@@ -200,5 +283,33 @@ namespace DAL
                 return shifts;
 			}
 		}
+
+        public List<Shift> GetShiftsinPeriod(DateTime start, DateTime end, string department)
+        {
+            List<Shift> shifts = new List<Shift>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string querry = "SELECT * FROM Shifts s INNER JOIN Departments d " +
+                    "ON s.FK_departmentID = d.departmentID WHERE CONVERT(date, shiftDate) " +
+                    "BETWEEN @StartDate AND @EndDate AND d.departmentName = @DepartmentName";
+                using (SqlCommand cmd = new SqlCommand(querry, connection))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", start);
+                    cmd.Parameters.AddWithValue("@EndDate", end);
+                    cmd.Parameters.AddWithValue("@DepartmentName", department);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Shift shift = reader.MapToShift();
+
+                        shifts.Add(shift);
+                    }
+                }
+            }
+            return shifts;
+        }
 	}
 }

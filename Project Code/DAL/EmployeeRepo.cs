@@ -16,19 +16,22 @@ namespace DAL
             this.connectionString = connectionString;
         }
 
-        public List<Employee> GetAllEmployees() {
-            using(SqlConnection connection = new SqlConnection(connectionString))
+        public List<Employee> GetAllEmployees()
+        {
+            ContractRepo contractRepo = new ContractRepo(connectionString);
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = @"SELECT * FROM Employees";
                 connection.Open();
-                using(SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    using(SqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
                         List<Employee> employeeslist = new List<Employee>();
-                        while(reader.Read())
+                        while (reader.Read())
                         {
                             Employee employee = reader.MapToEmployee();
+                            employee.Contract = contractRepo.GetContract(employee.employeeID);
                             employeeslist.Add(employee);
                         }
                         return employeeslist;
@@ -37,7 +40,7 @@ namespace DAL
             }
         }
 
-		public Employee GetEmployee(string email , string password)
+        public Employee GetEmployee(string email , string password)
 		{
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -231,6 +234,33 @@ namespace DAL
                             return employee;
                         }
                         return null;
+                    }
+                }
+            }
+        }
+
+        public List<Employee> GetEmployeesbyDepartment(string department)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string querry = "  Select E.* From Employees E " +
+                    "inner join Contracts c ON e.employeeID = c.FK_employeeID " +
+                    "inner join Departments d on d.departmentID = c.FK_departmentID " +
+                    "where d.departmentName = @department";
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(querry, connection))
+                {
+                    cmd.Parameters.AddWithValue("@department", department);
+
+                    using (SqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        List<Employee> employeeslist = new List<Employee>();
+                        while (rdr.Read())
+                        {
+                            Employee employee = rdr.MapToEmployee();
+                            employeeslist.Add(employee);
+                        }
+                        return employeeslist;
                     }
                 }
             }

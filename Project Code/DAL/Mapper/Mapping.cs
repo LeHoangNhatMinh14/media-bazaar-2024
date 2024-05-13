@@ -103,7 +103,7 @@ namespace DAL.Mapper
             return new Availability()
             {
                 employeeID = GetValue<int>(dataReader, "FK_EmployeeID"),
-                weekNrm = GetValue<int>(dataReader, "WeekNrm"),
+                WeekNrm = GetValue<int?>(dataReader, "WeekNmr"),
                 monday = GetValue<bool>(dataReader, "Monday"),
                 tuesday = GetValue<bool>(dataReader, "Tuesday"),
                 wednesday = GetValue<bool>(dataReader, "Wednesday"),

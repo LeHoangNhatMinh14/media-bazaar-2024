@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            lblNumofShiftsMorning = new Label();
-            lblNumOfShiftsEvening = new Label();
-            lblNumOfShiftsNight = new Label();
+            lblNumofShifts = new Label();
             SuspendLayout();
             // 
             // label1
@@ -43,41 +41,20 @@
             label1.TabIndex = 0;
             label1.Text = "00";
             // 
-            // lblNumofShiftsMorning
+            // lblNumofShifts
             // 
-            lblNumofShiftsMorning.AutoSize = true;
-            lblNumofShiftsMorning.Location = new Point(22, 25);
-            lblNumofShiftsMorning.Name = "lblNumofShiftsMorning";
-            lblNumofShiftsMorning.Size = new Size(13, 15);
-            lblNumofShiftsMorning.TabIndex = 1;
-            lblNumofShiftsMorning.Text = "1";
-            // 
-            // lblNumOfShiftsEvening
-            // 
-            lblNumOfShiftsEvening.AutoSize = true;
-            lblNumOfShiftsEvening.Location = new Point(22, 40);
-            lblNumOfShiftsEvening.Name = "lblNumOfShiftsEvening";
-            lblNumOfShiftsEvening.Size = new Size(13, 15);
-            lblNumOfShiftsEvening.TabIndex = 2;
-            lblNumOfShiftsEvening.Text = "2";
-            // 
-            // lblNumOfShiftsNight
-            // 
-            lblNumOfShiftsNight.AutoSize = true;
-            lblNumOfShiftsNight.Location = new Point(22, 55);
-            lblNumOfShiftsNight.Name = "lblNumOfShiftsNight";
-            lblNumOfShiftsNight.Size = new Size(13, 15);
-            lblNumOfShiftsNight.TabIndex = 3;
-            lblNumOfShiftsNight.Text = "3";
+            lblNumofShifts.AutoSize = true;
+            lblNumofShifts.Location = new Point(40, 57);
+            lblNumofShifts.Name = "lblNumofShifts";
+            lblNumofShifts.Size = new Size(0, 15);
+            lblNumofShifts.TabIndex = 1;
             // 
             // ucDays
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDark;
-            Controls.Add(lblNumOfShiftsNight);
-            Controls.Add(lblNumOfShiftsEvening);
-            Controls.Add(lblNumofShiftsMorning);
+            Controls.Add(lblNumofShifts);
             Controls.Add(label1);
             Name = "ucDays";
             Size = new Size(116, 84);
@@ -90,8 +67,6 @@
         #endregion
 
         public Label label1;
-        private Label lblNumofShiftsMorning;
-        private Label lblNumOfShiftsEvening;
-        private Label lblNumOfShiftsNight;
+        private Label lblNumofShifts;
     }
 }

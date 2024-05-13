@@ -36,7 +36,7 @@ namespace MediaBazaarSemester2Retake
             timer.Tick += Timer1_Tick;
             timer.Start();
         }
-        
+
         private void ListEmbeddedResources()
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
@@ -50,14 +50,14 @@ namespace MediaBazaarSemester2Retake
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
 
-          
+
         }
         private void Timer1_Tick(object sender, EventArgs e)
         {
             if (images.Count == 0) return;
             pictureBox4.Image = images[currentIndex];
 
-            currentIndex = (currentIndex+ 1)% images.Count;
+            currentIndex = (currentIndex + 1) % images.Count;
         }
 
         private void BtnGo_Click(object sender, EventArgs e)
@@ -68,32 +68,25 @@ namespace MediaBazaarSemester2Retake
             EmployeeRepo employeeRepo = new EmployeeRepo();
             string role = employeeRepo.VerifyLogin(username, password);
 
+
             if (!string.IsNullOrEmpty(role))
             {
                 this.Hide();
-                switch (role)
-                {
-                    case "Admin":
-                        MainMenu adminForm = new MainMenu();
-                        adminForm.Show();
-                        break;
-                    case "HR":
-                        EmployeeForm staffForm = new EmployeeForm();
-                        staffForm.Show();
-                        break;case "HR2":
-                        WeeklyShiftsForm staffForm2 = new WeeklyShiftsForm();
-                        staffForm2.Show();
-                        break;
-
-                    default:
-                        MessageBox.Show("Access Denied: No valid roles assigned.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                }
+                MainMenu mainMenuForm = new MainMenu(role);  // Pass role to MainMenu
+                mainMenuForm.Show();
             }
             else
             {
                 MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtBoxPassword.Text = "";
+            }
+        }
+
+        private void txtBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                BtnGo_Click(sender, e);
             }
         }
     }

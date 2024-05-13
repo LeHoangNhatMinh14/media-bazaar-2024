@@ -48,6 +48,21 @@ namespace BusinessLogicLayer.ManageClass
             return _IShifts.GetShiftByWeek(employeeID,week);
         }
 
+        public List<Shift> GetShiftsbyperiod(DateTime start, DateTime end, string department)
+        {
+            return _IShifts.GetShiftsinPeriod(start, end, department);
+        }
+
+        public void CreateShiftinPeriod(DateTime start, DateTime end, int departmentID, int peopleNeeded)
+        {
+            _IShifts.CreateShiftinPeriod(start, end, departmentID,peopleNeeded);
+        }
+
+        public bool isEmployeeOnShift(int shiftID, int employeeID)
+        {
+            return _IShifts.isEmployeeOnShift(shiftID, employeeID);
+        }
+
         public bool CanAssignShift(int employeeID, Shift assignedShift)
         {
             if (assignedShift.shiftType == "Morning")

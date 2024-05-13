@@ -14,5 +14,6 @@ namespace BusinessLogicLayer.Interface
 
         Availability GetAvailability();
         List<Availability> GetChangeRequests();
+        Availability GetAvailabilitiesofEmployee(int employeeID);
     }
 }

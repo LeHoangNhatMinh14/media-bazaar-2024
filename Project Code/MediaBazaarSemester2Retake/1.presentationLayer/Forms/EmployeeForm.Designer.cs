@@ -30,12 +30,9 @@
         {
             tabControl1 = new TabControl();
             tabPageEmployees = new TabPage();
-            unfilter = new Button();
-            rbnLogistic = new RadioButton();
-            rbnSecurity = new RadioButton();
-            rbnCustomerService = new RadioButton();
-            rbnHR = new RadioButton();
-            button2 = new Button();
+            comboBox1 = new ComboBox();
+            label45 = new Label();
+            label42 = new Label();
             NameBox = new TextBox();
             BtnFireEmployee = new Button();
             BtnSendToEditEmployee = new Button();
@@ -169,12 +166,9 @@
             // 
             // tabPageEmployees
             // 
-            tabPageEmployees.Controls.Add(unfilter);
-            tabPageEmployees.Controls.Add(rbnLogistic);
-            tabPageEmployees.Controls.Add(rbnSecurity);
-            tabPageEmployees.Controls.Add(rbnCustomerService);
-            tabPageEmployees.Controls.Add(rbnHR);
-            tabPageEmployees.Controls.Add(button2);
+            tabPageEmployees.Controls.Add(comboBox1);
+            tabPageEmployees.Controls.Add(label45);
+            tabPageEmployees.Controls.Add(label42);
             tabPageEmployees.Controls.Add(NameBox);
             tabPageEmployees.Controls.Add(BtnFireEmployee);
             tabPageEmployees.Controls.Add(BtnSendToEditEmployee);
@@ -188,79 +182,37 @@
             tabPageEmployees.Text = "Employees";
             tabPageEmployees.UseVisualStyleBackColor = true;
             // 
-            // unfilter
+            // comboBox1
             // 
-            unfilter.Location = new Point(757, 124);
-            unfilter.Margin = new Padding(2);
-            unfilter.Name = "unfilter";
-            unfilter.Size = new Size(92, 20);
-            unfilter.TabIndex = 13;
-            unfilter.Text = "Remove Filter";
-            unfilter.UseVisualStyleBackColor = true;
-            unfilter.Click += unfilter_Click_1;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(670, 82);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 15;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
-            // rbnLogistic
+            // label45
             // 
-            rbnLogistic.AutoSize = true;
-            rbnLogistic.Location = new Point(681, 105);
-            rbnLogistic.Margin = new Padding(2);
-            rbnLogistic.Name = "rbnLogistic";
-            rbnLogistic.Size = new Size(66, 19);
-            rbnLogistic.TabIndex = 12;
-            rbnLogistic.TabStop = true;
-            rbnLogistic.Text = "Logistic";
-            rbnLogistic.UseVisualStyleBackColor = true;
+            label45.AutoSize = true;
+            label45.Location = new Point(670, 64);
+            label45.Name = "label45";
+            label45.Size = new Size(124, 15);
+            label45.TabIndex = 14;
+            label45.Text = "Search By Department";
             // 
-            // rbnSecurity
+            // label42
             // 
-            rbnSecurity.AutoSize = true;
-            rbnSecurity.Location = new Point(681, 82);
-            rbnSecurity.Margin = new Padding(2);
-            rbnSecurity.Name = "rbnSecurity";
-            rbnSecurity.Size = new Size(67, 19);
-            rbnSecurity.TabIndex = 11;
-            rbnSecurity.TabStop = true;
-            rbnSecurity.Text = "Security";
-            rbnSecurity.UseVisualStyleBackColor = true;
-            // 
-            // rbnCustomerService
-            // 
-            rbnCustomerService.AutoSize = true;
-            rbnCustomerService.Location = new Point(681, 59);
-            rbnCustomerService.Margin = new Padding(2);
-            rbnCustomerService.Name = "rbnCustomerService";
-            rbnCustomerService.Size = new Size(117, 19);
-            rbnCustomerService.TabIndex = 10;
-            rbnCustomerService.TabStop = true;
-            rbnCustomerService.Text = "Customer Service";
-            rbnCustomerService.UseVisualStyleBackColor = true;
-            // 
-            // rbnHR
-            // 
-            rbnHR.AutoSize = true;
-            rbnHR.Location = new Point(681, 38);
-            rbnHR.Margin = new Padding(2);
-            rbnHR.Name = "rbnHR";
-            rbnHR.Size = new Size(41, 19);
-            rbnHR.TabIndex = 9;
-            rbnHR.TabStop = true;
-            rbnHR.Text = "HR";
-            rbnHR.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(667, 124);
-            button2.Margin = new Padding(2);
-            button2.Name = "button2";
-            button2.Size = new Size(85, 20);
-            button2.TabIndex = 8;
-            button2.Text = "Filter";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            label42.AutoSize = true;
+            label42.Location = new Point(670, 6);
+            label42.Name = "label42";
+            label42.Size = new Size(113, 15);
+            label42.TabIndex = 14;
+            label42.Text = "Search By Employee";
             // 
             // NameBox
             // 
-            NameBox.Location = new Point(667, 5);
+            NameBox.Location = new Point(668, 25);
             NameBox.Margin = new Padding(3, 2, 3, 2);
             NameBox.Name = "NameBox";
             NameBox.Size = new Size(183, 23);
@@ -1385,12 +1337,6 @@
         private Label label6;
         private TabControl tabControl1;
         private TabPage tabPageEmployees;
-        private Button unfilter;
-        private RadioButton rbnLogistic;
-        private RadioButton rbnSecurity;
-        private RadioButton rbnCustomerService;
-        private RadioButton rbnHR;
-        private Button button2;
         private TextBox NameBox;
         private Button BtnFireEmployee;
         private Button BtnSendToEditEmployee;
@@ -1484,5 +1430,8 @@
         private Label label43;
         private TextBox TxtBxEditWorkHour;
         private Label label44;
+        private ComboBox comboBox1;
+        private Label label45;
+        private Label label42;
     }
 }
