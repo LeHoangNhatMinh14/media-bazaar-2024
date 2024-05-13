@@ -9,7 +9,7 @@ namespace BusinessLogicLayer.Class
     public class Availability
     {
         public int   employeeID {  get; set; }
-        public int?  weekNrm { get; set; }
+        public int?  WeekNrm { get; set; }
         public bool  monday { get; set; }
         public bool  tuesday { get; set; }
         public bool  wednesday { get; set; }
@@ -35,10 +35,10 @@ namespace BusinessLogicLayer.Class
 			this.sunday = sunday;
 		}
 
-		public Availability(int employeeID, int? weekNrm, bool monday, bool tuesday, bool wednesday, bool thursday, bool friday, bool saturday, bool sunday, bool? accepted)
+		public Availability(int employeeID, int? WeekNrm, bool monday, bool tuesday, bool wednesday, bool thursday, bool friday, bool saturday, bool sunday, bool? accepted)
         {
             this.employeeID = employeeID;
-            this.weekNrm = weekNrm;
+            this.WeekNrm = WeekNrm;
             this.monday = monday;
             this.tuesday = tuesday;
             this.wednesday = wednesday;

@@ -190,10 +190,8 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
 
                         if (_manageAvailability.IsEmployeeAvailableforShift(employee.employeeID, shift.shiftDate))
                         {
-                            continue;
+                            _manageShifts.AssignShift(shift.shiftid, employee.employeeID);
                         }
-
-                        _manageShifts.AssignShift(shift.shiftid, employee.employeeID);
 
                     }
                 }

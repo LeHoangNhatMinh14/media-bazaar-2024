@@ -70,7 +70,7 @@ namespace DAL
                     command.Parameters.AddWithValue("@friday", availability.friday);
                     command.Parameters.AddWithValue("@saturday", availability.saturday);
                     command.Parameters.AddWithValue("@sunday", availability.sunday);
-                    command.Parameters.AddWithValue("@weeknmr", availability.weekNrm);
+                    command.Parameters.AddWithValue("@weeknmr", availability.WeekNrm);
 
                     command.ExecuteNonQuery();
                 }
@@ -116,7 +116,8 @@ namespace DAL
             Availability availability = null;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string querry = "SELECT * FROM AgreedAvailability WHERE FK_EmployeeID = @employeeID AND Accepted = 1";
+                string querry = "SELECT * FROM AgreedAvailability WHERE FK_EmployeeID = @employeeID";
+                connection.Open();
                 using (SqlCommand command = new SqlCommand(querry, connection))
                 {
                     command.Parameters.AddWithValue("@employeeID", employeeID);

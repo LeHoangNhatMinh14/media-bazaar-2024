@@ -28,7 +28,10 @@ namespace BusinessLogicLayer.ManageClass
 		{
             Availability availability = availabilityDAL.GetAvailabilitiesofEmployee(employeeID);
 
-            // Determine the day of the week of the shift
+            if (availability == null)
+            {
+                return false;
+            }
             DayOfWeek shiftDayOfWeek = shiftDate.DayOfWeek;
 
             switch (shiftDayOfWeek)

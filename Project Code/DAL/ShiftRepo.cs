@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DAL
 {
@@ -289,10 +290,9 @@ namespace DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string querry = "Select * from Shifts " +
-                    "INNER JOIN [dbi504738_sb08media].[dbo].[Departments] d ON s.FK_departmentID = d.departmentID" +
-                    "Where shift Convert(date, shiftDate) Between @StartDate AND @EndDate" +
-                    " AND d.departmentName = @DepartmentName";
+                string querry = "SELECT * FROM Shifts s INNER JOIN Departments d " +
+                    "ON s.FK_departmentID = d.departmentID WHERE CONVERT(date, shiftDate) " +
+                    "BETWEEN @StartDate AND @EndDate AND d.departmentName = @DepartmentName";
                 using (SqlCommand cmd = new SqlCommand(querry, connection))
                 {
                     cmd.Parameters.AddWithValue("@StartDate", start);
