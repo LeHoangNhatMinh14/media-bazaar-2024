@@ -48,7 +48,7 @@
             // button4
             // 
             button4.Location = new Point(1086, 7);
-            button4.Margin = new Padding(2, 2, 2, 2);
+            button4.Margin = new Padding(2);
             button4.Name = "button4";
             button4.Size = new Size(21, 22);
             button4.TabIndex = 50;
@@ -62,7 +62,7 @@
             BtnGo.CausesValidation = false;
             BtnGo.Image = (Image)resources.GetObject("BtnGo.Image");
             BtnGo.Location = new Point(31, 326);
-            BtnGo.Margin = new Padding(2, 2, 2, 2);
+            BtnGo.Margin = new Padding(2);
             BtnGo.Name = "BtnGo";
             BtnGo.Size = new Size(209, 74);
             BtnGo.TabIndex = 49;
@@ -73,7 +73,7 @@
             // 
             btnCantSignIn.FlatStyle = FlatStyle.Flat;
             btnCantSignIn.Location = new Point(57, 467);
-            btnCantSignIn.Margin = new Padding(2, 2, 2, 2);
+            btnCantSignIn.Margin = new Padding(2);
             btnCantSignIn.Name = "btnCantSignIn";
             btnCantSignIn.Size = new Size(158, 33);
             btnCantSignIn.TabIndex = 47;
@@ -141,18 +141,19 @@
             // 
             txtBoxPassword.BackColor = Color.WhiteSmoke;
             txtBoxPassword.Location = new Point(57, 254);
-            txtBoxPassword.Margin = new Padding(2, 2, 2, 2);
+            txtBoxPassword.Margin = new Padding(2);
             txtBoxPassword.Multiline = true;
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PasswordChar = '*';
             txtBoxPassword.Size = new Size(159, 32);
             txtBoxPassword.TabIndex = 37;
+            txtBoxPassword.KeyPress += txtBoxPassword_KeyPress;
             // 
             // txtBoxUsername
             // 
             txtBoxUsername.BackColor = Color.WhiteSmoke;
             txtBoxUsername.Location = new Point(57, 196);
-            txtBoxUsername.Margin = new Padding(2, 2, 2, 2);
+            txtBoxUsername.Margin = new Padding(2);
             txtBoxUsername.Multiline = true;
             txtBoxUsername.Name = "txtBoxUsername";
             txtBoxUsername.Size = new Size(159, 32);
@@ -162,7 +163,7 @@
             // 
             pictureBox4.BackColor = Color.LightSteelBlue;
             pictureBox4.Location = new Point(316, -1);
-            pictureBox4.Margin = new Padding(2, 2, 2, 2);
+            pictureBox4.Margin = new Padding(2);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(809, 552);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -191,7 +192,7 @@
             Controls.Add(txtBoxUsername);
             Controls.Add(pictureBox4);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
