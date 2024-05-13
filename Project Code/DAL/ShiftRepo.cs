@@ -299,7 +299,6 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@EndDate", end);
                     cmd.Parameters.AddWithValue("@DepartmentName", department);
 
-                    connection.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())

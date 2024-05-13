@@ -161,7 +161,7 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
 
         private void btnAutoShiftAssign_Click(object sender, EventArgs e)
         {
-
+            AutomaticScheduling();
         }
         private void AutomaticScheduling()
         {
@@ -254,6 +254,6 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
         //    _manageShifts.CreateShiftinPeriod(start, end, departmentID, peopleNeeded);
 
         //    MessageBox.Show($"Created shifts from {start.ToString("dd/MM/yyyy")} to {end.ToString("dd/MM/yyyy")}");
-        //}
+        }
     }
 }
