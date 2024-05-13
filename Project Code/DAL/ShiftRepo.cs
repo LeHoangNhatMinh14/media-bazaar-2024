@@ -41,6 +41,30 @@ namespace DAL
             }
         }
 
+        public bool isEmployeeOnShift(int shiftID, int employeeID)
+        {
+            bool isOnShift = false;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM EmployeesOnShift WHERE FK_shiftID = @ShiftID AND FK_employeeID = @EmployeeID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ShiftID", shiftID);
+                    command.Parameters.AddWithValue("@EmployeeID", employeeID);
+
+                    int count = (int)command.ExecuteScalar();
+
+                    isOnShift = count > 0;
+                }
+            }
+
+            return isOnShift;
+        }
+
         public void CreateShiftinPeriod(DateTime start, DateTime end, int departmentID, int peopleNeeded)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

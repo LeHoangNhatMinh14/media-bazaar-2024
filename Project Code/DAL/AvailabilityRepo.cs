@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Class;
 using BusinessLogicLayer.Interface;
+using DAL.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -109,5 +110,27 @@ namespace DAL
 				}
 			}
 		}
+
+        public Availability GetAvailabilitiesofEmployee(int employeeID)
+        {
+            Availability availability = null;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string querry = "SELECT * FROM AgreedAvailability WHERE FK_EmployeeID = @employeeID AND Accepted = 1";
+                using (SqlCommand command = new SqlCommand(querry, connection))
+                {
+                    command.Parameters.AddWithValue("@employeeID", employeeID);
+                    using (SqlDataReader r = command.ExecuteReader())
+                    {
+                        if(r.Read())
+                        {
+                            availability = r.MapToAvailability();
+
+                        }
+                    }
+                }
+                return availability;
+            }
+        }
     }
 }

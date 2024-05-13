@@ -58,6 +58,11 @@ namespace BusinessLogicLayer.ManageClass
             _IShifts.CreateShiftinPeriod(start, end, departmentID,peopleNeeded);
         }
 
+        public bool isEmployeeOnShift(int shiftID, int employeeID)
+        {
+            return _IShifts.isEmployeeOnShift(shiftID, employeeID);
+        }
+
         public bool CanAssignShift(int employeeID, Shift assignedShift)
         {
             if (assignedShift.shiftType == "Morning")
