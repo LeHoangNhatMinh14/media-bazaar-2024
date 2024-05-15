@@ -12,7 +12,7 @@ namespace BusinessLogicLayer.Interface
         void AddUsualAvailability(Availability availability);
         void RequestAvailabilityChange(Availability availability);
 
-        Availability GetAvailability();
+        Availability GetAvailability(int id);
         List<Availability> GetChangeRequests();
         Availability GetAvailabilitiesofEmployee(int employeeID);
     }

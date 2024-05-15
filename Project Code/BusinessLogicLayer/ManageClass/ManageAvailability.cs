@@ -23,7 +23,15 @@ namespace BusinessLogicLayer.ManageClass
 		{ 
 			availabilityDAL.AddUsualAvailability(availability);
 		}
+        public void RequestAvailabilityChange(Availability newAvailability)
+        { 
+            availabilityDAL.RequestAvailabilityChange(newAvailability);
+        }
 
+        public Availability GetAvailability(int id)
+        {
+            return availabilityDAL.GetAvailability(id);
+        }
 		public bool IsEmployeeAvailableforShift(int employeeID,DateTime shiftDate)
 		{
             Availability availability = availabilityDAL.GetAvailabilitiesofEmployee(employeeID);

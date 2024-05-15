@@ -1,47 +1,7 @@
-﻿.custom-size {
-    position: absolute;
-    top: 0.4%;
-    left: 30%;
-    width: 60% !important;
-    height: 80%;
-    font-size:30px;
-    border-radius:40px !important;
-}
-
-.row>* {
-    padding:0px !important;
-}
-
-p {
-    line-height:2;
-    margin-block-start:10px;
-    margin-left:30px;
-}
-
-.personal-data {
-    height: 50%;
-    background-color: #255C99 !important;
-    border-top-left-radius: 50px 50px !important;
-    border-top-right-radius: 50px 50px !important;
-    color: #CCAD8F;
-}
-
-.contract-data {
-    height:30%;
-    background-color: #262626;
-    color:white;
-    border-bottom-left-radius:50px 50px;
-    border-bottom-right-radius:50px 50px;
-}
-
-.button-container {
-    margin-top:1%;
-}
-
-.button-sendrequest {
-    border-radius: 40px;
-    background-color: #255C99 !important;
-    color: #CCAD8F;
+﻿.custom-container {
+    position:absolute;
+        top:45vh;
+        left:25%
 }
 
 .customCheckBoxHolder {
@@ -50,7 +10,7 @@ p {
 }
 
 .customCheckBox {
-    margin-top:1vh;
+    margin-top: 3vh;
     width: 8.5vw;
     position: relative;
     overflow: hidden;
@@ -128,8 +88,10 @@ p {
     transform: translateY(-2px);
 }
 
+
 .request-availability {
-    margin-top:1%;
+    font-size:30px;
+    margin-top: 2vh;
     border-radius: 40px;
     background-color: #255C99 !important;
     color: #CCAD8F;

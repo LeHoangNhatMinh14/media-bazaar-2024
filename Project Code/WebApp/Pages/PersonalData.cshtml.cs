@@ -29,7 +29,7 @@ namespace MediaBazaar_WebApp.Pages
 		[BindProperty]
 		public bool Sunday {  get; set; }
 
-		public ActionResult OnGet()
+        public ActionResult OnGet()
         {
             if (HttpContext.Session.GetString("EmployeeID") == null)
             {
@@ -38,8 +38,21 @@ namespace MediaBazaar_WebApp.Pages
             int id = (int)HttpContext.Session.GetInt32("EmployeeID");
             employee = mE.GetEmployeeByID(id);
             contract = mC.GetContract(id);
+            if (mA.GetAvailability(id) != null)
+            {
+                Availability displayAvailability = mA.GetAvailability(id);
+                Monday = displayAvailability.monday;
+                Tuesday = displayAvailability.tuesday;
+                Wednesday = displayAvailability.wednesday;
+                Thursday = displayAvailability.thursday;
+                Friday = displayAvailability.friday;
+                Saturday = displayAvailability.saturday;
+                Sunday = displayAvailability.sunday;
+			}
+
 			return Page();
 		}
+
 
         public ActionResult OnPost() 
         {

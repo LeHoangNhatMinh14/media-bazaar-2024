@@ -31,11 +31,21 @@
 			}
 		</div>
 		<div class="w-100"></div>
-		<div class="col-10"></div>
+		<div class="col-8"></div>
+		<div class="col-2">
+			@if (Model.weeks.ElementAt(0) >= DateTime.Now.AddDays(7))
+			{
+				<a asp-page-handler="AvailabilityRequest">
+					<button class="button-availabilityrequest">
+						Availability Change
+					</button>
+				</a>
+			}
+		</div>
 		<div class="col-2 button-container">
 			@if (Model.weeks.ElementAt(0) >= DateTime.Now )
 			{
-				<a asp-page-handler="DaysOff" >
+				<a asp-page-handler="DaysOff">
 					<button class="button-offrequest">
 					Request Leave
 				</button>

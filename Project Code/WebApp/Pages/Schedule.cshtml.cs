@@ -16,6 +16,7 @@ namespace MediaBazaar_WebApp.Pages
 		public Employee employee { get; set; }
 		public List<Shift> employeeShifts { get; set; }
 		public List<DateTime> weeks { get; set; }
+		private static int weekNmbr { get; set; }
 		public string Date {  get; set; }
         private int _x {get; set; }
 
@@ -41,6 +42,8 @@ namespace MediaBazaar_WebApp.Pages
                     break;
                 case "DaysOff":
                     return RedirectToPage("/OffDaysRequest");
+                case "AvailabilityRequest":
+                    return RedirectToPage("/AvailabilityRequests" , new {weekNmbr = weekNmbr });
             }
 
             employeeShifts = mS.GetWeeklyShifts(id, weeks);
@@ -72,6 +75,7 @@ namespace MediaBazaar_WebApp.Pages
 
             var thisWeekStart = baseStart;
             var thisWeekEnd = baseStart.AddDays(6);
+            weekNmbr = GetWeekNumber(thisWeekEnd);
 
             Date = $"Day {thisWeekStart.Day}/{thisWeekStart.Month} - {thisWeekEnd.Day}/{thisWeekEnd.Month} , {baseDate.Year}";
         }
@@ -94,5 +98,12 @@ namespace MediaBazaar_WebApp.Pages
 
             Date = $"Day {thisWeekStart.Day}/{thisWeekStart.Month} - {thisWeekEnd.Day}/{thisWeekEnd.Month} , {baseDate.Year}";
         }
+
+		private int GetWeekNumber(DateTime weekShowing)
+		{
+			CultureInfo ciCurr = CultureInfo.CurrentCulture;
+			int weekNum = ciCurr.Calendar.GetWeekOfYear(weekShowing, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+			return weekNum;
+		}
 	}
 }
