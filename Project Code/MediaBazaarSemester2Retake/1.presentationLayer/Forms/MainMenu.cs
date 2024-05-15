@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.ManageClass;
 using MediaBazaarSemester2Retake._1.presentationLayer.Forms;
+using MediaBazaarSemester2Retake._1.presentationLayer.Forms.Shifts_forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -213,12 +214,21 @@ namespace MediaBazaarSemester2Retake
 
         private void btnCreateScheduleManagement_Click(object sender, EventArgs e)
         {
+            PnlMainMenu.Controls.Clear();
 
+
+            LeaveRequests leaveRequests = new LeaveRequests();
+            leaveRequests.TopLevel = false;
+            leaveRequests.FormBorderStyle = FormBorderStyle.None;
+            leaveRequests.Dock = DockStyle.Fill;
+
+
+            PnlMainMenu.Controls.Add(leaveRequests);
+            leaveRequests.Show();
         }
 
         private void btnCreateProductManagement_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnWeeklyScheduleManagement_Click(object sender, EventArgs e)
