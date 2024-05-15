@@ -15,16 +15,18 @@ namespace MediaBazaarSemester2Retake
     public partial class MainMenu : Form
     {
         private string userRole;
+        private string department;
         EmployeeForm employeeForm = new EmployeeForm();
         ScheduleForm scheduleForm = new ScheduleForm();
-        WeeklyShiftsForm WeeklyShiftsForm = new WeeklyShiftsForm();
+        WeeklyShiftsForm WeeklyShiftsForm = null;
         Departments Departments = new Departments();         
-        public MainMenu(string role)
+        public MainMenu(string role, string department)
         {
             InitializeComponent();
             userRole = role;
             ConfigureAccessBasedOnRole();
             UpdateUIWithUserRole();
+            this.department = department;
         }
         private void UpdateUIWithUserRole()
         {
@@ -224,7 +226,7 @@ namespace MediaBazaarSemester2Retake
             PnlMainMenu.Controls.Clear(); 
 
           
-            WeeklyShiftsForm = new WeeklyShiftsForm();
+            WeeklyShiftsForm = new WeeklyShiftsForm(userRole, department);
             WeeklyShiftsForm.TopLevel = false;
             WeeklyShiftsForm.FormBorderStyle = FormBorderStyle.None;
             WeeklyShiftsForm.Dock = DockStyle.Fill;
