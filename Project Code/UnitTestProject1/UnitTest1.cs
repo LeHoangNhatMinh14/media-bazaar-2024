@@ -27,8 +27,9 @@ namespace UnitTestProject1
         [TestMethod]
         public void DashboardInteractionTest()
         {
-           
+
             LoginTestMethod();
+            Thread.Sleep(1500);
             LoginTestMethod2();
            
             var personalDataLink = driver.FindElement(By.LinkText("Personal Data"));
@@ -36,21 +37,21 @@ namespace UnitTestProject1
 
            
             wait.Until(ExpectedConditions.UrlContains("/PersonalData"));
-
+            Thread.Sleep(1500);
            
             var mondayCheckbox = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//div[@class='customCheckBox']/div[contains(text(), 'Monday')]")));
 
-         
+            Thread.Sleep(1500);
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", mondayCheckbox);
-            Thread.Sleep(500); 
+            Thread.Sleep(500);
 
-           
+            Thread.Sleep(1500);
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", mondayCheckbox);
-
+            Thread.Sleep(1500);
             var scheduleLink = wait.Until(ExpectedConditions.ElementToBeClickable(By.LinkText("Schedule")));
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", scheduleLink);
 
-           
+            Thread.Sleep(1500);
             scheduleLink.Click();
 
            
