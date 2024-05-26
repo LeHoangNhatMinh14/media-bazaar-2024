@@ -135,7 +135,7 @@ namespace MediaBazaarSemester2Retake
         }
         private void btnSchedule_Click(object sender, EventArgs e)
         {
-            PnlMainMenu.Controls.Clear(); 
+            PnlMainMenu.Controls.Clear();
 
             // Instantiate the WeeklyShiftsForm
             scheduleForm = new ScheduleForm();
@@ -192,13 +192,13 @@ namespace MediaBazaarSemester2Retake
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PnlMainMenu.Controls.Clear(); 
+            PnlMainMenu.Controls.Clear();
 
             EmployeeForm employeeForm = new EmployeeForm();
             employeeForm.TopLevel = false;
             employeeForm.FormBorderStyle = FormBorderStyle.None;
             employeeForm.Dock = DockStyle.Fill;
-            PnlMainMenu.Controls.Add(employeeForm); 
+            PnlMainMenu.Controls.Add(employeeForm);
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
@@ -223,7 +223,8 @@ namespace MediaBazaarSemester2Retake
 
         private void btnWeeklyScheduleManagement_Click(object sender, EventArgs e)
         {
-            PnlMainMenu.Controls.Clear(); 
+            PnlMainMenu.Controls.Clear();
+
 
           
             WeeklyShiftsForm = new WeeklyShiftsForm(userRole, department);
@@ -231,10 +232,10 @@ namespace MediaBazaarSemester2Retake
             WeeklyShiftsForm.FormBorderStyle = FormBorderStyle.None;
             WeeklyShiftsForm.Dock = DockStyle.Fill;
 
-            
+
             PnlMainMenu.Controls.Add(WeeklyShiftsForm);
 
-        
+
             WeeklyShiftsForm.Show();
             #region
             SetCrudeOn();
@@ -256,10 +257,10 @@ namespace MediaBazaarSemester2Retake
             scheduleForm.FormBorderStyle = FormBorderStyle.None;
             scheduleForm.Dock = DockStyle.Fill;
 
-          
+
             PnlMainMenu.Controls.Add(scheduleForm);
 
-         
+
             scheduleForm.Show();
         }
 
@@ -283,11 +284,34 @@ namespace MediaBazaarSemester2Retake
             departments.Dock = DockStyle.Fill;
 
             PnlMainMenu.Controls.Clear();
-            PnlMainMenu.Controls.Add(departments); 
+            PnlMainMenu.Controls.Add(departments);
             departments.Show();
 
-        
-          
+
+
+        }
+        private void Logout()
+        {
+            // Reset userRole
+            userRole = string.Empty;
+
+            // Reset UI elements
+            UpdateUIWithUserRole();
+            SetAllTabsVisibility(false);
+            CLear();
+
+            // Clear the panel
+            PnlMainMenu.Controls.Clear();
+
+            // Navigate back to the login screen
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+            this.Hide(); // Assuming you want to hide the main menu form after logging out
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Logout();
         }
     }
 }

@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             panel1 = new Panel();
+            button2 = new Button();
             lbRoleInput = new Label();
             lblMainmenuName = new Label();
-            label3 = new Label();
             label2 = new Label();
             btnBack = new Button();
             label1 = new Label();
@@ -63,9 +63,9 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ActiveCaption;
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(lbRoleInput);
             panel1.Controls.Add(lblMainmenuName);
-            panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(btnBack);
             panel1.Controls.Add(label1);
@@ -76,6 +76,19 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1111, 39);
             panel1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ActiveCaption;
+            button2.ForeColor = SystemColors.ActiveCaptionText;
+            button2.Location = new Point(1446, 21);
+            button2.Margin = new Padding(2);
+            button2.Name = "button2";
+            button2.Size = new Size(107, 33);
+            button2.TabIndex = 3;
+            button2.Text = "Logout";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1;
             // 
             // lbRoleInput
             // 
@@ -441,7 +454,6 @@
         private Button btnEmployeeManagement;
         private Panel PnlMainMenu;
         private Button button1;
-        private Label label3;
         private Label label2;
         private Button btnProductManagement;
         private Button EmployeeManagementClicked;
@@ -461,5 +473,6 @@
         private Button btnStockmanagementCLicked;
         private Label lblMainmenuName;
         private Label lbRoleInput;
+        private Button button2;
     }
 }
