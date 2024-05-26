@@ -19,18 +19,22 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
     {
         public static int _year, _month;
         private int currentWeekOffset = 0;
+        private string role;
+        private string department;
         ManageEmployee _manageEmployee;
         ManageShifts _manageShifts;
         ManageDepartment _manageDepartment;
         ManageAvailability _manageAvailability;
         List<Shift> _shifts;
-        public WeeklyShiftsForm()
+        public WeeklyShiftsForm(string role, string department)
         {
             InitializeComponent();
             _manageEmployee = ManageEmployeeFactory.Create();
             _manageShifts = ManageShiftFactory.Create();
             _manageDepartment = ManageDepartmentFactory.Create();
             _manageAvailability = ManageAvailabilityFactory.Create();
+            this.role = role;
+            this.department = department;
         }
 
         private void showDays(int weekOffset, List<Shift> shifts)
@@ -60,6 +64,12 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
 
             DateTime currentDate = DateTime.Today;
             int initialWeekOffset = (currentDate.DayOfWeek == DayOfWeek.Sunday) ? 0 : 1;
+
+            if (role == "Manager")
+            {
+                cbDepartments.SelectedText = department;
+                cbDepartments.Hide();
+            }
 
             _year = currentDate.Year;
             _month = currentDate.Month;

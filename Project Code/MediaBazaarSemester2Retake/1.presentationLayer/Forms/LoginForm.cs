@@ -1,4 +1,5 @@
-﻿using BusinessLogicLayer.ManageClass;
+﻿using BusinessLogicLayer.Class;
+using BusinessLogicLayer.ManageClass;
 using DAL;
 using Factory;
 using MediaBazaarSemester2Retake._1.presentationLayer.Forms;
@@ -16,6 +17,7 @@ namespace MediaBazaarSemester2Retake
     {
         private List<Image> images = new List<Image>();
         private int currentIndex = 0;
+        private readonly ManageDepartment mD;
         public LoginForm()
         {
             InitializeComponent();
@@ -23,6 +25,7 @@ namespace MediaBazaarSemester2Retake
             LoaddEmbeddedImages();
             ConfigureTimer();
             ListEmbeddedResources();
+            mD = ManageDepartmentFactory.Create();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -66,13 +69,13 @@ namespace MediaBazaarSemester2Retake
             string password = txtBoxPassword.Text;
 
             EmployeeRepo employeeRepo = new EmployeeRepo();
-            string role = employeeRepo.VerifyLogin(username, password);
+            (string role, string department) = employeeRepo.VerifyLogin(username, password);
 
 
             if (!string.IsNullOrEmpty(role))
             {
                 this.Hide();
-                MainMenu mainMenuForm = new MainMenu(role);  // Pass role to MainMenu
+                MainMenu mainMenuForm = new MainMenu(role, department);  // Pass role to MainMenu
                 mainMenuForm.Show();
             }
             else

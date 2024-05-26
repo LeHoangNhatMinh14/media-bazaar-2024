@@ -141,11 +141,15 @@ namespace DAL
             }
         }
 
-        public string VerifyLogin(string email, string password)
+        public (string role, string department) VerifyLogin(string email, string password)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = @"SELECT role FROM Employees WHERE email = @email AND password = @password";
+                string query = @"SELECT E.role , d.departmentName 
+                                    FROM Employees E 
+                                    Inner join Contracts c on E.employeeID = c.FK_employeeID
+                                    Inner join Departments d on c.FK_departmentID = d.departmentID
+                                    WHERE email = @email AND password = @password;";
 
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -157,12 +161,14 @@ namespace DAL
                     {
                         if (reader.Read())
                         {
-                            return reader["role"] as string; 
+                            string role = reader["role"] as string;
+                            string department = reader["departmentName"] as string;
+                            return (role, department);
                         }
                     }
                 }
             }
-            return null; 
+            return (null, null); 
         }
 
         public void EditEmployee(Employee employee)
