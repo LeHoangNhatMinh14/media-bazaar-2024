@@ -19,7 +19,9 @@ namespace MediaBazaarSemester2Retake
         EmployeeForm employeeForm = new EmployeeForm();
         ScheduleForm scheduleForm = new ScheduleForm();
         WeeklyShiftsForm WeeklyShiftsForm = null;
-        Departments Departments = new Departments();         
+        Departments Departments = new Departments();
+        ProductForm productForm = new ProductForm();
+        StockForm stockForm = new StockForm();
         public MainMenu(string role, string department)
         {
             InitializeComponent();
@@ -74,13 +76,14 @@ namespace MediaBazaarSemester2Retake
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SetCrudeOn();
+            PnlMainMenu.Controls.Clear();
+            stockForm.TopLevel = false;
+            stockForm.FormBorderStyle = FormBorderStyle.None;
+            stockForm.Dock = DockStyle.Fill;
+            PnlMainMenu.Controls.Add(stockForm);
+            stockForm.Show();
             btnBack.Visible = true;
-            btnStockmanagementCLicked.Visible = true;
-
-            btnCreateProductManagement.Visible = true;
-            btnDeleteProductManagement.Visible = true;
-            btnUpdateProductManagement.Visible = true;
+            SetCrudeOn();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -109,21 +112,7 @@ namespace MediaBazaarSemester2Retake
 
 
         }
-        private void btnProductManagement_Click(object sender, EventArgs e)
-        {
-            Departments departments = new Departments();
-            btnBack.Visible = true;
-            btnDepartmentManagement.Visible = true;
-            btnProductManagement.Visible = false;
-            btnSchedule.Visible = false;
-            btnEmployeeManagement.Visible = false;
-            btnStockManagement.Visible = false;
-            btnCreateProductManagement.Visible = true;
-            btnDeleteProductManagement.Visible = true;
-            btnUpdateProductManagement.Visible = true;
-            // Add the form to the panel
-            PnlMainMenu.Controls.Add(departments);
-        }
+       
 
         public void SetCrudeOn()
         {
@@ -180,6 +169,17 @@ namespace MediaBazaarSemester2Retake
             btnSchedule.Visible = true;
             btnEmployeeManagement.Visible = true;
             btnStockManagement.Visible = true;
+        }
+        private void btnStockManagement_Click(object sender, EventArgs e)
+        {
+            PnlMainMenu.Controls.Clear();
+            stockForm.TopLevel = false;
+            stockForm.FormBorderStyle = FormBorderStyle.None;
+            stockForm.Dock = DockStyle.Fill;
+            PnlMainMenu.Controls.Add(stockForm);
+            stockForm.Show();
+            btnBack.Visible = true;
+            SetCrudeOn();
         }
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -290,6 +290,22 @@ namespace MediaBazaarSemester2Retake
 
 
         }
+        private void btnProductManagement_Click(object sender, EventArgs e)
+        {
+            PnlMainMenu.Controls.Clear();
+            productForm.TopLevel = false;
+            productForm.FormBorderStyle = FormBorderStyle.None;
+            productForm.Dock = DockStyle.Fill;
+            PnlMainMenu.Controls.Add(productForm);
+            productForm.Show();
+            btnBack.Visible = true;
+            btnCreateProductManagement.Visible = true;
+            btnDeleteProductManagement.Visible = true;
+            btnUpdateProductManagement.Visible = true;
+            SetCrudeOn();
+        }
+      
+
         private void Logout()
         {
             // Reset userRole
