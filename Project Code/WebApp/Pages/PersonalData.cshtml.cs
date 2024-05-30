@@ -15,19 +15,20 @@ namespace MediaBazaar_WebApp.Pages
         public Employee employee { get; set; }
         public Contract contract { get; set; }
         [BindProperty]
-        public bool Monday {  get; set; }
-		[BindProperty]
-		public bool Tuesday {  get; set; }
-		[BindProperty]
-		public bool Wednesday {  get; set; }
-		[BindProperty]
-		public bool Thursday {  get; set; }
-		[BindProperty]
-		public bool Friday {  get; set; }
-		[BindProperty]
-		public bool Saturday {  get; set; }
-		[BindProperty]
-		public bool Sunday {  get; set; }
+        public bool Monday { get; set; }
+        [BindProperty]
+        public bool Tuesday { get; set; }
+        [BindProperty]
+        public bool Wednesday { get; set; }
+        [BindProperty]
+        public bool Thursday { get; set; }
+        [BindProperty]
+        public bool Friday { get; set; }
+        [BindProperty]
+        public bool Saturday { get; set; }
+        [BindProperty]
+        public bool Sunday { get; set; }
+        public double MinCheckedBoxes { get; set; }
 
         public ActionResult OnGet()
         {
@@ -38,6 +39,9 @@ namespace MediaBazaar_WebApp.Pages
             int id = (int)HttpContext.Session.GetInt32("EmployeeID");
             employee = mE.GetEmployeeByID(id);
             contract = mC.GetContract(id);
+
+            MinCheckedBoxes = Math.Ceiling(Convert.ToDouble(contract.workHours) / 8);
+
             if (mA.GetAvailability(id) != null)
             {
                 Availability displayAvailability = mA.GetAvailability(id);
@@ -48,15 +52,14 @@ namespace MediaBazaar_WebApp.Pages
                 Friday = displayAvailability.friday;
                 Saturday = displayAvailability.saturday;
                 Sunday = displayAvailability.sunday;
-			}
+            }
 
-			return Page();
-		}
+            return Page();
+        }
 
-
-        public ActionResult OnPost() 
+        public ActionResult OnPost()
         {
-            Availability availability = new Availability((int)HttpContext.Session.GetInt32("EmployeeID"),Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday);
+            Availability availability = new Availability((int)HttpContext.Session.GetInt32("EmployeeID"), Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday);
             mA.AddAvailability(availability);
             return RedirectToPage();
         }
