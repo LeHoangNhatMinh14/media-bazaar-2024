@@ -113,18 +113,6 @@
             lblMainmenuName.Text = "label4";
             lblMainmenuName.Click += lblMainmenuName_Click;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = SystemColors.ActiveCaption;
-            label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(993, 13);
-            label3.Margin = new Padding(1, 0, 1, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(42, 15);
-            label3.TabIndex = 4;
-            label3.Text = "Name:";
-            // 
             // label2
             // 
             label2.AutoSize = true;
