@@ -65,10 +65,16 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
             DateTime currentDate = DateTime.Today;
             int initialWeekOffset = (currentDate.DayOfWeek == DayOfWeek.Sunday) ? 0 : 1;
 
-            if (role == "Manager")
+            if (role == "HR")
             {
-                cbDepartments.SelectedText = department;
-                cbDepartments.Hide();
+                lblStart.Hide();
+                lblEnd.Hide();
+                datePickerEnd.Hide();
+                datePickerStart.Hide();
+                numericPeopleNeeded.Hide();
+                btnAutoShiftAssign.Hide();
+                btnCreateShiftPeriod.Hide();
+                lblPplNeeded.Hide();
             }
 
             _year = currentDate.Year;

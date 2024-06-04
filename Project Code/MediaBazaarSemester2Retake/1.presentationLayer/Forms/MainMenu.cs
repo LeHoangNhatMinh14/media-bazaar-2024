@@ -48,7 +48,7 @@ namespace MediaBazaarSemester2Retake
                 case "HR2":
                     // Enable only employee management for HR
                     btnEmployeeManagement.Visible = true;
-                    btnCreateEmployee.Visible = true;
+                    btnSchedule.Visible = true;
                     //    btnDeleteEmployeeManagement.Visible = true;
                     //  btnUpdateEmployeeManagement.Visible = true;
                     break;
