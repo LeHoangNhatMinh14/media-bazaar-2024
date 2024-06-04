@@ -13,6 +13,8 @@ namespace BusinessLogicLayer.Class
 		public DateTime startDate { get; set; }
 		public DateTime endDate { get; set; }
 		public bool approved { get; set; }
+		public string? disapprovalReason {  get; set; }
+		public string RequestInfo => $"{startDate.ToString("dd/MMM/yyyy")} - {endDate.ToString("dd/MMM/yyyy")}";
 
 		public RequestDaysOff() { }
 
@@ -33,6 +35,7 @@ namespace BusinessLogicLayer.Class
 			this.startDate = startDate;
 			this.endDate = endDate;
 			this.approved = approved;
+			this.disapprovalReason = disapprovalReason;
 		}
 	}
 }

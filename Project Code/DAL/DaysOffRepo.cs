@@ -1,5 +1,6 @@
 ﻿  using BusinessLogicLayer.Class;
 using BusinessLogicLayer.Interface;
+using DAL.Mapper;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -19,10 +20,31 @@ namespace DAL
 			this.connectionString = connectionString;
 		}
 
-		public void AcceptOrDecline()
+		public void AcceptOrDecline(int employeeID, bool approved, string disapprovalReason = null)
 		{
-			throw new NotImplementedException();
-		}
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"
+            UPDATE [dbi504738_sb08media].[dbo].[RequestDaysOff]
+            SET 
+                [approved] = @Approved,
+                [disapprovalReason] = CASE 
+                                        WHEN @Approved = 0 THEN @DisapprovalReason
+                                        ELSE NULL
+                                     END
+            WHERE [employeeID] = @employeeID AND [approved] = 0";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@employeeID", employeeID);
+                    command.Parameters.AddWithValue("@Approved", approved);
+                    command.Parameters.AddWithValue("@DisapprovalReason", disapprovalReason ?? (object)DBNull.Value);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
 
 		public void RequestDaysOff(RequestDaysOff daysOffRequest)
 		{
@@ -42,5 +64,43 @@ namespace DAL
 
 			}
 		}
-	}
+
+		public List<RequestDaysOff> GetRequests(bool approved)
+		{
+			using (SqlConnection connection = new SqlConnection(connectionString))
+			{
+				connection.Open ();
+				string querry = @"Select * FROM RequestDaysOff where approved = @approved";
+				using (SqlCommand command = new SqlCommand(querry, connection))
+				{
+					List<RequestDaysOff> requests = new List<RequestDaysOff>();
+					command.Parameters.AddWithValue("@approved", approved);
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							RequestDaysOff request = reader.MapToDaysOff();
+							requests.Add(request);
+						}
+						return requests;
+					}
+                }
+			}
+		}
+
+        public void Undo(int employeeID)
+        {
+            using (SqlConnection connection = new SqlConnection (connectionString))
+			{
+				connection.Open ();
+				string querry = "Update RequestDaysOff where employeeID = @employeeID";
+				using (SqlCommand cmd =  new SqlCommand(querry, connection))
+				{
+					cmd.Parameters.AddWithValue("@employeeID", employeeID);
+
+					cmd.ExecuteNonQuery();
+				}
+			}
+        }
+    }
 }
