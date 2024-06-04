@@ -31,30 +31,35 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
             var employees = manageEmployee.GetAllEmployees();
             var departments = manageDepartment.GetDepartmentList();
 
-            var employeeCountByDepartment = departments.Select(d => new
-            {
-                DepartmentName = d._departmentName,
-                EmployeeCount = employees.Count(e => e.Contract != null && e.Contract.departmentID == d._departmentID)
-            }).ToList();
-
             chart1.Series.Clear();
             chart1.Titles.Add("Employee Count by Department");
 
-            var series = new Series
-            {
-                Name = "Employees",
-                Color = System.Drawing.Color.Green,
-                ChartType = SeriesChartType.Column
-            };
+            // Define an array of colors
+            Color[] colors = new Color[] { Color.Red, Color.Green, Color.Blue, Color.Yellow, Color.Purple };
 
-            chart1.Series.Add(series);
+            int colorIndex = 0;
 
-            foreach (var item in employeeCountByDepartment)
+            foreach (var department in departments)
             {
-                series.Points.AddXY(item.DepartmentName, item.EmployeeCount);
+                var employeeCount = employees.Count(e => e.Contract != null && e.Contract.departmentID == department._departmentID);
+
+                var series = new Series
+                {
+                    Name = department._departmentName,
+                    ChartType = SeriesChartType.Column,
+                    Color = colors[colorIndex % colors.Length], // Assign a color from the array
+                    LegendText = department._departmentName // Set the legend text to the department name
+                };
+
+                chart1.Series.Add(series);
+
+                series.Points.AddXY("Departments", employeeCount);
+
+                colorIndex++;
             }
-
-            chart1.Invalidate();
         }
+
+
+
     }
 }

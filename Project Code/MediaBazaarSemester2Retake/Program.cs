@@ -1,5 +1,6 @@
 using BusinessLogicLayer.Class;
 using DAL;
+using MediaBazaarSemester2Retake._1.presentationLayer.Forms;
 
 namespace MediaBazaarSemester2Retake
 {
@@ -14,7 +15,7 @@ namespace MediaBazaarSemester2Retake
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+            Application.Run(new Statistics());
         }
     }
 }
