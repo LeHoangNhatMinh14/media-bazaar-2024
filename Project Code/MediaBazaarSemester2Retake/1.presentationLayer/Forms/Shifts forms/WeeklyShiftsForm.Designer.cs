@@ -48,36 +48,38 @@
             lblWeekNumber = new Label();
             datePickerEnd = new DateTimePicker();
             datePickerStart = new DateTimePicker();
-            label11 = new Label();
-            label12 = new Label();
+            lblStart = new Label();
+            lblEnd = new Label();
             btnCreateShiftPeriod = new Button();
             numericPeopleNeeded = new NumericUpDown();
-            label13 = new Label();
+            lblPplNeeded = new Label();
             ((System.ComponentModel.ISupportInitialize)numericPeopleNeeded).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Location = new Point(12, 95);
+            flowLayoutPanel1.Location = new Point(14, 127);
+            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(858, 87);
+            flowLayoutPanel1.Size = new Size(981, 116);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(329, 9);
+            label1.Location = new Point(376, 12);
             label1.Name = "label1";
-            label1.Size = new Size(209, 45);
+            label1.Size = new Size(258, 54);
             label1.TabIndex = 1;
             label1.Text = "Weekly Shifts";
             // 
             // btnPrevious
             // 
-            btnPrevious.Location = new Point(12, 29);
+            btnPrevious.Location = new Point(14, 39);
+            btnPrevious.Margin = new Padding(3, 4, 3, 4);
             btnPrevious.Name = "btnPrevious";
-            btnPrevious.Size = new Size(75, 23);
+            btnPrevious.Size = new Size(86, 31);
             btnPrevious.TabIndex = 2;
             btnPrevious.Text = "Previous";
             btnPrevious.UseVisualStyleBackColor = true;
@@ -85,9 +87,10 @@
             // 
             // btnNext
             // 
-            btnNext.Location = new Point(779, 29);
+            btnNext.Location = new Point(890, 39);
+            btnNext.Margin = new Padding(3, 4, 3, 4);
             btnNext.Name = "btnNext";
-            btnNext.Size = new Size(75, 23);
+            btnNext.Size = new Size(86, 31);
             btnNext.TabIndex = 3;
             btnNext.Text = "Next";
             btnNext.UseVisualStyleBackColor = true;
@@ -96,117 +99,119 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(49, 77);
+            label2.Location = new Point(56, 103);
             label2.Name = "label2";
-            label2.Size = new Size(51, 15);
+            label2.Size = new Size(63, 20);
             label2.TabIndex = 4;
             label2.Text = "Monday";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(169, 77);
+            label3.Location = new Point(193, 103);
             label3.Name = "label3";
-            label3.Size = new Size(50, 15);
+            label3.Size = new Size(63, 20);
             label3.TabIndex = 5;
             label3.Text = "Tuesday";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(282, 77);
+            label4.Location = new Point(322, 103);
             label4.Name = "label4";
-            label4.Size = new Size(68, 15);
+            label4.Size = new Size(85, 20);
             label4.TabIndex = 6;
             label4.Text = "Wednesday";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(406, 77);
+            label5.Location = new Point(464, 103);
             label5.Name = "label5";
-            label5.Size = new Size(55, 15);
+            label5.Size = new Size(68, 20);
             label5.TabIndex = 7;
             label5.Text = "Thursday";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(539, 77);
+            label6.Location = new Point(616, 103);
             label6.Name = "label6";
-            label6.Size = new Size(39, 15);
+            label6.Size = new Size(49, 20);
             label6.TabIndex = 8;
             label6.Text = "Friday";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(653, 77);
+            label7.Location = new Point(746, 103);
             label7.Name = "label7";
-            label7.Size = new Size(53, 15);
+            label7.Size = new Size(67, 20);
             label7.TabIndex = 9;
             label7.Text = "Saturday";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(779, 77);
+            label8.Location = new Point(890, 103);
             label8.Name = "label8";
-            label8.Size = new Size(46, 15);
+            label8.Size = new Size(57, 20);
             label8.TabIndex = 10;
             label8.Text = "Sunday";
             // 
             // lbUsers
             // 
             lbUsers.FormattingEnabled = true;
-            lbUsers.ItemHeight = 15;
-            lbUsers.Location = new Point(15, 215);
+            lbUsers.Location = new Point(17, 287);
+            lbUsers.Margin = new Padding(3, 4, 3, 4);
             lbUsers.Name = "lbUsers";
-            lbUsers.Size = new Size(286, 199);
+            lbUsers.Size = new Size(326, 264);
             lbUsers.TabIndex = 11;
             lbUsers.SelectedIndexChanged += lbUsers_SelectedIndexChanged;
             // 
             // cbDepartments
             // 
             cbDepartments.FormattingEnabled = true;
-            cbDepartments.Location = new Point(380, 260);
+            cbDepartments.Location = new Point(434, 347);
+            cbDepartments.Margin = new Padding(3, 4, 3, 4);
             cbDepartments.Name = "cbDepartments";
-            cbDepartments.Size = new Size(121, 23);
+            cbDepartments.Size = new Size(138, 28);
             cbDepartments.TabIndex = 12;
             cbDepartments.SelectedIndexChanged += cbDepartments_SelectedIndexChanged;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(15, 197);
+            label9.Location = new Point(17, 263);
             label9.Name = "label9";
-            label9.Size = new Size(74, 15);
+            label9.Size = new Size(93, 20);
             label9.TabIndex = 13;
             label9.Text = "Sort by users";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(380, 242);
+            label10.Location = new Point(434, 323);
             label10.Name = "label10";
-            label10.Size = new Size(121, 15);
+            label10.Size = new Size(152, 20);
             label10.TabIndex = 14;
             label10.Text = "Choose a department";
             // 
             // lblMonth
             // 
             lblMonth.AutoSize = true;
-            lblMonth.Location = new Point(364, 54);
+            lblMonth.Location = new Point(416, 72);
             lblMonth.Name = "lblMonth";
-            lblMonth.Size = new Size(44, 15);
+            lblMonth.Size = new Size(58, 20);
             lblMonth.TabIndex = 16;
             lblMonth.Text = "label11";
             // 
             // btnAutoShiftAssign
             // 
-            btnAutoShiftAssign.Location = new Point(594, 402);
+            btnAutoShiftAssign.Location = new Point(679, 536);
+            btnAutoShiftAssign.Margin = new Padding(3, 4, 3, 4);
             btnAutoShiftAssign.Name = "btnAutoShiftAssign";
-            btnAutoShiftAssign.Size = new Size(157, 23);
+            btnAutoShiftAssign.Size = new Size(179, 31);
             btnAutoShiftAssign.TabIndex = 17;
             btnAutoShiftAssign.Text = "Automatic Shift Assign";
             btnAutoShiftAssign.UseVisualStyleBackColor = true;
@@ -215,49 +220,52 @@
             // lblWeekNumber
             // 
             lblWeekNumber.AutoSize = true;
-            lblWeekNumber.Location = new Point(457, 54);
+            lblWeekNumber.Location = new Point(522, 72);
             lblWeekNumber.Name = "lblWeekNumber";
-            lblWeekNumber.Size = new Size(44, 15);
+            lblWeekNumber.Size = new Size(58, 20);
             lblWeekNumber.TabIndex = 18;
             lblWeekNumber.Text = "label11";
             // 
             // datePickerEnd
             // 
-            datePickerEnd.Location = new Point(571, 286);
+            datePickerEnd.Location = new Point(653, 381);
+            datePickerEnd.Margin = new Padding(3, 4, 3, 4);
             datePickerEnd.Name = "datePickerEnd";
-            datePickerEnd.Size = new Size(200, 23);
+            datePickerEnd.Size = new Size(228, 27);
             datePickerEnd.TabIndex = 19;
             // 
             // datePickerStart
             // 
-            datePickerStart.Location = new Point(571, 234);
+            datePickerStart.Location = new Point(653, 312);
+            datePickerStart.Margin = new Padding(3, 4, 3, 4);
             datePickerStart.Name = "datePickerStart";
-            datePickerStart.Size = new Size(200, 23);
+            datePickerStart.Size = new Size(228, 27);
             datePickerStart.TabIndex = 20;
             // 
-            // label11
+            // lblStart
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(653, 215);
-            label11.Name = "label11";
-            label11.Size = new Size(34, 15);
-            label11.TabIndex = 21;
-            label11.Text = "Start:";
+            lblStart.AutoSize = true;
+            lblStart.Location = new Point(746, 287);
+            lblStart.Name = "lblStart";
+            lblStart.Size = new Size(43, 20);
+            lblStart.TabIndex = 21;
+            lblStart.Text = "Start:";
             // 
-            // label12
+            // lblEnd
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(653, 268);
-            label12.Name = "label12";
-            label12.Size = new Size(30, 15);
-            label12.TabIndex = 22;
-            label12.Text = "End:";
+            lblEnd.AutoSize = true;
+            lblEnd.Location = new Point(746, 357);
+            lblEnd.Name = "lblEnd";
+            lblEnd.Size = new Size(37, 20);
+            lblEnd.TabIndex = 22;
+            lblEnd.Text = "End:";
             // 
             // btnCreateShiftPeriod
             // 
-            btnCreateShiftPeriod.Location = new Point(594, 373);
+            btnCreateShiftPeriod.Location = new Point(679, 497);
+            btnCreateShiftPeriod.Margin = new Padding(3, 4, 3, 4);
             btnCreateShiftPeriod.Name = "btnCreateShiftPeriod";
-            btnCreateShiftPeriod.Size = new Size(157, 23);
+            btnCreateShiftPeriod.Size = new Size(179, 31);
             btnCreateShiftPeriod.TabIndex = 23;
             btnCreateShiftPeriod.Text = "Create shift in Period";
             btnCreateShiftPeriod.UseVisualStyleBackColor = true;
@@ -265,30 +273,31 @@
             // 
             // numericPeopleNeeded
             // 
-            numericPeopleNeeded.Location = new Point(571, 332);
+            numericPeopleNeeded.Location = new Point(653, 443);
+            numericPeopleNeeded.Margin = new Padding(3, 4, 3, 4);
             numericPeopleNeeded.Name = "numericPeopleNeeded";
-            numericPeopleNeeded.Size = new Size(200, 23);
+            numericPeopleNeeded.Size = new Size(229, 27);
             numericPeopleNeeded.TabIndex = 24;
             // 
-            // label13
+            // lblPplNeeded
             // 
-            label13.AutoSize = true;
-            label13.Location = new Point(619, 314);
-            label13.Name = "label13";
-            label13.Size = new Size(87, 15);
-            label13.TabIndex = 25;
-            label13.Text = "People Needed";
+            lblPplNeeded.AutoSize = true;
+            lblPplNeeded.Location = new Point(707, 419);
+            lblPplNeeded.Name = "lblPplNeeded";
+            lblPplNeeded.Size = new Size(111, 20);
+            lblPplNeeded.TabIndex = 25;
+            lblPplNeeded.Text = "People Needed";
             // 
             // WeeklyShiftsForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(882, 437);
-            Controls.Add(label13);
+            ClientSize = new Size(1008, 583);
+            Controls.Add(lblPplNeeded);
             Controls.Add(numericPeopleNeeded);
             Controls.Add(btnCreateShiftPeriod);
-            Controls.Add(label12);
-            Controls.Add(label11);
+            Controls.Add(lblEnd);
+            Controls.Add(lblStart);
             Controls.Add(datePickerStart);
             Controls.Add(datePickerEnd);
             Controls.Add(lblWeekNumber);
@@ -310,6 +319,7 @@
             Controls.Add(label1);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "WeeklyShiftsForm";
             Text = "WeeklyShiftsForm";
             Load += WeeklyShiftsForm_Load;
@@ -340,10 +350,10 @@
         private Label lblWeekNumber;
         private DateTimePicker datePickerEnd;
         private DateTimePicker datePickerStart;
-        private Label label11;
-        private Label label12;
+        private Label lblStart;
+        private Label lblEnd;
         private Button btnCreateShiftPeriod;
         private NumericUpDown numericPeopleNeeded;
-        private Label label13;
+        private Label lblPplNeeded;
     }
 }

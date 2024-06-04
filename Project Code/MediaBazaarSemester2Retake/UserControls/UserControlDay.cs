@@ -16,7 +16,7 @@ namespace MediaBazaarSemester2Retake.UserControls
     public partial class ucDays : UserControl
     {
         private int _numberOfShifts = 0;
-        string _day;
+        public DateTime _day;
         public int NumberOfShifts
         {
             get { return _numberOfShifts; }
@@ -32,12 +32,12 @@ namespace MediaBazaarSemester2Retake.UserControls
             }
         }
         List<Shift> _shifts;
-        public ucDays(string day, List<Shift> shifts)
+        public ucDays(DateTime day, List<Shift> shifts)
         {
             InitializeComponent();
             _shifts = shifts;
             _day = day;
-            label1.Text = _day;
+            label1.Text = _day.Day.ToString();
         }
         private void UpdateAppearance()
         {
