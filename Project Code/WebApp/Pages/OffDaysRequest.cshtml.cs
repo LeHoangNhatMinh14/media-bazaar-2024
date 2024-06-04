@@ -19,13 +19,16 @@ namespace MediaBazaar_WebApp.Pages
 		public string? Reason { get; set; }
 		[BindProperty]
 		public string start {  get; set; }
-
+		[BindProperty]
+		public RequestDaysOff? RequestDaysOff { get; set; }
 		public void OnGet()
 		{
 			IsPageOpen = false;
 			StartDate = DateTime.Now.AddDays(7);
 			start = StartDate.ToString("yyyy-MM-dd");
-			
+			int id = (int)HttpContext.Session.GetInt32("EmployeeID");
+
+			RequestDaysOff = mdo.GetDaysOff(id);
 		}
 		public ActionResult OnPost(string handler)
 		{
@@ -39,7 +42,7 @@ namespace MediaBazaar_WebApp.Pages
 			{
 				Reason = Reason.ToString();
 				DateTime endDate = StartDate.AddDays(DaysOff - 1);
-				RequestDaysOff requestDaysOff = new RequestDaysOff(id,Reason, StartDate, endDate, false);
+				RequestDaysOff requestDaysOff = new RequestDaysOff(id,Reason, StartDate, endDate, false, null);
 				mdo.AddDaysOffRequest(requestDaysOff);
 				return RedirectToPage("/Schedule");
 			}

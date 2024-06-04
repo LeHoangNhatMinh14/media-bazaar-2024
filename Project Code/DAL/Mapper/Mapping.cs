@@ -92,9 +92,11 @@ namespace DAL.Mapper
         {
             return new RequestDaysOff(emloyeeID: GetValue<int>(dataReader, "employeeID"))
             {
-                startDate = GetValue<DateTime>(dataReader,"startDate"),
+                startDate = GetValue<DateTime>(dataReader,"startingDate"),
                 endDate = GetValue<DateTime>(dataReader,"endDate"),
-                approved = GetValue<bool>(dataReader,"approved")
+                approved = GetValue<bool>(dataReader,"approved"),
+                reason = GetValue<string>(dataReader, "reason"),
+                disaprovalReason = GetValue<string>(dataReader, "disapprovalReason")
             };
         }
 

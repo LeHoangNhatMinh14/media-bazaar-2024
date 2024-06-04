@@ -9,20 +9,22 @@ namespace BusinessLogicLayer.Class
 	public class RequestDaysOff
 	{
 		public int emloyeeID {  get; set; }
-		public string reason { get; set; }
+		public string? reason { get; set; }
 		public DateTime startDate { get; set; }
 		public DateTime endDate { get; set; }
 		public bool approved { get; set; }
+		public string? disaprovalReason {  get; set; }
 
 		public RequestDaysOff() { }
 
-		public RequestDaysOff(int emloyeeID,string reason, DateTime startDate, DateTime endDate, bool approved)
+		public RequestDaysOff(int emloyeeID,string reason, DateTime startDate, DateTime endDate, bool approved, string? disaprovalReason)
 		{
 			this.emloyeeID = emloyeeID;
 			this.reason = reason;
 			this.startDate = startDate;
 			this.endDate = endDate;
 			this.approved = approved;
+			this.disaprovalReason = disaprovalReason;
 		}
 
 		//For Mapper
@@ -33,6 +35,7 @@ namespace BusinessLogicLayer.Class
 			this.startDate = startDate;
 			this.endDate = endDate;
 			this.approved = approved;
+			this.disaprovalReason= disaprovalReason;
 		}
 	}
 }

@@ -9,6 +9,7 @@ namespace BusinessLogicLayer.Interface
 {
 	public interface IDaysOffDAL
 	{
+		public RequestDaysOff GetRequest(int employeeID);
 		public void RequestDaysOff(RequestDaysOff daysOffRequest);
 		public void AcceptOrDecline();
 	}
