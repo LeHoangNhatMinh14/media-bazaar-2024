@@ -77,12 +77,19 @@ namespace DAL
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = @"UPDATE Stock 
-                                SET Quantity = Quantity + @quantity, LastUpdated = @lastUpdated 
-                                WHERE ProductId = @productId;
-                                IF @@ROWCOUNT = 0
-                                INSERT INTO Stock (ProductId, Quantity, LastUpdated) 
-                                VALUES (@productId, @quantity, @lastUpdated)";
+                string query = @"
+                    UPDATE Stock 
+                    SET Quantity = Quantity + @quantity, LastUpdated = @lastUpdated 
+                    WHERE ProductId = @productId;
+                    
+                    IF @@ROWCOUNT = 0
+                    INSERT INTO Stock (ProductId, Quantity, LastUpdated) 
+                    VALUES (@productId, @quantity, @lastUpdated);
+
+                    UPDATE Products
+                    SET Stock = Stock + @quantity
+                    WHERE ProductId = @productId;
+                ";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -98,9 +105,15 @@ namespace DAL
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = @"UPDATE Stock 
-                                SET Quantity = Quantity - @quantity, LastUpdated = @lastUpdated 
-                                WHERE ProductId = @productId";
+                string query = @"
+                    UPDATE Stock 
+                    SET Quantity = Quantity - @quantity, LastUpdated = @lastUpdated 
+                    WHERE ProductId = @productId;
+
+                    UPDATE Products
+                    SET Stock = Stock - @quantity
+                    WHERE ProductId = @productId;
+                ";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -113,4 +126,3 @@ namespace DAL
         }
     }
 }
-

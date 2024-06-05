@@ -15,52 +15,9 @@ namespace MediaBazaarSemester2Retake
 {
     public partial class LoginForm : Form
     {
-        private List<Image> images = new List<Image>();
-        private int currentIndex = 0;
-        private readonly ManageDepartment mD;
         public LoginForm()
         {
             InitializeComponent();
-            // InitializeImageList();
-            LoaddEmbeddedImages();
-            ConfigureTimer();
-            ListEmbeddedResources();
-            mD = ManageDepartmentFactory.Create();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void ConfigureTimer()
-        {
-            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 10000;
-            timer.Tick += Timer1_Tick;
-            timer.Start();
-        }
-
-        private void ListEmbeddedResources()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string[] resourceNames = assembly.GetManifestResourceNames();
-            foreach (string resourceName in resourceNames)
-            {
-                Console.WriteLine(resourceName);
-            }
-        }
-        private void LoaddEmbeddedImages()
-        {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-
-
-        }
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            if (images.Count == 0) return;
-            pictureBox4.Image = images[currentIndex];
-
-            currentIndex = (currentIndex + 1) % images.Count;
         }
 
         private void BtnGo_Click(object sender, EventArgs e)
@@ -85,12 +42,59 @@ namespace MediaBazaarSemester2Retake
             }
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void txtBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
                 BtnGo_Click(sender, e);
             }
+        }
+
+        private void btnLoginAsAdmin_Click(object sender, EventArgs e)
+        {
+            txtBoxUsername.Text = "john.doe@example.com";
+            txtBoxPassword.Text = "password";
+          //  BtnGo_Click(sender, e);
+        }
+
+        private void btnLoginAsHR_Click(object sender, EventArgs e)
+        {
+            txtBoxUsername.Text = "jane.smith@example.com";
+            txtBoxPassword.Text = "password";
+          //  BtnGo_Click(sender, e);
+        }
+
+        private void btnLoginAsSchedule_Click(object sender, EventArgs e)
+        {
+            txtBoxUsername.Text = "emily.johnson@example.com";
+            txtBoxPassword.Text = "password";
+            //BtnGo_Click(sender, e);
+        }
+
+        private void btnLoginAsDepartment_Click(object sender, EventArgs e)
+        {
+            txtBoxUsername.Text = "michael.williams@example.com";
+            txtBoxPassword.Text = "password";
+           // BtnGo_Click(sender, e);
+        }
+
+        private void btnLoginAsStock_Click(object sender, EventArgs e)
+        {
+            txtBoxUsername.Text = "john.williams@mediabazaar.nl";
+            txtBoxPassword.Text = "password123";
+            //BtnGo_Click(sender, e);
+        }
+    
+
+
+private void Timer1_Tick(object sender, EventArgs e)
+        {
+            // Timer logic here (if needed)
         }
     }
 }
