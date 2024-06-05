@@ -17,214 +17,269 @@
 
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnDeleteProduct = new System.Windows.Forms.Button();
-            this.btnUpdateProduct = new System.Windows.Forms.Button();
-            this.btnAddProduct = new System.Windows.Forms.Button();
-            this.txtStock = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtSellingPrice = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtBuyingPrice = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtCategory = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            btnRefreshProducts = new Button(); // Added this line
+            btnDeleteProduct = new Button();
+            btnUpdateProduct = new Button();
+            btnAddProduct = new Button();
+            txtStock = new TextBox();
+            label5 = new Label();
+            txtSellingPrice = new TextBox();
+            label4 = new Label();
+            txtBuyingPrice = new TextBox();
+            label3 = new Label();
+            txtCategory = new TextBox();
+            label2 = new Label();
+            txtName = new TextBox();
+            label1 = new Label();
+            txtProductId = new TextBox();
+            label6 = new Label();
+            tabPage2 = new TabPage();
+            dataGridView1 = new DataGridView();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(776, 426);
-            this.tabControl1.TabIndex = 0;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new Point(18, 18);
+            tabControl1.Margin = new Padding(4, 4, 4, 4);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1164, 639);
+            tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.btnDeleteProduct);
-            this.tabPage1.Controls.Add(this.btnUpdateProduct);
-            this.tabPage1.Controls.Add(this.btnAddProduct);
-            this.tabPage1.Controls.Add(this.txtStock);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.txtSellingPrice);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.txtBuyingPrice);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.txtCategory);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.txtName);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 393);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Manage Products";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Controls.Add(btnRefreshProducts); // Added this line
+            tabPage1.Controls.Add(btnDeleteProduct);
+            tabPage1.Controls.Add(btnUpdateProduct);
+            tabPage1.Controls.Add(btnAddProduct);
+            tabPage1.Controls.Add(txtStock);
+            tabPage1.Controls.Add(label5);
+            tabPage1.Controls.Add(txtSellingPrice);
+            tabPage1.Controls.Add(label4);
+            tabPage1.Controls.Add(txtBuyingPrice);
+            tabPage1.Controls.Add(label3);
+            tabPage1.Controls.Add(txtCategory);
+            tabPage1.Controls.Add(label2);
+            tabPage1.Controls.Add(txtName);
+            tabPage1.Controls.Add(label1);
+            tabPage1.Controls.Add(txtProductId);
+            tabPage1.Controls.Add(label6);
+            tabPage1.Location = new Point(4, 39);
+            tabPage1.Margin = new Padding(4, 4, 4, 4);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(4, 4, 4, 4);
+            tabPage1.Size = new Size(1156, 596);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Manage Products";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnRefreshProducts
+            // 
+            btnRefreshProducts.Location = new Point(310, 380);
+            btnRefreshProducts.Margin = new Padding(4, 4, 4, 4);
+            btnRefreshProducts.Name = "btnRefreshProducts";
+            btnRefreshProducts.Size = new Size(141, 44);
+            btnRefreshProducts.TabIndex = 13;
+            btnRefreshProducts.Text = "Refresh";
+            btnRefreshProducts.UseVisualStyleBackColor = true;
+            btnRefreshProducts.Click += btnRefreshProducts_Click;
             // 
             // btnDeleteProduct
             // 
-            this.btnDeleteProduct.Location = new System.Drawing.Point(529, 253);
-            this.btnDeleteProduct.Name = "btnDeleteProduct";
-            this.btnDeleteProduct.Size = new System.Drawing.Size(94, 29);
-            this.btnDeleteProduct.TabIndex = 12;
-            this.btnDeleteProduct.Text = "Delete";
-            this.btnDeleteProduct.UseVisualStyleBackColor = true;
-            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
+            btnDeleteProduct.Location = new Point(794, 380);
+            btnDeleteProduct.Margin = new Padding(4, 4, 4, 4);
+            btnDeleteProduct.Name = "btnDeleteProduct";
+            btnDeleteProduct.Size = new Size(141, 44);
+            btnDeleteProduct.TabIndex = 12;
+            btnDeleteProduct.Text = "Delete";
+            btnDeleteProduct.UseVisualStyleBackColor = true;
+            btnDeleteProduct.Click += btnDeleteProduct_Click;
             // 
             // btnUpdateProduct
             // 
-            this.btnUpdateProduct.Location = new System.Drawing.Point(419, 253);
-            this.btnUpdateProduct.Name = "btnUpdateProduct";
-            this.btnUpdateProduct.Size = new System.Drawing.Size(94, 29);
-            this.btnUpdateProduct.TabIndex = 11;
-            this.btnUpdateProduct.Text = "Update";
-            this.btnUpdateProduct.UseVisualStyleBackColor = true;
-            this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
+            btnUpdateProduct.Location = new Point(628, 380);
+            btnUpdateProduct.Margin = new Padding(4, 4, 4, 4);
+            btnUpdateProduct.Name = "btnUpdateProduct";
+            btnUpdateProduct.Size = new Size(141, 44);
+            btnUpdateProduct.TabIndex = 11;
+            btnUpdateProduct.Text = "Update";
+            btnUpdateProduct.UseVisualStyleBackColor = true;
+            btnUpdateProduct.Click += btnUpdateProduct_Click;
             // 
             // btnAddProduct
             // 
-            this.btnAddProduct.Location = new System.Drawing.Point(308, 253);
-            this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(94, 29);
-            this.btnAddProduct.TabIndex = 10;
-            this.btnAddProduct.Text = "Add";
-            this.btnAddProduct.UseVisualStyleBackColor = true;
-            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            btnAddProduct.Location = new Point(462, 380);
+            btnAddProduct.Margin = new Padding(4, 4, 4, 4);
+            btnAddProduct.Name = "btnAddProduct";
+            btnAddProduct.Size = new Size(141, 44);
+            btnAddProduct.TabIndex = 10;
+            btnAddProduct.Text = "Add";
+            btnAddProduct.UseVisualStyleBackColor = true;
+            btnAddProduct.Click += btnAddProduct_Click;
             // 
             // txtStock
             // 
-            this.txtStock.Location = new System.Drawing.Point(129, 182);
-            this.txtStock.Name = "txtStock";
-            this.txtStock.Size = new System.Drawing.Size(594, 27);
-            this.txtStock.TabIndex = 9;
+            txtStock.Location = new Point(194, 273);
+            txtStock.Margin = new Padding(4, 4, 4, 4);
+            txtStock.Name = "txtStock";
+            txtStock.Size = new Size(889, 35);
+            txtStock.TabIndex = 9;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 185);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(45, 20);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Stock";
+            label5.AutoSize = true;
+            label5.Location = new Point(9, 278);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(62, 30);
+            label5.TabIndex = 8;
+            label5.Text = "Stock";
             // 
             // txtSellingPrice
             // 
-            this.txtSellingPrice.Location = new System.Drawing.Point(129, 140);
-            this.txtSellingPrice.Name = "txtSellingPrice";
-            this.txtSellingPrice.Size = new System.Drawing.Size(594, 27);
-            this.txtSellingPrice.TabIndex = 7;
+            txtSellingPrice.Location = new Point(194, 210);
+            txtSellingPrice.Margin = new Padding(4, 4, 4, 4);
+            txtSellingPrice.Name = "txtSellingPrice";
+            txtSellingPrice.Size = new Size(889, 35);
+            txtSellingPrice.TabIndex = 7;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 143);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 20);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Selling Price";
+            label4.AutoSize = true;
+            label4.Location = new Point(9, 214);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(125, 30);
+            label4.TabIndex = 6;
+            label4.Text = "Selling Price";
             // 
             // txtBuyingPrice
             // 
-            this.txtBuyingPrice.Location = new System.Drawing.Point(129, 98);
-            this.txtBuyingPrice.Name = "txtBuyingPrice";
-            this.txtBuyingPrice.Size = new System.Drawing.Size(594, 27);
-            this.txtBuyingPrice.TabIndex = 5;
+            txtBuyingPrice.Location = new Point(194, 147);
+            txtBuyingPrice.Margin = new Padding(4, 4, 4, 4);
+            txtBuyingPrice.Name = "txtBuyingPrice";
+            txtBuyingPrice.Size = new Size(889, 35);
+            txtBuyingPrice.TabIndex = 5;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 101);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 20);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Buying Price";
+            label3.AutoSize = true;
+            label3.Location = new Point(9, 152);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(127, 30);
+            label3.TabIndex = 4;
+            label3.Text = "Buying Price";
             // 
             // txtCategory
             // 
-            this.txtCategory.Location = new System.Drawing.Point(129, 56);
-            this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(594, 27);
-            this.txtCategory.TabIndex = 3;
+            txtCategory.Location = new Point(194, 84);
+            txtCategory.Margin = new Padding(4, 4, 4, 4);
+            txtCategory.Name = "txtCategory";
+            txtCategory.Size = new Size(889, 35);
+            txtCategory.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Category";
+            label2.AutoSize = true;
+            label2.Location = new Point(9, 88);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(96, 30);
+            label2.TabIndex = 2;
+            label2.Text = "Category";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(129, 14);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(594, 27);
-            this.txtName.TabIndex = 1;
+            txtName.Location = new Point(194, 21);
+            txtName.Margin = new Padding(4, 4, 4, 4);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(889, 35);
+            txtName.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            label1.AutoSize = true;
+            label1.Location = new Point(9, 26);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(69, 30);
+            label1.TabIndex = 0;
+            label1.Text = "Name";
+            // 
+            // txtProductId
+            // 
+            txtProductId.Location = new Point(194, 327);
+            txtProductId.Margin = new Padding(4, 4, 4, 4);
+            txtProductId.Name = "txtProductId";
+            txtProductId.Size = new Size(889, 35);
+            txtProductId.TabIndex = 14;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(9, 332);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(108, 30);
+            label6.TabIndex = 15;
+            label6.Text = "Product ID";
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(768, 393);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Product List";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Controls.Add(dataGridView1);
+            tabPage2.Location = new Point(4, 39);
+            tabPage2.Margin = new Padding(4, 4, 4, 4);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(4, 4, 4, 4);
+            tabPage2.Size = new Size(1156, 596);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Product List";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(756, 381);
-            this.dataGridView1.TabIndex = 0;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(9, 9);
+            dataGridView1.Margin = new Padding(4, 4, 4, 4);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(1134, 572);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // ProductForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tabControl1);
-            this.Name = "ProductForm";
-            this.Text = "Product Management";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1200, 675);
+            Controls.Add(tabControl1);
+            Margin = new Padding(4, 4, 4, 4);
+            Name = "ProductForm";
+            Text = "Product Management";
+            Load += ProductForm_Load; // Added this line
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Button btnRefreshProducts; // Added this line
         private System.Windows.Forms.Button btnDeleteProduct;
         private System.Windows.Forms.Button btnUpdateProduct;
         private System.Windows.Forms.Button btnAddProduct;
@@ -238,6 +293,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtProductId;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dataGridView1;
     }

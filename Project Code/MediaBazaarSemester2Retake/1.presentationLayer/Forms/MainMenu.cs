@@ -23,18 +23,21 @@ namespace MediaBazaarSemester2Retake
         Departments Departments = new Departments();
         ProductForm productForm = new ProductForm();
         StockForm stockForm = new StockForm();
+
         public MainMenu(string role, string department)
         {
             InitializeComponent();
             userRole = role;
+            this.department = department;
             ConfigureAccessBasedOnRole();
             UpdateUIWithUserRole();
-            this.department = department;
         }
+
         private void UpdateUIWithUserRole()
         {
             lbRoleInput.Text = userRole; // Update the label with the user's role
         }
+
         private void ConfigureAccessBasedOnRole()
         {
             // Default to all disabled
@@ -50,21 +53,27 @@ namespace MediaBazaarSemester2Retake
                 case "HR2":
                     // Enable only employee management for HR
                     btnEmployeeManagement.Visible = true;
-                    btnSchedule.Visible = true;
-                    //    btnDeleteEmployeeManagement.Visible = true;
-                    //  btnUpdateEmployeeManagement.Visible = true;
+                    btnWeeklyScheduleManagement.Visible = true;
                     break;
                 case "Schedule":
                     // Enable access to schedule management for Schedule Managers
                     btnSchedule.Visible = true;
+                    btnScheduleManagementClicked.Visible = true;
+                    btnStockManagement.Visible = false;
+                    btnWeeklyScheduleManagement.Visible = true;
+                    btnStockmanagementCLicked.Visible = false;
                     break;
-                case "Department":
+                case "Product":
                     // Enable access to department-specific functionalities
                     btnDepartmentManagement.Visible = true; // Assuming you have a button for department management
                     break;
+                case "Stock":
+                    // Enable access to stock management only
+                    btnStockManagement.Visible = true;
+                    btnStockmanagementCLicked.Visible = false;
+                    break;
             }
         }
-
 
         private void SetAllTabsVisibility(bool visible)
         {
@@ -73,7 +82,6 @@ namespace MediaBazaarSemester2Retake
             btnStockManagement.Visible = visible;
             btnEmployeeManagement.Visible = visible;
         }
-
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -90,30 +98,22 @@ namespace MediaBazaarSemester2Retake
         private void button1_Click(object sender, EventArgs e)
         {
             scheduleForm.Hide();
-
+            productForm.Hide();
+            stockForm.Hide();
+           // WeeklyShiftsForm.Hide();
 
             employeeForm.TopLevel = false;
             employeeForm.FormBorderStyle = FormBorderStyle.None;
             employeeForm.Dock = DockStyle.Fill;
 
-
             PnlMainMenu.Controls.Add(employeeForm);
             employeeForm.Show();
             btnBack.Visible = true;
-            btnupdateEmployeeManagement.Visible = true;
-            btnDeleteEMployeeManagement.Visible = true;
-            btnCreateEmployee.Visible = true;
-            //pnlEmployeeManagement.Visible = true;
-
 
             btnSchedule.Visible = false;
             btnProductManagement.Visible = false;
             btnStockManagement.Visible = false;
-
-
-
         }
-       
 
         public void SetCrudeOn()
         {
@@ -122,7 +122,9 @@ namespace MediaBazaarSemester2Retake
             btnProductManagement.Visible = false;
             btnStockManagement.Visible = false;
             btnEmployeeManagement.Visible = false;
+            btnScheduleManagementClicked.Visible = false;
         }
+
         private void btnSchedule_Click(object sender, EventArgs e)
         {
             PnlMainMenu.Controls.Clear();
@@ -138,39 +140,27 @@ namespace MediaBazaarSemester2Retake
 
             // Show the form
             scheduleForm.Show();
-            #region
+
             SetCrudeOn();
             btnBack.Visible = true;
             btnScheduleManagementClicked.Visible = true;
             btnCreateScheduleManagement.Visible = true;
-            btnUpdateScheduleManagement.Visible = true;
             btnWeeklyScheduleManagement.Visible = true;
             btnProductManagement.Visible = false;
-            #endregion
         }
-        public void CLear()
+
+        public void Clear()
         {
             btnDepartmentManagement.Visible = false;
-            btnCreateProductManagement.Visible = false;
-            btnDeleteProductManagement.Visible = false;
-            btnUpdateProductManagement.Visible = false;
-
-            btnupdateEmployeeManagement.Visible = false;
-            btnDeleteEMployeeManagement.Visible = false;
-            btnCreateEmployee.Visible = false;
-
-            btnUpdateScheduleManagement.Visible = false;
             btnCreateScheduleManagement.Visible = false;
             btnWeeklyScheduleManagement.Visible = false;
-
-
-            btnUpdateScheduleManagement.Visible = false;
 
             btnProductManagement.Visible = true;
             btnSchedule.Visible = true;
             btnEmployeeManagement.Visible = true;
             btnStockManagement.Visible = true;
         }
+
         private void btnStockManagement_Click(object sender, EventArgs e)
         {
             PnlMainMenu.Controls.Clear();
@@ -182,13 +172,12 @@ namespace MediaBazaarSemester2Retake
             btnBack.Visible = true;
             SetCrudeOn();
         }
+
         private void button1_Click_1(object sender, EventArgs e)
         {
-            CLear();
+            Clear();
             ConfigureAccessBasedOnRole();
             UpdateUIWithUserRole();
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -216,12 +205,10 @@ namespace MediaBazaarSemester2Retake
         {
             PnlMainMenu.Controls.Clear();
 
-
             LeaveRequests leaveRequests = new LeaveRequests();
             leaveRequests.TopLevel = false;
             leaveRequests.FormBorderStyle = FormBorderStyle.None;
             leaveRequests.Dock = DockStyle.Fill;
-
 
             PnlMainMenu.Controls.Add(leaveRequests);
             leaveRequests.Show();
@@ -235,27 +222,23 @@ namespace MediaBazaarSemester2Retake
         {
             PnlMainMenu.Controls.Clear();
 
-
-          
             WeeklyShiftsForm = new WeeklyShiftsForm(userRole, department);
             WeeklyShiftsForm.TopLevel = false;
             WeeklyShiftsForm.FormBorderStyle = FormBorderStyle.None;
             WeeklyShiftsForm.Dock = DockStyle.Fill;
 
-
             PnlMainMenu.Controls.Add(WeeklyShiftsForm);
 
-
             WeeklyShiftsForm.Show();
-            #region
+
             SetCrudeOn();
             btnBack.Visible = true;
-            btnScheduleManagementClicked.Visible = true;
-            btnCreateScheduleManagement.Visible = true;
-            btnUpdateScheduleManagement.Visible = true;
+            //btnScheduleManagementClicked.Visible = true;
+            //btnCreateScheduleManagement.Visible = true;
             btnWeeklyScheduleManagement.Visible = true;
             btnProductManagement.Visible = false;
-            #endregion
+            btnStockmanagementCLicked.Visible = false;
+            btnStockManagement.Visible = false;
         }
 
         private void btnScheduleManagementClicked_Click(object sender, EventArgs e)
@@ -267,9 +250,7 @@ namespace MediaBazaarSemester2Retake
             scheduleForm.FormBorderStyle = FormBorderStyle.None;
             scheduleForm.Dock = DockStyle.Fill;
 
-
             PnlMainMenu.Controls.Add(scheduleForm);
-
 
             scheduleForm.Show();
         }
@@ -286,20 +267,16 @@ namespace MediaBazaarSemester2Retake
 
         private void btnDepartmentManagement_Click(object sender, EventArgs e)
         {
-            ConfigureAccessBasedOnRole();
-            UpdateUIWithUserRole();
-            Departments departments = new Departments();
-            departments.TopLevel = false;
-            departments.FormBorderStyle = FormBorderStyle.None;
-            departments.Dock = DockStyle.Fill;
-
             PnlMainMenu.Controls.Clear();
-            PnlMainMenu.Controls.Add(departments);
-            departments.Show();
-
-
-
+            productForm.TopLevel = false;
+            productForm.FormBorderStyle = FormBorderStyle.None;
+            productForm.Dock = DockStyle.Fill;
+            PnlMainMenu.Controls.Add(productForm);
+            productForm.Show();
+            btnBack.Visible = true;
+            SetCrudeOn();
         }
+
         private void btnProductManagement_Click(object sender, EventArgs e)
         {
             PnlMainMenu.Controls.Clear();
@@ -309,12 +286,18 @@ namespace MediaBazaarSemester2Retake
             PnlMainMenu.Controls.Add(productForm);
             productForm.Show();
             btnBack.Visible = true;
-            btnCreateProductManagement.Visible = true;
-            btnDeleteProductManagement.Visible = true;
-            btnUpdateProductManagement.Visible = true;
             SetCrudeOn();
         }
-      
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            // Clear the main panel and reset UI based on user role
+            PnlMainMenu.Controls.Clear();
+            Clear();
+            ConfigureAccessBasedOnRole();
+            UpdateUIWithUserRole();
+            btnBack.Visible = false;
+        }
 
         private void Logout()
         {
@@ -324,7 +307,7 @@ namespace MediaBazaarSemester2Retake
             // Reset UI elements
             UpdateUIWithUserRole();
             SetAllTabsVisibility(false);
-            CLear();
+            Clear();
 
             // Clear the panel
             PnlMainMenu.Controls.Clear();
@@ -338,6 +321,11 @@ namespace MediaBazaarSemester2Retake
         private void button2_Click_1(object sender, EventArgs e)
         {
             Logout();
+        }
+
+        private void btnStockmanagementCLicked_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
