@@ -97,11 +97,15 @@ namespace DAL
 				string querry = "";
 				if (approved)
 				{
-					querry = "Select * FROM RequestDaysOff where approved = @approved";
+					querry = "Select RDO.*, E.email FROM RequestDaysOff RDO " +
+						"Inner join Employees E ON RDO.employeeID = E.employeeID " +
+						"where approved = @approved";
 				}
 				else
 				{
-					querry = "Select * FROM RequestDaysOff where approved = @approved AND disapprovalReason IS NULL";
+					querry = "Select RDO.*, E.email FROM RequestDaysOff RDO " +
+						"Inner join Employees E ON RDO.employeeID = E.employeeID " +
+						"where approved = @approved AND disapprovalReason IS NULL";
 
                 }
 				using (SqlCommand command = new SqlCommand(querry, connection))
@@ -113,6 +117,7 @@ namespace DAL
 						while (reader.Read())
 						{
 							RequestDaysOff request = reader.MapToDaysOff();
+							request.employeeEmail = Convert.ToString(reader["email"]);
 							requests.Add(request);
 						}
 						return requests;
