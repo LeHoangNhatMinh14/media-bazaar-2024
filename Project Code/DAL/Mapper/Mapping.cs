@@ -95,12 +95,8 @@ namespace DAL.Mapper
                 startDate = GetValue<DateTime>(dataReader,"startingDate"),
                 endDate = GetValue<DateTime>(dataReader,"endDate"),
                 approved = GetValue<bool>(dataReader,"approved"),
-<<<<<<< HEAD
                 reason = GetValue<string>(dataReader, "reason"),
-                disaprovalReason = GetValue<string>(dataReader, "disapprovalReason")
-=======
-                disapprovalReason = GetStringValue(dataReader, "disapprovalReason")
->>>>>>> 3b3f503defb90b36bd2fe23a3414f086b7c5870f
+                disaprovalReason = GetStringValue(dataReader, "disapprovalReason")
             };
         }
 
