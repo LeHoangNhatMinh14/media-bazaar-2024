@@ -8,24 +8,52 @@
 
 <div class="container custom-size">
 	<div class="row">
-		<form method="post" asp-page-handler="Request">
-			<div class="col days-needed">
-				<p>Starts:</p>
-				<input type="date" class="form-control" asp-for="StartDate" asp-format="{0:yyyy-MM-dd}" min="@Model.start" value="@Model.start" />
-				<p>Days needed:</p>
-				<input type="number" class="form-control" asp-for="DaysOff" min="1" max="3" asp-format="" />
-			</div>
-			<div class="col reason-given">
-				<div class="form-outline mb-4">
-					<div class="form-outline mb-4">
-						<label asp-for="Reason" class="form-label" for="form3Example4cg">Reason:</label>
-						<textarea asp-for="Reason" type="text" name="Reason" id="form3Example4cg" class="form-control form-control-lg"></textarea>
-					</div>
-					<button class="button-sendrequest" type="submit" value="Submit">
-						Request Leave
-					</button>
+		@if (Model.RequestDaysOff == null)
+		{
+			<form method="post" asp-page-handler="Request">
+				<div class="col days-needed">
+					<p>Starts:</p>
+					<input type="date" class="form-control" asp-for="StartDate" asp-format="{0:yyyy-MM-dd}" min="@Model.start" value="@Model.start" />
+					<p>Days needed:</p>
+					<input type="number" class="form-control" asp-for="DaysOff" min="1" max="3" asp-format="" />
 				</div>
+				<div class="col reason-given">
+					<div class="form-outline mb-4">
+						<div class="form-outline mb-4">
+							<label asp-for="Reason" class="form-label" for="form3Example4cg">Reason:</label>
+							<textarea asp-for="Reason" type="text" name="Reason" id="form3Example4cg" class="form-control form-control-lg"></textarea>
+						</div>
+						<button class="button-sendrequest" type="submit" value="Submit">
+							Request Leave
+						</button>
+					</div>
+				</div>
+			</form>
+		}
+		else if(Model.RequestDaysOff.approved == true)
+		{
+			<div class="col requests">
+				<p class="date">@Model.RequestDaysOff.startDate  -  @Model.RequestDaysOff.endDate</p>
+				<p class="state text-success">Approved</p>
+				<p class="reason">@Model.RequestDaysOff.reason</p>
 			</div>
-		</form>
+		}
+		else if (Model.RequestDaysOff.approved == false && Model.RequestDaysOff.reason == null)
+		{
+			<div class="col requests">
+				<p class="date">@Model.RequestDaysOff.startDate  -  @Model.RequestDaysOff.endDate</p>
+				<p class="state text-warning">Pending</p>
+				<p class="reason">@Model.RequestDaysOff.reason</p>
+			</div>
+		}
+		else
+		{
+			<div class="col requests">
+				<p class="date">@Model.RequestDaysOff.startDate  -  @Model.RequestDaysOff.endDate</p>
+				<p class="state text-danger">Denied</p>
+				<p class="reason">@Model.RequestDaysOff.reason</p>
+				<p class="disaproval-reason">@Model.RequestDaysOff.disaprovalReason</p>
+			</div>
+		}
 	</div>
 </div>

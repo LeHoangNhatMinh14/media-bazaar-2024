@@ -1,12 +1,12 @@
 ﻿@page
 @model MediaBazaar_WebApp.Pages.PersonalDataModel
 @{
-	ViewData["Title"] = "PersonalData";
+    ViewData["Title"] = "PersonalData";
 }
 
 <link rel="stylesheet" href="~/css/personaldata.css" asp-append-version="true" />
 
-<div class="container custom-size" >
+<div class="container custom-size">
 	<div class="row">
 		<div class="col personal-data">
 			<p>Name: @Model.employee.EmployeeInfo</p>
@@ -18,7 +18,7 @@
 		</div>
 		<div class="w-100"></div>
 		<div class="col contract-data">
-			@if(Model.contract.contractType != "Temporary")
+			@if (Model.contract.contractType != "Temporary")
 			{
 				<p>Contract Dates: @Model.contract.startDate.ToString("dd MMMM yyyy")</p>
 			}
@@ -26,7 +26,7 @@
 			{
 				<p>Contract Dates: @Model.contract.startDate - @Model.contract.endDate</p>
 			}
-			
+
 			<p>Contract Hours: @Model.contract.workHours</p>
 			<p>Position: @Model.contract.position</p>
 		</div>
@@ -44,43 +44,43 @@
 	<div class="row">
 		<form method="post">
 			<div class="customCheckBoxHolder">
-				<input type="checkbox" asp-for="Monday" value="true" id="cCB1" class="customCheckBoxInput" checked="@Model.Monday" >
+				<input type="checkbox" asp-for="Monday" value="true" id="cCB1" class="customCheckBoxInput" checked="@Model.Monday">
 				<label for="cCB1" class="customCheckBoxWrapper">
 					<div class="customCheckBox">
 						<div class="inner">Monday</div>
 					</div>
 				</label>
-				<input type="checkbox" asp-for="Tuesday" value="true" id="cCB2" class="customCheckBoxInput" checked="@Model.Tuesday" >
+				<input type="checkbox" asp-for="Tuesday" value="true" id="cCB2" class="customCheckBoxInput" checked="@Model.Tuesday">
 				<label for="cCB2" class="customCheckBoxWrapper">
 					<div class="customCheckBox">
 						<div class="inner">Tuesday</div>
 					</div>
 				</label>
-				<input type="checkbox" asp-for="Wednesday" value="true" id="cCB3" class="customCheckBoxInput" checked="@Model.Wednesday" >
+				<input type="checkbox" asp-for="Wednesday" value="true" id="cCB3" class="customCheckBoxInput" checked="@Model.Wednesday">
 				<label for="cCB3" class="customCheckBoxWrapper">
 					<div class="customCheckBox">
 						<div class="inner">Wednesday</div>
 					</div>
 				</label>
-				<input type="checkbox" asp-for="Thursday" value="true" id="cCB4" class="customCheckBoxInput" checked="@Model.Thursday" >
+				<input type="checkbox" asp-for="Thursday" value="true" id="cCB4" class="customCheckBoxInput" checked="@Model.Thursday">
 				<label for="cCB4" class="customCheckBoxWrapper">
 					<div class="customCheckBox">
 						<div class="inner">Thursday</div>
 					</div>
 				</label>
-				<input type="checkbox" asp-for="Friday" value="true" id="cCB5" class="customCheckBoxInput" checked="@Model.Friday" >
+				<input type="checkbox" asp-for="Friday" value="true" id="cCB5" class="customCheckBoxInput" checked="@Model.Friday">
 				<label for="cCB5" class="customCheckBoxWrapper">
 					<div class="customCheckBox">
 						<div class="inner">Friday</div>
 					</div>
 				</label>
-				<input type="checkbox" asp-for="Saturday" value="true" id="cCB6" class="customCheckBoxInput" checked="@Model.Saturday" >
+				<input type="checkbox" asp-for="Saturday" value="true" id="cCB6" class="customCheckBoxInput" checked="@Model.Saturday">
 				<label for="cCB6" class="customCheckBoxWrapper">
 					<div class="customCheckBox">
 						<div class="inner">Saturday</div>
 					</div>
 				</label>
-				<input type="checkbox" asp-for="Sunday" value="true" id="cCB7" class="customCheckBoxInput" checked="@Model.Sunday" >
+				<input type="checkbox" asp-for="Sunday" value="true" id="cCB7" class="customCheckBoxInput" checked="@Model.Sunday">
 				<label for="cCB7" class="customCheckBoxWrapper">
 					<div class="customCheckBox">
 						<div class="inner">Sunday</div>
@@ -96,5 +96,38 @@
 				</div>
 			</div>
 		</form>
-	</div>	 
+	</div>
 </div>
+
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const minCheckedBoxes = @Model.MinCheckedBoxes;
+            const checkboxes = document.querySelectorAll('.customCheckBoxInput');
+            const submitBtn = document.getElementById('submitBtn');
+
+            function validateCheckboxes() {
+                const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+                submitBtn.disabled = checkedCount < minCheckedBoxes;
+
+                checkboxes.forEach(checkbox => {
+                    if (!checkbox.checked) return;
+                    checkbox.disabled = checkedCount <= minCheckedBoxes;
+                });
+            }
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', (event) => {
+                    if (!checkbox.checked && Array.from(checkboxes).filter(cb => cb.checked).length < minCheckedBoxes) {
+                        event.preventDefault();
+                        checkbox.checked = true;
+                    }
+                    validateCheckboxes();
+                });
+            });
+
+            validateCheckboxes(); // Initial validation on page load
+        });
+    </script>
+}

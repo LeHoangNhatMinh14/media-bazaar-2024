@@ -43,12 +43,20 @@
 			}
 		</div>
 		<div class="col-2 button-container">
-			@if (Model.weeks.ElementAt(0) >= DateTime.Now )
+			@if (Model.weeks.ElementAt(0) >= DateTime.Now && Model.hasMadeRequest == false)
 			{
 				<a asp-page-handler="DaysOff">
 					<button class="button-offrequest">
 					Request Leave
 				</button>
+				</a>
+			}
+			@if(Model.hasMadeRequest == true)
+			{
+				<a asp-page-handler="DaysOff">
+					<button class="button-offrequest">
+						View Requests
+					</button>
 				</a>
 			}
 		</div>

@@ -48,7 +48,7 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
             for (int i = 0; i < 7; i++)
             {
                 DateTime day = firstDayOfWeek.AddDays(i);
-                ucDays uc = new ucDays(day.Day.ToString(), _shifts);
+                ucDays uc = new ucDays(day, _shifts);
                 flowLayoutPanel1.Controls.Add(uc);
             }
         }
@@ -65,10 +65,16 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
             DateTime currentDate = DateTime.Today;
             int initialWeekOffset = (currentDate.DayOfWeek == DayOfWeek.Sunday) ? 0 : 1;
 
-            if (role == "Manager")
+            if (role == "HR")
             {
-                cbDepartments.SelectedText = department;
-                cbDepartments.Hide();
+                lblStart.Hide();
+                lblEnd.Hide();
+                datePickerEnd.Hide();
+                datePickerStart.Hide();
+                numericPeopleNeeded.Hide();
+                btnAutoShiftAssign.Hide();
+                btnCreateShiftPeriod.Hide();
+                lblPplNeeded.Hide();
             }
 
             _year = currentDate.Year;
@@ -90,24 +96,24 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            currentWeekOffset++;
-            UpdateShiftsForSelectedEmployee();
-            UpdateWeekDisplay();
-
             DateTime currentDate = DateTime.Today.AddDays(7 * currentWeekOffset);
             _year = currentDate.Year;
             _month = currentDate.Month;
+
+            currentWeekOffset++;
+            UpdateShiftsForSelectedEmployee();
+            UpdateWeekDisplay();
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            currentWeekOffset--;
-            UpdateShiftsForSelectedEmployee();
-            UpdateWeekDisplay();
-
             DateTime currentDate = DateTime.Today.AddDays(7 * currentWeekOffset);
             _year = currentDate.Year;
             _month = currentDate.Month;
+
+            currentWeekOffset--;
+            UpdateShiftsForSelectedEmployee();
+            UpdateWeekDisplay();
         }
 
         private void UpdateWeekDisplay()
@@ -144,19 +150,15 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
             if (lbUsers.SelectedItem != null)
             {
                 Employee selectedEmployee = (Employee)lbUsers.SelectedItem;
-
                 _shifts = _manageShifts.GetShiftsOfEmployee(selectedEmployee.employeeID);
 
                 foreach (Control control in flowLayoutPanel1.Controls)
                 {
                     if (control is ucDays uc)
                     {
-                        if (int.TryParse(uc.label1.Text, out int day))
-                        {
-                            int shiftsCount = _shifts.Count(shift => shift.shiftDate.Day == day);
-
-                            uc.NumberOfShifts = shiftsCount;
-                        }
+                        DateTime controlDate = uc._day; // Add a Date property to ucDays to get the DateTime object
+                        int shiftsCount = _shifts.Count(shift => shift.shiftDate.Date == controlDate.Date);
+                        uc.NumberOfShifts = shiftsCount;
                     }
                 }
             }

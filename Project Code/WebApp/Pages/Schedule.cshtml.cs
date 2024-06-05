@@ -12,6 +12,7 @@ namespace MediaBazaar_WebApp.Pages
     {
 		ManageShifts mS = ManageShiftFactory.Create();
 		ManageDepartment mD = ManageDepartmentFactory.Create();
+        ManageDaysOff mDO = ManageDaysOffFactory.Create();
 		public bool IsPageOpen { get; set; }
 		public Employee employee { get; set; }
 		public List<Shift> employeeShifts { get; set; }
@@ -19,7 +20,7 @@ namespace MediaBazaar_WebApp.Pages
 		private static int weekNmbr { get; set; }
 		public string Date {  get; set; }
         private int _x {get; set; }
-
+        public bool hasMadeRequest {  get; set; }
 
         public ActionResult OnGet(string handler)
 		{
@@ -31,6 +32,7 @@ namespace MediaBazaar_WebApp.Pages
             int id = (int)HttpContext.Session.GetInt32("EmployeeID");
 
             _x = HttpContext.Session.GetInt32("_x") ?? 0;
+            hasMadeRequest = MadeRequest(id);
             GetWeek();
             switch (handler)
             {
@@ -97,6 +99,15 @@ namespace MediaBazaar_WebApp.Pages
             var thisWeekEnd = baseStart.AddDays(6);
 
             Date = $"Day {thisWeekStart.Day}/{thisWeekStart.Month} - {thisWeekEnd.Day}/{thisWeekEnd.Month} , {baseDate.Year}";
+        }
+
+        public bool MadeRequest(int id)
+        { 
+            if(mDO.GetDaysOff(id) != null)
+            {
+                return true;
+            }
+            return false;
         }
 
 		private int GetWeekNumber(DateTime weekShowing)
