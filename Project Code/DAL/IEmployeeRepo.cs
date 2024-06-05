@@ -4,12 +4,8 @@ namespace DAL
 {
     public interface IEmployeeRepo
     {
-        void AddEmployee(Employee employee);
-        void DeleteEmployee(Employee employee);
-        void EditEmployee(Employee employee);
-        List<Employee> GetAllEmployees();
-        Employee GetEmployee(string email, string password);
-        Employee GetEmployeeByID(int id);
-        string VerifyLogin(string email, string password);
+        Task AddProductAsync(Product product);
+        Task<List<Product>> GetProductsAsync();
+        Task UpdateProductStockAsync(int productId, int quantity);
     }
 }
