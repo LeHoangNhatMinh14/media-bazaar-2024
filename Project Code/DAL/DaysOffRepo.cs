@@ -94,7 +94,16 @@ namespace DAL
 			using (SqlConnection connection = new SqlConnection(connectionString))
 			{
 				connection.Open ();
-				string querry = @"Select * FROM RequestDaysOff where approved = @approved";
+				string querry = "";
+				if (approved)
+				{
+					querry = "Select * FROM RequestDaysOff where approved = @approved";
+				}
+				else
+				{
+					querry = "Select * FROM RequestDaysOff where approved = @approved AND disapprovalReason IS NULL";
+
+                }
 				using (SqlCommand command = new SqlCommand(querry, connection))
 				{
 					List<RequestDaysOff> requests = new List<RequestDaysOff>();

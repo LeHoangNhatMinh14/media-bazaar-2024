@@ -50,9 +50,18 @@ namespace MediaBazaarSemester2Retake
 
                 if (_manageShifts.CanAssignShift(selectedEmployee.employeeID, selectedShift))
                 {
-                    _manageShifts.AssignShift(selectedShift.shiftid, selectedEmployee.employeeID);
+                    int remainingPeopleNeeded = _manageShifts.AssignShift(selectedShift.shiftid, selectedEmployee.employeeID);
+
                     UpdateShiftsList(selectedEmployee.employeeID);
-                    MessageBox.Show($"This shift has been assgined to {selectedEmployee.firstName} {selectedEmployee.lastName}");
+
+                    if (remainingPeopleNeeded > 0)
+                    {
+                        MessageBox.Show($"Shift has been assigned to {selectedEmployee.firstName} {selectedEmployee.lastName}. Still need {remainingPeopleNeeded} more people.");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Shift has been fully assigned to {selectedEmployee.firstName} {selectedEmployee.lastName}.");
+                    }
                 }
                 else
                 {
