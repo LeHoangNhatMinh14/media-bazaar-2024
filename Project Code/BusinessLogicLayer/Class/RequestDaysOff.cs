@@ -14,7 +14,8 @@ namespace BusinessLogicLayer.Class
 		public DateTime endDate { get; set; }
 		public bool approved { get; set; }
 		public string? disaprovalReason {  get; set; }
-		public string RequestInfo => $"{startDate.ToString("dd/MMM/yyyy")} - {endDate.ToString("dd/MMM/yyyy")}";
+		public string? employeeEmail { get; set; }
+		public string RequestInfo => $"{employeeEmail} : {startDate.ToString("dd/MMM/yyyy")} - {endDate.ToString("dd/MMM/yyyy")}";
 
 		public RequestDaysOff() { }
 
