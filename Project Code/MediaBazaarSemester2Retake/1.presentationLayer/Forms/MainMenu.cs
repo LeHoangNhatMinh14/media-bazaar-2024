@@ -58,19 +58,19 @@ namespace MediaBazaarSemester2Retake
                 case "Schedule":
                     // Enable access to schedule management for Schedule Managers
                     btnSchedule.Visible = true;
-                    btnScheduleManagementClicked.Visible = true;
-                    btnStockManagement.Visible = false;
                     btnWeeklyScheduleManagement.Visible = true;
+                    btnStockManagement.Visible = false;
                     btnStockmanagementCLicked.Visible = false;
                     break;
                 case "Product":
-                    // Enable access to department-specific functionalities
-                    btnDepartmentManagement.Visible = true; // Assuming you have a button for department management
+                    // Enable access to product management
+                    btnProductManagement.Visible = true;
+                    btnStockmanagementCLicked.Visible = false;
                     break;
                 case "Stock":
                     // Enable access to stock management only
                     btnStockManagement.Visible = true;
-                    btnStockmanagementCLicked.Visible = false;
+                    btnStockmanagementCLicked.Visible=false;
                     break;
             }
         }
@@ -81,6 +81,7 @@ namespace MediaBazaarSemester2Retake
             btnProductManagement.Visible = visible;
             btnStockManagement.Visible = visible;
             btnEmployeeManagement.Visible = visible;
+           // btnWeeklyScheduleManagement.Visible = visible;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -97,10 +98,7 @@ namespace MediaBazaarSemester2Retake
 
         private void button1_Click(object sender, EventArgs e)
         {
-            scheduleForm.Hide();
-            productForm.Hide();
-            stockForm.Hide();
-           // WeeklyShiftsForm.Hide();
+            PnlMainMenu.Controls.Clear();
 
             employeeForm.TopLevel = false;
             employeeForm.FormBorderStyle = FormBorderStyle.None;
@@ -193,12 +191,10 @@ namespace MediaBazaarSemester2Retake
 
         private void MainMenu_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnCreateEmployee_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnCreateScheduleManagement_Click(object sender, EventArgs e)
@@ -233,9 +229,7 @@ namespace MediaBazaarSemester2Retake
 
             SetCrudeOn();
             btnBack.Visible = true;
-            //btnScheduleManagementClicked.Visible = true;
-            //btnCreateScheduleManagement.Visible = true;
-            btnWeeklyScheduleManagement.Visible = true;
+            btnWeeklyScheduleManagement.Visible = false;
             btnProductManagement.Visible = false;
             btnStockmanagementCLicked.Visible = false;
             btnStockManagement.Visible = false;
@@ -257,12 +251,10 @@ namespace MediaBazaarSemester2Retake
 
         private void lbRoleInput_Click(object sender, EventArgs e)
         {
-
         }
 
         private void lblMainmenuName_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnDepartmentManagement_Click(object sender, EventArgs e)
@@ -325,7 +317,6 @@ namespace MediaBazaarSemester2Retake
 
         private void btnStockmanagementCLicked_Click(object sender, EventArgs e)
         {
-
         }
     }
 }
