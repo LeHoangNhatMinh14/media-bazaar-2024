@@ -72,7 +72,9 @@ namespace MediaBazaarSemester2Retake
             if (employee.Contract != null)
             {
                 TxtBxEditPosition.Text = employee.Contract.position;
-                CbXEditDepartment.SelectedItem = manageDepartment.GetDepartmentName(employee.Contract.departmentID);
+                CbXEditDepartment.SelectedIndex = employee.Contract.departmentID - 1;
+
+
                 TxtBxEditWorkHour.Text = employee.Contract.workHours;
                 CbXEditContract.SelectedItem = employee.Contract.contractType;
 
