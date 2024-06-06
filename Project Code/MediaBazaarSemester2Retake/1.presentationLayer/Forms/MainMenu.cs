@@ -23,6 +23,7 @@ namespace MediaBazaarSemester2Retake
         Departments Departments = new Departments();
         ProductForm productForm = new ProductForm();
         StockForm stockForm = new StockForm();
+        Statistics statisticsForm = new Statistics();
 
         public MainMenu(string role, string department)
         {
@@ -70,7 +71,7 @@ namespace MediaBazaarSemester2Retake
                 case "Stock":
                     // Enable access to stock management only
                     btnStockManagement.Visible = true;
-                    btnStockmanagementCLicked.Visible=false;
+                    btnStockmanagementCLicked.Visible = false;
                     break;
             }
         }
@@ -81,7 +82,7 @@ namespace MediaBazaarSemester2Retake
             btnProductManagement.Visible = visible;
             btnStockManagement.Visible = visible;
             btnEmployeeManagement.Visible = visible;
-           // btnWeeklyScheduleManagement.Visible = visible;
+            // btnWeeklyScheduleManagement.Visible = visible;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -317,6 +318,18 @@ namespace MediaBazaarSemester2Retake
 
         private void btnStockmanagementCLicked_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnStatisticsForm_Click(object sender, EventArgs e)
+        {
+            PnlMainMenu.Controls.Clear();
+            statisticsForm.TopLevel = false;
+            statisticsForm.FormBorderStyle = FormBorderStyle.None;
+            statisticsForm.Dock = DockStyle.Fill;
+            PnlMainMenu.Controls.Add(statisticsForm);
+            statisticsForm.Show();
+            btnBack.Visible = true;
+            SetCrudeOn();
         }
     }
 }
