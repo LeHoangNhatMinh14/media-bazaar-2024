@@ -194,6 +194,10 @@ namespace MediaBazaarSemester2Retake
                 FillDatagrid();
 
             }
+            else
+            {
+                MessageBox.Show("Employee already exist");
+            }
 
         }
 
@@ -204,6 +208,7 @@ namespace MediaBazaarSemester2Retake
             int id = (int)selectedRow.Cells["employeeId"].Value;
             employee = manageEmployee.GetEmployeeByID(id);
             manageEmployee.DeleteEmployee(employee);
+            MessageBox.Show($"the employee: {employee} have been fired from the company");
         }
 
         private void BtnSendToEditEmployee_Click(object sender, EventArgs e)
@@ -306,7 +311,7 @@ namespace MediaBazaarSemester2Retake
 
                 manageEmployee.EditEmployee(employee);
                 ResetField(tabPage3);
-                MessageBox.Show("Successfully edit employee");
+                MessageBox.Show("Successfully edited employee");
                 FillDatagrid();
             }
         }
