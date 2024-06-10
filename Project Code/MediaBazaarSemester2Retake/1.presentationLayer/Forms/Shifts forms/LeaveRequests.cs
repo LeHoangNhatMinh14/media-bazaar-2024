@@ -16,51 +16,92 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms.Shifts_forms
     public partial class LeaveRequests : Form
     {
         ManageDaysOff mD;
-        List<RequestDaysOff> approvedRequests;
-        List<RequestDaysOff> disapprovedRequests;
+        List<RequestDaysOff> Requests;
+        RequestDaysOff selectedRequest;
+        ucLeaveRequests selectedUc;
+
         public LeaveRequests()
         {
             InitializeComponent();
             mD = ManageDaysOffFactory.Create();
+            panelLeaveRequests.AutoScroll = true; // Enable scrolling
         }
 
         private void LeaveRequests_Load(object sender, EventArgs e)
         {
-            disapprovedRequests= mD.GetDaysOff(false);
-            lbDisapprovedRequests.DataSource = disapprovedRequests;
-            lbDisapprovedRequests.DisplayMember = "RequestInfo";
-            approvedRequests = mD.GetDaysOff(true);
-            lbApprovedLeaveRequests.DataSource = approvedRequests;
-            lbApprovedLeaveRequests.DisplayMember = "RequesteInfo";
-            RefreshListBoxes();
-            label1.Hide();
-            tbDisapprovalReason.Hide();
-            btnDone.Hide();
-            label2.Hide();
+            Requests = mD.GetDaysOff();
+            panelLeaveRequests.Controls.Clear(); // Clear any existing controls
+
+            foreach (RequestDaysOff requestDaysOff in Requests)
+            {
+                ucLeaveRequests uc = new ucLeaveRequests();
+                uc.SetData(requestDaysOff); // Set the data for the user control
+                uc.Selected += Uc_Selected; // Subscribe to the Selected event
+                panelLeaveRequests.Controls.Add(uc);
+            }
+
+            tbDisapprovalReason.Enabled = false;
+            btnDone.Enabled = false;
+            label2.Enabled = false;
+        }
+
+        private void Uc_Selected(object sender, EventArgs e)
+        {
+            if (selectedUc != null)
+            {
+                selectedUc.Deselect(); // Deselect previously selected control
+            }
+
+            selectedUc = sender as ucLeaveRequests;
+            selectedRequest = selectedUc.Request;
+            tbDisapprovalReason.Enabled = false;
+            label1.Enabled = false;
+            btnDone.Enabled = false;
         }
 
         private void btnApprove_Click(object sender, EventArgs e)
         {
-            RequestDaysOff selectedRequest = lbDisapprovedRequests.SelectedItem as RequestDaysOff;
             if (selectedRequest != null)
             {
-                mD.AcceptOrDecline(selectedRequest.emloyeeID,true);
-                disapprovedRequests.Remove(selectedRequest);
-                approvedRequests.Add(selectedRequest);
-                RefreshListBoxes();
+                mD.AcceptOrDecline(selectedRequest.emloyeeID, true);
+                selectedRequest.approved = true;
+                selectedRequest.disaprovalReason = null;
+
+                // Update UI
+                var uc = panelLeaveRequests.Controls.OfType<ucLeaveRequests>()
+                    .FirstOrDefault(x => x.Request.emloyeeID == selectedRequest.emloyeeID);
+                if (uc != null)
+                {
+                    uc.SetData(selectedRequest);
+                }
             }
         }
 
         private void btnDisapprove_Click(object sender, EventArgs e)
         {
-            tbDisapprovalReason.Show();
-            label1.Show();
-            btnDone.Show();
+            if (selectedRequest != null)
+            {
+                if (selectedRequest.approved == true)
+                {
+                    MessageBox.Show("This request has been accepted. \r\nPlease select a different request.");
+                    return;
+                }
+                else if (selectedRequest.approved == false && !string.IsNullOrEmpty(selectedRequest.disaprovalReason))
+                {
+                    MessageBox.Show("This request has been processed. \r\nPlease select a different request.");
+                    return;
+                }
+
+                // Enable disapproval controls
+                tbDisapprovalReason.Enabled = true;
+                label1.Enabled = true;
+                btnDone.Enabled = true;
+            }
         }
+
 
         private void btnDone_Click(object sender, EventArgs e)
         {
-            RequestDaysOff selectedRequest = lbDisapprovedRequests.SelectedItem as RequestDaysOff;
             if (selectedRequest != null)
             {
                 // Retrieve the disapproval reason
@@ -73,6 +114,16 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms.Shifts_forms
 
                 // Call method to update request status and disapproval reason
                 mD.AcceptOrDecline(selectedRequest.emloyeeID, false, disapprovalReason);
+                selectedRequest.approved = false;
+                selectedRequest.disaprovalReason = disapprovalReason;
+
+                // Update UI
+                var uc = panelLeaveRequests.Controls.OfType<ucLeaveRequests>()
+                    .FirstOrDefault(x => x.Request.emloyeeID == selectedRequest.emloyeeID);
+                if (uc != null)
+                {
+                    uc.SetData(selectedRequest);
+                }
 
                 // Hide
                 label1.Hide();
@@ -80,17 +131,6 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms.Shifts_forms
                 btnDone.Hide();
                 label2.Hide();
             }
-        }
-
-        private void RefreshListBoxes()
-        {
-            lbApprovedLeaveRequests.DataSource = null;
-            lbApprovedLeaveRequests.DataSource = approvedRequests;
-            lbApprovedLeaveRequests.DisplayMember = "RequestInfo";
-
-            lbDisapprovedRequests.DataSource = null;
-            lbDisapprovedRequests.DataSource = disapprovedRequests;
-            lbDisapprovedRequests.DisplayMember = "RequestInfo";
         }
     }
 }

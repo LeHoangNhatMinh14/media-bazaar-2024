@@ -18,13 +18,14 @@ namespace MediaBazaarSemester2Retake
         ManageShifts _manageShifts;
         ManageEmployee _manageEmployee;
         ManageDepartment _manageDepartment;
+        ManageDaysOff mD;
         public ScheduleForm()
         {
             InitializeComponent();
             _manageShifts = ManageShiftFactory.Create();
             _manageEmployee = ManageEmployeeFactory.Create();
             _manageDepartment = ManageDepartmentFactory.Create();
-
+            mD = ManageDaysOffFactory.Create();
         }
 
         private void ScheduleForm_Load(object sender, EventArgs e)
@@ -48,6 +49,18 @@ namespace MediaBazaarSemester2Retake
                 Employee selectedEmployee = lbEmployees.SelectedItem as Employee;
                 Shift selectedShift = lbUnassignedShifts.SelectedItem as Shift;
 
+                // Check if the selected employee has any days off that overlap with the shift date
+                List<RequestDaysOff> daysOffRequests = mD.GetRequestDaysOffs(selectedEmployee.employeeID);
+                foreach (var daysOff in daysOffRequests)
+                {
+                    if (selectedShift.shiftDate >= daysOff.startDate && selectedShift.shiftDate <= daysOff.endDate)
+                    {
+                        MessageBox.Show("The selected employee has a day off during the shift period. Please select a different employee or shift.");
+                        return;
+                    }
+                }
+
+                // Proceed with assigning the shift if there are no conflicting days off
                 if (_manageShifts.CanAssignShift(selectedEmployee.employeeID, selectedShift))
                 {
                     int remainingPeopleNeeded = _manageShifts.AssignShift(selectedShift.shiftid, selectedEmployee.employeeID);
@@ -73,6 +86,7 @@ namespace MediaBazaarSemester2Retake
                 MessageBox.Show("Please select both an employee and a shift.");
             }
         }
+
 
         private void lbEmployees_MouseClick(object sender, MouseEventArgs e)
         {

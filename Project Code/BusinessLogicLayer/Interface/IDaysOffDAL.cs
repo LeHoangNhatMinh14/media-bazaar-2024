@@ -12,8 +12,9 @@ namespace BusinessLogicLayer.Interface
 		public RequestDaysOff GetRequest(int employeeID);
 		public void RequestDaysOff(RequestDaysOff daysOffRequest);
 		public void AcceptOrDecline(int employeeID, bool approved, string disapprovalReason = null);
-		List<RequestDaysOff> GetRequests(bool approved);
-		public void Undo(int employeeID);
+		List<RequestDaysOff> GetRequests();
+		List<RequestDaysOff> GetDaysOffByEmployee(int employeeID);
+        public void Undo(int employeeID);
 
     }
 }
