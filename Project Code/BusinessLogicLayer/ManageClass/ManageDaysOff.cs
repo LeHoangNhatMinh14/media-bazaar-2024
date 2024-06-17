@@ -44,5 +44,11 @@ namespace BusinessLogicLayer.ManageClass
 		{
 			return _daysOff.GetDaysOffByEmployee(employeeID);
 		}
-	}
+
+        public List<RequestDaysOff> GetRequestsByDepartment(string department)
+		{
+			return _daysOff.GetRequestsByDepartment(department);
+		}
+
+    }
 }

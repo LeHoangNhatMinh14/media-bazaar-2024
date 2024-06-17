@@ -19,6 +19,7 @@ namespace MediaBazaarSemester2Retake
         ManageEmployee _manageEmployee;
         ManageDepartment _manageDepartment;
         ManageDaysOff mD;
+        private string department;
         public ScheduleForm()
         {
             InitializeComponent();
@@ -27,19 +28,47 @@ namespace MediaBazaarSemester2Retake
             _manageDepartment = ManageDepartmentFactory.Create();
             mD = ManageDaysOffFactory.Create();
         }
+        // for department manager
+        public ScheduleForm(string department)
+        {
+            InitializeComponent();
+            _manageShifts = ManageShiftFactory.Create();
+            _manageEmployee = ManageEmployeeFactory.Create();
+            _manageDepartment = ManageDepartmentFactory.Create();
+            mD = ManageDaysOffFactory.Create();
+            this.department = department;
+        }
 
         private void ScheduleForm_Load(object sender, EventArgs e)
         {
-            cbShiftType.SelectedIndex = 0;
-            lbEmployees.DataSource = _manageEmployee.GetAllEmployees();
-            lbEmployees.DisplayMember = "EmployeeInfo";
-            lbEmployees.ValueMember = "employeeID";
-            cbDepartments.DataSource = _manageDepartment.GetDepartmentList();
-            cbDepartments.DisplayMember = "_departmentName";
-            cbDepartments.ValueMember = "_departmentID";
-            lbUnassignedShifts.DataSource = _manageShifts.GetUnassignedShifts();
-            lbUnassignedShifts.DisplayMember = "ShiftInfo";
-            lbUnassignedShifts.ValueMember = "shiftid";
+            if (String.IsNullOrEmpty(department))
+            {
+                cbShiftType.SelectedIndex = 0;
+                lbEmployees.DataSource = _manageEmployee.GetAllEmployees();
+                lbEmployees.DisplayMember = "EmployeeInfo";
+                lbEmployees.ValueMember = "employeeID";
+                cbDepartments.DataSource = _manageDepartment.GetDepartmentList();
+                cbDepartments.DisplayMember = "_departmentName";
+                cbDepartments.ValueMember = "_departmentID";
+                lbUnassignedShifts.DataSource = _manageShifts.GetUnassignedShifts();
+                lbUnassignedShifts.DisplayMember = "ShiftInfo";
+                lbUnassignedShifts.ValueMember = "shiftid";
+            }
+            else
+            {
+                cbShiftType.SelectedIndex = 0;
+                lbEmployees.DataSource = _manageEmployee.GetEmployeeofDepartment(department);
+                lbEmployees.DisplayMember = "EmployeeInfo";
+                lbEmployees.ValueMember = "employeeID";
+                cbDepartments.DataSource = _manageDepartment.GetDepartmentbyName(department);
+                cbDepartments.DisplayMember = "_departmentName";
+                cbDepartments.ValueMember = "_departmentID";
+                cbDepartments.Enabled = false;
+                lbUnassignedShifts.DataSource = _manageShifts.GetUnassignedShifts();
+                lbUnassignedShifts.DisplayMember = "ShiftInfo";
+                lbUnassignedShifts.ValueMember = "shiftid";
+            }
+
         }
 
         private void btnAssignShift_Click(object sender, EventArgs e)

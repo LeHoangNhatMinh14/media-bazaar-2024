@@ -16,5 +16,7 @@ namespace BusinessLogicLayer.Interface
 		List<RequestDaysOff> GetDaysOffByEmployee(int employeeID);
         public void Undo(int employeeID);
 
+		List<RequestDaysOff> GetRequestsByDepartment(string department);
+
     }
 }

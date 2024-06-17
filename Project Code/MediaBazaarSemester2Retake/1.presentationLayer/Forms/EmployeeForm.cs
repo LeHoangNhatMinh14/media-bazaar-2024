@@ -10,12 +10,15 @@ using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace MediaBazaarSemester2Retake
 {
@@ -176,7 +179,8 @@ namespace MediaBazaarSemester2Retake
 
                 EmailService.SendEmail(password, email);
                 employee = new Employee(firstName, lastName, password, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
-                manageEmployee.AddEmployee(employee);
+                manageEmployee.AddEmployee(employee, positon);
+
                 employeeId = manageEmployee.GetRecentEmployee().employeeID;
                 if (contractType == "Temporary")
                 {
@@ -230,8 +234,8 @@ namespace MediaBazaarSemester2Retake
             string[] departments = { "Security", "Logistic", "CustomerService", "HR" };
             string[] contractTypes = { "Permanent ", "Temporary" };
 
-            TxtBxFirstName.Text = firstNames[random.Next(firstNames.Length-1)];
-            TxtBxLastName.Text = lastNames[random.Next(lastNames.Length-1)];
+            TxtBxFirstName.Text = firstNames[random.Next(firstNames.Length - 1)];
+            TxtBxLastName.Text = lastNames[random.Next(lastNames.Length - 1)];
             TxtBxEmail.Text = $"{TxtBxFirstName.Text}.{TxtBxLastName.Text}@mediabazaar.nl";
             TxtBxPhoneNumber.Text = $"06{random.Next(10000000, 99999999)}";
             TxtBxPassword.Text = "password123";
@@ -248,8 +252,8 @@ namespace MediaBazaarSemester2Retake
 
 
             TxtBxPosition.Text = "Cashier";
-            CbXDepartment.SelectedIndex = random.Next(departments.Length-1);
-            CbXContract.SelectedIndex = random.Next(contractTypes.Length-1);
+            CbXDepartment.SelectedIndex = random.Next(departments.Length - 1);
+            CbXContract.SelectedIndex = random.Next(contractTypes.Length - 1);
 
 
             TxtBxEmergencyName.Text = $"{firstNames[random.Next(firstNames.Length)]} {lastNames[random.Next(lastNames.Length)]}";
@@ -338,7 +342,7 @@ namespace MediaBazaarSemester2Retake
             {
                 foreach (Control control in groupBox.Controls)
                 {
-                    if (control is TextBox textBox)
+                    if (control is System.Windows.Forms.TextBox textBox)
                     {
                         if (string.IsNullOrEmpty(textBox.Text))
                         {
@@ -346,7 +350,7 @@ namespace MediaBazaarSemester2Retake
                             return false; // Field is not filled
                         }
                     }
-                    else if (control is ComboBox comboBox)
+                    else if (control is System.Windows.Forms.ComboBox comboBox)
                     {
                         if (string.IsNullOrWhiteSpace(comboBox.Text)) //if the day is today
                         {
@@ -388,11 +392,11 @@ namespace MediaBazaarSemester2Retake
             {
                 foreach (Control control in groupBox.Controls)
                 {
-                    if (control is TextBox textBox)
+                    if (control is System.Windows.Forms.TextBox textBox)
                     {
                         textBox.Text = "";
                     }
-                    else if (control is ComboBox comboBox)
+                    else if (control is System.Windows.Forms.ComboBox comboBox)
                     {
                         comboBox.SelectedIndex = -1;
                     }
@@ -441,7 +445,7 @@ namespace MediaBazaarSemester2Retake
                 // If no department is selected, display all employees
                 FillDatagrid();
             }
-            else if  (!string.IsNullOrEmpty(comboBox1.Text))
+            else if (!string.IsNullOrEmpty(comboBox1.Text))
             {
                 // Filter the list of employees based on the selected department
                 IEnumerable<Employee> filteredEmployees = manageEmployee.GetAllEmployees()
@@ -449,12 +453,26 @@ namespace MediaBazaarSemester2Retake
 
                 // Update the DataGridView with the filtered list
                 FillDatagrid(filteredEmployees);
-               
+
             }
             else
             {
                 // If no department is selected, display all employees
                 FillDatagrid();
+            }
+        }
+
+        private void cbManager_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbManager.Checked)
+            {
+                TxtBxPosition.Text = "Manager";
+                TxtBxPosition.ReadOnly = true;
+            }
+            else
+            {
+                TxtBxPosition.Text = "";
+                TxtBxPosition.ReadOnly = false;
             }
         }
     }

@@ -98,13 +98,23 @@ namespace DAL
             }
         }
 
-        public void AddEmployee (Employee employee)
+        public void AddEmployee (Employee employee, string position)
         {
             using(SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = @"INSERT into Employees (firstName, lastName, bsn, dateOfBirth, phoneNumber, gender, email, city, country ,street, houseNumber, postalCode, emergencyContactName, emergencyPhoneNumber, emergencyRelation, password, firstLogin) " +
-                    "Values (@firstName, @lastName, @bsn, @dateOfBirth, @phoneNumber, @gender, @email, @city, @country, @street, @houseNumber, @postalCode, @emergencyContactName, @emergencyPhoneNumber, @emergencyRelation, @password, @firstLogin)";
+                string query;
+                if (position == "Manager")
+                {
+                    query = @"INSERT into Employees (firstName, lastName, bsn, dateOfBirth, phoneNumber, gender, email, city, country ,street, houseNumber, postalCode, emergencyContactName, emergencyPhoneNumber, emergencyRelation, password, firstLogin, role) " +
+                            "Values (@firstName, @lastName, @bsn, @dateOfBirth, @phoneNumber, @gender, @email, @city, @country, @street, @houseNumber, @postalCode, @emergencyContactName, @emergencyPhoneNumber, @emergencyRelation, @password, @firstLogin, @role)";
+                }
+                else
+                {
+                     query = @"INSERT into Employees (firstName, lastName, bsn, dateOfBirth, phoneNumber, gender, email, city, country ,street, houseNumber, postalCode, emergencyContactName, emergencyPhoneNumber, emergencyRelation, password, firstLogin) " +
+                            "Values (@firstName, @lastName, @bsn, @dateOfBirth, @phoneNumber, @gender, @email, @city, @country, @street, @houseNumber, @postalCode, @emergencyContactName, @emergencyPhoneNumber, @emergencyRelation, @password, @firstLogin)";
+                }
+
                 SqlCommand command = new SqlCommand(query, connection);
                 
                     command.Parameters.AddWithValue("@firstName", employee.firstName);
@@ -124,6 +134,10 @@ namespace DAL
                     command.Parameters.AddWithValue("@emergencyRelation", employee.emergencyRelation);
                     command.Parameters.AddWithValue("@password", employee.password);
                     command.Parameters.AddWithValue("@firstLogin", employee.firstLogin);
+                if (position == "Manager")
+                {
+                    command.Parameters.AddWithValue("@role", position);
+                }
                     command.ExecuteNonQuery();
                 
             }
@@ -249,6 +263,7 @@ namespace DAL
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
+                ContractRepo contractRepo = new ContractRepo(connectionString);
                 string querry = "  Select E.* From Employees E " +
                     "inner join Contracts c ON e.employeeID = c.FK_employeeID " +
                     "inner join Departments d on d.departmentID = c.FK_departmentID " +
@@ -264,6 +279,7 @@ namespace DAL
                         while (rdr.Read())
                         {
                             Employee employee = rdr.MapToEmployee();
+                            employee.Contract = contractRepo.GetContract(employee.employeeID);
                             employeeslist.Add(employee);
                         }
                         return employeeslist;

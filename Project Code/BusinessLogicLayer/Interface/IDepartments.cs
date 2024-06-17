@@ -14,5 +14,6 @@ namespace BusinessLogicLayer.Interface
         void DeleteDepartment(int departmentID);
         string GetDepartmentName(int departmentID);
         int GetDepartmentID(string departmentName);
+        List<Department> GetDepartmentbyName(string departmentName);
     }
 }

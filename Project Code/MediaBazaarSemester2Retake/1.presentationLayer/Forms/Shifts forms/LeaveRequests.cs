@@ -19,6 +19,7 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms.Shifts_forms
         List<RequestDaysOff> Requests;
         RequestDaysOff selectedRequest;
         ucLeaveRequests selectedUc;
+        private string departmentName = null;
 
         public LeaveRequests()
         {
@@ -27,9 +28,25 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms.Shifts_forms
             panelLeaveRequests.AutoScroll = true; // Enable scrolling
         }
 
+        public LeaveRequests(string department)
+        {
+            InitializeComponent();
+            mD = ManageDaysOffFactory.Create();
+            panelLeaveRequests.AutoScroll = true; // Enable scrolling
+            departmentName = department;
+        }
+
         private void LeaveRequests_Load(object sender, EventArgs e)
         {
-            Requests = mD.GetDaysOff();
+            if (String.IsNullOrEmpty(departmentName))
+            {
+                Requests = mD.GetDaysOff();
+            }
+            else
+            {
+                Requests = mD.GetRequestsByDepartment(departmentName);
+            }
+
             panelLeaveRequests.Controls.Clear(); // Clear any existing controls
 
             foreach (RequestDaysOff requestDaysOff in Requests)
