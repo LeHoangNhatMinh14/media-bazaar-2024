@@ -115,5 +115,30 @@ namespace DAL
                 }
             }
         }
+
+        public List<Department> GetDepartmentbyName(string departmentName)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM Departments WHERE departmentName = @departmentName";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@departmentName", departmentName);
+                    List<Department> departments = new List<Department>();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Department department = reader.MapToDepartment();
+                            departments.Add(department);
+                            
+                        }
+                        return departments;
+                    }
+                    return null;
+                }
+            }
+        }
     }
 }

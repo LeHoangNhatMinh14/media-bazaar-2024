@@ -36,5 +36,9 @@ namespace BusinessLogicLayer.ManageClass
         {
             return _departments.GetDepartmentID(departmentName);
         }
+        public List<Department> GetDepartmentbyName(string departmentName)
+        {
+            return _departments.GetDepartmentbyName(departmentName);
+        }
     }
 }

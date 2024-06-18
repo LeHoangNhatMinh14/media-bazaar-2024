@@ -42,6 +42,7 @@
             button1 = new Button();
             BtnAddEmployee = new Button();
             groupBox4 = new GroupBox();
+            cbManager = new CheckBox();
             TxtBxWorkHour = new TextBox();
             label43 = new Label();
             CbXContract = new ComboBox();
@@ -305,6 +306,7 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(cbManager);
             groupBox4.Controls.Add(TxtBxWorkHour);
             groupBox4.Controls.Add(label43);
             groupBox4.Controls.Add(CbXContract);
@@ -321,14 +323,25 @@
             groupBox4.Margin = new Padding(3, 2, 3, 2);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(3, 2, 3, 2);
-            groupBox4.Size = new Size(414, 217);
+            groupBox4.Size = new Size(414, 236);
             groupBox4.TabIndex = 2;
             groupBox4.TabStop = false;
             groupBox4.Text = "Department";
             // 
+            // cbManager
+            // 
+            cbManager.AutoSize = true;
+            cbManager.Location = new Point(6, 20);
+            cbManager.Name = "cbManager";
+            cbManager.Size = new Size(73, 19);
+            cbManager.TabIndex = 13;
+            cbManager.Text = "Manager";
+            cbManager.UseVisualStyleBackColor = true;
+            cbManager.CheckedChanged += cbManager_CheckedChanged;
+            // 
             // TxtBxWorkHour
             // 
-            TxtBxWorkHour.Location = new Point(85, 81);
+            TxtBxWorkHour.Location = new Point(86, 102);
             TxtBxWorkHour.Margin = new Padding(3, 2, 3, 2);
             TxtBxWorkHour.Name = "TxtBxWorkHour";
             TxtBxWorkHour.Size = new Size(243, 23);
@@ -337,7 +350,7 @@
             // label43
             // 
             label43.AutoSize = true;
-            label43.Location = new Point(6, 86);
+            label43.Location = new Point(7, 107);
             label43.Name = "label43";
             label43.Size = new Size(65, 15);
             label43.TabIndex = 11;
@@ -347,7 +360,7 @@
             // 
             CbXContract.FormattingEnabled = true;
             CbXContract.Items.AddRange(new object[] { "Temporary", "Permanent" });
-            CbXContract.Location = new Point(85, 184);
+            CbXContract.Location = new Point(86, 205);
             CbXContract.Margin = new Padding(3, 2, 3, 2);
             CbXContract.Name = "CbXContract";
             CbXContract.Size = new Size(243, 23);
@@ -355,7 +368,7 @@
             // 
             // DtPEndDate
             // 
-            DtPEndDate.Location = new Point(85, 150);
+            DtPEndDate.Location = new Point(86, 171);
             DtPEndDate.Margin = new Padding(3, 2, 3, 2);
             DtPEndDate.Name = "DtPEndDate";
             DtPEndDate.Size = new Size(243, 23);
@@ -363,7 +376,7 @@
             // 
             // DtPStartDate
             // 
-            DtPStartDate.Location = new Point(85, 116);
+            DtPStartDate.Location = new Point(86, 137);
             DtPStartDate.Margin = new Padding(3, 2, 3, 2);
             DtPStartDate.Name = "DtPStartDate";
             DtPStartDate.Size = new Size(243, 23);
@@ -372,7 +385,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(6, 182);
+            label19.Location = new Point(7, 203);
             label19.Name = "label19";
             label19.Size = new Size(53, 15);
             label19.TabIndex = 6;
@@ -381,7 +394,7 @@
             // CbXDepartment
             // 
             CbXDepartment.FormattingEnabled = true;
-            CbXDepartment.Location = new Point(85, 54);
+            CbXDepartment.Location = new Point(86, 75);
             CbXDepartment.Margin = new Padding(3, 2, 3, 2);
             CbXDepartment.Name = "CbXDepartment";
             CbXDepartment.Size = new Size(243, 23);
@@ -389,7 +402,7 @@
             // 
             // TxtBxPosition
             // 
-            TxtBxPosition.Location = new Point(85, 19);
+            TxtBxPosition.Location = new Point(86, 40);
             TxtBxPosition.Margin = new Padding(3, 2, 3, 2);
             TxtBxPosition.Name = "TxtBxPosition";
             TxtBxPosition.Size = new Size(243, 23);
@@ -398,7 +411,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(6, 149);
+            label18.Location = new Point(7, 170);
             label18.Name = "label18";
             label18.Size = new Size(54, 15);
             label18.TabIndex = 3;
@@ -407,7 +420,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(6, 115);
+            label17.Location = new Point(7, 136);
             label17.Name = "label17";
             label17.Size = new Size(58, 15);
             label17.TabIndex = 2;
@@ -416,7 +429,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(6, 55);
+            label16.Location = new Point(7, 76);
             label16.Name = "label16";
             label16.Size = new Size(70, 15);
             label16.TabIndex = 1;
@@ -425,7 +438,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(6, 24);
+            label15.Location = new Point(7, 45);
             label15.Name = "label15";
             label15.Size = new Size(50, 15);
             label15.TabIndex = 0;
@@ -440,7 +453,7 @@
             groupBox3.Controls.Add(label11);
             groupBox3.Controls.Add(label10);
             groupBox3.Controls.Add(label9);
-            groupBox3.Location = new Point(421, 231);
+            groupBox3.Location = new Point(421, 245);
             groupBox3.Margin = new Padding(3, 2, 3, 2);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(3, 2, 3, 2);
@@ -1433,5 +1446,6 @@
         private ComboBox comboBox1;
         private Label label45;
         private Label label42;
+        private CheckBox cbManager;
     }
 }

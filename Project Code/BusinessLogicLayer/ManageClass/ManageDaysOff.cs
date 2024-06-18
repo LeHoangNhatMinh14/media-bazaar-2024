@@ -31,14 +31,24 @@ namespace BusinessLogicLayer.ManageClass
 			_daysOff.AcceptOrDecline(employeeID, approved,disapprovalReason);
 		}
 
-		public List<RequestDaysOff> GetDaysOff(bool approved)
+		public List<RequestDaysOff> GetDaysOff()
 		{
-			return _daysOff.GetRequests(approved);
+			return _daysOff.GetRequests();
 		}
 
 		public void Undo(int employeeID)
 		{
 			_daysOff.Undo(employeeID);
 		}
-	}
+		public List<RequestDaysOff> GetRequestDaysOffs(int employeeID)
+		{
+			return _daysOff.GetDaysOffByEmployee(employeeID);
+		}
+
+        public List<RequestDaysOff> GetRequestsByDepartment(string department)
+		{
+			return _daysOff.GetRequestsByDepartment(department);
+		}
+
+    }
 }

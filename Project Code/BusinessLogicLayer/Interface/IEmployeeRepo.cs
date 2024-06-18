@@ -4,7 +4,7 @@ namespace DAL
 {
     public interface IEmployeeRepo
     {
-        void AddEmployee(Employee employee);
+        void AddEmployee(Employee employee, string position);
         void DeleteEmployee(Employee employee);
         void EditEmployee(Employee employee);
         List<Employee> GetAllEmployees();
