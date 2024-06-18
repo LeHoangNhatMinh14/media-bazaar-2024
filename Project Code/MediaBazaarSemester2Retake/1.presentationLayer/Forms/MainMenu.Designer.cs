@@ -38,6 +38,7 @@
             label1 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
+            btnStatisticsForm = new Button();
             btnWeeklyScheduleManagement = new Button();
             btnProductManagement = new Button();
             btnScheduleManagementClicked = new Button();
@@ -49,7 +50,6 @@
             btnEmployeeManagement = new Button();
             btnStockmanagementCLicked = new Button();
             PnlMainMenu = new Panel();
-            btnStatisticsForm = new Button();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
@@ -154,7 +154,6 @@
             // panel3
             // 
             panel3.BackColor = Color.DarkGray;
-            panel3.Controls.Add(btnStatisticsForm);
             panel3.Controls.Add(btnWeeklyScheduleManagement);
             panel3.Controls.Add(btnProductManagement);
             panel3.Controls.Add(btnScheduleManagementClicked);
@@ -165,11 +164,22 @@
             panel3.Controls.Add(EmployeeManagementClicked);
             panel3.Controls.Add(btnEmployeeManagement);
             panel3.Controls.Add(btnStockmanagementCLicked);
+            panel3.Controls.Add(btnStatisticsForm);
             panel3.Location = new Point(5, 55);
             panel3.Margin = new Padding(2, 3, 2, 3);
             panel3.Name = "panel3";
             panel3.Size = new Size(233, 635);
             panel3.TabIndex = 1;
+            // 
+            // btnStatisticsForm
+            // 
+            btnStatisticsForm.Location = new Point(-3, 317);
+            btnStatisticsForm.Name = "btnStatisticsForm";
+            btnStatisticsForm.Size = new Size(235, 164);
+            btnStatisticsForm.TabIndex = 17;
+            btnStatisticsForm.Text = "Statistics";
+            btnStatisticsForm.UseVisualStyleBackColor = true;
+            btnStatisticsForm.Click += btnStatisticsForm_Click;
             // 
             // btnWeeklyScheduleManagement
             // 
@@ -202,7 +212,7 @@
             btnScheduleManagementClicked.FlatStyle = FlatStyle.System;
             btnScheduleManagementClicked.ForeColor = Color.CornflowerBlue;
             btnScheduleManagementClicked.Location = new Point(0, 0);
-            btnScheduleManagementClicked.Margin = new Padding(1, 1, 1, 1);
+            btnScheduleManagementClicked.Margin = new Padding(1);
             btnScheduleManagementClicked.Name = "btnScheduleManagementClicked";
             btnScheduleManagementClicked.Size = new Size(233, 159);
             btnScheduleManagementClicked.TabIndex = 6;
@@ -213,10 +223,10 @@
             // 
             // btnSchedule
             // 
-            btnSchedule.Location = new Point(0, 313);
+            btnSchedule.Location = new Point(-3, 313);
             btnSchedule.Margin = new Padding(2, 3, 2, 3);
             btnSchedule.Name = "btnSchedule";
-            btnSchedule.Size = new Size(233, 159);
+            btnSchedule.Size = new Size(236, 163);
             btnSchedule.TabIndex = 2;
             btnSchedule.Text = "Schedule";
             btnSchedule.UseVisualStyleBackColor = true;
@@ -227,7 +237,7 @@
             btnCreateScheduleManagement.FlatAppearance.BorderColor = Color.FromArgb(192, 255, 255);
             btnCreateScheduleManagement.FlatAppearance.BorderSize = 500;
             btnCreateScheduleManagement.Location = new Point(0, 317);
-            btnCreateScheduleManagement.Margin = new Padding(1, 1, 1, 1);
+            btnCreateScheduleManagement.Margin = new Padding(1);
             btnCreateScheduleManagement.Name = "btnCreateScheduleManagement";
             btnCreateScheduleManagement.Size = new Size(233, 159);
             btnCreateScheduleManagement.TabIndex = 8;
@@ -241,7 +251,7 @@
             btnStockManagement.Location = new Point(0, 471);
             btnStockManagement.Margin = new Padding(2, 3, 2, 3);
             btnStockManagement.Name = "btnStockManagement";
-            btnStockManagement.Size = new Size(233, 159);
+            btnStockManagement.Size = new Size(233, 164);
             btnStockManagement.TabIndex = 3;
             btnStockManagement.Text = "Stock Management";
             btnStockManagement.UseVisualStyleBackColor = true;
@@ -313,16 +323,6 @@
             PnlMainMenu.Name = "PnlMainMenu";
             PnlMainMenu.Size = new Size(1026, 635);
             PnlMainMenu.TabIndex = 2;
-            // 
-            // btnStatisticsForm
-            // 
-            btnStatisticsForm.Location = new Point(2, 471);
-            btnStatisticsForm.Name = "btnStatisticsForm";
-            btnStatisticsForm.Size = new Size(230, 156);
-            btnStatisticsForm.TabIndex = 17;
-            btnStatisticsForm.Text = "Statistics";
-            btnStatisticsForm.UseVisualStyleBackColor = true;
-            btnStatisticsForm.Click += btnStatisticsForm_Click;
             // 
             // MainMenu
             // 

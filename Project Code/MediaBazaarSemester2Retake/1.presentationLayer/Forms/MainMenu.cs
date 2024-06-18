@@ -55,6 +55,7 @@ namespace MediaBazaarSemester2Retake
                     // Enable only employee management for HR
                     btnEmployeeManagement.Visible = true;
                     btnWeeklyScheduleManagement.Visible = true;
+                    btnStatisticsForm.Visible = true;
                     break;
                 case "Schedule":
                     // Enable access to schedule management for Schedule Managers
@@ -83,6 +84,7 @@ namespace MediaBazaarSemester2Retake
             btnStockManagement.Visible = visible;
             btnEmployeeManagement.Visible = visible;
             // btnWeeklyScheduleManagement.Visible = visible;
+            btnStatisticsForm.Visible = visible;
         }
 
         private void button4_Click(object sender, EventArgs e)
