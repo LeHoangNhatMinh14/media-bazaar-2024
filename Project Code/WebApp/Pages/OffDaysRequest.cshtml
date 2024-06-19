@@ -38,7 +38,7 @@
 				<p class="reason">@Model.RequestDaysOff.reason</p>
 			</div>
 		}
-		else if (Model.RequestDaysOff.approved == false && Model.RequestDaysOff.reason == null)
+		else if (Model.RequestDaysOff.approved == false && Model.RequestDaysOff.disaprovalReason == null)
 		{
 			<div class="col requests">
 				<p class="date">@Model.RequestDaysOff.startDate  -  @Model.RequestDaysOff.endDate</p>
@@ -52,6 +52,7 @@
 				<p class="date">@Model.RequestDaysOff.startDate  -  @Model.RequestDaysOff.endDate</p>
 				<p class="state text-danger">Denied</p>
 				<p class="reason">@Model.RequestDaysOff.reason</p>
+				<p>Disaproval Reason:</p>
 				<p class="disaproval-reason">@Model.RequestDaysOff.disaprovalReason</p>
 			</div>
 		}

@@ -23,6 +23,7 @@ namespace BusinessLogicLayer.Class
         public string emergencyContactName { get; set; } = string.Empty;
         public string emergencyRelation { get; set; } = string.Empty;
         public string Role { get; set; }  
+        public string profilePic {  get; set; } = string.Empty;
         public Contract Contract { get; set; }
 
         public string password { get; set; } = string.Empty;
@@ -80,6 +81,7 @@ namespace BusinessLogicLayer.Class
             this.Contract = Contract;
             this.password = password;
             this.firstLogin = firstLogin;
+            this.profilePic = profilePic;
         }
 
         public override string ToString()

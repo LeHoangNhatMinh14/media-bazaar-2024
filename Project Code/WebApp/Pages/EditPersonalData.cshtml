@@ -16,14 +16,14 @@
 				<div class="form-outline mb-4 email-box">
 					<label class="form-label" for="form3Example3cg">Email:</label>
 					<div class="w-100"></div>
-					<input type="email" name="Email" id="form3Example3cg" class="form-control form-control email-form" />
+					<input asp-for="@Model.editedEmp.email" value="@Model.employee.email" type="email" name="Email" id="form3Example3cg" class="form-control form-control email-form" />
 				</div>
 
 				<div class="form-outline mb-4 phonenmbr-box">
 					<label class="form-label" for="form3Example4cg">Phone Number:</label>
 					<div class="w-100"></div>
-					<input type="tel" name="PrefixPhoneNumber" id="form3Example4cg" class="form-control form-control phoneNmbrP-form" placeholder="+00" />
-					<input type="tel" name="PhoneNumber" id="form3Example4cg" class="form-control form-control personalPhoneNmbr-form" placeholder="123 456 789" />
+					<input asp-for="@Model.editedEmp.email" value="@Model.employee.email" type="tel" name="PrefixPhoneNumber" id="form3Example4cg" class="form-control form-control phoneNmbrP-form" placeholder="+00" />
+					<input asp-for="@Model.editedEmp.email" value="@Model.employee.email" type="tel" name="PhoneNumber" id="form3Example4cg" class="form-control form-control personalPhoneNmbr-form" placeholder="123 456 789" />
 				</div>
 				<div class="w-100 dividers"></div>
 				<div class="form-outline mb-4 emergencycontact-box">
