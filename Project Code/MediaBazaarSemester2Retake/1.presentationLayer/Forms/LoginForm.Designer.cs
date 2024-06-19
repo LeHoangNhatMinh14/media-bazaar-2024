@@ -45,15 +45,16 @@
             btnLoginAsSchedule = new Button();
             btnLoginAsDepartment = new Button();
             btnLoginAsStock = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // button4
             // 
-            button4.Location = new Point(1862, 14);
-            button4.Margin = new Padding(3, 4, 3, 4);
+            button4.Location = new Point(1086, 7);
+            button4.Margin = new Padding(2, 2, 2, 2);
             button4.Name = "button4";
-            button4.Size = new Size(36, 44);
+            button4.Size = new Size(21, 22);
             button4.TabIndex = 50;
             button4.Text = "x";
             button4.UseVisualStyleBackColor = true;
@@ -64,10 +65,10 @@
             BtnGo.BackColor = Color.White;
             BtnGo.CausesValidation = false;
             BtnGo.Image = (Image)resources.GetObject("BtnGo.Image");
-            BtnGo.Location = new Point(53, 652);
-            BtnGo.Margin = new Padding(3, 4, 3, 4);
+            BtnGo.Location = new Point(31, 326);
+            BtnGo.Margin = new Padding(2, 2, 2, 2);
             BtnGo.Name = "BtnGo";
-            BtnGo.Size = new Size(358, 148);
+            BtnGo.Size = new Size(209, 74);
             BtnGo.TabIndex = 49;
             BtnGo.UseVisualStyleBackColor = false;
             BtnGo.Click += BtnGo_Click;
@@ -77,9 +78,10 @@
             label7.AutoSize = true;
             label7.BackColor = Color.White;
             label7.Font = new Font("Segoe UI", 11.14286F);
-            label7.Location = new Point(103, 470);
+            label7.Location = new Point(60, 235);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(128, 37);
+            label7.Size = new Size(70, 20);
             label7.TabIndex = 46;
             label7.Text = "Password";
             // 
@@ -88,9 +90,10 @@
             label6.AutoSize = true;
             label6.BackColor = Color.White;
             label6.Font = new Font("Segoe UI", 11.14286F);
-            label6.Location = new Point(98, 352);
+            label6.Location = new Point(57, 176);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(136, 37);
+            label6.Size = new Size(75, 20);
             label6.TabIndex = 45;
             label6.Text = "Username";
             // 
@@ -99,9 +102,10 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Italic);
             label5.ForeColor = Color.RoyalBlue;
-            label5.Location = new Point(79, 162);
+            label5.Location = new Point(46, 81);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(286, 57);
+            label5.Size = new Size(163, 32);
             label5.TabIndex = 43;
             label5.Text = "MediaBazaar";
             // 
@@ -109,41 +113,42 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Black", 14F, FontStyle.Bold);
-            label1.Location = new Point(146, 268);
+            label1.Location = new Point(85, 134);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(133, 45);
+            label1.Size = new Size(77, 25);
             label1.TabIndex = 39;
             label1.Text = "Sign In";
             // 
             // txtBoxPassword
             // 
             txtBoxPassword.BackColor = Color.WhiteSmoke;
-            txtBoxPassword.Location = new Point(98, 508);
-            txtBoxPassword.Margin = new Padding(3, 4, 3, 4);
+            txtBoxPassword.Location = new Point(57, 254);
+            txtBoxPassword.Margin = new Padding(2, 2, 2, 2);
             txtBoxPassword.Multiline = true;
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PasswordChar = '*';
-            txtBoxPassword.Size = new Size(270, 60);
+            txtBoxPassword.Size = new Size(159, 32);
             txtBoxPassword.TabIndex = 37;
             txtBoxPassword.KeyPress += txtBoxPassword_KeyPress;
             // 
             // txtBoxUsername
             // 
             txtBoxUsername.BackColor = Color.WhiteSmoke;
-            txtBoxUsername.Location = new Point(98, 392);
-            txtBoxUsername.Margin = new Padding(3, 4, 3, 4);
+            txtBoxUsername.Location = new Point(57, 196);
+            txtBoxUsername.Margin = new Padding(2, 2, 2, 2);
             txtBoxUsername.Multiline = true;
             txtBoxUsername.Name = "txtBoxUsername";
-            txtBoxUsername.Size = new Size(270, 60);
+            txtBoxUsername.Size = new Size(159, 32);
             txtBoxUsername.TabIndex = 36;
             // 
             // pictureBox4
             // 
             pictureBox4.BackColor = Color.LightSteelBlue;
-            pictureBox4.Location = new Point(542, -2);
-            pictureBox4.Margin = new Padding(3, 4, 3, 4);
+            pictureBox4.Location = new Point(316, -1);
+            pictureBox4.Margin = new Padding(2, 2, 2, 2);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(1387, 1104);
+            pictureBox4.Size = new Size(809, 552);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 44;
             pictureBox4.TabStop = false;
@@ -154,10 +159,9 @@
             // 
             // btnLoginAsAdmin
             // 
-            btnLoginAsAdmin.Location = new Point(356, 998);
-            btnLoginAsAdmin.Margin = new Padding(5, 6, 5, 6);
+            btnLoginAsAdmin.Location = new Point(208, 499);
             btnLoginAsAdmin.Name = "btnLoginAsAdmin";
-            btnLoginAsAdmin.Size = new Size(169, 46);
+            btnLoginAsAdmin.Size = new Size(99, 23);
             btnLoginAsAdmin.TabIndex = 51;
             btnLoginAsAdmin.Text = "Login as Admin";
             btnLoginAsAdmin.UseVisualStyleBackColor = true;
@@ -165,10 +169,9 @@
             // 
             // btnLoginAsHR
             // 
-            btnLoginAsHR.Location = new Point(207, 998);
-            btnLoginAsHR.Margin = new Padding(5, 6, 5, 6);
+            btnLoginAsHR.Location = new Point(121, 499);
             btnLoginAsHR.Name = "btnLoginAsHR";
-            btnLoginAsHR.Size = new Size(158, 46);
+            btnLoginAsHR.Size = new Size(92, 23);
             btnLoginAsHR.TabIndex = 52;
             btnLoginAsHR.Text = "Login as HR";
             btnLoginAsHR.UseVisualStyleBackColor = true;
@@ -176,10 +179,9 @@
             // 
             // btnLoginAsSchedule
             // 
-            btnLoginAsSchedule.Location = new Point(2, 998);
-            btnLoginAsSchedule.Margin = new Padding(5, 6, 5, 6);
+            btnLoginAsSchedule.Location = new Point(1, 499);
             btnLoginAsSchedule.Name = "btnLoginAsSchedule";
-            btnLoginAsSchedule.Size = new Size(206, 46);
+            btnLoginAsSchedule.Size = new Size(120, 23);
             btnLoginAsSchedule.TabIndex = 53;
             btnLoginAsSchedule.Text = "Login as Schedule";
             btnLoginAsSchedule.UseVisualStyleBackColor = true;
@@ -187,10 +189,9 @@
             // 
             // btnLoginAsDepartment
             // 
-            btnLoginAsDepartment.Location = new Point(275, 1056);
-            btnLoginAsDepartment.Margin = new Padding(5, 6, 5, 6);
+            btnLoginAsDepartment.Location = new Point(160, 528);
             btnLoginAsDepartment.Name = "btnLoginAsDepartment";
-            btnLoginAsDepartment.Size = new Size(270, 46);
+            btnLoginAsDepartment.Size = new Size(158, 23);
             btnLoginAsDepartment.TabIndex = 54;
             btnLoginAsDepartment.Text = "Login as Product";
             btnLoginAsDepartment.UseVisualStyleBackColor = true;
@@ -198,21 +199,31 @@
             // 
             // btnLoginAsStock
             // 
-            btnLoginAsStock.Location = new Point(2, 1056);
-            btnLoginAsStock.Margin = new Padding(5, 6, 5, 6);
+            btnLoginAsStock.Location = new Point(1, 528);
             btnLoginAsStock.Name = "btnLoginAsStock";
-            btnLoginAsStock.Size = new Size(277, 46);
+            btnLoginAsStock.Size = new Size(162, 23);
             btnLoginAsStock.TabIndex = 55;
             btnLoginAsStock.Text = "Login as Stock";
             btnLoginAsStock.UseVisualStyleBackColor = true;
             btnLoginAsStock.Click += btnLoginAsStock_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(1, 470);
+            button1.Name = "button1";
+            button1.Size = new Size(150, 23);
+            button1.TabIndex = 56;
+            button1.Text = "Login sale department manager";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1927, 1102);
+            ClientSize = new Size(1124, 550);
+            Controls.Add(button1);
             Controls.Add(btnLoginAsStock);
             Controls.Add(btnLoginAsDepartment);
             Controls.Add(btnLoginAsSchedule);
@@ -228,7 +239,7 @@
             Controls.Add(txtBoxUsername);
             Controls.Add(pictureBox4);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
@@ -255,5 +266,6 @@
         private Button btnLoginAsSchedule;
         private Button btnLoginAsDepartment;
         private Button btnLoginAsStock;
+        private Button button1;
     }
 }

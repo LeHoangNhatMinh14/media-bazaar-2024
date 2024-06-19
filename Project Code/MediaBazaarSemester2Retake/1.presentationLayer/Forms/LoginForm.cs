@@ -59,14 +59,14 @@ namespace MediaBazaarSemester2Retake
         {
             txtBoxUsername.Text = "john.doe@example.com";
             txtBoxPassword.Text = "password";
-          //  BtnGo_Click(sender, e);
+            //  BtnGo_Click(sender, e);
         }
 
         private void btnLoginAsHR_Click(object sender, EventArgs e)
         {
             txtBoxUsername.Text = "jane.smith@example.com";
             txtBoxPassword.Text = "password";
-          //  BtnGo_Click(sender, e);
+            //  BtnGo_Click(sender, e);
         }
 
         private void btnLoginAsSchedule_Click(object sender, EventArgs e)
@@ -80,7 +80,7 @@ namespace MediaBazaarSemester2Retake
         {
             txtBoxUsername.Text = "michael.williams@example.com";
             txtBoxPassword.Text = "password";
-           // BtnGo_Click(sender, e);
+            // BtnGo_Click(sender, e);
         }
 
         private void btnLoginAsStock_Click(object sender, EventArgs e)
@@ -89,12 +89,18 @@ namespace MediaBazaarSemester2Retake
             txtBoxPassword.Text = "password123";
             //BtnGo_Click(sender, e);
         }
-    
 
 
-private void Timer1_Tick(object sender, EventArgs e)
+
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             // Timer logic here (if needed)
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtBoxUsername.Text = "heworon836@elahan.com";
+            txtBoxPassword.Text = "2zX9GG7X";
         }
     }
 }

@@ -21,7 +21,7 @@ namespace BusinessLogicLayer.Interface
         void DeleteEmployee(Employee employee);
 
 
-        void EditEmployee(Employee employee);
+        void EditEmployee(Employee employee, string position);
 
         Employee GetRecentEmployee();
         List<Employee> GetEmployeesbyDepartment(string department);

@@ -283,6 +283,7 @@ namespace MediaBazaarSemester2Retake
             string email;
             string city;
             string country;
+            string positon;
             string street;
             int houseNumber;
             string postalCode;
@@ -304,6 +305,7 @@ namespace MediaBazaarSemester2Retake
                 city = TxtBxEditCity.Text;
                 country = TxtBxEditCountry.Text;
                 street = TxtBxEditStreet.Text;
+                positon = TxtBxEditPosition.Text;
                 houseNumber = Convert.ToInt32(TxtBxEditHouseNumber.Text);
                 postalCode = TxtBxEditPostalCode.Text;
                 emergencyName = TxtBxEditEmergencyName.Text;
@@ -313,7 +315,7 @@ namespace MediaBazaarSemester2Retake
                 employee = new Employee(firstName, lastName, password, bsn, DateOfBirth, phoneNumber, gender, email, city, country, street, houseNumber, postalCode, emergencyName, emergencyPhone, emergencyRelation);
                 employee.employeeID = employeeId;
 
-                manageEmployee.EditEmployee(employee);
+                manageEmployee.EditEmployee(employee, positon);
                 ResetField(tabPage3);
                 MessageBox.Show("Successfully edited employee");
                 FillDatagrid();
@@ -463,6 +465,20 @@ namespace MediaBazaarSemester2Retake
         }
 
         private void cbManager_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbManager.Checked)
+            {
+                TxtBxPosition.Text = "Manager";
+                TxtBxPosition.ReadOnly = true;
+            }
+            else
+            {
+                TxtBxPosition.Text = "";
+                TxtBxPosition.ReadOnly = false;
+            }
+        }
+
+        private void cbEditManager_CheckedChanged(object sender, EventArgs e)
         {
             if (cbManager.Checked)
             {

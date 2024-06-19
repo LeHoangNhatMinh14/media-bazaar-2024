@@ -2,6 +2,7 @@
 using BusinessLogicLayer.Interface;
 using DAL.Mapper;
 using System.Data.SqlClient;
+using System.Security.Principal;
 
 namespace DAL
 {
@@ -185,29 +186,32 @@ namespace DAL
             return (null, null); 
         }
 
-        public void EditEmployee(Employee employee)
+        public void EditEmployee(Employee employee, string position)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
+
                 string query = @"UPDATE Employees SET firstName = @firstName,
-                                                    lastName = @lastName, 
-                                                    bsn = @bsn, 
-                                                    dateOfBirth = @dateOfBirth,
-                                                    phoneNumber = @phoneNumber,
-                                                    gender = @gender,
-                                                    email = @email,
-                                                    city = @city,
-                                                    country = @country,
-                                                    street = @street, 
-                                                    houseNumber = @houseNumber, 
-                                                    postalCode = @postalCode,
-                                                    emergencyContactName = @emergencyContactName, 
-                                                    emergencyPhoneNumber = @emergencyPhoneNumber,
-                                                    emergencyRelation = @emergencyRelation,
-                                                    password = @password, 
-                                                    firstLogin = @firstLogin
-                                                    WHERE employeeID = @employeeid ";
+                                        lastName = @lastName, 
+                                        bsn = @bsn, 
+                                        dateOfBirth = @dateOfBirth,
+                                        phoneNumber = @phoneNumber,
+                                        gender = @gender,
+                                        email = @email,
+                                        city = @city,
+                                        country = @country,
+                                        street = @street, 
+                                        houseNumber = @houseNumber, 
+                                        postalCode = @postalCode,
+                                        emergencyContactName = @emergencyContactName, 
+                                        emergencyPhoneNumber = @emergencyPhoneNumber,
+                                        emergencyRelation = @emergencyRelation,
+                                        password = @password, 
+                                        firstLogin = @firstLogin,
+                                        role = @role
+                                        WHERE employeeID = @employeeid ";
+
 
                 SqlCommand command = new SqlCommand(query, connection);
                 
@@ -229,6 +233,7 @@ namespace DAL
                     command.Parameters.AddWithValue("@emergencyRelation", employee.emergencyRelation);
                     command.Parameters.AddWithValue("@password", employee.password);
                     command.Parameters.AddWithValue("@firstLogin", employee.firstLogin);
+                    command.Parameters.AddWithValue("@role", position);
                     command.ExecuteNonQuery();
                 
             }

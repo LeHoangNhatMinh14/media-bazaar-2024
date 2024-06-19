@@ -141,6 +141,7 @@
             TxtBxEditEmail = new TextBox();
             TxtBxEditLastName = new TextBox();
             TxtBxEditFirstName = new TextBox();
+            cbEditManager = new CheckBox();
             tabControl1.SuspendLayout();
             tabPageEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_Employee).BeginInit();
@@ -809,6 +810,7 @@
             // 
             // groupBox6
             // 
+            groupBox6.Controls.Add(cbEditManager);
             groupBox6.Controls.Add(TxtBxEditWorkHour);
             groupBox6.Controls.Add(label44);
             groupBox6.Controls.Add(CbXEditContract);
@@ -825,14 +827,14 @@
             groupBox6.Margin = new Padding(3, 2, 3, 2);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(3, 2, 3, 2);
-            groupBox6.Size = new Size(414, 225);
+            groupBox6.Size = new Size(414, 247);
             groupBox6.TabIndex = 4;
             groupBox6.TabStop = false;
             groupBox6.Text = "Department";
             // 
             // TxtBxEditWorkHour
             // 
-            TxtBxEditWorkHour.Location = new Point(83, 82);
+            TxtBxEditWorkHour.Location = new Point(83, 99);
             TxtBxEditWorkHour.Margin = new Padding(3, 2, 3, 2);
             TxtBxEditWorkHour.Name = "TxtBxEditWorkHour";
             TxtBxEditWorkHour.Size = new Size(243, 23);
@@ -841,7 +843,7 @@
             // label44
             // 
             label44.AutoSize = true;
-            label44.Location = new Point(4, 87);
+            label44.Location = new Point(4, 104);
             label44.Name = "label44";
             label44.Size = new Size(65, 15);
             label44.TabIndex = 13;
@@ -851,7 +853,7 @@
             // 
             CbXEditContract.FormattingEnabled = true;
             CbXEditContract.Items.AddRange(new object[] { "Temporary", "Permanent" });
-            CbXEditContract.Location = new Point(85, 197);
+            CbXEditContract.Location = new Point(85, 214);
             CbXEditContract.Margin = new Padding(3, 2, 3, 2);
             CbXEditContract.Name = "CbXEditContract";
             CbXEditContract.Size = new Size(243, 23);
@@ -859,7 +861,7 @@
             // 
             // DtPEditEndDate
             // 
-            DtPEditEndDate.Location = new Point(85, 162);
+            DtPEditEndDate.Location = new Point(85, 179);
             DtPEditEndDate.Margin = new Padding(3, 2, 3, 2);
             DtPEditEndDate.Name = "DtPEditEndDate";
             DtPEditEndDate.Size = new Size(243, 23);
@@ -867,7 +869,7 @@
             // 
             // DtPEditStartDate
             // 
-            DtPEditStartDate.Location = new Point(85, 122);
+            DtPEditStartDate.Location = new Point(85, 139);
             DtPEditStartDate.Margin = new Padding(3, 2, 3, 2);
             DtPEditStartDate.Name = "DtPEditStartDate";
             DtPEditStartDate.Size = new Size(243, 23);
@@ -876,7 +878,7 @@
             // label32
             // 
             label32.AutoSize = true;
-            label32.Location = new Point(6, 195);
+            label32.Location = new Point(6, 212);
             label32.Name = "label32";
             label32.Size = new Size(53, 15);
             label32.TabIndex = 6;
@@ -885,7 +887,7 @@
             // CbXEditDepartment
             // 
             CbXEditDepartment.FormattingEnabled = true;
-            CbXEditDepartment.Location = new Point(83, 55);
+            CbXEditDepartment.Location = new Point(83, 72);
             CbXEditDepartment.Margin = new Padding(3, 2, 3, 2);
             CbXEditDepartment.Name = "CbXEditDepartment";
             CbXEditDepartment.Size = new Size(243, 23);
@@ -893,7 +895,7 @@
             // 
             // TxtBxEditPosition
             // 
-            TxtBxEditPosition.Location = new Point(85, 19);
+            TxtBxEditPosition.Location = new Point(85, 36);
             TxtBxEditPosition.Margin = new Padding(3, 2, 3, 2);
             TxtBxEditPosition.Name = "TxtBxEditPosition";
             TxtBxEditPosition.Size = new Size(243, 23);
@@ -902,7 +904,7 @@
             // label33
             // 
             label33.AutoSize = true;
-            label33.Location = new Point(6, 161);
+            label33.Location = new Point(6, 178);
             label33.Name = "label33";
             label33.Size = new Size(54, 15);
             label33.TabIndex = 3;
@@ -911,7 +913,7 @@
             // label34
             // 
             label34.AutoSize = true;
-            label34.Location = new Point(6, 121);
+            label34.Location = new Point(6, 138);
             label34.Name = "label34";
             label34.Size = new Size(58, 15);
             label34.TabIndex = 2;
@@ -920,7 +922,7 @@
             // label35
             // 
             label35.AutoSize = true;
-            label35.Location = new Point(4, 56);
+            label35.Location = new Point(4, 73);
             label35.Name = "label35";
             label35.Size = new Size(70, 15);
             label35.TabIndex = 1;
@@ -929,7 +931,7 @@
             // label36
             // 
             label36.AutoSize = true;
-            label36.Location = new Point(6, 24);
+            label36.Location = new Point(6, 41);
             label36.Name = "label36";
             label36.Size = new Size(50, 15);
             label36.TabIndex = 0;
@@ -944,7 +946,7 @@
             groupBox7.Controls.Add(label38);
             groupBox7.Controls.Add(label39);
             groupBox7.Controls.Add(label40);
-            groupBox7.Location = new Point(421, 241);
+            groupBox7.Location = new Point(421, 263);
             groupBox7.Margin = new Padding(3, 2, 3, 2);
             groupBox7.Name = "groupBox7";
             groupBox7.Padding = new Padding(3, 2, 3, 2);
@@ -1282,6 +1284,17 @@
             TxtBxEditFirstName.Size = new Size(260, 23);
             TxtBxEditFirstName.TabIndex = 0;
             // 
+            // cbEditManager
+            // 
+            cbEditManager.AutoSize = true;
+            cbEditManager.Location = new Point(6, 19);
+            cbEditManager.Name = "cbEditManager";
+            cbEditManager.Size = new Size(73, 19);
+            cbEditManager.TabIndex = 15;
+            cbEditManager.Text = "Manager";
+            cbEditManager.UseVisualStyleBackColor = true;
+            cbEditManager.CheckedChanged += cbEditManager_CheckedChanged;
+            // 
             // EmployeeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1447,5 +1460,6 @@
         private Label label45;
         private Label label42;
         private CheckBox cbManager;
+        private CheckBox cbEditManager;
     }
 }
