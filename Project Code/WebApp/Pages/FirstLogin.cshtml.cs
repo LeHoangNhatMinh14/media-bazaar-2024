@@ -1,17 +1,20 @@
 using BusinessLogicLayer.Class;
 using BusinessLogicLayer.ManageClass;
 using Factory;
+
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 
+
 namespace MediaBazaar_WebApp.Pages
 {
     public class FirstLoginModel : PageModel
     {
 		ManageEmployee mE = ManageEmployeeFactory.Create();
+
         private static Employee newEmployee;
         [BindProperty]
         public string newPassword {  get; set; }
