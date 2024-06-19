@@ -27,7 +27,11 @@ namespace BusinessLogicLayer.ManageClass
             dataAccessLayer.AddEmployee(employee, position);
             employees = GetAllEmployees();
         }
-
+        public void EditEmployee(Employee employee)
+        {
+            //Edit Employee in the database
+            dataAccessLayer.EditEmployee(employee);
+        }
         public void EditEmployee(Employee employee, string position)
         {
             //Edit Employee in the database

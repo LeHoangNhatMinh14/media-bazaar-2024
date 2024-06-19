@@ -22,6 +22,7 @@ namespace BusinessLogicLayer.Interface
 
 
         void EditEmployee(Employee employee, string position);
+        void EditEmployee(Employee employee);
 
         Employee GetRecentEmployee();
         List<Employee> GetEmployeesbyDepartment(string department);

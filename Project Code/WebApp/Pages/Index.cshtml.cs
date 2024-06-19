@@ -21,17 +21,19 @@ namespace MediaBazaar_WebApp.Pages
             IsPageOpen = true;
         }
 
-        public ActionResult OnPost(string handler)
-        {
-            if (ModelState.IsValid)
+		public ActionResult OnPost(string handler)
+		{
+			if (ModelState.IsValid)
 			{
 				return RedirectToPage();
 			}
 			else
 			{
 				handler = "Login";
-				Employee = mE.GetEmployee(Employee.email , Employee.password);
-					if (Employee != null)
+				Employee = mE.GetEmployee(Employee.email, Employee.password);
+				if (Employee != null)
+				{
+					if (Employee.firstLogin == false)
 					{
 						var claims = new List<Claim>
 						{
@@ -43,18 +45,19 @@ namespace MediaBazaar_WebApp.Pages
 
 						HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity)).Wait();
 
-						HttpContext.Session.SetString("Name", Employee.firstName+" "+Employee.lastName);
-						HttpContext.Session.SetString("Email", Employee.email) ;
+						HttpContext.Session.SetString("Name", Employee.firstName + " " + Employee.lastName);
+						HttpContext.Session.SetString("Email", Employee.email);
 						HttpContext.Session.SetInt32("EmployeeID", Employee.employeeID);
 						return RedirectToPage("/PersonalData");
 					}
-					else
-					{
-						return RedirectToPage();
-					}				
+					else 
+					{ 
+						return RedirectToPage("/FirstLogin", new { id = Employee.employeeID });
+					}
+				}
+				else { return RedirectToPage(); }
 			}
+
 		}
-
-
     }
 }

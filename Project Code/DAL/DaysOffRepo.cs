@@ -197,5 +197,10 @@ namespace DAL
                 }
             }
         }
+
+        public List<RequestDaysOff> GetRequests(bool approved)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

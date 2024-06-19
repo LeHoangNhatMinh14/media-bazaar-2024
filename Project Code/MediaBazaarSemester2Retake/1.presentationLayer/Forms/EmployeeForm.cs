@@ -195,7 +195,6 @@ namespace MediaBazaarSemester2Retake
                 MessageBox.Show("Successfully add employee");
 
                 ResetField(tabPage2);
-                cbManager.Checked = false;
                 FillDatagrid();
 
             }
@@ -230,9 +229,9 @@ namespace MediaBazaarSemester2Retake
         private void button1_Click(object sender, EventArgs e)
         {
             Random random = new Random();
-            string[] firstNames = { "John", "Jane", "Bob", "Alice", "Charlie", "Megan", "Joe", "Obama", "Biden", "Ryan", "William", "Romario", "Jake", "Wendy", "Alex" };
-            string[] lastNames = { "Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Prince", "Bobb", "Pompier", "Gibbs", "Felix", "Jorden", "Curry", "Green" };
-            string[] departments = { "Finance", "Sales", "HR" };
+            string[] firstNames = { "John", "Jane", "Bob", "Alice", "Charlie", "Megan" };
+            string[] lastNames = { "Smith", "Johnson", "Williams", "Brown", "Jones", "Miller" };
+            string[] departments = { "Security", "Logistic", "CustomerService", "HR" };
             string[] contractTypes = { "Permanent ", "Temporary" };
 
             TxtBxFirstName.Text = firstNames[random.Next(firstNames.Length - 1)];
@@ -318,7 +317,6 @@ namespace MediaBazaarSemester2Retake
 
                 manageEmployee.EditEmployee(employee, positon);
                 ResetField(tabPage3);
-                cbEditManager.Checked = false;
                 MessageBox.Show("Successfully edited employee");
                 FillDatagrid();
             }

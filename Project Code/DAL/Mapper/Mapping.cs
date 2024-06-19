@@ -47,7 +47,8 @@ namespace DAL.Mapper
                 emergencyPhoneNumber = GetStringValue(dataReader,nameof(Employee.emergencyPhoneNumber)),
                 emergencyRelation = GetStringValue(dataReader, $"{nameof(Employee.emergencyRelation)}"),
                 password = GetStringValue(dataReader, nameof(Employee.password)),
-                firstLogin = GetValue<bool>(dataReader, nameof(Employee.firstLogin))
+                firstLogin = GetValue<bool>(dataReader, nameof(Employee.firstLogin)),
+                profilePic = GetStringValue(dataReader, nameof(Employee.profilePic))
             };
         }
 
@@ -96,7 +97,7 @@ namespace DAL.Mapper
                 endDate = GetValue<DateTime>(dataReader,"endDate"),
                 approved = GetValue<bool>(dataReader,"approved"),
                 reason = GetValue<string>(dataReader, "reason"),
-                disaprovalReason = GetStringValue(dataReader, "disapprovalReason")
+                disaprovalReason = GetValue<string>(dataReader, "disapprovalReason")
             };
         }
 
