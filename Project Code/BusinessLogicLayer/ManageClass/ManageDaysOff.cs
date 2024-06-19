@@ -21,8 +21,11 @@ namespace BusinessLogicLayer.ManageClass
 		{
 			_daysOff.RequestDaysOff(daysOff);
 		}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7d8dd714f3afbedd212234116ef4b2f799b39aab
 		public RequestDaysOff GetDaysOff(int employeeID) 
 		{
 			return _daysOff.GetRequest(employeeID);
@@ -33,14 +36,24 @@ namespace BusinessLogicLayer.ManageClass
 			_daysOff.AcceptOrDecline(employeeID, approved,disapprovalReason);
 		}
 
-		public List<RequestDaysOff> GetDaysOff(bool approved)
+		public List<RequestDaysOff> GetDaysOff()
 		{
-			return _daysOff.GetRequests(approved);
+			return _daysOff.GetRequests();
 		}
 
 		public void Undo(int employeeID)
 		{
 			_daysOff.Undo(employeeID);
 		}
-	}
+		public List<RequestDaysOff> GetRequestDaysOffs(int employeeID)
+		{
+			return _daysOff.GetDaysOffByEmployee(employeeID);
+		}
+
+        public List<RequestDaysOff> GetRequestsByDepartment(string department)
+		{
+			return _daysOff.GetRequestsByDepartment(department);
+		}
+
+    }
 }

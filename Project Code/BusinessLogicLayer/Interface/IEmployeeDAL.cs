@@ -16,12 +16,12 @@ namespace BusinessLogicLayer.Interface
 
         Employee GetEmployeeByID(int id);
 
-        void AddEmployee(Employee employee);
+        void AddEmployee(Employee employee, string position);
 
         void DeleteEmployee(Employee employee);
 
 
-        void EditEmployee(Employee employee);
+        void EditEmployee(Employee employee, string position);
 
         Employee GetRecentEmployee();
         List<Employee> GetEmployeesbyDepartment(string department);

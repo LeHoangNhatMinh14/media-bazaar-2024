@@ -37,26 +37,29 @@
             // 
             // chart1
             // 
+            chart1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             chartArea1.Name = "ChartArea1";
             chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             chart1.Legends.Add(legend1);
-            chart1.Location = new Point(36, 39);
+            chart1.Location = new Point(41, 52);
+            chart1.Margin = new Padding(3, 4, 3, 4);
             chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chart1.Series.Add(series1);
-            chart1.Size = new Size(975, 408);
+            chart1.Size = new Size(695, 374);
             chart1.TabIndex = 0;
             chart1.Text = "chart1";
             // 
             // Statistics
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1074, 561);
+            ClientSize = new Size(800, 450);
             Controls.Add(chart1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Statistics";
             Text = "Statistics";
             ((System.ComponentModel.ISupportInitialize)chart1).EndInit();

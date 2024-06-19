@@ -32,23 +32,27 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             button4 = new Button();
             BtnGo = new Button();
-            btnCantSignIn = new Button();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
-            label4 = new Label();
             label1 = new Label();
             txtBoxPassword = new TextBox();
             txtBoxUsername = new TextBox();
             pictureBox4 = new PictureBox();
             timer1 = new System.Windows.Forms.Timer(components);
+            btnLoginAsAdmin = new Button();
+            btnLoginAsHR = new Button();
+            btnLoginAsSchedule = new Button();
+            btnLoginAsDepartment = new Button();
+            btnLoginAsStock = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // button4
             // 
             button4.Location = new Point(1086, 7);
-            button4.Margin = new Padding(2);
+            button4.Margin = new Padding(2, 2, 2, 2);
             button4.Name = "button4";
             button4.Size = new Size(21, 22);
             button4.TabIndex = 50;
@@ -62,23 +66,12 @@
             BtnGo.CausesValidation = false;
             BtnGo.Image = (Image)resources.GetObject("BtnGo.Image");
             BtnGo.Location = new Point(31, 326);
-            BtnGo.Margin = new Padding(2);
+            BtnGo.Margin = new Padding(2, 2, 2, 2);
             BtnGo.Name = "BtnGo";
             BtnGo.Size = new Size(209, 74);
             BtnGo.TabIndex = 49;
             BtnGo.UseVisualStyleBackColor = false;
             BtnGo.Click += BtnGo_Click;
-            // 
-            // btnCantSignIn
-            // 
-            btnCantSignIn.FlatStyle = FlatStyle.Flat;
-            btnCantSignIn.Location = new Point(57, 467);
-            btnCantSignIn.Margin = new Padding(2);
-            btnCantSignIn.Name = "btnCantSignIn";
-            btnCantSignIn.Size = new Size(158, 33);
-            btnCantSignIn.TabIndex = 47;
-            btnCantSignIn.Text = "Cant sign in ?";
-            btnCantSignIn.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -116,16 +109,6 @@
             label5.TabIndex = 43;
             label5.Text = "MediaBazaar";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(227, 509);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(32, 15);
-            label4.TabIndex = 42;
-            label4.Text = "V 0.1";
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -141,7 +124,7 @@
             // 
             txtBoxPassword.BackColor = Color.WhiteSmoke;
             txtBoxPassword.Location = new Point(57, 254);
-            txtBoxPassword.Margin = new Padding(2);
+            txtBoxPassword.Margin = new Padding(2, 2, 2, 2);
             txtBoxPassword.Multiline = true;
             txtBoxPassword.Name = "txtBoxPassword";
             txtBoxPassword.PasswordChar = '*';
@@ -153,7 +136,7 @@
             // 
             txtBoxUsername.BackColor = Color.WhiteSmoke;
             txtBoxUsername.Location = new Point(57, 196);
-            txtBoxUsername.Margin = new Padding(2);
+            txtBoxUsername.Margin = new Padding(2, 2, 2, 2);
             txtBoxUsername.Multiline = true;
             txtBoxUsername.Name = "txtBoxUsername";
             txtBoxUsername.Size = new Size(159, 32);
@@ -163,7 +146,7 @@
             // 
             pictureBox4.BackColor = Color.LightSteelBlue;
             pictureBox4.Location = new Point(316, -1);
-            pictureBox4.Margin = new Padding(2);
+            pictureBox4.Margin = new Padding(2, 2, 2, 2);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(809, 552);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -174,25 +157,89 @@
             // 
             timer1.Tick += Timer1_Tick;
             // 
+            // btnLoginAsAdmin
+            // 
+            btnLoginAsAdmin.Location = new Point(208, 499);
+            btnLoginAsAdmin.Name = "btnLoginAsAdmin";
+            btnLoginAsAdmin.Size = new Size(99, 23);
+            btnLoginAsAdmin.TabIndex = 51;
+            btnLoginAsAdmin.Text = "Login as Admin";
+            btnLoginAsAdmin.UseVisualStyleBackColor = true;
+            btnLoginAsAdmin.Click += btnLoginAsAdmin_Click;
+            // 
+            // btnLoginAsHR
+            // 
+            btnLoginAsHR.Location = new Point(121, 499);
+            btnLoginAsHR.Name = "btnLoginAsHR";
+            btnLoginAsHR.Size = new Size(92, 23);
+            btnLoginAsHR.TabIndex = 52;
+            btnLoginAsHR.Text = "Login as HR";
+            btnLoginAsHR.UseVisualStyleBackColor = true;
+            btnLoginAsHR.Click += btnLoginAsHR_Click;
+            // 
+            // btnLoginAsSchedule
+            // 
+            btnLoginAsSchedule.Location = new Point(1, 499);
+            btnLoginAsSchedule.Name = "btnLoginAsSchedule";
+            btnLoginAsSchedule.Size = new Size(120, 23);
+            btnLoginAsSchedule.TabIndex = 53;
+            btnLoginAsSchedule.Text = "Login as Schedule";
+            btnLoginAsSchedule.UseVisualStyleBackColor = true;
+            btnLoginAsSchedule.Click += btnLoginAsSchedule_Click;
+            // 
+            // btnLoginAsDepartment
+            // 
+            btnLoginAsDepartment.Location = new Point(160, 528);
+            btnLoginAsDepartment.Name = "btnLoginAsDepartment";
+            btnLoginAsDepartment.Size = new Size(158, 23);
+            btnLoginAsDepartment.TabIndex = 54;
+            btnLoginAsDepartment.Text = "Login as Product";
+            btnLoginAsDepartment.UseVisualStyleBackColor = true;
+            btnLoginAsDepartment.Click += btnLoginAsDepartment_Click;
+            // 
+            // btnLoginAsStock
+            // 
+            btnLoginAsStock.Location = new Point(1, 528);
+            btnLoginAsStock.Name = "btnLoginAsStock";
+            btnLoginAsStock.Size = new Size(162, 23);
+            btnLoginAsStock.TabIndex = 55;
+            btnLoginAsStock.Text = "Login as Stock";
+            btnLoginAsStock.UseVisualStyleBackColor = true;
+            btnLoginAsStock.Click += btnLoginAsStock_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(1, 470);
+            button1.Name = "button1";
+            button1.Size = new Size(150, 23);
+            button1.TabIndex = 56;
+            button1.Text = "Login sale department manager";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1124, 551);
+            ClientSize = new Size(1124, 550);
+            Controls.Add(button1);
+            Controls.Add(btnLoginAsStock);
+            Controls.Add(btnLoginAsDepartment);
+            Controls.Add(btnLoginAsSchedule);
+            Controls.Add(btnLoginAsHR);
+            Controls.Add(btnLoginAsAdmin);
             Controls.Add(button4);
             Controls.Add(BtnGo);
-            Controls.Add(btnCantSignIn);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(label4);
             Controls.Add(label1);
             Controls.Add(txtBoxPassword);
             Controls.Add(txtBoxUsername);
             Controls.Add(pictureBox4);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LoginForm";
@@ -205,7 +252,6 @@
 
         private Button button4;
         private Button BtnGo;
-        private Button btnCantSignIn;
         private Label label7;
         private Label label6;
         private Label label5;
@@ -215,5 +261,11 @@
         private TextBox txtBoxUsername;
         private PictureBox pictureBox4;
         private System.Windows.Forms.Timer timer1;
+        private Button btnLoginAsAdmin;
+        private Button btnLoginAsHR;
+        private Button btnLoginAsSchedule;
+        private Button btnLoginAsDepartment;
+        private Button btnLoginAsStock;
+        private Button button1;
     }
 }

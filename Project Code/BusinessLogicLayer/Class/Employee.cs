@@ -54,7 +54,7 @@ namespace BusinessLogicLayer.Class
             this.emergencyPhoneNumber = emergencyPhoneNumber;
             this.emergencyRelation = emergencyRelation;
             //this.Contract = contract;
-            this.password = password; //random.GeneratePassword(8); temporary
+            this.password = random.GeneratePassword(8);
             this.firstLogin = true;
         }
 

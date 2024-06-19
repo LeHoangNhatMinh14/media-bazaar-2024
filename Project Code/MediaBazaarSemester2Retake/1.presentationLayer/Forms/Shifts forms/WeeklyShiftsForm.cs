@@ -55,12 +55,28 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
 
         private void WeeklyShiftsForm_Load(object sender, EventArgs e)
         {
-            lbUsers.DataSource = _manageEmployee.GetAllEmployees();
-            lbUsers.DisplayMember = "EmployeeInfo";
+            if (role == "Manager")
+            {
+                lbUsers.DataSource = _manageEmployee.GetEmployeeofDepartment(department);
+                lbUsers.DisplayMember = "EmployeeInfo";
 
-            cbDepartments.DataSource = _manageDepartment.GetDepartmentList();
-            cbDepartments.DisplayMember = "_departmentName";
-            cbDepartments.ValueMember = "_departmentID";
+                cbDepartments.DataSource = _manageDepartment.GetDepartmentbyName(department);
+                cbDepartments.DisplayMember = "_departmentName";
+                cbDepartments.ValueMember = "_departmentID";
+                cbDepartments.Enabled = false;
+            }
+            else
+            {
+                lbUsers.DataSource = _manageEmployee.GetAllEmployees();
+                lbUsers.DisplayMember = "EmployeeInfo";
+
+                cbDepartments.DataSource = _manageDepartment.GetDepartmentList();
+                cbDepartments.DisplayMember = "_departmentName";
+                cbDepartments.ValueMember = "_departmentID";
+
+                cbDepartments.Enabled = true;
+            }
+
 
             DateTime currentDate = DateTime.Today;
             int initialWeekOffset = (currentDate.DayOfWeek == DayOfWeek.Sunday) ? 0 : 1;

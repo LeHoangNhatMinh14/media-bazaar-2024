@@ -3,6 +3,7 @@ using BusinessLogicLayer.Interface;
 using DAL.Mapper;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -97,7 +98,7 @@ namespace DAL
 
 
 
-        public void AssignShift(int shiftID, int employeeID)
+        public int AssignShift(int shiftID, int employeeID)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -106,39 +107,70 @@ namespace DAL
 
                 try
                 {
-                    string selectQuery = "SELECT peopleNeeded FROM Shifts WHERE shiftID = @shiftID";
+                    // Query to find out if adding another employee exceeds the people needed.
+                    string selectQuery = @"
+                SELECT 
+                    s.peopleNeeded, 
+                    COUNT(eos.FK_employeeID) AS currentAssigned
+                FROM 
+                    Shifts s
+                LEFT JOIN 
+                    EmployeesOnShift eos ON s.shiftID = eos.FK_shiftID AND eos.FK_shiftID = @shiftID
+                WHERE 
+                    s.shiftID = @shiftID
+                GROUP BY 
+                    s.peopleNeeded";
                     SqlCommand selectCmd = new SqlCommand(selectQuery, connection, transaction);
                     selectCmd.Parameters.AddWithValue("@shiftID", shiftID);
-                    int peopleNeeded = (int)selectCmd.ExecuteScalar();
 
-                    if (peopleNeeded > 0)
+                    using (SqlDataReader reader = selectCmd.ExecuteReader())
                     {
-                        string updateQuery = "UPDATE Shifts SET peopleNeeded = @peopleNeeded WHERE shiftID = @shiftID";
-                        SqlCommand updateCmd = new SqlCommand(updateQuery, connection, transaction);
-                        updateCmd.Parameters.AddWithValue("@peopleNeeded", peopleNeeded - 1);
-                        updateCmd.Parameters.AddWithValue("@shiftID", shiftID);
-                        updateCmd.ExecuteNonQuery();
+                        if (reader.Read())
+                        {
+                            int peopleNeeded = reader.GetInt32(reader.GetOrdinal("peopleNeeded"));
+                            int currentAssigned = reader.GetInt32(reader.GetOrdinal("currentAssigned"));
 
-                        string insertQuery = "INSERT INTO EmployeesOnShift (FK_shiftID, FK_employeeID) VALUES (@shiftID, @employeeID)";
-                        SqlCommand insertCmd = new SqlCommand(insertQuery, connection, transaction);
-                        insertCmd.Parameters.AddWithValue("@shiftID", shiftID);
-                        insertCmd.Parameters.AddWithValue("@employeeID", employeeID);
-                        insertCmd.ExecuteNonQuery();
+                            if (currentAssigned < peopleNeeded)
+                            {
+                                // Only proceed to assign if there are still positions to fill
+                                reader.Close(); // Close reader to proceed with other commands
 
-                        transaction.Commit();
-                    }
-                    else
-                    {
-                        transaction.Rollback();
+                                string insertQuery = "INSERT INTO EmployeesOnShift (FK_shiftID, FK_employeeID) VALUES (@shiftID, @employeeID)";
+                                SqlCommand insertCmd = new SqlCommand(insertQuery, connection, transaction);
+                                insertCmd.Parameters.AddWithValue("@shiftID", shiftID);
+                                insertCmd.Parameters.AddWithValue("@employeeID", employeeID);
+                                insertCmd.ExecuteNonQuery();
+
+                                transaction.Commit();
+
+                                // Return the number of positions still open after this assignment
+                                return peopleNeeded - (currentAssigned + 1);
+                            }
+                            else
+                            {
+                                // If no positions are available, rollback and indicate full capacity
+                                transaction.Rollback();
+                                return 0;
+                            }
+                        }
+                        else
+                        {
+                            // If the shift doesn't exist or some unexpected condition
+                            transaction.Rollback();
+                            return -1;  // Can indicate an error or invalid shift ID
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
                     transaction.Rollback();
                     Console.WriteLine("Error: " + ex.Message);
+                    throw;  // Re-throw the exception after rollback
                 }
             }
         }
+
+
 
 
         public void DeleteShifts(int ID)
@@ -157,28 +189,49 @@ namespace DAL
 
         public List<Shift> GetUnassignedShifts()
         {
+            List<Shift> unassignedShifts = new List<Shift>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string querry = @"SELECT * FROM Shifts
-                        WHERE shiftID NOT IN 
-                            (SELECT FK_shiftID FROM EmployeesOnShift) AND peopleNeeded >= 1";
+                string query = @"
+            SELECT 
+                s.shiftID,
+                s.shiftType,
+                s.peopleNeeded - ISNULL(COUNT(eos.FK_employeeID), 0) AS peopleStillNeeded,
+                s.shiftDate,
+                s.FK_departmentID
+            FROM 
+                Shifts s
+            LEFT JOIN 
+                EmployeesOnShift eos ON s.shiftID = eos.FK_shiftID
+            GROUP BY 
+                s.shiftID, s.shiftType, s.peopleNeeded, s.shiftDate, s.FK_departmentID
+            HAVING 
+                s.peopleNeeded - ISNULL(COUNT(eos.FK_employeeID), 0) > 0;";
 
-                using (SqlCommand cmd = new SqlCommand(querry, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        List<Shift> shifts = new List<Shift>();
                         while (reader.Read())
                         {
-                            Shift shift = reader.MapToShift();
-                            shifts.Add(shift);
+                            Shift shift = new Shift
+                            (
+                                shiftid : reader.GetInt32(reader.GetOrdinal("shiftID")),
+                                shiftType: reader.GetString(reader.GetOrdinal("shiftType")),
+                                peopleNeeded: reader.GetInt32(reader.GetOrdinal("peopleStillNeeded")),  // Now represents people still needed
+                                shiftDate: reader.GetDateTime(reader.GetOrdinal("shiftDate")),
+                                fK_DepartmentID: reader.GetInt32(reader.GetOrdinal("FK_departmentID"))
+                            );
+                            unassignedShifts.Add(shift);
                         }
-                        return shifts;
                     }
                 }
             }
+            return unassignedShifts;
         }
+
+
 
         public Shift GetShiftbyID(int ID)
         {

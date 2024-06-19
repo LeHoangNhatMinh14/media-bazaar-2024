@@ -89,28 +89,62 @@ namespace DAL
 			}
 		}
 
-		public List<RequestDaysOff> GetRequests(bool approved)
-		{
-			using (SqlConnection connection = new SqlConnection(connectionString))
-			{
-				connection.Open ();
-				string querry = @"Select * FROM RequestDaysOff where approved = @approved";
-				using (SqlCommand command = new SqlCommand(querry, connection))
-				{
-					List<RequestDaysOff> requests = new List<RequestDaysOff>();
-					command.Parameters.AddWithValue("@approved", approved);
-					using (SqlDataReader reader = command.ExecuteReader())
-					{
-						while (reader.Read())
-						{
-							RequestDaysOff request = reader.MapToDaysOff();
-							requests.Add(request);
-						}
-						return requests;
-					}
+        public List<RequestDaysOff> GetDaysOffByEmployee(int employeeID)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = @"SELECT * FROM RequestDaysOff WHERE employeeID = @employeeID AND approved = 1";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@employeeID", employeeID);
+                    List<RequestDaysOff> requests = new List<RequestDaysOff>();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RequestDaysOff request = reader.MapToDaysOff();
+                            requests.Add(request);
+                        }
+                        return requests;
+                    }
                 }
-			}
-		}
+            }
+        }
+
+        public List<RequestDaysOff> GetRequests()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = @"
+			SELECT RDO.*, E.email 
+			FROM RequestDaysOff RDO
+			INNER JOIN Employees E ON RDO.employeeID = E.employeeID
+			ORDER BY
+				CASE 
+					WHEN RDO.approved IS NULL AND RDO.disapprovalReason IS NULL THEN 1
+					WHEN RDO.approved = 0 AND RDO.disapprovalReason IS NOT NULL THEN 2
+					WHEN RDO.approved = 1 THEN 3
+				END";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    List<RequestDaysOff> requests = new List<RequestDaysOff>();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RequestDaysOff request = reader.MapToDaysOff();
+                            request.employeeEmail = Convert.ToString(reader["email"]);
+                            requests.Add(request);
+                        }
+                        return requests;
+                    }
+                }
+            }
+        }
+
 
         public void Undo(int employeeID)
         {
@@ -125,6 +159,43 @@ namespace DAL
 					cmd.ExecuteNonQuery();
 				}
 			}
+        }
+
+        public List<RequestDaysOff> GetRequestsByDepartment(string department)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = @"
+			SELECT RDO.*, E.email 
+			FROM RequestDaysOff RDO
+			INNER JOIN Employees E ON RDO.employeeID = E.employeeID
+            Inner join Contracts c on E.employeeID = c.FK_employeeID
+            Inner join Departments d on c.FK_departmentID = d.departmentID
+            Where d.departmentName = @departmentName
+			ORDER BY
+				CASE 
+					WHEN RDO.approved IS NULL AND RDO.disapprovalReason IS NULL THEN 1
+					WHEN RDO.approved = 0 AND RDO.disapprovalReason IS NOT NULL THEN 2
+					WHEN RDO.approved = 1 THEN 3
+				END";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@departmentName", department);
+                    List<RequestDaysOff> requests = new List<RequestDaysOff>();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            RequestDaysOff request = reader.MapToDaysOff();
+                            request.employeeEmail = Convert.ToString(reader["email"]);
+                            requests.Add(request);
+                        }
+                        return requests;
+                    }
+                }
+            }
         }
     }
 }

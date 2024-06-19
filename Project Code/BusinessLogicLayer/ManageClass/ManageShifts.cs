@@ -18,9 +18,9 @@ namespace BusinessLogicLayer.ManageClass
             _IShifts.AddShifts(shift);
         }
 
-        public void AssignShift(int shiftID, int employeeID)
+        public int AssignShift(int shiftID, int employeeID)
         {
-            _IShifts.AssignShift(shiftID, employeeID);
+            return _IShifts.AssignShift(shiftID, employeeID);
         }
 
         public void DeleteShift(int ID)

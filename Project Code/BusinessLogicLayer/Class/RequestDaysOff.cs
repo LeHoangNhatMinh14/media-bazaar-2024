@@ -13,9 +13,15 @@ namespace BusinessLogicLayer.Class
 		public DateTime startDate { get; set; }
 		public DateTime endDate { get; set; }
 		public bool approved { get; set; }
+<<<<<<< HEAD
 
 		public string? disaprovalReason {  get; set; }
 		public string RequestInfo => $"{startDate.ToString("dd/MMM/yyyy")} - {endDate.ToString("dd/MMM/yyyy")}";
+=======
+		public string? disaprovalReason {  get; set; }
+		public string? employeeEmail { get; set; }
+		public string RequestInfo => $"{employeeEmail} : {startDate.ToString("dd/MMM/yyyy")} - {endDate.ToString("dd/MMM/yyyy")}";
+>>>>>>> 7d8dd714f3afbedd212234116ef4b2f799b39aab
 
 		public RequestDaysOff() { }
 
@@ -37,7 +43,11 @@ namespace BusinessLogicLayer.Class
 			this.startDate = startDate;
 			this.endDate = endDate;
 			this.approved = approved;
+<<<<<<< HEAD
 			this.disaprovalReason= disaprovalReason;
+=======
+			this.disaprovalReason = disaprovalReason;
+>>>>>>> 7d8dd714f3afbedd212234116ef4b2f799b39aab
 		}
 	}
 }
