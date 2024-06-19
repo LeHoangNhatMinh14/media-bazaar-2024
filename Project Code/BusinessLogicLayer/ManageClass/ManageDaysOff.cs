@@ -21,11 +21,6 @@ namespace BusinessLogicLayer.ManageClass
 		{
 			_daysOff.RequestDaysOff(daysOff);
 		}
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 7d8dd714f3afbedd212234116ef4b2f799b39aab
 		public RequestDaysOff GetDaysOff(int employeeID) 
 		{
 			return _daysOff.GetRequest(employeeID);
