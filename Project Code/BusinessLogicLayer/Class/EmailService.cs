@@ -23,8 +23,7 @@ namespace BusinessLogicLayer.Class
                     $"Kind regards, \n" +
                     $"MediaBazaar \n" +
                     $"\n" +
-                    $"Please be aware that this is email was sent automatically and no replies should be sent to this address!" +
-                    $" link to login: https://i505876.luna.fhict.nl/";
+                    $"Please be aware that this is email was sent automatically and no replies should be sent to this address!";
 
                 MailMessage message = new MailMessage(senderemail, recipient, subject, body);
 
