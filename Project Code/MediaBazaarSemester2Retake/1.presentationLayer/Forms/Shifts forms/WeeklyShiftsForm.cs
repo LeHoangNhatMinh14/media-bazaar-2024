@@ -255,7 +255,11 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
                         foreach (Employee employee in employeesofDepartment)
                         {
                         var DaysOffs = _manageDaysOff.GetDaysOff(employee.employeeID);
-                        bool isOnDaysOff = DaysOffs.startDate <= shift.shiftDate && shift.shiftDate <= DaysOffs.endDate;
+                        bool isOnDaysOff = false;
+                        if (DaysOffs != null)
+                        {
+                            isOnDaysOff = DaysOffs.startDate <= shift.shiftDate && shift.shiftDate <= DaysOffs.endDate;
+                        }
                         if (!_manageShifts.isEmployeeOnShift(shift.shiftid, employee.employeeID) &&
                                 _manageAvailability.IsEmployeeAvailableforShift(employee.employeeID, shift.shiftDate) &&
                                 _manageShifts.CanAssignShift(employee.employeeID, shift) &&
