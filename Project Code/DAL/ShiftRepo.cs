@@ -350,10 +350,11 @@ namespace DAL
                     SELECT s.*, d.departmentName, e.firstName + ' ' + e.lastName AS EmployeeName
                     FROM Shifts s
                     INNER JOIN Departments d ON s.FK_departmentID = d.departmentID
-                    INNER JOIN Contracts c ON s.FK_departmentID = c.FK_departmentID
-                    INNER JOIN Employees e ON c.FK_employeeID = e.employeeID
+                    INNER JOIN EmployeesOnShift eos ON s.shiftID = eos.FK_shiftID
+                    INNER JOIN Employees e ON eos.FK_employeeID = e.employeeID
                     WHERE CONVERT(date, s.shiftDate) BETWEEN @StartDate AND @EndDate
-                    AND d.departmentName = @DepartmentName";
+                    AND d.departmentName = @DepartmentName
+                    ";
                 using (SqlCommand cmd = new SqlCommand(querry, connection))
                 {
                     cmd.Parameters.AddWithValue("@StartDate", start);
@@ -365,6 +366,7 @@ namespace DAL
                     while (reader.Read())
                     {
                         Shift shift = reader.MapToShift();
+                        shift.EmployeeEmail = Convert.ToString(reader["EmployeeName"]);
 
                         shifts.Add(shift);
                     }
