@@ -91,7 +91,24 @@ namespace BusinessLogicLayer.ManageClass
             return true;
         }
 
+        public bool isShiftConsecutiveAuto(Employee employee, List<Shift> shifts)
+        {
+            // Sort the shifts by date first to make the comparison easier
+            shifts = shifts.OrderBy(s => s.shiftDate).ToList();
 
+            for (int i = 0; i < shifts.Count - 1; i++)
+            {
+                Shift currentShift = shifts[i];
+                Shift nextShift = shifts[i + 1];
 
+                if ((currentShift.shiftType == "Morning" && nextShift.shiftType == "Evening" && currentShift.shiftDate == nextShift.shiftDate) ||
+                    (currentShift.shiftType == "Evening" && nextShift.shiftType == "Night" && currentShift.shiftDate == nextShift.shiftDate) ||
+                    (currentShift.shiftType == "Night" && nextShift.shiftType == "Morning" && currentShift.shiftDate.AddDays(1) == nextShift.shiftDate))
+                {
+                    return true; // Shifts are consecutive
+                }
+            }
+            return false; // No consecutive shifts found
+        }
     }
 }

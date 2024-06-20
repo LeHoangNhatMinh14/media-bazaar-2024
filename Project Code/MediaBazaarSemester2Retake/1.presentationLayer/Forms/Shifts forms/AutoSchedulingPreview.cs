@@ -36,11 +36,13 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms.Shifts_forms
 
         private void LoadShifts()
         {
-            DateTime firstDayOfWeek = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
+            DateTime today = DateTime.Today;
+            int daysUntilNextWeek = ((int)DayOfWeek.Sunday - (int)today.DayOfWeek + 7) % 7;
+            DateTime firstDayOfNextWeek = today.AddDays(daysUntilNextWeek);
 
             for (int i = 0; i < 7; i++)
             {
-                DateTime day = firstDayOfWeek.AddDays(i);
+                DateTime day = firstDayOfNextWeek.AddDays(i);
                 List<Shift> dayShifts = _shifts.Where(s => s.shiftDate.Date == day.Date).ToList();
                 ucDays uc = new ucDays(day, dayShifts);
                 uc.NumberOfShifts = dayShifts.Count;
