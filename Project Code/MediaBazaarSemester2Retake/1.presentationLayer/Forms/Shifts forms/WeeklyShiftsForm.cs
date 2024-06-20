@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.Class;
 using BusinessLogicLayer.ManageClass;
 using Factory;
+using MediaBazaarSemester2Retake._1.presentationLayer.Forms.Shifts_forms;
 using MediaBazaarSemester2Retake.UserControls;
 using System;
 using System.Collections.Generic;
@@ -87,10 +88,7 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
                 lblEnd.Hide();
                 datePickerEnd.Hide();
                 datePickerStart.Hide();
-                numericPeopleNeeded.Hide();
                 btnAutoShiftAssign.Hide();
-                btnCreateShiftPeriod.Hide();
-                lblPplNeeded.Hide();
             }
 
             _year = currentDate.Year;
@@ -107,8 +105,6 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
             UpdateWeekDisplay();
             UpdateShiftsForSelectedEmployee();
         }
-
-
 
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -175,6 +171,7 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
                         DateTime controlDate = uc._day; // Add a Date property to ucDays to get the DateTime object
                         int shiftsCount = _shifts.Count(shift => shift.shiftDate.Date == controlDate.Date);
                         uc.NumberOfShifts = shiftsCount;
+                        uc._shifts = _shifts;
                     }
                 }
             }
@@ -189,97 +186,61 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
 
         private void btnAutoShiftAssign_Click(object sender, EventArgs e)
         {
-            AutomaticScheduling();
-        }
-        private void AutomaticScheduling()
-        {
-            DateTime start =DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
+            DateTime start = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
             DateTime end = start.AddDays(6);
             string department = cbDepartments.Text;
 
             var shiftsList = _manageShifts.GetShiftsbyperiod(start, end, department);
+            List<Shift> shiftsToPreview = new List<Shift>();
+
             foreach (Shift shift in shiftsList)
             {
-                if (shift.peopleNeeded == 0)
+                if (shift.peopleNeeded > 0)
                 {
-                    continue;
-                }
+                    var employeesofDepartment = _manageEmployee.GetEmployeeofDepartment(department);
 
-                var employeesofDepartment = _manageEmployee.GetEmployeeofDepartment(department);
-
-                for (int i = 0; i < shiftsList.Count; i++)
-                {
                     foreach (Employee employee in employeesofDepartment)
                     {
-                        if (_manageShifts.isEmployeeOnShift(shift.shiftid, employee.employeeID))
+                        if (!_manageShifts.isEmployeeOnShift(shift.shiftid, employee.employeeID) &&
+                            _manageAvailability.IsEmployeeAvailableforShift(employee.employeeID, shift.shiftDate))
                         {
-                            continue;
+                            shiftsToPreview.Add(shift);
+                            break;
                         }
+                    }
+                }
+            }
 
-                        if (_manageAvailability.IsEmployeeAvailableforShift(employee.employeeID, shift.shiftDate))
+            if (shiftsToPreview.Any())
+            {
+                AutoSchedulingPreview previewForm = new AutoSchedulingPreview(shiftsToPreview.ToArray());
+                previewForm.MonthYear = lblMonth.Text;
+                if (previewForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Assign the shifts only if the user confirms
+                    foreach (var shift in shiftsToPreview)
+                    {
+                        var employeesofDepartment = _manageEmployee.GetEmployeeofDepartment(department);
+
+                        foreach (Employee employee in employeesofDepartment)
                         {
-                            _manageShifts.AssignShift(shift.shiftid, employee.employeeID);
+                            if (!_manageShifts.isEmployeeOnShift(shift.shiftid, employee.employeeID) &&
+                                _manageAvailability.IsEmployeeAvailableforShift(employee.employeeID, shift.shiftDate))
+                            {
+                                _manageShifts.AssignShift(shift.shiftid, employee.employeeID);
+                            }
                         }
-
                     }
                 }
             }
         }
 
 
+
         private int GetIso8601WeekOfYear(DateTime date)
         {
-            DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(new DateTime(date.Year, 1, 4));
-
-            int daysToAdd = day >= DayOfWeek.Monday && day <= DayOfWeek.Thursday ? -((int)day) + 1 : 8 - (int)day;
-
-            DateTime firstMondayOfYear = new DateTime(date.Year, 1, 4).AddDays(daysToAdd);
-
-            int weekNumber = (date.DayOfYear - firstMondayOfYear.DayOfYear) / 7 + 1;
-
-            if (weekNumber == 0)
-            {
-                weekNumber = GetIso8601WeekOfYear(new DateTime(date.Year - 1, 12, 31));
-            }
-            else if (weekNumber == 53 && firstMondayOfYear.DayOfWeek != DayOfWeek.Thursday && firstMondayOfYear.DayOfWeek != DayOfWeek.Wednesday)
-            {
-                weekNumber = 1;
-            }
-
-            return weekNumber;
-        }
-
-        private void btnCreateShiftPeriod_Click(object sender, EventArgs e)
-        {
-        //    DateTime start = datePickerStart.Value.Date;
-        //    DateTime end = datePickerEnd.Value.Date;
-
-        //    int departmentID = (int)cbDepartments.SelectedValue;
-        //    int peopleNeeded = Convert.ToInt32(numericPeopleNeeded.Value);
-
-        //    if (cbDepartments.SelectedItem == null)
-        //    {
-        //        MessageBox.Show("Please select a department");
-        //    }
-
-        //    if (start < DateTime.Today)
-        //    {
-        //        MessageBox.Show("Please select a time after today");
-        //    }
-
-        //    if (end < DateTime.Today || end > DateTime.Today.AddDays(35))
-        //    {
-        //        MessageBox.Show("Please select a time after today or a day 5 weeks from now");
-        //    }
-
-        //    if (peopleNeeded < 0)
-        //    {
-        //        MessageBox.Show("Please specify the number of people needed for the shifts");
-        //    }
-
-        //    _manageShifts.CreateShiftinPeriod(start, end, departmentID, peopleNeeded);
-
-        //    MessageBox.Show($"Created shifts from {start.ToString("dd/MM/yyyy")} to {end.ToString("dd/MM/yyyy")}");
+            var day = (int)CultureInfo.CurrentCulture.Calendar.GetDayOfWeek(date);
+            return CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
         }
     }
 }

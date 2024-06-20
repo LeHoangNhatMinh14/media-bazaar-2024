@@ -98,7 +98,14 @@ namespace MediaBazaarSemester2Retake
 
                     if (remainingPeopleNeeded > 0)
                     {
-                        MessageBox.Show($"Shift has been assigned to {selectedEmployee.firstName} {selectedEmployee.lastName}. Still need {remainingPeopleNeeded} more people.");
+                        if (remainingPeopleNeeded == 1)
+                        {
+                            MessageBox.Show($"Shift has been assigned to {selectedEmployee.firstName} {selectedEmployee.lastName}. Still need {remainingPeopleNeeded} person.");
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Shift has been assigned to {selectedEmployee.firstName} {selectedEmployee.lastName}. Still need {remainingPeopleNeeded} more people.");
+                        }
                     }
                     else
                     {
@@ -172,7 +179,7 @@ namespace MediaBazaarSemester2Retake
         private void UpdateShiftsList(int employeeID)
         {
             lbShiftsofEmployee.DataSource = _manageShifts.GetShiftsOfEmployee(employeeID);
-            lbShiftsofEmployee.DisplayMember = "ShiftInfo";
+            lbShiftsofEmployee.DisplayMember = "ShiftInfoAssigned";
             lbUnassignedShifts.DataSource = _manageShifts.GetUnassignedShifts();
             lbUnassignedShifts.DisplayMember = "ShiftInfo";
             lbUnassignedShifts.ValueMember = "shiftid";

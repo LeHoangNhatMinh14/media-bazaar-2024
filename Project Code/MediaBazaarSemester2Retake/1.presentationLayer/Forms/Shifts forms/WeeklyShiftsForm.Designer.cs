@@ -46,14 +46,6 @@
             lblMonth = new Label();
             btnAutoShiftAssign = new Button();
             lblWeekNumber = new Label();
-            datePickerEnd = new DateTimePicker();
-            datePickerStart = new DateTimePicker();
-            lblStart = new Label();
-            lblEnd = new Label();
-            btnCreateShiftPeriod = new Button();
-            numericPeopleNeeded = new NumericUpDown();
-            lblPplNeeded = new Label();
-            ((System.ComponentModel.ISupportInitialize)numericPeopleNeeded).BeginInit();
             SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -208,7 +200,7 @@
             // 
             // btnAutoShiftAssign
             // 
-            btnAutoShiftAssign.Location = new Point(679, 536);
+            btnAutoShiftAssign.Location = new Point(425, 420);
             btnAutoShiftAssign.Margin = new Padding(3, 4, 3, 4);
             btnAutoShiftAssign.Name = "btnAutoShiftAssign";
             btnAutoShiftAssign.Size = new Size(179, 31);
@@ -226,80 +218,11 @@
             lblWeekNumber.TabIndex = 18;
             lblWeekNumber.Text = "label11";
             // 
-            // datePickerEnd
-            // 
-            datePickerEnd.Location = new Point(653, 381);
-            datePickerEnd.Margin = new Padding(3, 4, 3, 4);
-            datePickerEnd.Name = "datePickerEnd";
-            datePickerEnd.Size = new Size(228, 27);
-            datePickerEnd.TabIndex = 19;
-            // 
-            // datePickerStart
-            // 
-            datePickerStart.Location = new Point(653, 312);
-            datePickerStart.Margin = new Padding(3, 4, 3, 4);
-            datePickerStart.Name = "datePickerStart";
-            datePickerStart.Size = new Size(228, 27);
-            datePickerStart.TabIndex = 20;
-            // 
-            // lblStart
-            // 
-            lblStart.AutoSize = true;
-            lblStart.Location = new Point(746, 287);
-            lblStart.Name = "lblStart";
-            lblStart.Size = new Size(43, 20);
-            lblStart.TabIndex = 21;
-            lblStart.Text = "Start:";
-            // 
-            // lblEnd
-            // 
-            lblEnd.AutoSize = true;
-            lblEnd.Location = new Point(746, 357);
-            lblEnd.Name = "lblEnd";
-            lblEnd.Size = new Size(37, 20);
-            lblEnd.TabIndex = 22;
-            lblEnd.Text = "End:";
-            // 
-            // btnCreateShiftPeriod
-            // 
-            btnCreateShiftPeriod.Location = new Point(679, 497);
-            btnCreateShiftPeriod.Margin = new Padding(3, 4, 3, 4);
-            btnCreateShiftPeriod.Name = "btnCreateShiftPeriod";
-            btnCreateShiftPeriod.Size = new Size(179, 31);
-            btnCreateShiftPeriod.TabIndex = 23;
-            btnCreateShiftPeriod.Text = "Create shift in Period";
-            btnCreateShiftPeriod.UseVisualStyleBackColor = true;
-            btnCreateShiftPeriod.Click += btnCreateShiftPeriod_Click;
-            // 
-            // numericPeopleNeeded
-            // 
-            numericPeopleNeeded.Location = new Point(653, 443);
-            numericPeopleNeeded.Margin = new Padding(3, 4, 3, 4);
-            numericPeopleNeeded.Name = "numericPeopleNeeded";
-            numericPeopleNeeded.Size = new Size(229, 27);
-            numericPeopleNeeded.TabIndex = 24;
-            // 
-            // lblPplNeeded
-            // 
-            lblPplNeeded.AutoSize = true;
-            lblPplNeeded.Location = new Point(707, 419);
-            lblPplNeeded.Name = "lblPplNeeded";
-            lblPplNeeded.Size = new Size(111, 20);
-            lblPplNeeded.TabIndex = 25;
-            lblPplNeeded.Text = "People Needed";
-            // 
             // WeeklyShiftsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1008, 583);
-            Controls.Add(lblPplNeeded);
-            Controls.Add(numericPeopleNeeded);
-            Controls.Add(btnCreateShiftPeriod);
-            Controls.Add(lblEnd);
-            Controls.Add(lblStart);
-            Controls.Add(datePickerStart);
-            Controls.Add(datePickerEnd);
             Controls.Add(lblWeekNumber);
             Controls.Add(btnAutoShiftAssign);
             Controls.Add(lblMonth);
@@ -323,7 +246,6 @@
             Name = "WeeklyShiftsForm";
             Text = "WeeklyShiftsForm";
             Load += WeeklyShiftsForm_Load;
-            ((System.ComponentModel.ISupportInitialize)numericPeopleNeeded).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -352,8 +274,5 @@
         private DateTimePicker datePickerStart;
         private Label lblStart;
         private Label lblEnd;
-        private Button btnCreateShiftPeriod;
-        private NumericUpDown numericPeopleNeeded;
-        private Label lblPplNeeded;
     }
 }

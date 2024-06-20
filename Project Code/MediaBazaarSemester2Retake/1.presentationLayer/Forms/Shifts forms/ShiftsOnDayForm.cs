@@ -30,15 +30,15 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
                 {
                     if (shift.shiftType == "Morning")
                     {
-                        lbMorningShifts.Items.Add(shift.ShiftInfo);
+                        lbMorningShifts.Items.Add($"{shift.shiftDate}, {shift.shiftType} {shift.EmployeeEmail}");
                     }
                     if (shift.shiftType == "Evening")
                     {
-                        lbEveningShifts.Items.Add(shift.ShiftInfo);
+                        lbMorningShifts.Items.Add($"{shift.shiftDate}, {shift.shiftType} {shift.EmployeeEmail}");
                     }
                     if (shift.shiftType == "Night")
                     {
-                        lbNightShifts.Items.Add(shift.ShiftInfo);
+                        lbMorningShifts.Items.Add($"{shift.shiftDate}, {shift.shiftType}  {shift.EmployeeEmail}");
                     }
                 }
             }

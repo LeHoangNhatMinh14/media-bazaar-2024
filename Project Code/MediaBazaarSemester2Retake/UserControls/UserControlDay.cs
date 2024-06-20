@@ -24,14 +24,13 @@ namespace MediaBazaarSemester2Retake.UserControls
             {
                 _numberOfShifts = value;
                 lblNumofShifts.Text = _numberOfShifts.ToString();
-                if (_numberOfShifts == 0)
-                {
-                    lblNumofShifts.Visible = false;
-                }
+                lblNumofShifts.Visible = (_numberOfShifts > 0); // Show label only if there are shifts
                 UpdateAppearance();
             }
         }
-        List<Shift> _shifts;
+
+        public List<Shift> _shifts;
+
         public ucDays(DateTime day, List<Shift> shifts)
         {
             InitializeComponent();
@@ -39,30 +38,32 @@ namespace MediaBazaarSemester2Retake.UserControls
             _day = day;
             label1.Text = _day.Day.ToString();
         }
+
         private void UpdateAppearance()
         {
-            if (_numberOfShifts > 0)
-                this.BackColor = Color.Green;
-            else
-                this.BackColor = Color.DarkGray;
+            this.BackColor = (_numberOfShifts > 0) ? Color.Green : Color.DarkGray;
         }
-
         private void ucDays_Load(object sender, EventArgs e)
         {
 
         }
-
         private void ucDays_Click(object sender, EventArgs e)
         {
-            int day = int.Parse(label1.Text);
+            try
+            {
+                int day = int.Parse(label1.Text);
+                int year = WeeklyShiftsForm._year;
+                int month = WeeklyShiftsForm._month;
+                DateTime selectedDate = new DateTime(year, month, day);
 
-            int year = WeeklyShiftsForm._year;
-            int month = WeeklyShiftsForm._month;
-
-            DateTime selectedDate = new DateTime(year, month, day);
-
-            ShiftsOnDayForm shiftsOnDayForm = new ShiftsOnDayForm(_shifts, selectedDate);
-            shiftsOnDayForm.Show();
+                ShiftsOnDayForm shiftsOnDayForm = new ShiftsOnDayForm(_shifts, selectedDate);
+                shiftsOnDayForm.Show();
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Error parsing day number: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
+
 }

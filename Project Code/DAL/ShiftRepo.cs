@@ -259,9 +259,11 @@ namespace DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string querry = "SELECT * FROM Shifts " +
-                    "WHERE shiftID IN " +
-                    "(SELECT FK_shiftID FROM EmployeesOnShift WHERE FK_employeeID = @employeeID);";
+                string querry = "SELECT s.*, e.firstName + ' ' + e.lastName Name " +
+                    "FROM Shifts s " +
+                    "JOIN EmployeesOnShift eos ON s.shiftID = eos.FK_shiftID " +
+                    "JOIN Employees e ON eos.FK_employeeID = e.employeeID " +
+                    "WHERE eos.FK_employeeID = @employeeID;";
 
                 using (SqlCommand cmd = new SqlCommand(querry, connection))
                 {
@@ -272,6 +274,7 @@ namespace DAL
                         while (reader.Read())
                         {
                             Shift shift = reader.MapToShift();
+                            shift.EmployeeEmail = Convert.ToString(reader["Name"]);
                             shifts.Add(shift);
                         }
                         return shifts;
@@ -343,9 +346,14 @@ namespace DAL
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string querry = "SELECT * FROM Shifts s INNER JOIN Departments d " +
-                    "ON s.FK_departmentID = d.departmentID WHERE CONVERT(date, shiftDate) " +
-                    "BETWEEN @StartDate AND @EndDate AND d.departmentName = @DepartmentName";
+                string querry = @"
+                    SELECT s.*, d.departmentName, e.firstName + ' ' + e.lastName AS EmployeeName
+                    FROM Shifts s
+                    INNER JOIN Departments d ON s.FK_departmentID = d.departmentID
+                    INNER JOIN Contracts c ON s.FK_departmentID = c.FK_departmentID
+                    INNER JOIN Employees e ON c.FK_employeeID = e.employeeID
+                    WHERE CONVERT(date, s.shiftDate) BETWEEN @StartDate AND @EndDate
+                    AND d.departmentName = @DepartmentName";
                 using (SqlCommand cmd = new SqlCommand(querry, connection))
                 {
                     cmd.Parameters.AddWithValue("@StartDate", start);
