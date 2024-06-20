@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.Class;
 using BusinessLogicLayer.ManageClass;
 using Factory;
+using MediaBazaarSemester2Retake._1.presentationLayer.Forms.Shifts_forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -201,5 +202,28 @@ namespace MediaBazaarSemester2Retake
             lbEmployees.DataSource = _manageEmployee.GetEmployeeofDepartment(selectedDepartment);
             lbEmployees.DisplayMember = "EmployeeInfo";
         }
+
+        private void btncreateShiftforNextWeek_Click(object sender, EventArgs e)
+        {
+            CreateShiftForWeekForm createShiftForWeekForm = new CreateShiftForWeekForm();
+            if (createShiftForWeekForm.ShowDialog() == DialogResult.OK)
+            {
+                int peopleNeeded = createShiftForWeekForm.PeopleNeeded;
+                Department selectedDepartment = (Department)cbDepartments.SelectedItem;
+
+                DateTime start = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 7);
+                DateTime end = start.AddDays(6);
+
+                // Assuming _manageShifts.CreateShiftinPeriod takes parameters for start, end dates, and peopleNeeded
+                _manageShifts.CreateShiftinPeriod(start, end,selectedDepartment._departmentID, peopleNeeded);
+
+                MessageBox.Show("Shifts for next week have been created.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Shift creation was canceled.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }

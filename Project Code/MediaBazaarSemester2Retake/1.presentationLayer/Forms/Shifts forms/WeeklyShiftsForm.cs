@@ -186,16 +186,61 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
 
         private void btnAutoShiftAssign_Click(object sender, EventArgs e)
         {
-            DateTime start = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek);
+            DateTime start = DateTime.Today.AddDays(-(int)DateTime.Today.DayOfWeek + 7);
             DateTime end = start.AddDays(6);
             string department = cbDepartments.Text;
 
             var shiftsList = _manageShifts.GetShiftsbyperiod(start, end, department);
             List<Shift> shiftsToPreview = new List<Shift>();
 
+            if (!shiftsList.Any())
+            {
+                MessageBox.Show("No shifts available for the selected department.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             foreach (Shift shift in shiftsList)
             {
                 if (shift.peopleNeeded > 0)
+                {
+                    var employeesofDepartment = _manageEmployee.GetEmployeeofDepartment(department);
+
+                    bool shiftAdded = false;
+                    foreach (Employee employee in employeesofDepartment)
+                    {
+                        if (!_manageShifts.isEmployeeOnShift(shift.shiftid, employee.employeeID) &&
+                            _manageAvailability.IsEmployeeAvailableforShift(employee.employeeID, shift.shiftDate))
+                        {
+                            shiftsToPreview.Add(shift);
+                            shiftAdded = true;
+                            break;
+                        }
+                    }
+
+                    if (!shiftAdded)
+                    {
+                        MessageBox.Show($"No available employees for shift on {shift.shiftDate}.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+
+            if (!shiftsToPreview.Any())
+            {
+                MessageBox.Show("No shifts available employees found for any shift.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DateTime currentDate = DateTime.Today.AddDays(7 * (currentWeekOffset + 1));
+            AutoSchedulingPreview previewForm = new AutoSchedulingPreview(shiftsToPreview.ToArray())
+            {
+                MonthYear = lblMonth.Text,
+                WeekNumber = GetIso8601WeekOfYear(currentDate)
+            };
+            if (previewForm.ShowDialog() == DialogResult.OK)
+            {
+                bool shiftsAssigned = false;
+
+                foreach (var shift in shiftsToPreview)
                 {
                     var employeesofDepartment = _manageEmployee.GetEmployeeofDepartment(department);
 
@@ -204,36 +249,23 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms
                         if (!_manageShifts.isEmployeeOnShift(shift.shiftid, employee.employeeID) &&
                             _manageAvailability.IsEmployeeAvailableforShift(employee.employeeID, shift.shiftDate))
                         {
-                            shiftsToPreview.Add(shift);
-                            break;
+                            _manageShifts.AssignShift(shift.shiftid, employee.employeeID);
+                            shiftsAssigned = true;
                         }
                     }
+                }
+
+                if (shiftsAssigned)
+                {
+                    MessageBox.Show("Shifts successfully assigned.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-
-            if (shiftsToPreview.Any())
+            else
             {
-                AutoSchedulingPreview previewForm = new AutoSchedulingPreview(shiftsToPreview.ToArray());
-                previewForm.MonthYear = lblMonth.Text;
-                if (previewForm.ShowDialog() == DialogResult.OK)
-                {
-                    // Assign the shifts only if the user confirms
-                    foreach (var shift in shiftsToPreview)
-                    {
-                        var employeesofDepartment = _manageEmployee.GetEmployeeofDepartment(department);
-
-                        foreach (Employee employee in employeesofDepartment)
-                        {
-                            if (!_manageShifts.isEmployeeOnShift(shift.shiftid, employee.employeeID) &&
-                                _manageAvailability.IsEmployeeAvailableforShift(employee.employeeID, shift.shiftDate))
-                            {
-                                _manageShifts.AssignShift(shift.shiftid, employee.employeeID);
-                            }
-                        }
-                    }
-                }
+                MessageBox.Show("Shift assignment was canceled.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
 
 

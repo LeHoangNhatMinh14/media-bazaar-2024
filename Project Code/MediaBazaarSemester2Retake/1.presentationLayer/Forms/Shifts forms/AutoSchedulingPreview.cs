@@ -16,6 +16,16 @@ namespace MediaBazaarSemester2Retake._1.presentationLayer.Forms.Shifts_forms
             get { return lblMonthYear.Text; }
             set { lblMonthYear.Text = value; }
         }
+        private int weekNumber;
+        public int WeekNumber
+        {
+            get { return weekNumber; }
+            set
+            {
+                weekNumber = value;
+                label1.Text = $"Shifts preview form - Week {weekNumber}";
+            }
+        }
 
         public AutoSchedulingPreview(Shift[] shifts)
         {

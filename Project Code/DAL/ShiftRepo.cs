@@ -342,37 +342,44 @@ namespace DAL
 
         public List<Shift> GetShiftsinPeriod(DateTime start, DateTime end, string department)
         {
-            List<Shift> shifts = new List<Shift>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
-                string querry = @"
+                List<Shift> shifts = new List<Shift>();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string querry = @"
                     SELECT s.*, d.departmentName, e.firstName + ' ' + e.lastName AS EmployeeName
                     FROM Shifts s
-                    INNER JOIN Departments d ON s.FK_departmentID = d.departmentID
-                    INNER JOIN EmployeesOnShift eos ON s.shiftID = eos.FK_shiftID
-                    INNER JOIN Employees e ON eos.FK_employeeID = e.employeeID
+                    LEFT JOIN Departments d ON s.FK_departmentID = d.departmentID
+                    LEFT JOIN EmployeesOnShift eos ON s.shiftID = eos.FK_shiftID
+                    LEFT JOIN Employees e ON eos.FK_employeeID = e.employeeID
                     WHERE CONVERT(date, s.shiftDate) BETWEEN @StartDate AND @EndDate
                     AND d.departmentName = @DepartmentName
                     ";
-                using (SqlCommand cmd = new SqlCommand(querry, connection))
-                {
-                    cmd.Parameters.AddWithValue("@StartDate", start);
-                    cmd.Parameters.AddWithValue("@EndDate", end);
-                    cmd.Parameters.AddWithValue("@DepartmentName", department);
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
+                    using (SqlCommand cmd = new SqlCommand(querry, connection))
                     {
-                        Shift shift = reader.MapToShift();
-                        shift.EmployeeEmail = Convert.ToString(reader["EmployeeName"]);
+                        cmd.Parameters.AddWithValue("@StartDate", start);
+                        cmd.Parameters.AddWithValue("@EndDate", end);
+                        cmd.Parameters.AddWithValue("@DepartmentName", department);
 
-                        shifts.Add(shift);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            Shift shift = reader.MapToShift();
+                            shift.EmployeeEmail = Convert.ToString(reader["EmployeeName"]);
+
+                            shifts.Add(shift);
+                        }
                     }
                 }
+                return shifts;
             }
-            return shifts;
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 	}
 }

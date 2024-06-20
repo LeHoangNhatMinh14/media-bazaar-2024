@@ -32,12 +32,12 @@
             btnOK = new Button();
             btnCancel = new Button();
             lblMonthYear = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Dock = DockStyle.Top;
-            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Location = new Point(-2, 39);
             flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(982, 119);
@@ -45,7 +45,7 @@
             // 
             // btnOK
             // 
-            btnOK.Location = new Point(755, 127);
+            btnOK.Location = new Point(750, 205);
             btnOK.Margin = new Padding(3, 4, 3, 4);
             btnOK.Name = "btnOK";
             btnOK.Size = new Size(100, 38);
@@ -56,7 +56,7 @@
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(882, 127);
+            btnCancel.Location = new Point(877, 205);
             btnCancel.Margin = new Padding(3, 4, 3, 4);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(100, 38);
@@ -68,17 +68,27 @@
             // lblMonthYear
             // 
             lblMonthYear.AutoSize = true;
-            lblMonthYear.Location = new Point(12, 145);
+            lblMonthYear.Location = new Point(7, 223);
             lblMonthYear.Name = "lblMonthYear";
             lblMonthYear.Size = new Size(50, 20);
             lblMonthYear.TabIndex = 3;
             lblMonthYear.Text = "label1";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(366, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(161, 20);
+            label1.TabIndex = 4;
+            label1.Text = "Shifts preview of week ";
+            // 
             // AutoSchedulingPreview
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 256);
+            ClientSize = new Size(981, 256);
+            Controls.Add(label1);
             Controls.Add(lblMonthYear);
             Controls.Add(btnCancel);
             Controls.Add(btnOK);
@@ -94,6 +104,7 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private Label lblMonthYear;
+        private Label label1;
     }
 
     #endregion
